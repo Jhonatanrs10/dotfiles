@@ -1,4 +1,13 @@
 ######Jhonatanrs I3-WM config######
+
+set $color1 #1793d1
+set $color2 #333333
+set $color3 #ffffff
+set $color4 #7d7d7d
+set $color5 #900000
+set $color6 #000000
+set $color7 #a08000
+
 set $mod Mod4
 set $textFont Freemono 8
 set $appMenu2 dmenu_run
@@ -179,23 +188,23 @@ workspace_layout default
 #	padding 0 0 5 0
 #	colors {
 #	    #i3bar
-#	    background #333333
-#	    statusline #ffffff
-#	    separator #ffffff
-#	    focused_workspace  #1793d1 #333333 #ffffff
-#	    active_workspace   #333333 #333333 #ffffff
-#	    inactive_workspace #333333 #333333 #ffffff
-#	    urgent_workspace   #333333  #900000  #ffffff
-#       binding_mode       #333333 #333333 #ffffff
+#	    background $color2
+#	    statusline $color3
+#	    separator $color3
+#	    focused_workspace  $color1 $color2 $color3
+#	    active_workspace   $color2 $color2 $color3
+#	    inactive_workspace $color2 $color2 $color3
+#	    urgent_workspace   $color2  $color5  $color3
+#       binding_mode       $color2 $color2 $color3
 #    }
 #}
 #class                  borda       background  texto         indicator   child_border
-client.focused          #1793d1 #1793d1 #ffffff #1793d1 #1793d1
-client.focused_inactive #7d7d7d #7d7d7d #333333 #7d7d7d #7d7d7d
-client.unfocused        #7d7d7d #7d7d7d #333333 #7d7d7d #7d7d7d
-client.urgent           #2f343a #900000 #ffffff #900000 #900000
-client.placeholder      #000000 #0c0c0c #ffffff #000000 #0c0c0c
-client.background       #ffffff
+client.focused          $color1 $color1 $color3 $color1 $color1
+client.focused_inactive $color4 $color4 $color2 $color4 $color4
+client.unfocused        $color4 $color4 $color2 $color4 $color4
+client.urgent           $color7 $color5 $color3 $color5 $color5
+client.placeholder      $color6 $color6 $color3 $color6 $color6
+client.background       $color3
 
 #Resize
 bindsym Mod1+Left resize shrink width 10 px or 10 ppt

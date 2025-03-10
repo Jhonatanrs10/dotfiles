@@ -1,3 +1,4 @@
+#!/bin/bash
 mkdir -p $HOME/.config/gtk-2.0/
 mkdir -p $HOME/.config/gtk-3.0/
 mkdir -p $HOME/.config/gtk-4.0/

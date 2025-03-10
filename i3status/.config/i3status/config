@@ -28,7 +28,7 @@ order += "tztime local"
 
 read_file BRIGHTNESS {
 	format = "[☼/%content]"
-	#path = "/home/jhonatanrs/.config/i3/brightness"
+	#path = "~/.config/i3/brightness"
     path = "/sys/class/backlight/intel_backlight/brightness"
 	max_characters = 5
 	separator = false
