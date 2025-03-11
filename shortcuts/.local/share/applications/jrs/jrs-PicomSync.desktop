@@ -6,5 +6,5 @@ GenericName=jrs
 Comment=Picom settings for VSync
 Exec=bash picomsync.sh
 Icon=picom
-Path=/home/jhonatanrs/.config/jrs
+Path=.config/jrs
 Terminal=false

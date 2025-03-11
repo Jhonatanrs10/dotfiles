@@ -10,7 +10,6 @@ stow -t ~ hypr
 stow -t ~ i3
 stow -t ~ i3status
 stow -t ~ jrs
-sudo stow -t /etc/lightdm/ lightdm
 stow -t ~ mangohud
 stow -t ~ nvim
 stow -t ~ picom
@@ -30,7 +29,6 @@ stow -D -t ~ hypr
 stow -D -t ~ i3
 stow -D -t ~ i3status
 stow -D -t ~ jrs
-sudo stow -D -t /etc/lightdm/ lightdm
 stow -D -t ~ mangohud
 stow -D -t ~ nvim
 stow -D -t ~ picom

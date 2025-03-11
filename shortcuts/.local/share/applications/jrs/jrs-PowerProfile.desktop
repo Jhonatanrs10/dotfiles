@@ -6,5 +6,5 @@ GenericName=jrs
 Comment=Energy Profiles
 Exec=bash powerprofiles.sh
 Icon=xfce4-cpugraph-plugin
-Path=~/.config/jrs
+Path=.config/jrs
 Terminal=false

@@ -6,5 +6,5 @@ GenericName=jrs
 Comment=Power WM Options
 Exec=bash powerWm.sh
 Icon=system-shutdown
-Path=~/.config/jrs
+Path=.config/jrs
 Terminal=false
