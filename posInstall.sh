@@ -42,6 +42,15 @@ myFullBase="$myBaseKernel $myBaseBootloader $myBaseFileSystem $myBaseNetwork $my
 
 ## LIB FUNCTIONS ##
 
+lightdmConfig(){
+    echo "[greeter]
+theme-name = Breeze-Dark
+icon-theme-name = Papirus-Dark
+cursor-theme-name = capitaine-cursors
+indicators = ~session;~spacer;~clock;~spacer;~power
+background = /usr/share/backgrounds/main.png
+font-name = Freemono 10" | sudo tee -a /etc/lightdm/lightdm-gtk-greeter.conf
+}
 sambaSetup(){
     echo "Samba Config
 [1]Yes [2]No"
@@ -53,8 +62,6 @@ sambaSetup(){
         mkdir -p $HOME/Samba/User
         sudo chmod 777 $HOME/Samba
         sudo mkdir -p /home/samba
-        sudo $USER
-        #sudo chown $USER: $1
         sudo chmod 777 /home/samba
         echo "[global]
     workgroup = WORKGROUP
@@ -170,6 +177,7 @@ Options: [1]Yes, [2]No"
             packagesManager "$myFullBase"
             packagesManager "$myBaseI3wm"
             packagesManager "$myBaseLightdm"
+            lightdmConfig
             #https://github.com/lutris/docs/blob/master/InstallingDrivers.md#arch--manjaro--other-arch-linux-derivatives
             #causa crash no gdm o pacote: nvidia-dkms
             #https://codigocristo.github.io/driver_nvidia.html
