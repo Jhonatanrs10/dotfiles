@@ -1,4 +1,5 @@
 #!/usr/bin/bash
+DATANOW=$(date "+[%d-%m-%Y][%H-%M]")
 ## MY BASES ##
 myBaseLightdm="lightdm-gtk-greeter lightdm-gtk-greeter-settings lightdm"
 myBaseSddm="sddm"
@@ -40,6 +41,65 @@ myBaseShell="bash bash-completion"
 myFullBase="$myBaseKernel $myBaseBootloader $myBaseFileSystem $myBaseNetwork $myBaseFirewall $myBaseUtilitys $myBaseBluetooth $myBaseAudioPipeware $myBaseCodecs $myBaseXorg $myBaseWayland $myBaseIcons $myBaseThemes $myBaseFonts $myBaseRar $myBaseNotify $myBaseDaemons $myBaseFlatpak $myBaseShell"
 
 ## LIB FUNCTIONS ##
+
+sambaSetup(){
+    echo "Samba Config
+[1]Yes [2]No"
+    read resp
+    case $resp in
+        1)
+        sudo mv /etc/samba/smb.conf /etc/samba/smb-bkp$DATANOW.conf
+        sudo smbpasswd -a $USER
+        mkdir -p $HOME/Samba/User
+        sudo chmod 777 $HOME/Samba
+        sudo mkdir -p /home/samba
+        sudo $USER
+        #sudo chown $USER: $1
+        sudo chmod 777 /home/samba
+        echo "[global]
+    workgroup = WORKGROUP
+    netbios name = Samba
+    server string = Samba Server
+    server role = standalone server
+    security = user
+    map to guest = bad user
+    guest account = nobody
+    log file = /var/log/samba/%m
+    log level = 1
+    dns proxy = no
+[printers]
+    comment = All Printers
+    path = /usr/spool/samba
+    browsable = no
+    guest ok = no
+    writable = no
+    printable = yes
+[User]
+    comment = Pasta Compartilhada na Rede
+    path = $HOME/Samba/User
+    browseable = yes
+    read only = yes
+    guest ok = no
+    write list = $USER
+    force directory mode = 0777
+    directory mode = 0777
+    create mode = 0777
+[Guest]
+    comment = Pasta Compartilhada na Rede
+    path = /home/samba
+    browseable = yes
+    read only = yes
+    guest ok = yes
+    write list = $USER
+    force directory mode = 0777
+    directory mode = 0777
+    create mode = 0777" | sudo tee -a /etc/samba/smb.conf
+        ln -s /home/samba $HOME/Samba/Guest
+        ;;
+        *)
+        ;;
+    esac
+}
 
 enableSystemctl(){
     echo "Ativar $1?
@@ -87,6 +147,13 @@ EndSection
 EOF
 }
 
+installVirtManager(){
+    packagesManager "qemu libvirt ebtables dnsmasq bridge-utils openbsd-netcat virt-manager" "VirtManager"
+    enableSystemctl "libvirtd"  
+    sudo virsh net-autostart default
+    #sudo virsh net-start default  
+}
+
 myBaseI3Backlight(){
     #sudo chmod +s /usr/bin/light
     echo 'ACTION=="add", SUBSYSTEM=="backlight", RUN+="/bin/chgrp wheel $sys$devpath/brightness", RUN+="/bin/chmod g+w $sys$devpath/brightness"' | sudo tee /etc/udev/rules.d/backlight.rules
@@ -107,13 +174,19 @@ Options: [1]Yes, [2]No"
             #causa crash no gdm o pacote: nvidia-dkms
             #https://codigocristo.github.io/driver_nvidia.html
             packagesManager "$myBaseNvidia"
+            sudo rm -f /usr/share/applications/rofi*
+            if [[ -e "/usr/share/applications/xfce4-power-manager-settings.desktop" ]]; then
+                sudo sed -i 's/OnlyShowIn=XFCE;//g' /usr/share/applications/xfce4-power-manager-settings.desktop
+            fi  
             myBaseI3Backlight
             myBaseI3Touchpad
+            enableSystemctl "smb"
+            enableSystemctl "nmb"
             enableSystemctl "bluetooth"
             enableSystemctl "NetworkManager"
             enableSystemctl "power-profiles-daemon"
             enableSystemctl "lightdm"
-            #setupSamba 
+            sambaSetup 
             ;;
 		*)
 	esac
@@ -220,6 +293,7 @@ echo "
  [8]Install Steam
  [9]Install MangoHud
 [10]Install Retroarch
+[11]Install VirtManager
 "
 read option
 case $option in
@@ -233,6 +307,7 @@ case $option in
     8)packagesManager "$myBaseSteam";;
     9)packagesManager "$myBaseMangoHud";;
     10)packagesManager "$myBaseRetroarch";;
+    11)installVirtManager;;
     *);;
 esac
 
