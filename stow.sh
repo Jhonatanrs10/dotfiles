@@ -11,11 +11,10 @@ stow -t ~ i3
 stow -t ~ i3status
 stow -t ~ jrs
 stow -t ~ mangohud
-stow -t ~ nvim
 stow -t ~ picom
 stow -t ~ polybar
 stow -t ~ rofi
-stow -t ~ shortcuts
+stow -t ~/.local/share/applications shortcuts
 stow -t ~ sxhkd
 stow -t ~ waybar
 stow -t ~ wofi
@@ -30,11 +29,10 @@ stow -D -t ~ i3
 stow -D -t ~ i3status
 stow -D -t ~ jrs
 stow -D -t ~ mangohud
-stow -D -t ~ nvim
 stow -D -t ~ picom
 stow -D -t ~ polybar
 stow -D -t ~ rofi
-stow -D -t ~ shortcuts
+stow -D -t ~/.local/share/applications shortcuts
 stow -D -t ~ sxhkd
 stow -D -t ~ waybar
 stow -D -t ~ wofi
