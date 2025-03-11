@@ -207,10 +207,6 @@ Options: [1]Yes, [2]No"
     
 }
 
-myBaseNvidiaDriver(){
-        
-}  
-
 ##MENU OPTIONS##
 
 echo "
