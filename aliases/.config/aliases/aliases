@@ -1,4 +1,0 @@
-# Colocar linha abaixo em ~/.bashrc
-# [ -f ~/.config/aliases/aliases ] && source ~/.config/aliases/aliases
-
-alias gitatt="git commit -a -m \"att\" && git push"
