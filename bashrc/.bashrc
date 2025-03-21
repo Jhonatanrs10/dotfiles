@@ -17,4 +17,5 @@ alias grep='grep --color=auto'
 alias gitatt="git commit -a -m \"att\" && git push"
 alias ff="fastfetch"
 # My Bash
-PS1='[\u@\h \W]\$ '
+#PS1='[\u@\h \W]\$ '
+PS1='[\w]\$ '
