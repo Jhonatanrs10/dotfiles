@@ -40,8 +40,8 @@ exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 #exec --no-startup-id volumeicon
 exec --no-startup-id xfce4-power-manager
-exec --no-startup-id nitrogen --restore
-#exec --no-startup-id feh --bg-scale ~/.config/i3/wallpaperI3.png
+#exec --no-startup-id nitrogen --restore
+exec --no-startup-id feh --bg-scale ~/.config/wallpapers/main.png
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id /usr/bin/dunst
 exec --no-startup-id xset -b
@@ -57,11 +57,11 @@ bindsym $mod+Shift+Return exec --no-startup-id i3-sensible-terminal
 bindsym $mod+Shift+q kill
 bindsym Mod1+F4 kill
 bindsym --whole-window $mod+button2 floating toggle
-bindsym $mod+n exec --no-startup-id nitrogen && convert -resize "$(xrandr | grep "*" | awk '{ print $1 }')!" -blur 0x10 $(cat .config/nitrogen/bg-saved.cfg | sed -n '2 p' | sed 's/file=//') /usr/share/backgrounds/main.png, mode "default"
+#bindsym $mod+n exec --no-startup-id nitrogen && convert -resize "$(xrandr | grep "*" | awk '{ print $1 }')!" -blur 0x10 $(cat .config/nitrogen/bg-saved.cfg | sed -n '2 p' | sed 's/file=//') /usr/share/backgrounds/main.png, mode "default"
 #bindsym 7 exec --no-startup-id nitrogen && convert -resize "$(xrandr | grep "*" | awk '{ print $1 }')!" -blur 0x10 $(cat .config/nitrogen/bg-saved.cfg | sed -n '2 p' | sed 's/file=//') $HOME/.config/i3/wallpaperI3Lock.png, mode "default"
 #bindsym $mod+Ctrl+p exec --no-startup-id killall picom & dunstify -t 1000 --hints int:transient:1 "Picom" "Stopped" --icon=picom
 bindsym $mod+Ctrl+p exec --no-startup-id \
-    (pgrep picom > /dev/null && killall picom && dunstify -t 1000 --hints int:transient:1 "Picom" "Stopped" --icon=picom || picom & dunstify -t 1000 --hints int:transient:1 "Picom" "Started" --icon=picom)
+    (pgrep picom > /dev/null && killall picom && dunstify -t 1000 --hints int:transient:1 "Picom" "Stopped" --icon=picom || (picom & dunstify -t 1000 --hints int:transient:1 "Picom" "Started" --icon=picom))
 bindsym $mod+Ctrl+b bar mode toggle
 bindsym $mod+b exec --no-startup-id polybar-msg cmd toggle
 bindsym $mod+p exec --no-startup-id $HOME/.config/jrs/powerprofiles.sh
