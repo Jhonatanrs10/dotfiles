@@ -15,7 +15,7 @@ set $appMenu rofi -show drun
 set $appTerminal alacritty
 set $chromium chromium
 #set $refresh_i3status killall -SIGUSR1 i3status
-set $locker i3lock -c 000000 -i ~/.config/wallpapers/main.png && sleep 1
+set $locker i3lock -c 000000 && sleep 1
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
