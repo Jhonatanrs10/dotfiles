@@ -13,8 +13,9 @@ set $textFont Freemono 8
 set $appMenu2 dmenu_run
 set $appMenu rofi -show drun
 set $appTerminal alacritty
+set $chromium chromium
 #set $refresh_i3status killall -SIGUSR1 i3status
-set $Locker i3lock -c 000000 -i /usr/share/backgrounds/main.png && sleep 1
+set $locker i3lock -c 000000 -i ~/.config/wallpapers/main.png && sleep 1
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
@@ -50,7 +51,7 @@ exec --no-startup-id kdeconnect-indicator
 ###Binds###
 bindsym $mod+d exec --no-startup-id $appMenu
 bindsym $mod+x exec --no-startup-id pcmanfm
-bindsym $mod+c exec --no-startup-id xdg-open https://
+bindsym $mod+c exec --no-startup-id $chromium #xdg-open https://
 bindsym $mod+Shift+d exec --no-startup-id $appMenu2
 bindsym $mod+Return exec --no-startup-id $appTerminal
 bindsym $mod+Shift+Return exec --no-startup-id i3-sensible-terminal
@@ -67,14 +68,14 @@ bindsym $mod+b exec --no-startup-id polybar-msg cmd toggle
 bindsym $mod+p exec --no-startup-id $HOME/.config/jrs/powerprofiles.sh
 
 ###Power###
-#bindsym $mod+l exec --no-startup-id $Locker
-bindsym $mod+Shift+e exec --no-startup-id i3-msg exit
-bindsym $mod+Ctrl+7 exec --no-startup-id $Locker && systemctl suspend
-bindsym $mod+l exec --no-startup-id dm-tool lock
+#bindsym $mod+l exec --no-startup-id $locker
+#bindsym $mod+Shift+e exec --no-startup-id i3-msg exit
+#bindsym $mod+Ctrl+7 exec --no-startup-id $locker && systemctl suspend
+bindsym $mod+l exec --no-startup-id $locker
 bindsym $mod+Ctrl+l exec --no-startup-id $HOME/.config/jrs/powerWm.sh
-bindsym $mod+Ctrl+8 exec --no-startup-id $Locker && systemctl hibernate
-bindsym $mod+Ctrl+9 exec --no-startup-id systemctl reboot
-bindsym $mod+Ctrl+0 exec --no-startup-id systemctl poweroff -i
+#bindsym $mod+Ctrl+8 exec --no-startup-id $locker && systemctl hibernate
+#bindsym $mod+Ctrl+9 exec --no-startup-id systemctl reboot
+#bindsym $mod+Ctrl+0 exec --no-startup-id systemctl poweroff -i
 
 ###Print###
 bindsym --release $mod+Print exec --no-startup-id mkdir -p ~/Pictures/PrtSc | scrot ~/Pictures/PrtSc/Screenshot_%Y-%m-%d_%H-%M-%S.png
