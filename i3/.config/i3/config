@@ -53,7 +53,7 @@ exec --no-startup-id kdeconnect-indicator
 ###Binds###
 bindsym $mod+d exec --no-startup-id $appMenu
 bindsym $mod+x exec --no-startup-id pcmanfm
-bindsym $mod+c exec --no-startup-id $chromium #xdg-open https://
+bindsym $mod+c exec --no-startup-id $defaultBrowser
 bindsym $mod+Shift+d exec --no-startup-id $appMenu2
 bindsym $mod+Return exec --no-startup-id $appTerminal
 bindsym $mod+Shift+Return exec --no-startup-id i3-sensible-terminal
