@@ -20,6 +20,7 @@ alias pacmanclearcache="sudo pacman -Scc"
 alias dirdotfiles="cd ~/.dotfiles"
 alias dirbashmenu="cd ~/Documents/GitHub/BashMenu"
 alias dirgithub="cd ~/Documents/GitHub"
+alias archsshdstart="sudo systemctl start sshd"
 # My Bash
 #PS1='[\u@\h \W]\$ '
 PS1='[\w]\$ '
