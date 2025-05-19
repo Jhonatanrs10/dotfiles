@@ -17,6 +17,9 @@ alias grep='grep --color=auto'
 alias gitatt="git commit -a -m \"att\" && git push"
 alias ff="fastfetch"
 alias pacmanclearcache="sudo pacman -Scc"
+alias dirdotfiles="cd ~/.dotfiles"
+alias dirbashmenu="cd ~/Documents/GitHub/BashMenu"
+alias dirgithub="cd ~/Documents/GitHub"
 # My Bash
 #PS1='[\u@\h \W]\$ '
 PS1='[\w]\$ '
