@@ -16,6 +16,7 @@ alias grep='grep --color=auto'
 # My Alias
 alias gitatt="git commit -a -m \"att\" && git push"
 alias ff="fastfetch"
+alias pacmanclearcache="sudo pacman -Scc"
 # My Bash
 #PS1='[\u@\h \W]\$ '
 PS1='[\w]\$ '

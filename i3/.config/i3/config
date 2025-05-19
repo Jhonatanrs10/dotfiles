@@ -14,6 +14,7 @@ set $appMenu2 dmenu_run
 set $appMenu rofi -show drun
 set $appTerminal alacritty
 set $chromium chromium
+set $defaultBrowser xdg-open https://
 #set $refresh_i3status killall -SIGUSR1 i3status
 set $locker i3lock -c 000000 && sleep 1
 set $ws1 "1"
@@ -44,6 +45,7 @@ exec --no-startup-id xfce4-power-manager
 #exec --no-startup-id nitrogen --restore
 exec --no-startup-id feh --bg-scale ~/.config/wallpapers/main.png
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg
 exec --no-startup-id /usr/bin/dunst
 exec --no-startup-id xset -b
 exec --no-startup-id kdeconnect-indicator

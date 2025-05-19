@@ -39,5 +39,6 @@ blueman-applet &
 nm-applet &
 /usr/bin/dunst &
 /usr/bin/polkit-gnome/polkit-gnome-authentucation-agent-1 &
+/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg &
 $HOME/.config/polybar/polybar.sh &
 picom &
