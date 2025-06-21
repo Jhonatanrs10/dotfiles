@@ -32,8 +32,8 @@ bspc config normal_border_color "#7d7d7d"
 
 #AutoStart
 xsetroot -cursor_name left_ptr &
-nitrogen --restore &
-#xfce4-power-manager &
+#nitrogen --restore &
+xfce4-power-manager &
 #killall volumeicon && volumeicon &
 blueman-applet &
 nm-applet &
@@ -43,3 +43,5 @@ nm-applet &
 feh --bg-scale ~/.config/wallpapers/main.png &
 $HOME/.config/polybar/polybar.sh &
 picom &
+xset -b &
+kdeconnect-indicator &
