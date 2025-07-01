@@ -96,6 +96,7 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 bindsym $mod+m move absolute position center
+bindsym $mod+Shift+m resize set 480px 270px
 bindsym $mod+Shift+g move left
 bindsym $mod+Shift+h move down
 bindsym $mod+Shift+j move up
