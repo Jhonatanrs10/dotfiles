@@ -1,32 +1,32 @@
 # terminal emulator
 super + Return
-	alacritty
+	$MyTerminal
 
 # program launcher
 super + d
 	rofi -show drun
 
 super + x
-	pcmanfm
+	$MyFileManager
 
 super + c
-	xdg-open https://
+	$MyBrowser
 
 # toggle polybar
 super + b 
 	polybar-msg cmd toggle
 
-# Picom Stop
+# Inicia/Para Picom
 super + ctrl + p
-	killall picom & dunstify -t 1000 --hints int:transient:1 "Picom" "Stopped" --icon=picom
+    pgrep picom > /dev/null && killall picom && dunstify -t 1000 --hints int:transient:1 "Picom" "Stopped" --icon=picom || (picom & dunstify -t 1000 --hints int:transient:1 "Picom" "Started" --icon=picom)
 
 # power profiles
 super + p 
 	$HOME/.config/jrs/powerprofiles.sh
 
 # picom sync
-super + s 
-	$HOME/.config/jrs/picomsync.sh
+#super + s 
+#	$HOME/.config/jrs/picomsync.sh
 
 # xcolor
 super + z
@@ -71,7 +71,7 @@ super + {p,b,comma,period}
 
 # focus the next/previous window in the current desktop
 alt + Tab
-	bspc node -f {next,prev}.local.!hidden.window
+	bspc node -f {next}.local.!hidden.window
 
 # focus the next/previous desktop in the current monitor
 super + bracket{left,right}

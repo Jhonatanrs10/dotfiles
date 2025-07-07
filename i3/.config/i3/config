@@ -12,9 +12,6 @@ set $mod Mod4
 set $textFont Freemono 8
 set $appMenu2 dmenu_run
 set $appMenu rofi -show drun
-set $appTerminal alacritty
-set $chromium chromium
-set $defaultBrowser xdg-open https://
 #set $refresh_i3status killall -SIGUSR1 i3status
 set $locker i3lock -c 000000 && sleep 1
 set $ws1 "1"
@@ -41,7 +38,7 @@ exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 #exec --no-startup-id volumeicon
-exec --no-startup-id xfce4-power-manager
+#exec --no-startup-id xfce4-power-manager
 #exec --no-startup-id nitrogen --restore
 exec --no-startup-id feh --bg-scale ~/.config/wallpapers/main.png
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
@@ -52,10 +49,10 @@ exec --no-startup-id kdeconnect-indicator
 
 ###Binds###
 bindsym $mod+d exec --no-startup-id $appMenu
-bindsym $mod+x exec --no-startup-id pcmanfm
-bindsym $mod+c exec --no-startup-id $defaultBrowser
+bindsym $mod+x exec --no-startup-id $MyFileManager
+bindsym $mod+c exec --no-startup-id $MyBrowser
 bindsym $mod+Shift+d exec --no-startup-id $appMenu2
-bindsym $mod+Return exec --no-startup-id $appTerminal
+bindsym $mod+Return exec --no-startup-id $MyTerminal
 bindsym $mod+Shift+Return exec --no-startup-id i3-sensible-terminal
 bindsym $mod+Shift+q kill
 bindsym Mod1+F4 kill
