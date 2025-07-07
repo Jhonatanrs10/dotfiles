@@ -70,7 +70,7 @@ super + {p,b,comma,period}
 	bspc node -f @{parent,brother,first,second}
 
 # focus the next/previous window in the current desktop
-alt + Tab
+super + Tab
 	bspc node -f {next}.local.!hidden.window
 
 # focus the next/previous desktop in the current monitor
@@ -78,7 +78,7 @@ super + bracket{left,right}
 	bspc desktop -f {prev,next}.local
 
 # focus the last node/desktop
-super + {grave,Tab}
+alt + Tab
 	bspc {node,desktop} -f last
 
 # focus the older or newer node in the focus history
