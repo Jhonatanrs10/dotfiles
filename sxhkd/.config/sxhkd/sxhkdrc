@@ -161,4 +161,10 @@ super + Print
 Print
 	mkdir -p ~/Pictures/PrtSc | scrot -f -s ~/Pictures/PrtSc/Cutshot_%Y-%m-%d_%H-%M-%S.png
 
+# Mover janela flutuante para o centro
+super + m
+    bspc node -c focused.floating -g center
 
+# Redimensionar janela flutuante para 480x270 pixels
+super + shift + m
+    bspc node -c focused.floating -g "initial_width=480 initial_height=270"
