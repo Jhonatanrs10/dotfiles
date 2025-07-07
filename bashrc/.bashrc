@@ -19,6 +19,7 @@ alias yt-dlp-mp4='yt-dlp -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4" --merge-
 alias yt-dlp-mp3='yt-dlp -x --audio-format mp3 --audio-quality 0'
 # Servers
 alias mineserver='bash ~/.bashmenu/MINEJRS/run.sh'
+alias palserver='bash ~/.bashmenu/PalServer/run.sh'
 # Code
 alias codehere='code . && exit'
 alias codedotfiles="code ~/.dotfiles && exit"

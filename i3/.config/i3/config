@@ -118,8 +118,8 @@ bindsym $mod+Shift+w sticky toggle
 bindsym $mod+Ctrl+Up exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym $mod+Ctrl+Down exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% 
 bindsym $mod+Ctrl+m exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle 
-bindsym $mod+Ctrl+Right exec --no-startup-id xbacklight -dec 5
-bindsym $mod+Ctrl+Left exec --no-startup-id xbacklight -inc 5
+bindsym $mod+Ctrl+Right exec --no-startup-id brightnessctl set 5%-
+bindsym $mod+Ctrl+Left exec --no-startup-id brightnessctl set +5%
 #bindsym 4 exec --no-startup-id light -A 5 && echo `light` > $HOME/.config/i3/brightness
 #bindsym 5 exec --no-startup-id light -U 5 && echo `light` > $HOME/.config/i3/brightness
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
@@ -128,8 +128,8 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 #bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5 && echo `light` > $HOME/.config/i3/brightness &&  $refresh_i3status
 #bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5 && echo `light` > $HOME/.config/i3/brightness  &&  $refresh_i3status
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -dec 5 &&  $refresh_i3status
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -inc 5 &&  $refresh_i3status
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set 5%- &&  $refresh_i3status
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set +5% &&  $refresh_i3status
 
 ###Workspaces###
 bindsym $mod+1 workspace number $ws1

@@ -122,9 +122,9 @@ super+ctrl+Down
 super+ctrl+m
 	pactl set-sink-mute @DEFAULT_SINK@ toggle 
 super+ctrl+Right
-	xbacklight -dec 5
+	brightnessctl set 5%-
 super+ctrl+Left
-	xbacklight -inc 5
+	brightnessctl set +5%
 XF86AudioRaiseVolume
 	pactl set-sink-volume @DEFAULT_SINK@ +5%
 XF86AudioLowerVolume
@@ -134,9 +134,9 @@ XF86AudioMute
 XF86AudioMicMute
 	pactl set-source-mute @DEFAULT_SOURCE@ toggle
 XF86MonBrightnessUp
-	xbacklight -dec 5
+	brightnessctl set 5%-
 XF86MonBrightnessDown
-	xbacklight -inc 5
+	brightnessctl set +5%
 
 ###Power###
 # quit/restart bspwm
