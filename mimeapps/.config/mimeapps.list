@@ -1,0 +1,9 @@
+[Added Associations]
+text/plain=leafpad.desktop;libreoffice-calc.desktop;code-oss.desktop;org.kde.kdeconnect.app.desktop;
+image/png=gpicview.desktop;org.inkscape.Inkscape.desktop;
+application/pdf=xreader.desktop;
+
+[Default Applications]
+application/pdf=xreader.desktop
+text/plain=leafpad.desktop
+image/png=gpicview.desktop
