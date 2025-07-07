@@ -4,8 +4,8 @@
     "logo": {
         "type": "none",
         "padding": {
-        "top": 4,
-	      "left": 4
+            "top": 4,
+            "left": 4
         }
     },
     "display": {
@@ -16,7 +16,7 @@
             "key": "╭────────╮",
             "type": "custom"
         },
-         {
+        {
             "key": "│{#31}host    {#keys}│",
             "type": "host",
             "format": "{name}{?vendor} ({vendor}){?}"
@@ -87,7 +87,7 @@
             "type": "cpu",
             "showPeCoreCount": true
         },
-	      {
+        {
             "key": "│{#36}gpu     {#keys}│",
             "type": "gpu",
             "showPeCoreCount": true

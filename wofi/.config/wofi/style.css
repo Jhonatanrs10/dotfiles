@@ -18,7 +18,7 @@ window {
     font-family: "FreeMono";
     background-color: alpha(#333333, 0.9);
     color: "#ffffff";
-    border: 3px solid alpha(#1793d1, 1);
+    border: 2px solid alpha(#1793d1, 1);
 }
 
 #entry {

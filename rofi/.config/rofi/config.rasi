@@ -37,7 +37,7 @@ configuration {
 window {
     background-color: @corbar;
     border-color: @corcomfoco;
-    border: 3;
+    border: 2;
     border-radius: 0;
     padding: 0;
     width: 50%;

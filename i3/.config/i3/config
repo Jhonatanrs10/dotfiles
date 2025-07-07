@@ -24,7 +24,7 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
-set $tamanhodasbordas 3px
+set $bordersize 2px
 set $espacoentrejanelas 5px
 
 ###Font###
@@ -160,9 +160,9 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 title_align center
 hide_edge_borders none
-default_border pixel $tamanhodasbordas
+default_border pixel $bordersize
 for_window [all] title_window_icon padding 5px
-default_floating_border pixel $tamanhodasbordas
+default_floating_border pixel $bordersize
 gaps inner $espacoentrejanelas
 gaps outer 0px
 smart_gaps off
