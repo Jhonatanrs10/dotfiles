@@ -1,0 +1,17 @@
+-- vim.keymap.set('modo', 'atalho', 'comando', { opções })
+vim.g.mapleader = ' '
+vim.keymap.set('n', '<leader><Up>', ':tabnew .<CR>', { noremap = true, silent = true, desc = 'Nova aba com explorador de arquivos' })
+vim.keymap.set('n', '<leader><Down>', ':tabclose<CR>', { noremap = true, silent = true, desc = 'Fechar aba atual' })
+vim.keymap.set('n', '<leader><Left>', ':tabprevious<CR>', { noremap = true, silent = true, desc = 'Aba anterior' })
+vim.keymap.set('n', '<leader><Right>', ':tabnext<CR>', { noremap = true, silent = true, desc = 'Próxima aba' })
+vim.keymap.set('n', '<leader>q', ':q!<CR>', { noremap = true, silent = true, desc = 'Fechar buffer atual sem salvar' })
+vim.keymap.set('n', '<leader>z', 'u', { noremap = true, silent = true, desc = 'Desfazer (Undo)' })
+vim.keymap.set('n', '<leader>x', '<C-r>', { noremap = true, silent = true, desc = 'Refazer (Redo)' })
+vim.keymap.set('n', '<leader>t', ':tabnew term://bash<CR>', { noremap = true, silent = true, desc = 'Abrir nova aba de terminal' })
+vim.keymap.set('t', '<leader><C-c>', '<C-\\><C-n>', { noremap = true, silent = true, desc = 'Sair do modo terminal (Leader+Ctrl+C)' })
+vim.keymap.set('n', '<leader>w', ':w<CR>', { noremap = true, silent = true, desc = 'Salvar arquivo atual' })
+vim.keymap.set('n', '<leader>f', '/', { noremap = true, silent = false, desc = 'Iniciar busca para frente' })
+vim.keymap.set('n', '<leader><C-Left>', ':tabmove -1<CR>', { noremap = true, silent = true, desc = 'Mover aba para a esquerda' })
+vim.keymap.set('n', '<leader><C-Right>', ':tabmove +1<CR>', { noremap = true, silent = true, desc = 'Mover aba para a direita' })
+vim.keymap.set('n', '<leader>s', ':source %<CR>', { noremap = true, silent = true, desc = 'Recarregar arquivo de configuração' })
+

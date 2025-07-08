@@ -25,6 +25,9 @@ alias codehere='code . && exit'
 alias codedotfiles="code ~/.dotfiles && exit"
 alias codebashmenu="code ~/Documents/GitHub/BashMenu && exit"
 alias codejrsapp="code ~/Documents/GitHub/JRSAPP && exit"
+# NVim
+alias nvimdotfiles='cd ~/.dotfiles && nvim -c "tabnew ."'
+alias nvimbashmenu='cd ~/Documents/GitHub/BashMenu && nvim -c "tabnew ."'
 # My Bash
 #PS1='[\u@\h \W]\$ '
 PS1='[\w]\$ '
