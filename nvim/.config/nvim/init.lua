@@ -16,4 +16,4 @@ vim.keymap.set('n', '<leader><C-Left>', ':tabmove -1<CR>', { noremap = true, sil
 vim.keymap.set('n', '<leader><C-Right>', ':tabmove +1<CR>', { noremap = true, silent = true, desc = 'Mover aba para a direita' })
 vim.keymap.set('n', '<leader>s', ':source %<CR>', { noremap = true, silent = true, desc = 'Recarregar arquivo de configuração' })
 vim.keymap.set({'n', 'v'}, '<leader>y', '"+y', { noremap = true, silent = true, desc = 'Copiar para o sistema (Leader+y)' })
-vim.keymap.set({'n', 'i'}, '<leader>p', '"+p', { noremap = true, silent = true, desc = 'Colar do sistema (Leader+p)' })
+vim.keymap.set('n', '<leader>p', '"+p', { noremap = true, silent = true, desc = 'Colar do sistema (Leader+p)' })
