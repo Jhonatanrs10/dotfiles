@@ -14,6 +14,7 @@ alias ff="fastfetch"
 alias pacmanclearcache="sudo pacman -Scc"
 alias archsshdstart="sudo systemctl start sshd"
 alias discord='discord --no-sandbox'
+# Yt-dlp
 alias yt-dlp-mp4-720p='yt-dlp -f "bestvideo[height<=720][ext=mp4]+bestaudio[ext=m4a]/mp4" --merge-output-format mp4'
 alias yt-dlp-mp4='yt-dlp -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4" --merge-output-format mp4'
 alias yt-dlp-mp3='yt-dlp -x --audio-format mp3 --audio-quality 0'
@@ -25,9 +26,9 @@ alias codehere='code . && exit'
 alias codedotfiles="code ~/.dotfiles && exit"
 alias codebashmenu="code ~/Documents/GitHub/BashMenu && exit"
 alias codejrsapp="code ~/Documents/GitHub/JRSAPP && exit"
-# NVim
-alias nvimdotfiles='cd ~/.dotfiles && nvim -c "tabnew ."'
-alias nvimbashmenu='cd ~/Documents/GitHub/BashMenu && nvim -c "tabnew ."'
+# Git Status
+alias gitdotfiles='cd ~/.dotfiles && git status'
+alias gitbashmenu='cd ~/Documents/GitHub/BashMenu && git status'
 # My Bash
 #PS1='[\u@\h \W]\$ '
 PS1='[\w]\$ '
