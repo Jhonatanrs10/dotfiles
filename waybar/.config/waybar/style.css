@@ -24,12 +24,15 @@ window#waybar:first-child > box {
     background-color: alpha(#333333, 0.60);
 }
 #workspaces button {
-    margin-bottom: 0;
-    padding: 7px;
-    padding-bottom: 4;
+	/*background-color: #fff000;*/
+    padding: 5;
+    padding-top: 10;
+    border-bottom: 3px solid transparent;
+    padding-bottom: 5;
     color: #ffffff;
 }
 #workspaces button.active {
+    padding: 5;
     padding-top: 10;
     border-bottom: 3px solid #1793d1;
     padding-bottom: 5;
