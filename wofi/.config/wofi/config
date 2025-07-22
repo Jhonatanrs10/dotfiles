@@ -9,7 +9,6 @@ colors=colors
 filter_rate=100
 allow_markup=true
 dinamic_lines=true
-lines=11
 no_actions=true
 parse_search=true
 prompt= Type to filter

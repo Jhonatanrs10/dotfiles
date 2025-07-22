@@ -1,6 +1,7 @@
 * {
     border-radius: 15px;
     color:#ffffff;
+    box-shadow: none !important;
 }
 
 #inner-box {
@@ -50,4 +51,9 @@ window {
 image {
     margin-left: .25em;
     margin-right: .25em;
+}
+#scroll {
+    box-shadow: none;
+    border-bottom: none; 
+    border-top: none; 
 }
