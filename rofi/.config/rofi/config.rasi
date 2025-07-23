@@ -41,7 +41,7 @@ window {
     border-radius: 0;
     padding: 0;
     width: 50%;
-    height: 40%;
+    height: 50%;
 }
 mainbox {
     border: 0;
