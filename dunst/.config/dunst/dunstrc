@@ -1,5 +1,8 @@
 #!/bin/bash
 [global]
+    timeout = 5000
+    idle_threshold = 0
+    ignore_dbusclose = true
     monitor = 0
     follow = none
     geometry = "300x0+10+10"
