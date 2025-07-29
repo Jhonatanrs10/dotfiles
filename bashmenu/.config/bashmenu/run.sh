@@ -45,8 +45,6 @@ opcoes=(
   "Atalho Terminal::AtalhoTerminalBin"
   "Setup AppImage::setupAppimage"
   "Remover Atalhos JRS::removeDesktopJRS"
-  "Pasta Compartilhada (User)::criaPastaShareUser"
-  "Pasta Compartilhada (Guest)::criaPastaShareGuest"
   "PulseAudio Virtual::virtualPulseAudioExec"
   "Pós-Rede::appPosNetwork"
   "Pós-Config Manual::appPosManualConfig"
@@ -56,10 +54,8 @@ opcoes=(
   "Pós-Touchpad (i3)::appPosI3Touchpad"
   "Ignorar Ação da Bandeja::lidSwitchIgnore"
   "Reparar Pacman::repairPM"
-  "Assistir com MPV::assistirMpv"
   "Samba Setup::sambaSetup"
-  "My Dotfiles (stow)::myDotfiles"
-)
+  )
 
 linhas_terminal=$(tput lines)
 opcoes_por_pagina=$((linhas_terminal - 7))

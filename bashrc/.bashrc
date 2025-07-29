@@ -24,11 +24,8 @@ alias palserver='bash ~/.bashmenu/PalServer/run.sh'
 # Code
 alias codehere='code . && exit'
 alias codedotfiles="code ~/.dotfiles && exit"
-alias codebashmenu="code ~/Documents/GitHub/BashMenu && exit"
-alias codejrsapp="code ~/Documents/GitHub/JRSAPP && exit"
 # Git Status
 alias gitdotfiles='cd ~/.dotfiles && git pull && git status'
-alias gitbashmenu='cd ~/Documents/GitHub/BashMenu && git pull && git status'
 # My Bash
 #PS1='[\u@\h \W]\$ '
 PS1='[\w]\$ '
