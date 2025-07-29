@@ -25,16 +25,13 @@ alias palserver='bash ~/.bashmenu/PalServer/run.sh'
 alias codehere='code . && exit'
 alias codedotfiles="code ~/.dotfiles && exit"
 # Git Status
-alias gitdotfiles='cd ~/.dotfiles && git pull && git status'
-
-alias gitup='
+alias mydotfiles='
   cd ~/.dotfiles && git pull && git status
   read -p "Deseja atualizar seu repositório de dotfiles? (y/N) " confirm &&
   if [[ "$confirm" == [yY] ]]; then
      git add . && git commit -m "att" && git push
   fi
 '
-
 # My Bash
 #PS1='[\u@\h \W]\$ '
 PS1='[\w]\$ '
