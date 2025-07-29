@@ -71,7 +71,7 @@ bindsym $mod+p exec --no-startup-id $HOME/.config/jrs/powerprofiles.sh
 #bindsym $mod+Shift+e exec --no-startup-id i3-msg exit
 #bindsym $mod+Ctrl+7 exec --no-startup-id $locker && systemctl suspend
 bindsym $mod+l exec --no-startup-id $locker
-bindsym $mod+Ctrl+l exec --no-startup-id $HOME/.config/jrs/powerWm.sh
+bindsym $mod+Ctrl+l exec --no-startup-id $HOME/.config/jrs/power.sh
 #bindsym $mod+Ctrl+8 exec --no-startup-id $locker && systemctl hibernate
 #bindsym $mod+Ctrl+9 exec --no-startup-id systemctl reboot
 #bindsym $mod+Ctrl+0 exec --no-startup-id systemctl poweroff -i
