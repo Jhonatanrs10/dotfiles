@@ -16,3 +16,6 @@ export TERMINAL="alacritty"
 export MyFileManager="pcmanfm"
 export MyBrowser="xdg-open https:"
 export MyBrowserW="WAYLAND_DISPLAY=wayland-0 xdg-open https:"
+
+# Colors
+export testecolor1="#1793d1"
