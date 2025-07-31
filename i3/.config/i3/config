@@ -46,7 +46,7 @@ exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=pkcs11,s
 exec --no-startup-id /usr/bin/dunst
 exec --no-startup-id xset -b
 exec --no-startup-id kdeconnect-indicator
-
+exec --no-startup-id syncthing --no-browser
 ###Binds###
 bindsym $mod+d exec --no-startup-id $appMenu
 bindsym $mod+x exec --no-startup-id $MyFileManager

@@ -52,3 +52,4 @@ $HOME/.config/polybar/polybar.sh &
 picom &
 xset -b &
 kdeconnect-indicator &
+syncthing --no-browser &
