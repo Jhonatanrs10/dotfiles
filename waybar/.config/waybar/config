@@ -4,7 +4,7 @@
 	"spacing": 4,
 	"modules-left": ["hyprland/workspaces","hyprland/window"],
 	"modules-center": ["clock"],
-	"modules-right": ["temperature","pulseaudio","network","battery","tray"],
+	"modules-right": ["temperature","pulseaudio","battery","tray"],
 	"hyprland/workspaces": {
      "format": "{icon}",
      "on-scroll-up": "hyprctl dispatch workspace e+1",
