@@ -386,8 +386,11 @@ if [ -f "$origem" ]; then
         sed -i 's|^Name=.*|Name=Discord X|' "$destino_arquivo"
         
         # 3. Muda a linha Comment (descrição)
-        sed -i 's|^Comment=.*|Comment=Discord X (versão modificada para Ozone)|' "$destino_arquivo"
+        sed -i 's|^Comment=.*|Comment=Discord X (versão modificada para Hyprland)|' "$destino_arquivo"
         
+        # 4. Muda a linha GenericName
+        sed -i 's|^GenericName=.*|GenericName=Modificado para Hyprland|' "$destino_arquivo"
+
         echo "Arquivo jrs-discordX.desktop modificado com sucesso."
     else
         echo "Erro: O arquivo copiado não foi encontrado para edição."
