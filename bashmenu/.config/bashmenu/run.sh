@@ -55,6 +55,7 @@ opcoes=(
   "Ignorar Ação da Bandeja::lidSwitchIgnore"
   "Reparar Pacman::repairPM"
   "Samba Setup::sambaSetup"
+  "Discord Config Hyprland::hyprlandDiscordX"
   )
 
 linhas_terminal=$(tput lines)

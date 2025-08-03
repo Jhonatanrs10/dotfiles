@@ -358,3 +358,41 @@ Options: [1]Yes, [2]No"
     	esac
 
 }
+
+hyprlandDiscordX(){
+# Define os caminhos
+origem="/usr/share/applications/discord.desktop"
+destino_dir="$HOME/.local/share/applications/jrs"
+destino_arquivo="$destino_dir/jrs-discordX.desktop"
+
+# Verifica se o arquivo de origem existe
+if [ -f "$origem" ]; then
+    # Cria o diretório de destino se ele não existir
+    if [ ! -d "$destino_dir" ]; then
+        mkdir -p "$destino_dir"
+        echo "Diretório $destino_dir criado."
+    fi
+
+    # Copia o arquivo para o destino
+    cp "$origem" "$destino_arquivo"
+    echo "Arquivo copiado para $destino_arquivo."
+    
+    # Edita o arquivo copiado
+    if [ -f "$destino_arquivo" ]; then
+        # 1. Muda a linha Exec
+        sed -i 's|^Exec=.*|Exec=env ELECTRON_OZONE_PLATFORM_HINT= discord --no-sandbox|' "$destino_arquivo"
+        
+        # 2. Muda a linha Name
+        sed -i 's|^Name=.*|Name=Discord X|' "$destino_arquivo"
+        
+        # 3. Muda a linha Comment (descrição)
+        sed -i 's|^Comment=.*|Comment=Discord X (versão modificada para Ozone)|' "$destino_arquivo"
+        
+        echo "Arquivo jrs-discordX.desktop modificado com sucesso."
+    else
+        echo "Erro: O arquivo copiado não foi encontrado para edição."
+    fi
+else
+    echo "O arquivo $origem não foi encontrado. O script será encerrado."
+fi
+}
