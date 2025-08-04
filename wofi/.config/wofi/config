@@ -5,7 +5,6 @@ bonder=3
 allow_images=true
 drun-display_generic=true
 image_size=20
-colors=colors
 filter_rate=100
 allow_markup=true
 dinamic_lines=true

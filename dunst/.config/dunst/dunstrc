@@ -25,7 +25,7 @@
     horizontal_padding = 8
     text_icon_padding = 0
     frame_width = 2
-    frame_color = "#1793d1"
+    frame_color = "#f196c5"
     gap_size = 0
     separator_color = frame
     sort = yes
@@ -76,7 +76,6 @@
 [urgency_critical]
     background = "#333333aa"
     foreground = "#ffffff"
-    frame_color = "#ff0000"
+    frame_color = "#900000"
     timeout = 0
     override_pause_level = 60
-

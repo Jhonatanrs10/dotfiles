@@ -1,0 +1,8 @@
+base00="#f196c5"
+base01="#333333"
+base02="#ffffff"
+base03="#7d7d7d"
+base04="#900000"
+base05="#a08000"
+base06="#ffffff"
+base07="#000000"

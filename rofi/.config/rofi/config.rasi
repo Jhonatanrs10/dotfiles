@@ -1,13 +1,4 @@
-* {
-
-    corcomfoco: #1793d1;
-    textocomfoco: #ffffff;
-    corsemfoco: #7d7d7d;
-    textosemfoco: #333333;
-    corbar: #333333;
-    cortexto: #ffffff;
-  
-}
+@import "colors.rasi"
 
 configuration {
     drun {
@@ -35,8 +26,8 @@ configuration {
 }
 
 window {
-    background-color: @corbar;
-    border-color: @corcomfoco;
+    background-color: @base01;
+    border-color: @base00;
     border: 2;
     border-radius: 0;
     padding: 0;
@@ -49,16 +40,16 @@ mainbox {
 }
 message {
     border:       0px 0px 0px ;
-    border-color: @corcomfoco;
+    border-color: @base00;
     padding:      1px ;
 }
 textbox {
-    text-color: @textocomfoco;
+    text-color: @base02;
 }
 listview {
     fixed-height: 1;
     border:       0px 0px 0px ;
-    border-color: @corcomfoco;
+    border-color: @base00;
     spacing:      0px ;
     scrollbar:    true;
     padding:      0px 0px 10px 0px ;
@@ -72,44 +63,44 @@ element-text {
     text-color:       inherit;
 }
 element.normal.normal {
-    background-color: @corbar;
-    text-color:       @textocomfoco;
+    background-color: @base01;
+    text-color:       @base02;
 }
 element.normal.urgent {
-    background-color: @corbar;
-    text-color:       @textocomfoco;
+    background-color: @base01;
+    text-color:       @base02;
 }
 element.normal.active {
-    background-color: @corbar;
-    text-color:       @corcomfoco;
+    background-color: @base01;
+    text-color:       @base00;
 }
 element.selected.normal {
-    background-color: @corcomfoco;
-    text-color:       @textocomfoco;
+    background-color: @base00;
+    text-color:       @base02;
 }
 element.selected.urgent {
-    background-color: @corbar;
-    text-color:       @textocomfoco;
+    background-color: @base01;
+    text-color:       @base02;
 }
 element.selected.active {
-    background-color: @corcomfoco;
-    text-color:       @textocomfoco;
+    background-color: @base00;
+    text-color:       @base02;
 }
 element.alternate.normal {
-    background-color: @corbar;
-    text-color:       @textocomfoco;
+    background-color: @base01;
+    text-color:       @base02;
 }
 element.alternate.urgent {
-    background-color: @corbar;
-    text-color:       @textocomfoco;
+    background-color: @base01;
+    text-color:       @base02;
 }
 element.alternate.active {
-    background-color: @corbar;
-    text-color:       @corcomfoco;
+    background-color: @base01;
+    text-color:       @base00;
 }
 scrollbar {
-    background-color: @cortexto;
-    handle-color: @corsemfoco;
+    background-color: @base02;
+    handle-color: #7d7d7d;
     width:        4px ;
     border:       0;
     handle-width: 3px;
@@ -117,31 +108,31 @@ scrollbar {
 }
 mode-switcher {
     border:       2px 0px 0px ;
-    border-color: @corcomfoco;
+    border-color: @base00;
 }
 button.selected {
-    background-color: @corbar;
-    text-color:       @textocomfoco;
+    background-color: @base01;
+    text-color:       @base02;
 }
 inputbar {
     spacing:    5;
-    text-color: @textocomfoco;
+    text-color: @base02;
     padding:    1px ;
 }
 case-indicator {
     spacing:    2;
-    text-color: @textocomfoco;
+    text-color: @base02;
 }
 entry {
     spacing:    2;
-    text-color: @textocomfoco;
+    text-color: @base02;
 }
 prompt {
     spacing:    2;
-    text-color: @textocomfoco;
+    text-color: @base02;
 }
 inputbar {
-    border-color: @cortexto;
+    border-color: @base02;
     border: 0px 0px 1px 0px;
     margin: 5px 10px 10px 10px;
     padding: 5px 0px 5px 0px;
@@ -151,7 +142,7 @@ textbox-prompt-colon {
     expand:     false;
     str:        ": ";
     margin:     0px ;
-    text-color: @textocomfoco;
+    text-color: @base02;
 }
 
 

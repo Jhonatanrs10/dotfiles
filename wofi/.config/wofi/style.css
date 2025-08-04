@@ -1,6 +1,8 @@
+@import url("/home/jhonatanrs/.config/wofi/colors.css");
+
 * {
     border-radius: 15px;
-    color:#ffffff;
+    color:@base02;
     box-shadow: none !important;
 }
 
@@ -17,9 +19,9 @@
 window {
     font-size: 16px;
     font-family: "FreeMono";
-    background-color: alpha(#333333, 0.9);
-    color: "#ffffff";
-    border: 2px solid alpha(#1793d1, 1);
+    background-color: alpha(@base01, 0.9);
+    color: @base02;
+    border: 2px solid @base00;
 }
 
 #entry {
@@ -28,22 +30,22 @@ window {
 }
 
 #entry:selected {
-    background-color: alpha(#1793d1, 1);
-    color: "#ffffff";
+    background-color: alpha(@base00, 1);
+    color: @base02;
     border-radius: 0;
 }
 
 #text:selected {
-    color: "#ffffff";
+    color: @base02;
 }
 
 #input {
-    background-color: alpha(#333333, 0);
-    color: "#ffffff";
-    border-top: 0px solid blue;
-    border-bottom: 1px solid #ffffff;
-    border-left: 0px solid blue;
-    border-right: 0px solid blue;
+    background-color: alpha(@base01, 0);
+    color: @base02;
+    border-top: 0px solid @base02;
+    border-bottom: 1px solid @base02;
+    border-left: 0px solid @base02;
+    border-right: 0px solid @base02;
     border-radius: 0;
     margin: 0 20 10 20;
 }

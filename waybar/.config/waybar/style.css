@@ -1,3 +1,5 @@
+@import url("colors.css");
+
 * {
     border: 0;
     border-radius: 0;
@@ -7,13 +9,13 @@
 }
 
 .modules-right {
-    color: #DFDFDF;
+    color: @base02;
     /*color: #444444;*/
 }
 
 window#waybar {
     background: transparent;
-    color: #ffffff;
+    color: @base02;
     margin: 0;
 }
 
@@ -21,7 +23,7 @@ window#waybar:first-child > box {
     margin: 5;	
     padding: 0px 9px 0px 9px;
     border-radius: 6px;
-    background-color: alpha(#333333, 0.60);
+    background-color: alpha(@base01, 0.60);
 }
 #workspaces button {
     /*background-color: #fff000;*/
@@ -29,14 +31,14 @@ window#waybar:first-child > box {
     padding-top: 10;
     border-bottom: 3px solid transparent;
     padding-bottom: 5;
-    color: #ffffff;
+    color: @base02;
 }
 #workspaces button.active {
     padding: 8;
     padding-top: 10;
-    border-bottom: 3px solid #1793d1;
+    border-bottom: 3px solid @base00;
     padding-bottom: 5;
-    color: #ffffff;
+    color: @base02;
 }
 #workspaces button:hover {
     background: transparent;
@@ -48,16 +50,16 @@ window#waybar:first-child > box {
     background-image: none;
     border: none;
     box-shadow: none;
-    background-color: red;
+    background-color: @base04;
 }
 #pulseaudio-slider trough {
     min-height: 1px;
     min-width: 5px;
     border-radius: 5px;
-    background-color: black;
+    background-color: @base07;
 }
 #pulseaudio-slider highlight {
     min-width: 10px;
     border-radius: 5px;
-    background-color: green;
+    background-color: @base06;
 }

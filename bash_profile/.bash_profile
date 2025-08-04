@@ -17,5 +17,6 @@ export MyFileManager="pcmanfm"
 export MyBrowser="xdg-open https:"
 export MyBrowserW="WAYLAND_DISPLAY=wayland-0 xdg-open https:"
 
-# Colors
-export testecolor1="#1793d1"
+# Sources
+source ~/.config/jrs/colors.sh
+
