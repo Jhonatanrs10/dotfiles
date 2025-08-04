@@ -38,8 +38,7 @@ super + t
 
 # make sxhkd reload its configuration files:
 super + shift + r
-	pkill -USR1 -x sxhkd; \
-	bspc wm -r;
+	$HOME/.config/jrs/resetColors.sh
 
 # close and kill
 super + shift + q
