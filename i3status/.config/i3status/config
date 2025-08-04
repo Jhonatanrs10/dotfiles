@@ -13,16 +13,16 @@ general {
 	color_degraded = "#FFFF00"
 }
 
-#order += "cpu_usage"
-#order += "memory"
-#order += "disk /"
+order += "cpu_usage"
+order += "memory"
+order += "disk /"
 #order += "disk /home"
 #order += "ethernet "
-#order += "wireless _first_"
-#order += "ethernet _first_"
-#order += "volume master"
+order += "wireless _first_"
+order += "ethernet _first_"
+order += "volume master"
 #order += "read_file BRIGHTNESS"
-#order += "battery all"
+order += "battery all"
 order += "tztime local"
 #order += "tztime local1"
 
@@ -73,15 +73,15 @@ ethernet _first_ {
     min_width = 1
 }
 
-ethernet  {
-    format_up = "[Z/%ip]"
-    format_down = ""
-	separator = false
-	separator_block_width = 1
-	align = "center"
-    min_width = 1
-    #diretorio com as redes /proc/sys/net/ipv4/conf/
-}
+#ethernet  {
+#    format_up = "[Z/%ip]"
+#    format_down = ""
+#	separator = false
+#	separator_block_width = 1
+#	align = "center"
+#   min_width = 1
+#    #diretorio com as redes /proc/sys/net/ipv4/conf/
+#}
 
 battery all {
     format = "[%status/%percentage]"

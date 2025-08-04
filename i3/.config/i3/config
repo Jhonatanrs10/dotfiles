@@ -1,7 +1,7 @@
 ######Jhonatanrs I3-WM config######
 
 set $color1 #1793d1
-set $color2 #333333
+set $color2 #000000
 set $color3 #ffffff
 set $color4 #7d7d7d
 set $color5 #900000
@@ -10,9 +10,9 @@ set $color7 #a08000
 
 set $mod Mod4
 set $textFont Freemono 8
-set $appMenu2 dmenu_run
-set $appMenu rofi -show drun
-#set $refresh_i3status killall -SIGUSR1 i3status
+set $appMenu dmenu_run
+set $appMenu2 rofi -show drun
+set $refresh_i3status killall -SIGUSR1 i3status
 set $locker i3lock -c 000000 && sleep 1
 set $ws1 "1"
 set $ws2 "2"
@@ -32,7 +32,7 @@ font pango:$textFont
 
 ###AutoStart###
 exec --no-startup-id picom
-exec_always --no-startup-id $HOME/.config/polybar/polybar.sh
+#exec_always --no-startup-id $HOME/.config/polybar/polybar.sh
 exec --no-startup-id dex --autostart --environment i3
 #exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
@@ -40,7 +40,8 @@ exec --no-startup-id blueman-applet
 #exec --no-startup-id volumeicon
 #exec --no-startup-id xfce4-power-manager
 #exec --no-startup-id nitrogen --restore
-exec --no-startup-id feh --bg-scale ~/.config/wallpapers/main.png
+#exec --no-startup-id feh --bg-scale ~/.config/wallpapers/main.png
+exec --no-startup-id xsetroot -solid black
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg
 exec --no-startup-id /usr/bin/dunst
@@ -172,33 +173,33 @@ workspace_layout default
 #for_window [instance=nvidia-settings] floating enable
 #for_window [instance=$appMenu] floating enable resize set 600 300
 
-###I3BARS###
-#bar {
-#	status_command i3status --config ~/.config/i3status/config
-#	position top
-#	mode dock
-#	#tray_output primary
-#    #tray_output HDMI-0
-#	tray_padding 2
-#	workspace_buttons yes
-#	workspace_min_width 25
-#	separator_symbol ":"
-#	strip_workspace_numbers yes
-#	strip_workspace_name no
-#	binding_mode_indicator yes
-#	padding 0 0 5 0
-#	colors {
-#	    #i3bar
-#	    background $color2
-#	    statusline $color3
-#	    separator $color3
-#	    focused_workspace  $color1 $color2 $color3
-#	    active_workspace   $color2 $color2 $color3
-#	    inactive_workspace $color2 $color2 $color3
-#	    urgent_workspace   $color2  $color5  $color3
-#       binding_mode       $color2 $color2 $color3
-#    }
-#}
+##I3BARS###
+bar {
+	status_command i3status 
+	position bottom 
+	mode dock
+	#tray_output primary
+        #tray_output HDMI-0
+	tray_padding 2
+	workspace_buttons yes
+	workspace_min_width 25
+	separator_symbol ":"
+	strip_workspace_numbers yes
+	strip_workspace_name no
+	binding_mode_indicator yes
+	padding 0 0 5 0
+	colors {
+	    #i3bar
+	    background $color2
+	    statusline $color3
+	    separator $color3
+	    focused_workspace  $color1 $color2 $color3
+	    active_workspace   $color2 $color2 $color3
+	    inactive_workspace $color2 $color2 $color3
+	    urgent_workspace   $color2  $color5  $color3
+       binding_mode       $color2 $color2 $color3
+    }
+}
 #class                  borda       background  texto         indicator   child_border
 client.focused          $color1 $color1 $color3 $color1 $color1
 client.focused_inactive $color4 $color4 $color2 $color4 $color4
