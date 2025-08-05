@@ -26,7 +26,7 @@ theme01[unfocused]="FCD6E2"
 theme01[bad]="900000"
 theme01[degraded]="a08000"
 theme01[white]="ffffff"
-theme01[black]="000000"]
+theme01[black]="000000"
 
 # Tema Sakura
 declare -A theme02 

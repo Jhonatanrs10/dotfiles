@@ -156,6 +156,9 @@ echo '#!/bin/bash
 
 hyprctl reload & 
 killall -SIGUSR2 waybar &
+hyprctl hyprpaper unload all &
+hyprctl hyprpaper preload "~/.config/wallpapers/main.png" &
+hyprctl hyprpaper wallpaper ",~/.config/wallpapers/main.png" &
 pkill -USR1 -x sxhkd &
 bspc wm -r &
 dunstctl reload &
