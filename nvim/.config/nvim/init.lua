@@ -1,5 +1,6 @@
 -- theme & transparency
-vim.cmd.colorscheme("unokai")
+--vim.cmd.colorscheme("unokai")
+vim.cmd.colorscheme("unokaibkp")
 vim.cmd.colorscheme("colors")
 --vim.api.nvim_set_hl(0, "Normal", { bg = "#333333" })
 --vim.api.nvim_set_hl(0, "NormalNC", { bg = "#333333" })
