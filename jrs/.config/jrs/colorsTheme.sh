@@ -28,12 +28,12 @@ theme01[degraded]="a08000"
 theme01[white]="ffffff"
 theme01[black]="000000"
 
-# Tema teste
+# Tema Root
 declare -A theme02 
-theme02[main]="6d55ad"
-theme02[bar]="f5f6fa"
-theme02[text]="2d2d41"
-theme02[unfocused]="7d6185"
+theme02[main]="97FF4B"
+theme02[bar]="192028"
+theme02[text]="C5C6CA"
+theme02[unfocused]="4F575A"
 theme02[bad]="900000"
 theme02[degraded]="a08000"
 theme02[white]="ffffff"
