@@ -28,7 +28,7 @@ theme01[degraded]="a08000"
 theme01[white]="ffffff"
 theme01[black]="000000"
 
-# Tema Sakura
+# Tema Teste1
 declare -A theme02 
 theme02[main]="6d55ad"
 theme02[bar]="f5f6fa"

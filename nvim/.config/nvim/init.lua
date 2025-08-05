@@ -1,15 +1,16 @@
 -- theme & transparency
 vim.cmd.colorscheme("unokai")
-vim.api.nvim_set_hl(0, "Normal", { bg = "#333333" })
-vim.api.nvim_set_hl(0, "NormalNC", { bg = "#333333" })
-vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "#333333" })
-vim.api.nvim_set_hl(0, "TabLine", { fg = "#B6B6B6", bg = "#333333", ctermfg = 244, ctermbg = 236 })
-vim.api.nvim_set_hl(0, "TabLineSel", { fg = "#333333", bg = "#B6B6B6", ctermfg = 231, ctermbg = 240, bold = true })
-vim.api.nvim_set_hl(0, "TabLineFill", { fg = "NONE", bg = "#333333", ctermfg = "NONE", ctermbg = 235 })
-vim.api.nvim_set_hl(0, "CursorLine", { bg = "#222222" })
-vim.api.nvim_set_hl(0, "VertSplit", { fg = "#b6b6b6", bg = "#333333" })
-vim.api.nvim_set_hl(0, "StatusLine", { fg = "#333333", bg = "#b6b6b6", bold = true })
-vim.api.nvim_set_hl(0, "StatusLineNC", { fg = "#333333", bg = "#b6b6b6" })
+vim.cmd.colorscheme("colors")
+--vim.api.nvim_set_hl(0, "Normal", { bg = "#333333" })
+--vim.api.nvim_set_hl(0, "NormalNC", { bg = "#333333" })
+--vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "#333333" })
+--vim.api.nvim_set_hl(0, "TabLine", { fg = "#B6B6B6", bg = "#333333", ctermfg = 244, ctermbg = 236 })
+--vim.api.nvim_set_hl(0, "TabLineSel", { fg = "#333333", bg = "#B6B6B6", ctermfg = 231, ctermbg = 240, bold = true })
+--vim.api.nvim_set_hl(0, "TabLineFill", { fg = "NONE", bg = "#333333", ctermfg = "NONE", ctermbg = 235 })
+--vim.api.nvim_set_hl(0, "CursorLine", { bg = "#222222" })
+--vim.api.nvim_set_hl(0, "VertSplit", { fg = "#b6b6b6", bg = "#333333" })
+--vim.api.nvim_set_hl(0, "StatusLine", { fg = "#333333", bg = "#b6b6b6", bold = true })
+--vim.api.nvim_set_hl(0, "StatusLineNC", { fg = "#333333", bg = "#b6b6b6" })
 
 -- Basic settings
 vim.opt.number = true                              -- Line numbers
