@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ~/.config/jrs/colors.sh
+source ~/.config/jrs/colorsTheme.sh
 
 # Hyprland colors setup
 echo '$color1 = '$JRS_MAIN_COLOR'

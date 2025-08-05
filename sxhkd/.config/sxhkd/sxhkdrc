@@ -34,11 +34,11 @@ super + z
 
 # theme mode
 super + t 
-	$HOME/.config/jrs/themeMode.sh
+	$HOME/.config/jrs/setTheme.sh
 
 # make sxhkd reload its configuration files:
 super + shift + r
-	$HOME/.config/jrs/resetColors.sh
+	pkill -USR1 -x sxhkd && bspc wm -r
 
 # close and kill
 super + shift + q
