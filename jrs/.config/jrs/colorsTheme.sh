@@ -29,15 +29,15 @@ theme_Sakura[black]="000000"
 theme_Sakura[wallpaper]="w1.png"
 
 declare -A theme_Gentoo 
-theme_Gentoo[main]="97FF4B"
-theme_Gentoo[bar]="192028"
-theme_Gentoo[text]="C5C6CA"
-theme_Gentoo[unfocused]="4F575A"
+theme_Gentoo[main]="6E56AF"
+theme_Gentoo[bar]="3B3F57"
+theme_Gentoo[text]="F7F8FC"
+theme_Gentoo[unfocused]="604878"
 theme_Gentoo[bad]="900000"
 theme_Gentoo[degraded]="a08000"
 theme_Gentoo[white]="ffffff"
 theme_Gentoo[black]="000000"
-theme_Gentoo[wallpaper]="w.png"
+theme_Gentoo[wallpaper]="w2.png"
 
 # --- Lógica de Alternância ---
 
