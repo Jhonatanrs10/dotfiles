@@ -6,46 +6,43 @@ THEME_STATE_FILE="$HOME/.cache/theme_state"
 
 # --- Definição dos Temas ---
 
-# Tema Default
-declare -A theme
-theme[main]="1793d1"
-theme[bar]="333333"
-theme[text]="ffffff"
-theme[unfocused]="7d7d7d"
-theme[bad]="900000"
-theme[degraded]="a08000"
-theme[white]="ffffff"
-theme[black]="000000"
-theme[wallpaper]="w.png"
+declare -A theme_Archlinux
+theme_Archlinux[main]="1793d1"
+theme_Archlinux[bar]="333333"
+theme_Archlinux[text]="ffffff"
+theme_Archlinux[unfocused]="7d7d7d"
+theme_Archlinux[bad]="900000"
+theme_Archlinux[degraded]="a08000"
+theme_Archlinux[white]="ffffff"
+theme_Archlinux[black]="000000"
+theme_Archlinux[wallpaper]="w.png"
 
-# Tema Sakura
-declare -A theme01 
-theme01[main]="D37CAF"
-theme01[bar]="0A0F2D"
-theme01[text]="FEEBEE"
-theme01[unfocused]="FCD6E2"
-theme01[bad]="900000"
-theme01[degraded]="a08000"
-theme01[white]="ffffff"
-theme01[black]="000000"
-theme01[wallpaper]="w1.png"
+declare -A theme_Sakura 
+theme_Sakura[main]="D37CAF"
+theme_Sakura[bar]="0A0F2D"
+theme_Sakura[text]="FEEBEE"
+theme_Sakura[unfocused]="FCD6E2"
+theme_Sakura[bad]="900000"
+theme_Sakura[degraded]="a08000"
+theme_Sakura[white]="ffffff"
+theme_Sakura[black]="000000"
+theme_Sakura[wallpaper]="w1.png"
 
-# Tema Root
-declare -A theme02 
-theme02[main]="97FF4B"
-theme02[bar]="192028"
-theme02[text]="C5C6CA"
-theme02[unfocused]="4F575A"
-theme02[bad]="900000"
-theme02[degraded]="a08000"
-theme02[white]="ffffff"
-theme02[black]="000000"
-theme02[wallpaper]="w.png"
+declare -A theme_Gentoo 
+theme_Gentoo[main]="97FF4B"
+theme_Gentoo[bar]="192028"
+theme_Gentoo[text]="C5C6CA"
+theme_Gentoo[unfocused]="4F575A"
+theme_Gentoo[bad]="900000"
+theme_Gentoo[degraded]="a08000"
+theme_Gentoo[white]="ffffff"
+theme_Gentoo[black]="000000"
+theme_Gentoo[wallpaper]="w.png"
 
 # --- Lógica de Alternância ---
 
 # Lista todos os temas disponíveis, na ordem em que devem ser alternados
-themes=("theme" "theme01" "theme02")
+themes=("theme_Archlinux" "theme_Sakura" "theme_Gentoo")
 
 # Lógica para encontrar o próximo tema
 # Se o arquivo de estado existe, pega o nome do último tema
