@@ -3,7 +3,8 @@
 source ~/.config/jrs/colorsTheme.sh
 
 # Hyprland colors setup
-echo '$color1 = '$JRS_MAIN_COLOR'
+echo '$wallpaper = '$JRS_WALLPAPER'
+$color1 = '$JRS_MAIN_COLOR'
 $color2 = '$JRS_BAR_COLOR'
 $color3 = '$JRS_TEXT_COLOR'
 $color4 = '$JRS_UNFOCUSED_COLOR'
@@ -184,10 +185,6 @@ echo '#!/bin/bash
     frame_color = "#'$JRS_BAD_COLOR'"
     timeout = 0
     override_pause_level = 60' > $HOME/.config/dunst/dunstrc
-
-# Hyprpaper setup
-echo "preload = ~/.config/wallpapers/$JRS_WALLPAPER
-wallpaper = , ~/.config/wallpapers/$JRS_WALLPAPER" > $HOME/.config/hypr/hyprpaper.conf
 
 hyprctl reload & 
 killall -SIGUSR2 waybar &
