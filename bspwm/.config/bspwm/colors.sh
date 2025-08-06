@@ -1,3 +1,4 @@
+wallpaper="w1.png"
 base00="#D37CAF"
 base01="#0A0F2D"
 base02="#FEEBEE"

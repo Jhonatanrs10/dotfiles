@@ -48,7 +48,7 @@ nm-applet &
 /usr/bin/dunst &
 /usr/bin/polkit-gnome/polkit-gnome-authentucation-agent-1 &
 /usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg &
-feh --bg-scale ~/.config/wallpapers/main.png &
+feh --bg-scale ~/.config/wallpapers/$wallpaper &
 $HOME/.config/polybar/polybar.sh &
 picom &
 xset -b &

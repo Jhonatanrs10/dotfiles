@@ -55,8 +55,9 @@ echo "* {
 }" > ~/.config/rofi/colors.rasi
 
 
-# Rofi colors setup
-echo 'base00="#'$JRS_MAIN_COLOR'"
+# Bspwm colors setup
+echo 'wallpaper="'$JRS_WALLPAPER'"
+base00="#'$JRS_MAIN_COLOR'"
 base01="#'$JRS_BAR_COLOR'"
 base02="#'$JRS_TEXT_COLOR'"
 base03="#'$JRS_UNFOCUSED_COLOR'"
@@ -101,6 +102,7 @@ echo "[colors]
     background = '#$JRS_BAR_COLOR'
     foreground = '#$JRS_TEXT_COLOR'" > $HOME/.config/alacritty/colors.toml
 
+# Dunst colors setup
 echo '#!/bin/bash
 [global]
     timeout = 5000
@@ -183,11 +185,13 @@ echo '#!/bin/bash
     timeout = 0
     override_pause_level = 60' > $HOME/.config/dunst/dunstrc
 
+# Hyprpaper setup
+echo "preload = ~/.config/wallpapers/$JRS_WALLPAPER
+wallpaper = , ~/.config/wallpapers/$JRS_WALLPAPER" > $HOME/.config/hypr/hyprpaper.conf
+
 hyprctl reload & 
 killall -SIGUSR2 waybar &
-hyprctl hyprpaper unload all &
-hyprctl hyprpaper preload "~/.config/wallpapers/main.png" &
-hyprctl hyprpaper wallpaper ",~/.config/wallpapers/main.png" &
+hyprctl hyprpaper reload ,"~/.config/wallpapers/$JRS_WALLPAPER"
 pkill -USR1 -x sxhkd &
 bspc wm -r &
 dunstctl reload &

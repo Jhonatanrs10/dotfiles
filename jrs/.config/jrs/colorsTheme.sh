@@ -7,15 +7,16 @@ THEME_STATE_FILE="$HOME/.cache/theme_state"
 # --- Definição dos Temas ---
 
 # Tema Default
-declare -A default_theme
-default_theme[main]="1793d1"
-default_theme[bar]="333333"
-default_theme[text]="ffffff"
-default_theme[unfocused]="7d7d7d"
-default_theme[bad]="900000"
-default_theme[degraded]="a08000"
-default_theme[white]="ffffff"
-default_theme[black]="000000"
+declare -A theme
+theme[main]="1793d1"
+theme[bar]="333333"
+theme[text]="ffffff"
+theme[unfocused]="7d7d7d"
+theme[bad]="900000"
+theme[degraded]="a08000"
+theme[white]="ffffff"
+theme[black]="000000"
+theme[wallpaper]="w.png"
 
 # Tema Sakura
 declare -A theme01 
@@ -27,6 +28,7 @@ theme01[bad]="900000"
 theme01[degraded]="a08000"
 theme01[white]="ffffff"
 theme01[black]="000000"
+theme01[wallpaper]="w1.png"
 
 # Tema Root
 declare -A theme02 
@@ -38,12 +40,12 @@ theme02[bad]="900000"
 theme02[degraded]="a08000"
 theme02[white]="ffffff"
 theme02[black]="000000"
-
+theme02[wallpaper]="w.png"
 
 # --- Lógica de Alternância ---
 
 # Lista todos os temas disponíveis, na ordem em que devem ser alternados
-themes=("default_theme" "theme01" "theme02")
+themes=("theme" "theme01" "theme02")
 
 # Lógica para encontrar o próximo tema
 # Se o arquivo de estado existe, pega o nome do último tema
@@ -85,4 +87,4 @@ JRS_BAD_COLOR="${chosen_theme[bad]}"
 JRS_DEGRADED_COLOR="${chosen_theme[degraded]}"
 JRS_WHITE_COLOR="${chosen_theme[white]}"
 JRS_BLACK_COLOR="${chosen_theme[black]}"
-
+JRS_WALLPAPER="${chosen_theme[wallpaper]}"
