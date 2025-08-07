@@ -2,6 +2,10 @@
 
 source ~/.config/jrs/colorsTheme.sh
 
+# Hyprpaper setup
+echo "reload = ~/.config/wallpapers/$JRS_WALLPAPER
+wallpaper = , ~/.config/wallpapers/$JRS_WALLPAPER" > ~/.config/hypr/hyprpaper.conf
+
 # Hyprland colors setup
 echo '$wallpaper = '$JRS_WALLPAPER'
 $color1 = '$JRS_MAIN_COLOR'

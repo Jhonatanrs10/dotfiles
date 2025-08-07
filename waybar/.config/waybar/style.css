@@ -10,6 +10,7 @@
 
 .modules-right {
     color: @base02;
+    background: transparent;
     /*color: #444444;*/
 }
 
@@ -63,3 +64,8 @@ window#waybar:first-child > box {
     border-radius: 5px;
     background-color: @base06;
 }
+#battery.charging {
+    color: @base02;
+    background: transparent;
+}
+

@@ -18,6 +18,10 @@ alias discordX='ELECTRON_OZONE_PLATFORM_HINT= discord --no-sandbox && exit'
 alias yt-dlp-mp4-720p='yt-dlp -f "bestvideo[height<=720][ext=mp4]+bestaudio[ext=m4a]/mp4" --merge-output-format mp4'
 alias yt-dlp-mp4='yt-dlp -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4" --merge-output-format mp4'
 alias yt-dlp-mp3='yt-dlp -x --audio-format mp3 --audio-quality 0'
+# Mpv
+alias mpv720p60='mpv --profile=720p60'
+alias mpv1080p30='mpv --profile=1080p30'
+alias mpv1080p60="mpv --profile=1080p60"
 # Servers
 alias mineserver='bash ~/.bashmenu/MINEJRS/run.sh'
 alias palserver='bash ~/.bashmenu/PalServer/run.sh'
