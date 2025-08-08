@@ -39,21 +39,21 @@ theme_Gentoo[white]="ffffff"
 theme_Gentoo[black]="000000"
 theme_Gentoo[wallpaper]="w2.png"
 
-declare -A theme_PinkCar 
-theme_PinkCar[main]="6E56AF"
-theme_PinkCar[bar]="3B3F57"
-theme_PinkCar[text]="F7F8FC"
-theme_PinkCar[unfocused]="604878"
-theme_PinkCar[bad]="900000"
-theme_PinkCar[degraded]="a08000"
-theme_PinkCar[white]="ffffff"
-theme_PinkCar[black]="000000"
-theme_PinkCar[wallpaper]="w3.png"
+declare -A theme_Window11Gray 
+theme_Window11Gray[main]="6F8AA5"
+theme_Window11Gray[bar]="151A21"
+theme_Window11Gray[text]="DFDFDF"
+theme_Window11Gray[unfocused]="2E4760"
+theme_Window11Gray[bad]="900000"
+theme_Window11Gray[degraded]="a08000"
+theme_Window11Gray[white]="ffffff"
+theme_Window11Gray[black]="000000"
+theme_Window11Gray[wallpaper]="w3.png"
 
 # --- Lógica de Alternância ---
 
 # Lista todos os temas disponíveis, na ordem em que devem ser alternados
-themes=("theme_Archlinux" "theme_Sakura" "theme_Gentoo" "theme_PinkCar")
+themes=("theme_Archlinux" "theme_Sakura" "theme_Gentoo" "theme_Window11Gray")
 
 # Lógica para encontrar o próximo tema
 # Se o arquivo de estado existe, pega o nome do último tema
