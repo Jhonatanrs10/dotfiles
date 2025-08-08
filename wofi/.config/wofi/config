@@ -1,10 +1,10 @@
 mode=drun
 width=50%
-height=40%
+height=39%
 bonder=3
 allow_images=true
 drun-display_generic=true
-image_size=20
+image_size=16
 filter_rate=100
 allow_markup=true
 dinamic_lines=true
