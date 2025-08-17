@@ -144,7 +144,7 @@ super + shift + e
 super + ctrl + 7
 	systemctl suspend
 super + l 
-	dm-tool lock
+	i3lock -c 000000 && sleep 1
 super + ctrl + l 
 	$HOME/.config/jrs/power.sh
 super + ctrl + 8
