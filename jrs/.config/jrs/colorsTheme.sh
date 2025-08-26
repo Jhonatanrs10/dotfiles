@@ -50,10 +50,21 @@ theme_Window11Gray[white]="ffffff"
 theme_Window11Gray[black]="000000"
 theme_Window11Gray[wallpaper]="w3.png"
 
+declare -A theme_DSlayer
+theme_DSlayer[main]="eba825"
+theme_DSlayer[bar]="010409"
+theme_DSlayer[text]="DFDFDF"
+theme_DSlayer[unfocused]="1361c2"
+theme_DSlayer[bad]="900000"
+theme_DSlayer[degraded]="a08000"
+theme_DSlayer[white]="ffffff"
+theme_DSlayer[black]="000000"
+theme_DSlayer[wallpaper]="w4.png"
+
 # --- Lógica de Alternância ---
 
 # Lista todos os temas disponíveis, na ordem em que devem ser alternados
-themes=("theme_Archlinux" "theme_Sakura" "theme_Gentoo" "theme_Window11Gray")
+themes=("theme_Archlinux" "theme_Sakura" "theme_Gentoo" "theme_Window11Gray" "theme_DSlayer")
 
 # Lógica para encontrar o próximo tema
 # Se o arquivo de estado existe, pega o nome do último tema
