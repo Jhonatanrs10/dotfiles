@@ -8,7 +8,7 @@ icon-theme-name = Papirus-Dark
 cursor-theme-name = capitaine-cursors
 indicators = ~session;~spacer;~clock;~spacer;~power
 background = /usr/share/backgrounds/main.png
-font-name = Freemono 10" | sudo tee -a /etc/lightdm/lightdm-gtk-greeter.conf
+font-name = Adwaita Sans 11" | sudo tee -a /etc/lightdm/lightdm-gtk-greeter.conf
 }
 
 myBaseI3Touchpad(){
@@ -84,8 +84,7 @@ Options: [1]MYBASE [2]WINDOW MANAGER, [3]GNOME [4]KDE"
             packagesManager "$myBaseI3wm"
             packagesManager "$myBaseBspwm"
             packagesManager "$myBaseHyprland"
-            packagesManager "$myBaseWmApps"
-	    packagesManager "ly"
+	        packagesManager "ly"
             packagesManager "$myBaseGlobalApps"
             packagesManager "$myBaseOBS"
             packagesManager "$myBaseSteam"
@@ -129,7 +128,6 @@ Options: [1]MYBASE [2]WINDOW MANAGER, [3]GNOME [4]KDE"
             myBasePacman
             packagesManager "$myFullBase"
             packagesManager "$myBaseKde"
-            packagesManager "$myBaseSddm"
             packagesManager "$myBaseGlobalApps"
             packagesManager "$myBaseOBS"
             packagesManager "$myBaseSteam"

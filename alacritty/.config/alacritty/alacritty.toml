@@ -1,22 +1,22 @@
 general.import = ["~/.config/alacritty/colors.toml"]
 
 [font]
-size = 10.0
+size = 11.0
 
 [font.bold]
-family = "Freemono"
+family = "Adwaita Sans"
 style = "Bold"
 
 [font.bold_italic]
-family = "Freemono"
+family = "Adwaita Sans"
 style = "Bold Italic"
 
 [font.italic]
-family = "Freemono"
+family = "Adwaita Sans"
 style = "Italic"
 
 [font.normal]
-family = "Freemono"
+family = "Adwaita Sans"
 style = "Regular"
 
 [window]

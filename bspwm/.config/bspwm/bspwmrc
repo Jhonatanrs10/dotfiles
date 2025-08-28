@@ -31,12 +31,13 @@ bspc config focus_follows_pointer true
 #bspc config presel_border_color "#A3BE8C"  # Nord: Frost Green (verde)
 #bspc config active_border_color "#BF616A"  # Nord: Aurora Red (vermelho)
 
-
-	#bspc rule -a Gimp desktop="^8" state=floating follow=on
+#bspc rule -a Gimp desktop="^8" state=floating follow=on
 #bspc rule -a Chromium desktop="^2"
 #bspc rule -a mplayer2 state=floating
 #bspc rule -a Kupfer.py focus=on
 #bspc rule -a Screenkey manage=off
+
+bspc rule -a "stream-overlay" border=off
 
 #AutoStart
 xsetroot -cursor_name left_ptr &

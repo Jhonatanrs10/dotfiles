@@ -22,7 +22,7 @@ configuration {
     scroll-method: 1; 
     show-icons: true;
     combi-display-format: "{text} ({mode})";
-    font: "Freemono 12";
+    font: "Adwaita Sans 11";
 }
 
 window {

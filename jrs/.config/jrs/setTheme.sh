@@ -139,7 +139,7 @@ echo '#!/bin/bash
     gap_size = 0
     separator_color = frame
     sort = yes
-    font = FreeMono 10
+    font = Adwaita Sans 11
     line_height = 0
     markup = full
     format = "<b>%s</b>\n%b"
