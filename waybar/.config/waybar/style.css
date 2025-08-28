@@ -22,20 +22,20 @@ window#waybar {
 
 window#waybar:first-child > box {
     margin: 5;	
-    padding: 0px 9px 0px 9px;
+    padding: 0px 6px 0px 6px;
     border-radius: 6px;
     background-color: alpha(@base01, 0.60);
 }
 #workspaces button {
     /*background-color: #fff000;*/
-    padding: 8;
+    padding: 5;
     padding-top: 10;
     border-bottom: 3px solid transparent;
     padding-bottom: 5;
     color: @base02;
 }
 #workspaces button.active {
-    padding: 8;
+    padding: 5;
     padding-top: 10;
     border-bottom: 3px solid @base00;
     padding-bottom: 5;
