@@ -9,7 +9,7 @@ set $color6 #000000
 set $color7 #a08000
 
 set $mod Mod4
-set $textFont Freemono 8
+set $textFont Adwaita Sans 11
 set $appMenu dmenu_run
 set $appMenu2 rofi -show drun
 set $refresh_i3status killall -SIGUSR1 i3status
