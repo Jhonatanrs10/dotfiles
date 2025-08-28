@@ -25,11 +25,11 @@
     horizontal_padding = 8
     text_icon_padding = 0
     frame_width = 2
-    frame_color = "#D37CAF"
+    frame_color = "#6F8AA5"
     gap_size = 0
     separator_color = frame
     sort = yes
-    font = Adwaita Sans 11
+    font = FreeMono 11
     line_height = 0
     markup = full
     format = "<b>%s</b>\n%b"
@@ -65,17 +65,17 @@
 [experimental]
     per_monitor_dpi = false
 [urgency_low]
-    background = "#0A0F2Daa"
-    foreground = "#FEEBEE"
+    background = "#151A21aa"
+    foreground = "#DFDFDF"
     timeout = 10
 [urgency_normal]
-    background = "#0A0F2Daa"
-    foreground = "#FEEBEE"
+    background = "#151A21aa"
+    foreground = "#DFDFDF"
     timeout = 10
     override_pause_level = 30
 [urgency_critical]
-    background = "#0A0F2Daa"
-    foreground = "#FEEBEE"
+    background = "#151A21aa"
+    foreground = "#DFDFDF"
     frame_color = "#900000"
     timeout = 0
     override_pause_level = 60

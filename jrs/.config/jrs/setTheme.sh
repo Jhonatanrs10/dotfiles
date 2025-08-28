@@ -100,6 +100,13 @@ hi("Comment", { fg = "#57a64a", italic = true })
 hi("String", { fg = "#CE9178" })
 hi("Keyword", { fg = "#C586C0", bold = true })' > $HOME/.config/nvim/colors/colors.lua
 
+# Kitty colors setup
+echo "background        #$JRS_BAR_COLOR
+foreground      #$JRS_TEXT_COLOR
+selection_foreground #000000
+selection_background #cccccc
+background_opacity 0.90" > $HOME/.config/kitty/colors.conf
+
 # Alacritty colors setup
 echo "[colors]
     draw_bold_text_with_bright_colors = true
@@ -139,7 +146,7 @@ echo '#!/bin/bash
     gap_size = 0
     separator_color = frame
     sort = yes
-    font = Adwaita Sans 11
+    font = FreeMono 11
     line_height = 0
     markup = full
     format = "<b>%s</b>\n%b"

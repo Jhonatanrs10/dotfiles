@@ -18,7 +18,7 @@
 
 window {
     font-size: 16px;
-    font-family: "Adwaita Sans";
+    font-family: "FreeMono";
     background-color: alpha(@base01, 0.9);
     color: @base02;
     border: 2px solid @base00;

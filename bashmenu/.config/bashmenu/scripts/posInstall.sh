@@ -8,7 +8,7 @@ icon-theme-name = Papirus-Dark
 cursor-theme-name = capitaine-cursors
 indicators = ~session;~spacer;~clock;~spacer;~power
 background = /usr/share/backgrounds/main.png
-font-name = Adwaita Sans 11" | sudo tee -a /etc/lightdm/lightdm-gtk-greeter.conf
+font-name = FreeMono 11" | sudo tee -a /etc/lightdm/lightdm-gtk-greeter.conf
 }
 
 myBaseI3Touchpad(){

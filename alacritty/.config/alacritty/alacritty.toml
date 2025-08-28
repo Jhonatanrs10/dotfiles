@@ -4,19 +4,19 @@ general.import = ["~/.config/alacritty/colors.toml"]
 size = 11.0
 
 [font.bold]
-family = "Adwaita Sans"
+family = "FreeMono"
 style = "Bold"
 
 [font.bold_italic]
-family = "Adwaita Sans"
+family = "FreeMono"
 style = "Bold Italic"
 
 [font.italic]
-family = "Adwaita Sans"
+family = "FreeMono"
 style = "Italic"
 
 [font.normal]
-family = "Adwaita Sans"
+family = "FreeMono"
 style = "Regular"
 
 [window]
