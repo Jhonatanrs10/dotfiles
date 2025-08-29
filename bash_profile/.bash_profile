@@ -9,6 +9,7 @@
 #export GTK_ICON_THEME=Papirus-Dark
 #export XCURSOR_THEME=capitiane-cursors
 #export XCURSOR_SIZE=24
+export XCURSOR_THEME=Adwaita
 
 # My Default Apps
 export MyTerminal="alacritty"
