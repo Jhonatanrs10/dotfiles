@@ -14,6 +14,8 @@ alias ff="fastfetch"
 alias pacmanclearcache="sudo pacman -Scc"
 alias archsshdstart="sudo systemctl start sshd"
 alias discordX='ELECTRON_OZONE_PLATFORM_HINT= discord --no-sandbox && exit'
+# Steam
+alias steamdecklike="gamescope -e -W 1600 -H 900 -r 60 -f --mangoapp -- steam -steamdeck"
 # Yt-dlp
 alias yt-dlp-mp4-720p='yt-dlp -f "bestvideo[height<=720][ext=mp4]+bestaudio[ext=m4a]/mp4" --merge-output-format mp4'
 alias yt-dlp-mp4='yt-dlp -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4" --merge-output-format mp4'

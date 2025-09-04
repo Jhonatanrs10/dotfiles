@@ -18,7 +18,7 @@ myBaseI3wm="i3 i3lock xss-lock i3status dmenu"
 myBaseGlobalApps="gimp inkscape shotcut code qbittorrent gparted firefox bitwarden discord ark libreoffice-fresh xreader kdeconnect dragon elisa mpv"
 myBaseSteam="steam"
 myBaseMangoHud="mangohud lib32-mangohud"
-myBaseGamescope="gamemode lib32-gamemode gamescope"
+myBaseGamescope="gamescope lib32-gamemode gamemode"
 myBaseOBS="app/com.obsproject.Studio/x86_64/stable runtime/com.obsproject.Studio.Plugin.MoveTransition/x86_64/stable"
 myBaseRetroarch="retroarch retroarch-assets-xmb retroarch-assets-ozone libretro-snes9x libretro-mgba libretro-beetle-psx"
 ##

@@ -88,6 +88,7 @@ Options: [1]MYBASE [2]WINDOW MANAGER, [3]GNOME [4]KDE"
             packagesManager "$myBaseGlobalApps"
             packagesManager "$myBaseOBS"
             packagesManager "$myBaseSteam"
+            packagesManager "$myBaseGamescope"
             packagesManager "$myBaseMangoHud"
             packagesManager "$myBaseRetroarch"
             lightdmConfig
