@@ -62,7 +62,7 @@ lidSwitchIgnore(){
 ## SCRIPT FUNCTIONS ##
 myBasePosInstall(){
     echo "MYBASE POSINSTALL
-Options: [1]MYBASE [2]WINDOW MANAGER, [3]GNOME [4]KDE"
+Options: [1]MYBASE [2]Hyprland [3]Bspwm [4]i3wm [5]GNOME [6]KDE"
     read resp
 	case $resp in
         1)
@@ -81,17 +81,13 @@ Options: [1]MYBASE [2]WINDOW MANAGER, [3]GNOME [4]KDE"
     	2)
             myBasePacman
             packagesManager "$myFullBase"
-            packagesManager "$myBaseI3wm"
-            packagesManager "$myBaseBspwm"
             packagesManager "$myBaseHyprland"
-	        packagesManager "ly"
             packagesManager "$myBaseGlobalApps"
             packagesManager "$myBaseOBS"
             packagesManager "$myBaseSteam"
             packagesManager "$myBaseGamescope"
             packagesManager "$myBaseMangoHud"
             packagesManager "$myBaseRetroarch"
-            lightdmConfig
             sudo rm -f /usr/share/applications/rofi* 
             flatpak override --user --filesystem=~/.icons:ro --filesystem=~/.local/share/icons:ro
             myBaseI3Backlight
@@ -106,13 +102,62 @@ Options: [1]MYBASE [2]WINDOW MANAGER, [3]GNOME [4]KDE"
             lidSwitchIgnore
             enableSystemctl "ly"
             ;;
-        3)  
+        3)
+            myBasePacman
+            packagesManager "$myFullBase"
+            packagesManager "$myBaseBspwm"
+            packagesManager "$myBaseGlobalApps"
+            packagesManager "$myBaseOBS"
+            packagesManager "$myBaseSteam"
+            packagesManager "$myBaseGamescope"
+            packagesManager "$myBaseMangoHud"
+            packagesManager "$myBaseRetroarch"
+            sudo rm -f /usr/share/applications/rofi* 
+            flatpak override --user --filesystem=~/.icons:ro --filesystem=~/.local/share/icons:ro
+            myBaseI3Backlight
+            myBaseI3Touchpad
+            enableSystemctl "smb"
+            enableSystemctl "nmb"
+            sambaSetup
+            enableSystemctl "bluetooth"
+            enableSystemctl "NetworkManager"
+            enableSystemctl "power-profiles-daemon"
+            enableSystemctl "sshd"
+            lidSwitchIgnore
+            enableSystemctl "ly"
+            ;;
+        4)
+            myBasePacman
+            packagesManager "$myFullBase"
+            packagesManager "$myBaseI3wm"
+            packagesManager "$myBaseGlobalApps"
+            packagesManager "$myBaseOBS"
+            packagesManager "$myBaseSteam"
+            packagesManager "$myBaseGamescope"
+            packagesManager "$myBaseMangoHud"
+            packagesManager "$myBaseRetroarch"
+            sudo rm -f /usr/share/applications/rofi* 
+            flatpak override --user --filesystem=~/.icons:ro --filesystem=~/.local/share/icons:ro
+            myBaseI3Backlight
+            myBaseI3Touchpad
+            enableSystemctl "smb"
+            enableSystemctl "nmb"
+            sambaSetup
+            enableSystemctl "bluetooth"
+            enableSystemctl "NetworkManager"
+            enableSystemctl "power-profiles-daemon"
+            enableSystemctl "sshd"
+            lidSwitchIgnore
+            enableSystemctl "ly"
+            ;;
+        5)  
             myBasePacman
             packagesManager "$myFullBase"
             packagesManager "$myBaseGnome"
             packagesManager "$myBaseGlobalApps"
             packagesManager "$myBaseOBS"
             packagesManager "$myBaseSteam"
+            packagesManager "$myBaseGamescope"
             packagesManager "$myBaseMangoHud"
             packagesManager "$myBaseRetroarch"
             flatpak override --user --filesystem=~/.icons:ro --filesystem=~/.local/share/icons:ro
@@ -125,13 +170,14 @@ Options: [1]MYBASE [2]WINDOW MANAGER, [3]GNOME [4]KDE"
             enableSystemctl "sshd"
             enableSystemctl "gdm"
             ;;
-        4)
+        6)
             myBasePacman
             packagesManager "$myFullBase"
             packagesManager "$myBaseKde"
             packagesManager "$myBaseGlobalApps"
             packagesManager "$myBaseOBS"
             packagesManager "$myBaseSteam"
+            packagesManager "$myBaseGamescope"
             packagesManager "$myBaseMangoHud"
             packagesManager "$myBaseRetroarch"
             flatpak override --user --filesystem=~/.icons:ro --filesystem=~/.local/share/icons:ro

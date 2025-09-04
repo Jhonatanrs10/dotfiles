@@ -8,13 +8,12 @@ DATANOW=$(date "+[%d-%m-%Y][%H-%M]")
 ############################
 
 ## MY BASES ##
-myBaseLightdm="lightdm-gtk-greeter lightdm-gtk-greeter-settings lightdm"
-myBaseXfce4="xfce4 xfce4-goodies xfce4-docklike-plugin"
-myBaseKde="dolphin dolphin-plugins dragon elisa filelight gwenview leafpad okular kcalc konsole plasma-desktop sddm plasma-activities kio-extras kwin libplasma plasma-activities-stats plasma-workspace powerdevil systemsettings kscreenlocker milou xdg-desktop-portal-kde plasma-integration plasma5support"
-myBaseGnome="amberol gnome gnome-tweaks mutter gnome-app-list gnome-autoar gnome-bluetooth-3.0 gnome-desktop gnome-desktop-4 gnome-desktop-common gnome-keybindings gnome-mimeapps gnome-online-accounts"
-myBaseHyprland="hyprland wofi waybar hyprlock hyprpaper hypridle hyprpicker wl-clipboard xdg-desktop-portal-hyprland grim slurp polkit-gnome feh nwg-look lxappearance font-manager pcmanfm-gtk3 galculator system-config-printer cmus gnome-keyring seahorse network-manager-applet pavucontrol blueman alacritty"
-myBaseBspwm="bspwm sxhkd polybar rofi picom scrot xcolor lxrandr i3lock polkit-gnome feh nwg-look lxappearance font-manager pcmanfm-gtk3 galculator system-config-printer cmus gnome-keyring seahorse network-manager-applet pavucontrol blueman alacritty"
-myBaseI3wm="i3 i3lock xss-lock i3status dmenu"
+myBaseXfce4="xfce4 xfce4-goodies xfce4-docklike-plugin lightdm-gtk-greeter lightdm-gtk-greeter-settings lightdm"
+myBaseKde="dolphin dolphin-plugins dragon elisa filelight gwenview leafpad okular kcalc konsole plasma-desktop plasma-activities kio-extras kwin libplasma plasma-activities-stats plasma-workspace powerdevil systemsettings kscreenlocker milou xdg-desktop-portal-kde plasma-integration plasma5support sddm"
+myBaseGnome="amberol gnome gnome-tweaks mutter gnome-app-list gnome-autoar gnome-bluetooth-3.0 gnome-desktop gnome-desktop-4 gnome-desktop-common gnome-keybindings gnome-mimeapps gnome-online-accounts gdm"
+myBaseHyprland="hyprland wofi waybar hyprlock hyprpaper hypridle hyprpicker wl-clipboard xdg-desktop-portal-hyprland grim slurp polkit-gnome feh nwg-look lxappearance font-manager pcmanfm-gtk3 galculator system-config-printer cmus gnome-keyring seahorse network-manager-applet pavucontrol blueman alacritty ly"
+myBaseBspwm="bspwm sxhkd polybar rofi picom scrot xcolor lxrandr i3lock polkit-gnome feh nwg-look lxappearance font-manager pcmanfm-gtk3 galculator system-config-printer cmus gnome-keyring seahorse network-manager-applet pavucontrol blueman alacritty ly"
+myBaseI3wm="i3 i3lock xss-lock i3status dmenu ly"
 myBaseGlobalApps="gimp inkscape shotcut code qbittorrent gparted firefox bitwarden discord ark libreoffice-fresh xreader kdeconnect dragon elisa mpv"
 myBaseSteam="steam"
 myBaseMangoHud="mangohud lib32-mangohud"
