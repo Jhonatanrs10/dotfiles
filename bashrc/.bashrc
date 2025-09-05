@@ -12,6 +12,7 @@ alias grep='grep --color=auto'
 alias gitatt="git add . && git commit -m \"att\" && git push"
 alias ff="fastfetch"
 alias pacmanclearcache="sudo pacman -Scc"
+alias flatpakremoveall="flatpak remove --all"
 alias archsshdstart="sudo systemctl start sshd"
 alias discordX='ELECTRON_OZONE_PLATFORM_HINT= discord --no-sandbox && exit'
 # Steam
