@@ -56,6 +56,7 @@ opcoes=(
   "Reparar Pacman::repairPM"
   "Samba Setup::sambaSetup"
   "Discord Config Hyprland::hyprlandDiscordX"
+  "SteamDeck-Like::setupSteamDeckLike"
   )
 
 linhas_terminal=$(tput lines)

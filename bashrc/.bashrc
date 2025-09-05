@@ -19,7 +19,7 @@ alias discordX='ELECTRON_OZONE_PLATFORM_HINT= discord --no-sandbox && exit'
 alias mangovktest="mangohud vkcube"
 alias mangogltest="mangohud glxgears"
 # Steam
-alias steamdecklike="gamescope -W 1600 -H 900 -w 1280 -h 720 -r 60 -f -C 5000 -e --framerate-limit 60 --force-grab-cursor --mangoapp -- steam -gamepadui"
+alias steambigpicture="exec $HOME/.config/jrs/steamdecklike.sh"
 # Yt-dlp
 alias yt-dlp-mp4-720p='yt-dlp -f "bestvideo[height<=720][ext=mp4]+bestaudio[ext=m4a]/mp4" --merge-output-format mp4'
 alias yt-dlp-mp4='yt-dlp -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4" --merge-output-format mp4'
