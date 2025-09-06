@@ -17,4 +17,3 @@ export TERMINAL="alacritty"
 export MyFileManager="pcmanfm"
 export MyBrowser="xdg-open https:"
 export MyBrowserW="WAYLAND_DISPLAY=wayland-0 xdg-open https:"
-

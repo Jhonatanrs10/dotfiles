@@ -1,12 +1,9 @@
 #!/usr/bin/bash
 
-#BashMenu Vars
-############################
+## BASHMENU ##
 dBashMenu="$HOME/.bashmenu"
 nomeRun="run"
 DATANOW=$(date "+[%d-%m-%Y][%H-%M]")
-############################
-
 ## MY BASES ##
 myBaseXfce4="xfce4 xfce4-goodies xfce4-docklike-plugin lightdm-gtk-greeter lightdm-gtk-greeter-settings lightdm"
 myBaseKde="dolphin dolphin-plugins dragon elisa filelight gwenview leafpad okular kcalc konsole plasma-desktop plasma-activities kio-extras kwin libplasma plasma-activities-stats plasma-workspace powerdevil systemsettings kscreenlocker milou xdg-desktop-portal-kde plasma-integration plasma5support sddm"
@@ -20,7 +17,7 @@ myBaseMangoHud="mangohud lib32-mangohud"
 myBaseGamescope="gamescope lib32-gamemode gamemode"
 myBaseOBS="app/com.obsproject.Studio/x86_64/stable runtime/com.obsproject.Studio.Plugin.MoveTransition/x86_64/stable"
 myBaseRetroarch="retroarch retroarch-assets-xmb retroarch-assets-ozone libretro-snes9x libretro-mgba libretro-beetle-psx"
-##
+## MAIN BASE
 myBaseKernel="base linux linux-firmware intel-ucode sof-firmware"
 myBaseKernelZen="base linux-zen linux-zen-headers linux-firmware intel-ucode sof-firmware"
 myBaseBootloader="grub efibootmgr os-prober"
@@ -47,6 +44,6 @@ myBaseDaemons="notification-daemon power-profiles-daemon openssh syncthing"
 myBaseFlatpak="flatpak"
 myBaseShell="bash bash-completion"
 myBaseUtilitys="nano neovim brightnessctl fastfetch yt-dlp stow curl jq imagemagick cmatrix htop xsel pacman-contrib base-devel git ffmpeg fwupd samba udisks2 gvfs gvfs-mtp gvfs-smb polkit net-tools joyutils man-db wireless_tools"
-##
+## GROUPs
 myFullBase="$myBaseKernel $myBaseBootloader $myBaseFileSystem $myBaseNetwork $myBaseFirewall $myBaseUtilitys $myBaseBluetooth $myBaseAudioPipeware $myBaseCodecs $myBaseXorg $myBaseWayland $myBaseIcons $myBaseThemes $myBaseFonts $myBaseRar $myBaseNotify $myBaseDaemons $myBaseFlatpak $myBaseShell"
 myBaseSteamDeckLike="$myBaseSteam $myBaseMangoHud $myBaseGamescope"
