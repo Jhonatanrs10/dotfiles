@@ -18,10 +18,6 @@ alias discordX='ELECTRON_OZONE_PLATFORM_HINT= discord --no-sandbox && exit'
 # MangoHud
 alias mangovktest="mangohud vkcube"
 alias mangogltest="mangohud glxgears"
-# Steam
-## STEAM ##
-export mySteamDeckLike='MANGOHUD_CONFIG="read_cfg" MANGOHUD_CONFIGFILE="~/.config/MangoHud/MangoHud.conf" gamescope -W 1600 -H 900 -w 1600 -h 900 -r 60 -f -C 5000 -e --force-grab-cursor --mangoapp -- steam -gamepadui'
-alias steamdecklike="$mySteamDeckLike"
 # Yt-dlp
 alias yt-dlp-mp4-720p='yt-dlp -f "bestvideo[height<=720][ext=mp4]+bestaudio[ext=m4a]/mp4" --merge-output-format mp4'
 alias yt-dlp-mp4='yt-dlp -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4" --merge-output-format mp4'
