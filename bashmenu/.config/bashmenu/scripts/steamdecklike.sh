@@ -19,6 +19,7 @@ Comment=Uma sessão de games com aparência de Steam Deck.
 Exec=${EXEC_COMMAND}
 Icon=steam
 Type=Application
+Categories=Game;
 EOF
             sudo chmod 644 "${SESSION_DIR}/${FILENAME}"
             cp $SESSION_DIR/$FILENAME $HOME/.local/share/applications/
