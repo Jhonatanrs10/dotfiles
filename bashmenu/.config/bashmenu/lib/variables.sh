@@ -46,4 +46,4 @@ myBaseShell="bash bash-completion"
 myBaseUtilitys="nano neovim brightnessctl fastfetch yt-dlp stow curl jq imagemagick cmatrix htop xsel pacman-contrib base-devel git ffmpeg fwupd samba udisks2 gvfs gvfs-mtp gvfs-smb polkit net-tools joyutils man-db wireless_tools"
 ## GROUPs
 myFullBase="$myBaseKernel $myBaseBootloader $myBaseFileSystem $myBaseNetwork $myBaseFirewall $myBaseUtilitys $myBaseBluetooth $myBaseAudioPipeware $myBaseCodecs $myBaseXorg $myBaseWayland $myBaseIcons $myBaseThemes $myBaseFonts $myBaseRar $myBaseNotify $myBaseDaemons $myBaseFlatpak $myBaseShell"
-myBaseSteamDeckLike="$myBaseSteam $myBaseMangoHud $myBaseGamescope"
+myBaseSteamDeckMode="$myBaseSteam $myBaseMangoHud $myBaseGamescope"
