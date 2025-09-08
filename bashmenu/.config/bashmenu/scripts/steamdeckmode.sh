@@ -12,10 +12,11 @@
 
 #GAMESCOPE
 #--expose-wayland na nvidia causa bug na tela
+
 setupSteamDeckMode(){
     SESSION_NAME="SteamDeck"
-    FILENAME="${SESSION_NAME}.desktop"
-    EXITFILENAME="${SESSION_NAME}.sh"
+    FILENAME="${SESSION_NAME}Mode.desktop"
+    EXITFILENAME="${SESSION_NAME}Exit.sh"
     EXEC_COMMAND="gamescope -W 1600 -H 900 -w 1600 -h 900 -r 60 -f -C 5000 -e --force-grab-cursor --mangoapp -- steam -steamdeck -steamos3"
     APP_DIR="$HOME/.local/share/applications"
     XSESSION_DIR="/usr/share/xsessions"
@@ -30,7 +31,7 @@ setupSteamDeckMode(){
             #sudo mkdir -p "$WSESSION_DIR"
             cat <<EOF | sudo tee "${APP_DIR}/${FILENAME}"
 [Desktop Entry]
-Name=${SESSION_NAME}
+Name=${SESSION_NAME} Mode
 Comment=Uma sessão de games com aparência de Steam Deck.
 Exec=${EXEC_COMMAND}
 Icon=steam
@@ -39,10 +40,10 @@ Categories=Game;
 EOF
             cat <<EOF | sudo tee "${APP_DIR}/${EXITFILENAME}"
 #!/bin/bash
-steam -shutdown 
+steam -shutdown
 EOF
-            sudo chmod 644 "${APP_DIR}/${FILENAME}"
-            sudo chmod +x "${APP_DIR}/${EXITFILENAME}"
+            sudo chmod 777 "${APP_DIR}/${FILENAME}"
+            sudo chmod 777 "${APP_DIR}/${EXITFILENAME}"
             sudo cp $APP_DIR/$FILENAME $XSESSION_DIR
             #sudo cp $APP_DIR/$FILENAME $WSESSION_DIR
             echo "A nova sessão '${SESSION_NAME}' agora está disponível no seu display manager.";;
@@ -52,7 +53,8 @@ EOF
             sudo rm $APP_DIR/$FILENAME
             sudo rm $APP_DIR/$EXITFILENAME
             echo "Arquivos removidos.";;
-        3)packagesManager "$myBaseSteamDeckMode";;
+        3)
+            packagesManager "$myBaseSteamDeckMode";;
 		*)
 	esac
 
