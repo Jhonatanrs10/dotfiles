@@ -5,7 +5,7 @@ lightdmConfig(){
     echo "[greeter]
 theme-name = Breeze-Dark
 icon-theme-name = Papirus-Dark
-cursor-theme-name = capitaine-cursors
+cursor-theme-name = Adwaita
 indicators = ~session;~spacer;~clock;~spacer;~power
 background = /usr/share/backgrounds/main.png
 font-name = FreeMono 11" | sudo tee -a /etc/lightdm/lightdm-gtk-greeter.conf

@@ -7,7 +7,7 @@
 # My Default Theme
 #export GTK_THEME=Breeze-Dark
 #export GTK_ICON_THEME=Papirus-Dark
-#export XCURSOR_THEME=capitiane-cursors
+#export XCURSOR_THEME=capitaine-cursors
 #export XCURSOR_SIZE=24
 export XCURSOR_THEME=Adwaita
 
