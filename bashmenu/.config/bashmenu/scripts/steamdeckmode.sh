@@ -17,7 +17,7 @@ setupSteamDeckMode(){
     SESSION_NAME="SteamDeck"
     FILENAME="${SESSION_NAME}Mode.desktop"
     EXITFILENAME="${SESSION_NAME}Exit.sh"
-    EXEC_COMMAND="gamescope -W 1600 -H 900 -w 1600 -h 900 -r 60 -f -C 5000 -e --force-grab-cursor --mangoapp -- steam -steamdeck -steamos3"
+    EXEC_COMMAND="gamescope -w 1600 -h 900 -W 1600 -H 900 -r 60 -f -C 5000 -e --cursor Adwaita --force-grab-cursor --mangoapp -- steam -steamdeck -steamos3"
     APP_DIR="$HOME/.local/share/applications"
     XSESSION_DIR="/usr/share/xsessions"
     WSESSION_DIR="/usr/share/wayland-sessions"

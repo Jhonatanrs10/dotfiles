@@ -11,6 +11,8 @@ source ./lib/sourceFolder.sh
 sourceFolder "LIBs" "./lib"
 sourceFolder "Scripts" "./scripts"
 
+dependenciasAtalhov2
+
 # Lista de opções (texto e função correspondente)
 opcoes=(
   "Pos Install::myBasePosInstall"
@@ -24,7 +26,6 @@ opcoes=(
   "Diretório Inode Padrão::defaultInodeDirectory"
   "Git Auto Push::gitAutoPush"
   "Configuração Git::gitconfig"
-  "Dependências Atalho::dependenciasAtalho"
   "Bongo::bongo"
   "Pokexgames::installPokexgames"
   "Minecraft::installMinecraft"
