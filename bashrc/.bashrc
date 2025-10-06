@@ -16,6 +16,7 @@ alias pacmanaurpackages="sudo pacman -Qm"
 alias flatpakremoveall="flatpak remove --all"
 alias archsshdstart="sudo systemctl start sshd"
 alias discordX='ELECTRON_OZONE_PLATFORM_HINT= discord --no-sandbox && exit'
+alias shutdownnow="shutdown +0"
 # MangoHud
 alias mangovktest="mangohud vkcube"
 alias mangogltest="mangohud glxgears"
