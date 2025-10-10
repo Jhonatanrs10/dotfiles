@@ -61,10 +61,22 @@ theme_HalloweenBoy[white]="ffffff"
 theme_HalloweenBoy[black]="000000"
 theme_HalloweenBoy[wallpaper]="w4.png"
 
+declare -A theme_GreenPlace
+theme_GreenPlace[main]="599E71"
+theme_GreenPlace[bar]="333333"
+theme_GreenPlace[text]="ffffff"
+theme_GreenPlace[unfocused]="7d7d7d"
+theme_GreenPlace[bad]="900000"
+theme_GreenPlace[degraded]="a08000"
+theme_GreenPlace[white]="ffffff"
+theme_GreenPlace[black]="000000"
+theme_GreenPlace[wallpaper]="w5.png"
+
+
 # --- Lógica de Alternância ---
 
 # Lista todos os temas disponíveis, na ordem em que devem ser alternados
-themes=("theme_Archlinux" "theme_Sakura" "theme_Gentoo" "theme_Window11Gray" "theme_HalloweenBoy")
+themes=("theme_Archlinux" "theme_Sakura" "theme_Gentoo" "theme_Window11Gray" "theme_HalloweenBoy" "theme_GreenPlace")
 
 # Lógica para encontrar o próximo tema
 # Se o arquivo de estado existe, pega o nome do último tema
