@@ -39,82 +39,92 @@
             "type": "packages"
         },
         {
-            "key": "│{#36}uptime  {#keys}│",
+            "type": "command",
+            "key": "│{#36}OS Age{#keys}  │",
+            "text": "birth_install=$(stat -c %W /); current=$(date +%s); days_difference=$(( (current - birth_install) / 86400 )); echo $days_difference days"
+        },
+        {
+            "type": "command",
+            "key": "│{#31}Birthday{#keys}│",
+            "text": "birth_install=$(stat -c %W /); echo $(date -d @$birth_install '+%d %b %Y')"
+        },
+        {
+            "key": "│{#32}uptime  {#keys}│",
             "type": "uptime"
         },
         {
-            "key": "│{#31}term    {#keys}│",
+            "key": "│{#33}term    {#keys}│",
             "type": "terminal"
         },
         {
-            "key": "│{#32}shell   {#keys}│",
+            "key": "│{#34}shell   {#keys}│",
             "type": "shell"
         },
         {
-            "key": "│{#33}display {#keys}│",
+            "key": "│{#35}display {#keys}│",
             "type": "display"
         },
         {
-            "key": "│{#34}de      {#keys}│",
+            "key": "│{#36}de      {#keys}│",
             "type": "de"
         },
         {
-            "key": "│{#35}wm      {#keys}│",
+            "key": "│{#31}wm      {#keys}│",
             "type": "wm"
         },
         {
-            "key": "│{#36}wmtheme {#keys}│",
+            "key": "│{#32}wmtheme {#keys}│",
             "type": "wmtheme"
         },
         {
-            "key": "│{#31}theme   {#keys}│",
+            "key": "│{#33}theme   {#keys}│",
             "type": "theme"
         },
         {
-            "key": "│{#32}icons   {#keys}│",
+            "key": "│{#34}icons   {#keys}│",
             "type": "icons"
         },
         {
-            "key": "│{#33}font    {#keys}│",
+            "key": "│{#35}font    {#keys}│",
             "type": "font"
         },
         {
-            "key": "│{#34}cursor  {#keys}│",
+            "key": "│{#36}cursor  {#keys}│",
             "type": "cursor"
         },
         {
-            "key": "│{#35}cpu     {#keys}│",
+            "key": "│{#31}cpu     {#keys}│",
             "type": "cpu",
             "showPeCoreCount": true
         },
         {
-            "key": "│{#36}gpu     {#keys}│",
+            "key": "│{#32}gpu     {#keys}│",
             "type": "gpu",
             "showPeCoreCount": true
         },
         {
-            "key": "│{#31}memory  {#keys}│",
+            "key": "│{#33}memory  {#keys}│",
             "type": "memory"
         },
         {
-            "key": "│{#32}swap    {#keys}│",
+            "key": "│{#34}swap    {#keys}│",
             "type": "swap"
         },
         {
-            "key": "│{#33}disk    {#keys}│",
+            "key": "│{#35}disk    {#keys}│",
             "type": "disk",
             "folders": "/"
         },
         {
-            "key": "│{#34}battery {#keys}│",
+            "key": "│{#36}battery {#keys}│",
             "type": "battery"
         },
         {
-            "key": "│{#35}power   {#keys}│",
+            "key": "│{#31}power   {#keys}│",
             "type": "poweradapter"
         },
         {
-            "key": "│{#36}network {#keys}│",
+            "key": "│{#32}network {#keys}│",
             "type": "localip",
             "format": "{ipv4} ({ifname})"
         },
