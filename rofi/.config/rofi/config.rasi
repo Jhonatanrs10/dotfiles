@@ -54,7 +54,7 @@ listview {
     border:       0px 0px 0px ;
     border-color: @base00;
     spacing:      0px ;
-    scrollbar:    true;
+    scrollbar:    false;
     padding:      0px 0px 10px 0px ;
 }
 element {
