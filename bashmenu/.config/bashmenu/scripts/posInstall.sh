@@ -8,7 +8,7 @@ icon-theme-name = Papirus-Dark
 cursor-theme-name = Adwaita
 indicators = ~session;~spacer;~clock;~spacer;~power
 background = /usr/share/backgrounds/main.png
-font-name = FreeMono 11" | sudo tee -a /etc/lightdm/lightdm-gtk-greeter.conf
+font-name = Caskaydia Mono Nerd Font 11" | sudo tee -a /etc/lightdm/lightdm-gtk-greeter.conf
 }
 
 myBaseI3Touchpad(){

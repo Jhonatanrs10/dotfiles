@@ -18,7 +18,7 @@
 
 window {
     font-size: 16px;
-    font-family: "FreeMono";
+    font-family: "Caskaydia Mono Nerd Font";
     background-color: alpha(@base01, 0.9);
     color: @base02;
     border: 2px solid @base00;

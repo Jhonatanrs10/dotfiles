@@ -1,10 +1,14 @@
 {
 	"height": 30,
 	"layer": "top",
-	"spacing": 4,
+	"spacing": 0,
 	"modules-left": ["hyprland/workspaces","hyprland/window"],
 	"modules-center": ["clock"],
-	"modules-right": ["temperature","pulseaudio","battery","tray"],
+	"modules-right": [
+    "pulseaudio",
+    "battery",
+    "tray"
+  ],
 	"hyprland/workspaces": {
      "format": "{icon}",
      "on-scroll-up": "hyprctl dispatch workspace e+1",
@@ -15,68 +19,72 @@
      "max-length": 60
     },
 	"clock": {
-     "format": "{:%a.%d %b %R}",
-     "format-alt": "{:%R}",
+     "formatbkp": "{:%R}",
+     "format": "{:%A %R}",
+     "format-alt": "{:%a.%d %b %R}",
      "tooltip-format": "{:%A, %d de %B de %Y - %H:%M}"
     },
   	"tray": {
       "icon-size": 15,
       "spacing": 5
     },
-"pulseaudio": {
-    "format": " {icon} {volume}%",
-    "format-bluetooth": "  {volume}%",
-    "format-muted": "  Muted",
-    "format-icons": {
-        "headphone": " ",
-        "hands-free": " ",
-        "headset": " ",
-        "phone": " ",
-        "phone-muted": "  Muted",
-        "portable": " ",
-        "car": " ",
-        "default": ["","",""]
-
-    },
-    "scroll-step": 1,
-    "on-click": "pavucontrol",
-    "ignored-sinks": ["Easy Effects Sink"]
-},
-    "power-profiles-daemon": {
-  "format": "{icon}",
-  "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-  "tooltip": true,
-  "format-icons": {
-    "default": "",
-    "performance": "",
-    "power-saver": ""
-  }
-},
-"battery": {
-    "bat": "BAT1",
-    "interval": 60,
-    "states": {
-        "warning": 30,
-        "critical": 15
-    },
-    "format": " {icon} {capacity}% ",
-    "format-icons": ["", "", "", "", ""],
-    "max-length": 25
-},
-"network": {
-    "format": "{ifname}",
-    "format-wifi": "  {signalStrength}%",
-    "format-ethernet": "{ipaddr}/{cidr}  󰊗",
-    "format-disconnected": "",
-    "tooltip-format": "{ifname}",
-    "tooltip-format-wifi": "{essid}",
-    "tooltip-format-ethernet": "{ifname}",
+  "tray": {
+    "icon-size": 12,
+    "spacing": 12
+  },
+     "bluetooth": {
+    "format": "",
+    "format-disabled": "󰂲",
+    "format-connected": "",
+    "tooltip-format": "Devices connected: {num_connections}",
+    "on-click": "blueberry"
+  },
+      "network": {
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "format": "{icon}",
+    "format-wifi": "{icon}",
+    "format-ethernet": "󰀂",
+    "format-disconnected": "󰤮",
+    "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
     "tooltip-format-disconnected": "Disconnected",
-    "max-length": 50,
-    "on-click": "nm-connection-editor",
-
-},
- "temperature": {
-    "format": "  {temperatureC}°C"
-}
+    "interval": 3,
+    "spacing": 1,
+    "on-click": "omarchy-launch-wifi"
+  },
+      "pulseaudio": {
+    "format": "{icon}",
+    "on-click": "$TERMINAL --class=Wiremix -e wiremix",
+    "on-click-right": "pamixer -t",
+    "tooltip-format": "Playing at {volume}%",
+    "scroll-step": 5,
+    "format-muted": "",
+    "format-icons": {
+      "default": ["", "", ""]
+    }
+  },
+ "cpu": {
+    "interval": 5,
+    "format": "󰍛",
+    "on-click": "$TERMINAL -e btop"
+  },
+   "battery": {
+    "format": "{capacity}% {icon}",
+    "format-discharging": "{icon}",
+    "format-charging": "{icon}",
+    "format-plugged": "",
+    "format-icons": {
+      "charging": ["󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
+      "default": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+    },
+    "format-full": "󰂅",
+    "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
+    "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%",
+    "interval": 5,
+    "on-click": "omarchy-menu power",
+    "states": {
+      "warning": 20,
+      "critical": 10
+    }
+  },
 }
