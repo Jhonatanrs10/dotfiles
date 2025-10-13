@@ -16,7 +16,6 @@ theme_teste[degraded]="a08000"
 theme_teste[white]="ffffff"
 theme_teste[black]="000000"
 theme_teste[wallpaper]="teste.png"
-theme_teste[font]="Caskaydia Mono Nerd Font"
 
 declare -A theme_Archlinux
 theme_Archlinux[main]="1793d1"
@@ -28,7 +27,6 @@ theme_Archlinux[degraded]="a08000"
 theme_Archlinux[white]="ffffff"
 theme_Archlinux[black]="000000"
 theme_Archlinux[wallpaper]="w.png"
-theme_Archlinux[font]="Caskaydia Mono Nerd Font"
 
 declare -A theme_Sakura 
 theme_Sakura[main]="D37CAF"
@@ -40,7 +38,6 @@ theme_Sakura[degraded]="a08000"
 theme_Sakura[white]="ffffff"
 theme_Sakura[black]="000000"
 theme_Sakura[wallpaper]="w1.png"
-theme_Sakura[font]="Caskaydia Mono Nerd Font"
 
 declare -A theme_Gentoo 
 theme_Gentoo[main]="6E56AF"
@@ -52,7 +49,6 @@ theme_Gentoo[degraded]="a08000"
 theme_Gentoo[white]="ffffff"
 theme_Gentoo[black]="000000"
 theme_Gentoo[wallpaper]="w2.png"
-theme_Gentoo[font]="Caskaydia Mono Nerd Font"
 
 declare -A theme_Windows11Gray 
 theme_Windows11Gray[main]="6F8AA5"
@@ -64,7 +60,6 @@ theme_Windows11Gray[degraded]="a08000"
 theme_Windows11Gray[white]="ffffff"
 theme_Windows11Gray[black]="000000"
 theme_Windows11Gray[wallpaper]="w3.png"
-theme_Windows11Gray[font]="Caskaydia Mono Nerd Font"
 
 declare -A theme_HalloweenBoy
 theme_HalloweenBoy[main]="DA7038"
@@ -76,7 +71,6 @@ theme_HalloweenBoy[degraded]="a08000"
 theme_HalloweenBoy[white]="ffffff"
 theme_HalloweenBoy[black]="000000"
 theme_HalloweenBoy[wallpaper]="w4.png"
-theme_HalloweenBoy[font]="Caskaydia Mono Nerd Font"
 
 declare -A theme_GreenPlace
 theme_GreenPlace[main]="599E71"
@@ -88,7 +82,6 @@ theme_GreenPlace[degraded]="a08000"
 theme_GreenPlace[white]="ffffff"
 theme_GreenPlace[black]="000000"
 theme_GreenPlace[wallpaper]="w5.png"
-theme_GreenPlace[font]="Caskaydia Mono Nerd Font"
 
 # --- Lógica de Alternância ---
 
@@ -136,4 +129,3 @@ JRS_DEGRADED_COLOR="${chosen_theme[degraded]}"
 JRS_WHITE_COLOR="${chosen_theme[white]}"
 JRS_BLACK_COLOR="${chosen_theme[black]}"
 JRS_WALLPAPER="${chosen_theme[wallpaper]}"
-JRS_FONT="${chosen_theme[font]}"
