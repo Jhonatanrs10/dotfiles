@@ -68,7 +68,7 @@ vim.keymap.set('n', '<leader>t', ':tabnew term://bash<CR>', { noremap = true, si
 vim.keymap.set('t', '<leader><C-c>', '<C-\\><C-n>', { noremap = true, silent = true, desc = 'Sair do modo terminal (Leader+Ctrl+C)' })
 
 -- Atalhos Find
-vim.keymap.set('n', '<leader>f', '/', { noremap = true, silent = false, desc = 'Iniciar busca para frente' })
+vim.keymap.set('n', '<leader>f', ':%s/', { noremap = true, silent = false, desc = 'Iniciar busca para frente' })
 
 -- Atalhos Copy/Paste
 vim.keymap.set({'n', 'v'}, 'y', '"+y', { noremap = true, silent = true, desc = 'Copiar para o sistema (Leader+y)' })
