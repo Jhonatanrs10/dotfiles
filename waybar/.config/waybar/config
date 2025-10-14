@@ -5,8 +5,8 @@
 	"modules-left": ["hyprland/workspaces"],
 	"modules-center": ["clock"],
 	"modules-right": [
-    "pulseaudio",
     "battery",
+    "pulseaudio",
     "tray"
   ],
 	"hyprland/workspaces": {
@@ -23,10 +23,6 @@
      "format": "{:%A %R}",
      "format-alt": "{:%a.%d %b %R}",
      "tooltip-format": "{:%A, %d de %B de %Y - %H:%M}"
-    },
-  	"tray": {
-      "icon-size": 15,
-      "spacing": 5
     },
   "tray": {
     "icon-size": 12,
@@ -53,7 +49,7 @@
     "on-click": "omarchy-launch-wifi"
   },
       "pulseaudio": {
-    "format": "{icon}",
+    "format": "{icon} ",
     "on-click": "$TERMINAL --class=Wiremix -e wiremix",
     "on-click-right": "pamixer -t",
     "tooltip-format": "Playing at {volume}%",

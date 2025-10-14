@@ -71,5 +71,5 @@ vim.keymap.set('t', '<leader><C-c>', '<C-\\><C-n>', { noremap = true, silent = t
 vim.keymap.set('n', '<leader>f', '/', { noremap = true, silent = false, desc = 'Iniciar busca para frente' })
 
 -- Atalhos Copy/Paste
-vim.keymap.set({'n', 'v'}, '<leader>y', '"+y', { noremap = true, silent = true, desc = 'Copiar para o sistema (Leader+y)' })
-vim.keymap.set('n', '<leader>p', '"+p', { noremap = true, silent = true, desc = 'Colar do sistema (Leader+p)' })
+vim.keymap.set({'n', 'v'}, 'y', '"+y', { noremap = true, silent = true, desc = 'Copiar para o sistema (Leader+y)' })
+vim.keymap.set('n', 'p', '"+p', { noremap = true, silent = true, desc = 'Colar do sistema (Leader+p)' })

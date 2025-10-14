@@ -35,6 +35,7 @@ alias palserver='bash ~/.bashmenu/PalServer/run.sh'
 # Code
 alias codehere='code . && exit'
 alias codedotfiles="code ~/.dotfiles && exit"
+alias vimdotfiles="cd ~/.dotfiles && nvim ."
 # Git Status
 alias mydotfiles='
   cd ~/.dotfiles && git pull && git status
