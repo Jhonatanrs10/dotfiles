@@ -25,7 +25,7 @@
     horizontal_padding = 8
     text_icon_padding = 0
     frame_width = 2
-    frame_color = "#ffffff"
+    frame_color = "#599E71"
     gap_size = 0
     separator_color = frame
     sort = yes
@@ -65,16 +65,16 @@
 [experimental]
     per_monitor_dpi = false
 [urgency_low]
-    background = "#000000aa"
+    background = "#333333aa"
     foreground = "#ffffff"
     timeout = 10
 [urgency_normal]
-    background = "#000000aa"
+    background = "#333333aa"
     foreground = "#ffffff"
     timeout = 10
     override_pause_level = 30
 [urgency_critical]
-    background = "#000000aa"
+    background = "#333333aa"
     foreground = "#ffffff"
     frame_color = "#900000"
     timeout = 0
