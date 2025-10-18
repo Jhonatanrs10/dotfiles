@@ -84,8 +84,8 @@ theme_GreenPlace[black]="000000"
 theme_GreenPlace[wallpaper]="w5.png"
 
 declare -A theme_Red
-theme_Red[main]="ffffff"
-theme_Red[bar]="000000"
+theme_Red[main]="c10b0b"
+theme_Red[bar]="333333"
 theme_Red[text]="ffffff"
 theme_Red[unfocused]="7d7d7d"
 theme_Red[bad]="900000"
