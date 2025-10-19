@@ -31,7 +31,7 @@ set $espacoentrejanelas 5px
 font pango:$textFont
 
 ###AutoStart###
-exec --no-startup-id picom
+#exec --no-startup-id picom
 #exec_always --no-startup-id $HOME/.config/polybar/polybar.sh
 exec --no-startup-id dex --autostart --environment i3
 #exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
@@ -178,7 +178,7 @@ bar {
 	status_command i3status 
 	position bottom 
 	mode dock
-	#tray_output primary
+	tray_output primary
         #tray_output HDMI-0
 	tray_padding 2
 	workspace_buttons yes
