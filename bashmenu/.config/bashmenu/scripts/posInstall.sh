@@ -39,6 +39,14 @@ myBasePosInstall(){
         *)
     esac
 
+    echo "APPS
+[1]Configure [2]No"
+    read resp
+	case $resp in
+        1)packagesManager "$myBaseGlobalApps";;
+        *)
+    esac
+
   echo "CONFIGS
 [1]Configure [2]No"
     read resp
@@ -58,8 +66,6 @@ myBasePosInstall(){
     enableSystemctl "power-profiles-daemon"
     enableSystemctl "sshd"
 
-    enableSystemctl "smb"
-    enableSystemctl "nmb"
     sambaSetup
 
     echo "DESKTOP

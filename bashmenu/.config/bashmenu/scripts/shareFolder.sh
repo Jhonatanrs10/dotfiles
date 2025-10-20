@@ -6,6 +6,7 @@ sambaSetup(){
     read -r resp
     case $resp in
         1)
+        sudo pacman -S --needed samba
         DATANOW=$(date +%Y%m%d-%H%M%S)
 
         RAND=$(cat /dev/urandom | tr -dc 'A-Z0-9' | head -c 6)
@@ -64,7 +65,9 @@ sambaSetup(){
     create mode = 0777" | sudo tee /etc/samba/smb.conf > /dev/null
 
         ln -s /home/samba "$HOME/Samba/Guest"
-        sudo systemctl restart smbd nmbd
+        enableSystemctl "smb"
+        enableSystemctl "nmb"
+        #sudo systemctl restart smbd nmbd
         ;;
         *)
         ;;
