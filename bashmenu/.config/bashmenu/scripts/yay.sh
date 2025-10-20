@@ -1,13 +1,11 @@
 #!/usr/bin/env sh
-myBaseYay(){
-    #pacman -Sy --needed git base-devel
-    
-
-    echo "Yay Install
-Options: [1]Yes, [2]No"
+yaySetup(){
+    echo "YAY
+Options: [1]Configure, [2]No"
     read resp
 	case $resp in
 		1)
+            sudo pacman -S --needed git base-devel
             cd $HOME
             git clone https://aur.archlinux.org/yay.git
             cd yay

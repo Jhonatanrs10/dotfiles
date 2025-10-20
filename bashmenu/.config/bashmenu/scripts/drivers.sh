@@ -1,6 +1,6 @@
 #!/bin/bash
 installVideoDriver(){
-echo "==== Instalação de Drivers de Vídeo no Arch Linux ===="
+echo -e "\n==== Instalação de Drivers de Vídeo no Arch Linux ====\n"
 
 # Loop de seleção
 while true; do
@@ -10,7 +10,8 @@ while true; do
   echo "3 - Intel (antigo / xf86-video-intel )"
   echo "4 - AMD (moderno)"
   echo "5 - AMD (antigo)"
-  read -rp "Digite o número da opção desejada: " choice
+  read -rp "Digite o número da opção desejada: 
+" choice
 
   case $choice in
     1) DRIVER_NAME="NVIDIA"; DRIVER_PACKAGES=$myBaseNvidia; break ;;
@@ -18,7 +19,7 @@ while true; do
     3) DRIVER_NAME="Intel (antigo)"; DRIVER_PACKAGES=$myBaseIntelOld; break ;;
     4) DRIVER_NAME="AMD (moderno)"; DRIVER_PACKAGES=$myBaseAmd; break ;;
     5) DRIVER_NAME="AMD (antigo)"; DRIVER_PACKAGES=$myBaseAmdOld; break ;;
-    *) echo "Opção inválida. Tente novamente." ;;
+    *) return ;;
   esac
 done
 

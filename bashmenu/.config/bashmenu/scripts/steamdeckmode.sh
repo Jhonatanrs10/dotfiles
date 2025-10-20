@@ -54,7 +54,7 @@ EOF
             sudo rm $APP_DIR/$EXITFILENAME
             echo "Arquivos removidos.";;
         3)
-            packagesManager "$myBaseSteamDeckMode";;
+            packagesManager "$myBaseSteam $myBaseMangoHud $myBaseGamescope";;
 		*)
 	esac
 

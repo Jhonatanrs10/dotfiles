@@ -16,11 +16,12 @@ dependenciasAtalhov2
 # Lista de opções (texto e função correspondente)
 opcoes=(
   "Pos Install::myBasePosInstall"
-  "Grub::myBaseGrub"
-  "Pacman::myBasePacman"
+  "Grub Setup::grubSetup"
+  "Pacman Setup::pacmanSetup"
+  "Samba Setup::sambaSetup"
+  "Yay Setup::yaySetup"
   "Montar NTFS::myBaseMountNTFS"
   "Linkar Home::myBaselnHome"
-  "Yay::myBaseYay"
   "Video Driver::installVideoDriver"
   "VirtManager::installVirtManager"
   "Diretório Inode Padrão::defaultInodeDirectory"
@@ -55,7 +56,6 @@ opcoes=(
   "Pós-Touchpad (i3)::appPosI3Touchpad"
   "Ignorar Ação da Bandeja::lidSwitchIgnore"
   "Reparar Pacman::repairPM"
-  "Samba Setup::sambaSetup"
   "Discord Config Hyprland::hyprlandDiscordX"
   "SteamDeckMode::setupSteamDeckMode"
   )
