@@ -25,7 +25,6 @@ opcoes=(
   "Video Driver::installVideoDriver"
   "VirtManager::installVirtManager"
   "Diretório Inode Padrão::defaultInodeDirectory"
-  "Git Auto Push::gitAutoPush"
   "Configuração Git::gitconfig"
   "Bongo::bongo"
   "Pokexgames::installPokexgames"

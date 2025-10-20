@@ -10,8 +10,8 @@ set $color7 #a08000
 
 set $mod Mod4
 set $textFont Caskaydia Mono Nerd Font 11
-set $appMenu dmenu_run
-set $appMenu2 rofi -show drun
+set $appMenu2 dmenu_run
+set $appMenu rofi -show drun
 set $refresh_i3status killall -SIGUSR1 i3status
 set $locker i3lock -c 000000 && sleep 1
 set $ws1 "1"
