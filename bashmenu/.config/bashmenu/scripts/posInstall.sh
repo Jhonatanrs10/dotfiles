@@ -5,7 +5,7 @@ myBasePosInstall(){
     yaySetup
 
     echo "KERNEL
-[1]linux [2]linux-lts [3]linux-zen"
+[1]Linux [2]Linux-lts [3]Linux-zen"
     read resp
 	case $resp in
         1)packagesManager "$myBaseKernel";;
@@ -31,7 +31,13 @@ myBasePosInstall(){
         *)
     esac
 
-    packagesManager "$myBaseBootloader $myBaseFileSystem $myBaseNetwork $myBaseFirewall $myBaseUtilitys $myBaseBluetooth $myBaseCodecs $myBaseXorg $myBaseWayland $myBaseIcons $myBaseThemes $myBaseFonts $myBaseRar $myBaseNotify $myBaseDaemons $myBaseFlatpak $myBaseShell"
+    echo "BASE
+[1]Configure [2]No"
+    read resp
+	case $resp in
+        1)packagesManager "$myBaseBootloader $myBaseFileSystem $myBaseNetwork $myBaseFirewall $myBaseUtilitys $myBaseBluetooth $myBaseCodecs $myBaseXorg $myBaseWayland $myBaseIcons $myBaseThemes $myBaseFonts $myBaseRar $myBaseNotify $myBaseDaemons $myBaseFlatpak $myBaseShell";;
+        *)
+    esac
 
   echo "CONFIGS
 [1]Configure [2]No"
