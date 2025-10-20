@@ -171,7 +171,7 @@ echo '#!/bin/bash
     always_run_script = true
     title = Dunst
     class = Dunst
-    corner_radius = 10
+    corner_radius = 0
     corners = all
     ignore_dbusclose = false
     force_xwayland = false
