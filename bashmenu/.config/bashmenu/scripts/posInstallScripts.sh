@@ -231,6 +231,11 @@ appPosTimeNTP(){
     sudo hwclock --systohc
 }
 
+gamescopePriorityConf(){
+    sudo setcap 'CAP_SYS_NICE=eip' $(which gamescope)
+    sudo tee /etc/modprobe.d/nvidia-modeset.conf <<< 'options nvidia_drm modeset=1 fbdev=1'
+}
+
 xfce4Config(){
     xfce4-panel --quit
     pkill xfconfd
@@ -238,6 +243,24 @@ xfce4Config(){
     rm -rf ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml
     xfce4-config
     xfce4-panel &
+}
+
+gsettingsInactiveOn(){
+    xset s on +dpms
+    gsettings set org.gnome.desktop.session idle-delay 300
+    gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'suspend'
+    gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 600
+    gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-type 'suspend'
+    gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-timeout 300
+}
+
+gsettingsInactiveOff(){
+    xset s off -dpms
+    gsettings set org.gnome.desktop.session idle-delay 0
+    gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'nothing'
+    gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 0
+    gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-type 'nothing'
+    gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-timeout 0
 }
 
 yaySetup(){
