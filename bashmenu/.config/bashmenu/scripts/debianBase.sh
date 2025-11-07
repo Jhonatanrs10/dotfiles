@@ -42,3 +42,10 @@ travas_apt(){
     sudo rm /var/lib/dpkg/lock-frontend
     sudo rm /var/cache/apt/archives/lock
 }
+
+installDriverNvidia(){
+    aptUpdate
+    ubuntu-drivers devices
+    echo "Visualizar Drivers: ubuntu-drivers devices
+Instalar Drivers: sudo apt install nvidia-driver-X"
+}

@@ -7,10 +7,12 @@ YELLOW="\033[33m"
 CYAN="\033[36m"
 RESET="\033[0m"
 
-source ./lib/sourceFolder.sh
-sourceFolder "LIBs" "./lib"
-sourceFolder "Scripts" "./scripts"
-
+sourceFolder(){
+    for src in `ls $1`; do
+        source $1/$src
+    done
+}
+sourceFolder "./scripts"
 dependenciasAtalhov2
 
 # Lista de opções (texto e função correspondente)
@@ -34,7 +36,6 @@ opcoes=(
   "Servidor Unturned::installUnturnedServer"
   "Servidor SA-MP::sampServer"
   "Servidor Terraria::terrariaServer"
-  "Hamachi::hamachi"
   "ZeroTier::zerotier"
   "Ngrok::installNgrok"
   "Node LTS::nodejslts"
