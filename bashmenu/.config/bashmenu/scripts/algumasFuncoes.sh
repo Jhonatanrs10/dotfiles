@@ -37,3 +37,32 @@ echoRead(){
 setLink(){
     varLink="$1"
 }
+
+yesorno(){
+    echo -e "[BashMenu] $1 [s/n]"
+    read resp
+    if [ "$resp" = "s" ]; then
+        $2
+    fi
+}
+#yesorno "Titulo" "Script"
+
+baixaDebs(){
+    criaDiretorio "diretorioBaixaDebs" "$dBashMenu/tempArqs"
+    clear
+    echo -e "[BashMenu] Deseja baixar $1? [s/n]"
+    read resp
+    if [ "$resp" = s ]; then
+        baixaArq "diretorioNome" "$2" "$diretorioBaixaDebs/$1.deb"
+    fi
+}
+#baixaDebs "Nomedoapp" "linkdodeb"
+
+baixaArq(){
+    if [ $1 = 'diretorio' ]; then
+        wget -c -P "$3" "$2"
+    elif [ $1 = 'diretorioNome' ]; then
+        wget -c "$2" -O "$3"
+    fi 
+}
+#baixaArq "diretorioNome Ou diretorio" "links" "diretorio/Nome.tar"

@@ -1,73 +1,79 @@
 #!/usr/bin/env sh
-criaSeuUsuarioSamba(){
-   #pra ter usuario no samba tem que ter usuario no sistema
-   echo "CRIAR USUARIO ($USER) NO SAMBA [s]/[n]"
-   read resp
-   if [ "$resp" = "s" ]; then
-      sudo smbpasswd -a $USER
-   fi 
-}
-criaDiretorioSamba(){
-   mkdir -p $HOME/Samba
-   sudo chmod 777 $HOME/Samba
-}
-criaDiretorioShare(){
-   #criaSmbDefault
-   echo "CRIANDO PASTA SE NAO EXISTIR..."
-   sudo mkdir -p $1
-   sudo $USER
-   #sudo chown $USER: $1
-   sudo chmod 777 $1
-   echo "CONFIGURANDO PASTA NO SAMBA..."
-   echo "[$2]
-   comment = Pasta Compartilhada na Rede
-   path = $1
-   browseable = yes
-   read only = yes
-   guest ok = $3
-   write list = $USER
-   force directory mode = 0777
-   directory mode = 0777
-   create mode = 0777" | sudo tee -a /etc/samba/smb.conf
-	#COMANDO QUE CRIA USUARIO NO LINUX
-	#adduser usuario
-	#COMANDO QUE REMOVE USUARIO DO SAMBA
-	#smbpasswd -x usuario
-	#edite o arquivo /etc/samba/smb.conf abra com sudo para remover sua pasta da rede
-    
-}
-#criaSeuUsuarioSamba
-#criaDiretorioShare "diretorio/pasta" "nomePasta" "guest ok"
 
-criaSmbDefault(){
+sambaSetup(){
+    echo "SAMBA
+[1]Configure [2]No"
+    read -r resp
+    case $resp in
+        1)
+        sudo pacman -S --needed samba
+        DATANOW=$(date +%Y%m%d-%H%M%S)
 
-   echo "CRIAR SMB.CONF [s]/[n]"
-   read resp
-   if [ "$resp" = "s" ]; then
-   
-   sudo mv /etc/samba/smb.conf /etc/samba/smb-bkp$DATANOW.conf
-   criarArq "[global]
-   workgroup = WORKGROUP
-   preferred master = no
-   local master = no
-   domain master = no
-   netbios name = Samba
-   server string = Samba Server
-   server role = standalone server
-   security = user
-   map to guest = bad user
-   guest account = nobody
-   log file = /var/log/samba/%m
-   log level = 1
-   dns proxy = no
+        RAND=$(cat /dev/urandom | tr -dc 'A-Z0-9' | head -c 6)
+        NETBIOS_NAME="Samba$RAND"
 
+        echo "Using NetBIOS name: $NETBIOS_NAME"
+
+        sudo mv /etc/samba/smb.conf /etc/samba/smb-bkp$DATANOW.conf
+        sudo smbpasswd -a "$USER"
+        sudo smbpasswd -e "$USER"
+        mkdir -p "$HOME/Samba/User"
+        sudo chmod 777 "$HOME/Samba"
+        sudo mkdir -p /home/samba
+        sudo chmod 777 /home/samba
+
+        echo "[global]
+    workgroup = WORKGROUP
+    preferred master = no
+    local master = no
+    domain master = no
+    netbios name = $NETBIOS_NAME
+    server string = Samba Server
+    server role = standalone server
+    security = user
+    map to guest = bad user
+    guest account = nobody
+    log file = /var/log/samba/%m
+    log level = 1
+    dns proxy = no
 [printers]
-   comment = All Printers
-   path = /usr/spool/samba
-   browsable = no
-   guest ok = no
-   writable = no
-   printable = yes" "$HOME/criarArq-smb.conf"
-   sudo mv $HOME/criarArq-smb.conf /etc/samba/smb.conf
-   fi 
+    comment = All Printers
+    path = /usr/spool/samba
+    browsable = no
+    guest ok = no
+    writable = no
+    printable = yes
+[User]
+    comment = Pasta Compartilhada na Rede
+    path = $HOME/Samba/User
+    browseable = yes
+    read only = yes
+    guest ok = no
+    write list = $USER
+    force directory mode = 0777
+    directory mode = 0777
+    create mode = 0777
+[Guest]
+    comment = Pasta Compartilhada na Rede
+    path = /home/samba
+    browseable = yes
+    read only = yes
+    guest ok = yes
+    write list = $USER
+    force directory mode = 0777
+    directory mode = 0777
+    create mode = 0777" | sudo tee /etc/samba/smb.conf > /dev/null
+
+        ln -s /home/samba "$HOME/Samba/Guest"
+        enableSystemctl "smb"
+        enableSystemctl "nmb"
+        #sudo systemctl restart smbd nmbd
+        ;;
+        *)
+        ;;
+    esac
 }
+
+
+#sudo useradd -m samba
+#sudo passwd samba
