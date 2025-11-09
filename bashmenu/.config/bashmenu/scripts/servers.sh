@@ -337,7 +337,8 @@ login anonymous
 app_update 380870 validate
 quit" "$diretorioInstall/update_zomboid.txt"
 
-
-criaAtalhoBin "$diretorioInstall/run.sh" "$installName"
+criarArq "export PATH=$PATH:/usr/games
+steamcmd +runscript $HOME/update_zomboid.txt" "run.sh"
+#criaAtalhoBin "$diretorioInstall/run.sh" "$installName"
 
 }   
