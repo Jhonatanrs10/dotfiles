@@ -23,8 +23,6 @@ serversLinuxUser() {
 }
 
 installSteamCMD(){
-    echo "USAR YAY"
-    sleep 2
     packagesManager "steamcmd"
 }
 
@@ -327,15 +325,8 @@ installProjectZomboidServer(){
     criaDiretorioInstall "$dBashMenu/$installName"
     installSteamCMD
 
-    criarArq "// update_zomboid.txt
-//
-@ShutdownOnFailedCommand 1 //set to 0 if updating multiple servers at once
-@NoPromptForPassword 1
-force_install_dir $diretorioInstall
-//for servers which don't need a login
-login anonymous
-app_update 380870 validate
-quit" "$diretorioInstall/update_zomboid.txt"
+    criarArq "#!/bin/sh
+steamcmd +@ShutdownOnFailedCommand 1 +@NoPromptForPassword 1 +force_install_dir "$diretorioInstall" +login anonymous +app_update 380870 validate +quit" "$diretorioInstall/update_zomboid.txt"
 
 criarArq "export PATH=$PATH:/usr/games
 steamcmd +runscript $HOME/update_zomboid.txt" "run.sh"
