@@ -4,18 +4,19 @@
 #bash ./steamcmd.sh +login anonymous +app_update 1110390 validate +quit
 
 serversLinuxUser() {
-    if id "servers" &>/dev/null; then
-        echo "O usuário 'servers' já existe. Ignorando a criação do usuário."
+    if id "$linuxUserServer" &>/dev/null; then
+        echo "O usuário '$linuxUserServer' já existe. Ignorando a criação do usuário."
+        sudo -u $linuxUserServer -s 
     else
-        echo "O usuário 'servers' não foi encontrado. Criando usuário..."
-        sudo useradd -m servers
+        echo "O usuário '$linuxUserServer' não foi encontrado. Criando usuário..."
+        sudo useradd -m $linuxUserServer
         if [ $? -eq 0 ]; then
-            echo "Usuário 'servers' criado com sucesso."
-            echo "senha para servers:"
-            sudo passwd servers
-            sudo -u servers -s 
+            echo "Usuário '$linuxUserServer' criado com sucesso."
+            echo "senha para $linuxUserServer:"
+            sudo passwd $linuxUserServer
+            sudo -u $linuxUserServer -s 
         else
-            echo "Erro: Falha ao criar o usuário 'servers'."
+            echo "Erro: Falha ao criar o usuário '$linuxUserServer'."
         fi
     fi
     # sudo userdel servers
@@ -324,20 +325,18 @@ installProjectZomboidServer(){
     installName="PZserver"
     uninstallPastaAtalhoBinMesmoNome "$installName"
     criaDiretorioInstall "$dBashMenu/$installName"
-
     installSteamCMD
 
-    cat >$diretorioInstall/update_zomboid.txt <<'EOL'
-// update_zomboid.txt
+    criarArq "// update_zomboid.txt
 //
 @ShutdownOnFailedCommand 1 //set to 0 if updating multiple servers at once
 @NoPromptForPassword 1
-force_install_dir /opt/pzserver/
+force_install_dir $diretorioInstall
 //for servers which don't need a login
 login anonymous
 app_update 380870 validate
-quit
-EOL
+quit" "$diretorioInstall/update_zomboid.txt"
+
 
 criaAtalhoBin "$diretorioInstall/run.sh" "$installName"
 

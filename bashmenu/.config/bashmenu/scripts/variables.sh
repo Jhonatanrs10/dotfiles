@@ -1,6 +1,7 @@
 #!/usr/bin/bash
 
 dBashMenu="$HOME/.bashmenu"
+linuxUserServer="servers"
 nomeRun="run"
 DATANOW=$(date "+[%d-%m-%Y][%H-%M]")
 myBaseKernel="base linux linux-firmware intel-ucode sof-firmware"
