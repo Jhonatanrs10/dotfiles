@@ -1,4 +1,14 @@
 #!/usr/bin/env sh
+#https://developer.valvesoftware.com/wiki/SteamCMD#Linux
+#essa linha corrige possiveis erros restaurando as configuracoes padrao do SteamCMD validando-as
+#bash ./steamcmd.sh +login anonymous +app_update 1110390 validate +quit
+
+installSteamCMD(){
+    echo "USAR YAY"
+    sleep 2
+    packagesManager "steamcmd"
+}
+
 installFivem(){
     verFivem0="https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/6136-97e3790629f188c887ee11d119d7a705c8a9f9f0/fx.tar.xz"
     verFivem="https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/7290-a654bcc2adfa27c4e020fc915a1a6343c3b4f921/fx.tar.xz"
@@ -151,4 +161,143 @@ set steam_webApiKey
 sv_licenseKey '"$lk"'' "$diretorioServer/server-data/server.cfg"
 
 criaAtalhoBin "$diretorioServer/fivemexec.sh" "$fivemNome"
+}   
+
+installMinecraftServer(){
+	uninstallPastaAtalhoBinMesmoNome "MinecraftServer"
+	link="https://piston-data.mojang.com/v1/objects/4707d00eb834b446575d89a61a11b5d548d8c001/server.jar"
+
+	echo -e "[INFO] - CRIANDO DIRETORIOS... - [INFO]"
+	criaDiretorioInstall "$dBashMenu/MinecraftServer"
+
+	echo -e "[INFO] - BAIXANDO ARQUIVOS... - [INFO]"
+	baixaArq "diretorioNome" "$link" "$diretorioInstall/server.jar"
+
+	echo -e "[INFO] - INSTALANDO - [INFO]"
+
+	java -jar server.jar nogui
+
+	addNoArq "eula=true" "eula.txt"
+
+	addNoArq "online-mode=false
+motd=\u00A71Jardim Recreio  \u00A77By Jhonatanrs
+server-port=25565
+enable-command-block=true" "server.properties"
+
+    criarArq "#!/usr/bin/env bash
+#echo 'EM CASO DE ERRO VERIFIQUE A VERSAO DO JAVA
+#Press ENTER'
+#read caso
+cd $diretorioInstall
+java -jar server.jar nogui" "run.sh"
+
+	criaAtalho "MinecraftServer" "Create your own Minecraft Server" "bash run.sh" "$diretorioInstall" "true" "Minecraft Server" "/usr/share/icons/Papirus-Dark/64x64/apps/mine-test.svg"
+    criaAtalhoBin "$diretorioInstall/run.sh" "MinecraftServer"
+	echo -e "[INFO] - SCRIPT FINALIZADO - [INFO]"
+}
+
+sampServer(){
+
+    installName="SampServer"
+    uninstallPastaAtalhoBinMesmoNome "$installName"
+    criaDiretorioInstall "$dBashMenu/$installName"
+
+
+    criaPastaBaixaExtrai "$diretorioInstall" "http://files.sa-mp.com/samp037svr_R2-1.tar.gz" "samp.tar.gz"
+    mv */* .
+
+    criarArq "#!/usr/bin/env sh
+cd $diretorioInstall
+./samp03svr" "$diretorioInstall/run.sh"
+
+    criarArq "echo Executing Server Config...
+lanmode 1
+rcon_password 0
+maxplayers 20
+port 7777
+hostname Jardim Recreio
+gamemode0 grandlarc 1
+filterscripts base gl_actions gl_property gl_realtime
+announce 0
+query 1
+weburl www.sa-mp.com
+maxnpc 0
+onfoot_rate 40
+incar_rate 40
+weapon_rate 40
+stream_distance 300.0
+stream_rate 1000" "$diretorioInstall/server.cfg"
+
+    criaAtalho "$installName" "Server SAMP em Segundo Plano" "./samp03svr" "$diretorioInstall" "true" "$installName" "application-default-icon"
+    criaAtalhoBin "$diretorioInstall/run.sh" "$installName"
+
+}   
+
+terrariaServer(){
+    installName="TerrariaServer"
+    uninstallPastaAtalhoBinMesmoNome "$installName"
+    criaDiretorioInstall "$dBashMenu/$installName"
+    criaPastaBaixaExtrai "$diretorioInstall" "https://terraria.org/api/download/pc-dedicated-server/terraria-server-1449.zip" "ts.zip"
+    chmod 770 $diretorioInstall/*/Linux/TerrariaServer.bin.x86_64
+    criaArqRunDiretorioInstall "#!/usr/bin/env sh
+cd $diretorioInstall/*/Linux
+./TerrariaServer.bin.x86_64"
+    criaAtalho "$installName" "Terraria Server PC" "bash run.sh" "$diretorioInstall" "true" "$installName" "application-default-icon"
+    criaAtalhoBin "$diretorioInstall/run.sh" "$installName"
+}   
+
+installUnturnedServer(){
+    #cria e loga no usuario steam
+    #criaLogaUserSteam
+
+    installName="UnturnedServer"
+    uninstallPastaAtalhoBinMesmoNome "$installName"
+    criaDiretorioInstall "$dBashMenu/$installName"
+
+    aptSteamCMD(){
+        #dependencias
+        sudo add-apt-repository multiverse
+        sudo apt install software-properties-common
+        sudo dpkg --add-architecture i386
+        sudo apt update
+        #instalando SteamCMD
+        sudo apt install lib32gcc-s1 steamcmd
+        #baixando dependencias
+        steamcmd +login anonymous +app_update 1110390 +quit
+    }
+    
+    manuallySteamCMD(){
+        packagesManager "lib32gcc-s1"
+        criaPastaBaixaExtrai "$diretorioInstall" "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" "steamcmd.tar.gz"
+        #baixando dependencias
+        bash ./steamcmd.sh +login anonymous +app_update 1110390 +quit
+        packagesManager "tmux screen"
+    }
+    
+    criarArq "Map Ex.(PEI - Germany - Russia - Washington) 
+help no console do server para ver comandos
+edite o local/diretorio do server em run.sh
+mova ou copie o arquivo commands.dat para:
+Steam/steamapps/common/U3DS/Servers/JardimRecreio/Server/Commands.dat " "LEIAME.txt"
+
+    criarArq "Name JardimRecreio
+Map PEI
+Maxplayers 10
+Port 27015
+perspective both
+mode normal
+pve
+welcome Bem Vindo ao bairro!!
+cheats on" "Commands.dat"
+
+    menu12345 "[1]APT [2]MANUALLY" "aptSteamCMD" "manuallySteamCMD"
+
+    criarArq "#!/usr/bin/env sh
+bash $diretorioInstall/steamcmd.sh +login anonymous +app_update 1110390 +quit
+cd $HOME/Steam/steamapps/common/U3DS
+bash ServerHelper.sh +LanServer/JardimRecreio" "$diretorioInstall/run.sh"
+
+    #criaAtalho "$installName" "Description" "bash run.sh" "$diretorioInstall" "false" "$installName" "$dBashMenu/Icons/default.svg"
+    criaAtalhoBin "$diretorioInstall/run.sh" "$installName"
+
 }   
