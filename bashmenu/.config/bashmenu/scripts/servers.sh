@@ -269,12 +269,6 @@ installUnturnedServer(){
     uninstallPastaAtalhoBinMesmoNome "$installName"
     criaDiretorioInstall "$dBashMenu/$installName"
     
-    criarArq "Map Ex.(PEI - Germany - Russia - Washington) 
-help no console do server para ver comandos
-edite o local/diretorio do server em run.sh
-mova ou copie o arquivo commands.dat para:
-Steam/steamapps/common/U3DS/Servers/JardimRecreio/Server/Commands.dat" "$diretorioInstall/LEIAME.txt"
-
     criarArq "Name JardimRecreio
 Map PEI
 Maxplayers 10
@@ -283,11 +277,11 @@ perspective both
 mode normal
 pve
 welcome Bem Vindo ao bairro!!
-cheats on" "$diretorioInstall/Commands.dat"
+cheats on" "$HOME/.steam/SteamApps/common/U3DS/Servers/JardimRecreio/Server/Commands.dat"
 
     criarArq "#!/usr/bin/env sh
 steamcmd +login anonymous +app_update 1110390 +quit
-cd $HOME/Steam/steamapps/common/U3DS
+cd $HOME/.steam/SteamApps/common/U3DS
 bash ServerHelper.sh +LanServer/JardimRecreio" "$diretorioInstall/run.sh"
 
     #criaAtalhoBin "$diretorioInstall/run.sh" "$installName"
