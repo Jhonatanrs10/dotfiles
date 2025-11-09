@@ -3,6 +3,24 @@
 #essa linha corrige possiveis erros restaurando as configuracoes padrao do SteamCMD validando-as
 #bash ./steamcmd.sh +login anonymous +app_update 1110390 validate +quit
 
+serversLinuxUser() {
+    if id "servers" &>/dev/null; then
+        echo "O usuário 'servers' já existe. Ignorando a criação do usuário."
+    else
+        echo "O usuário 'servers' não foi encontrado. Criando usuário..."
+        sudo useradd -m servers
+        if [ $? -eq 0 ]; then
+            echo "Usuário 'servers' criado com sucesso."
+            echo "senha para servers:"
+            sudo passwd servers
+            sudo -u servers -s 
+        else
+            echo "Erro: Falha ao criar o usuário 'servers'."
+        fi
+    fi
+    # sudo userdel servers
+}
+
 installSteamCMD(){
     echo "USAR YAY"
     sleep 2
@@ -299,5 +317,28 @@ bash ServerHelper.sh +LanServer/JardimRecreio" "$diretorioInstall/run.sh"
 
     #criaAtalho "$installName" "Description" "bash run.sh" "$diretorioInstall" "false" "$installName" "$dBashMenu/Icons/default.svg"
     criaAtalhoBin "$diretorioInstall/run.sh" "$installName"
+
+}   
+
+installProjectZomboidServer(){
+    installName="PZserver"
+    uninstallPastaAtalhoBinMesmoNome "$installName"
+    criaDiretorioInstall "$dBashMenu/$installName"
+
+    installSteamCMD
+
+    cat >$diretorioInstall/update_zomboid.txt <<'EOL'
+// update_zomboid.txt
+//
+@ShutdownOnFailedCommand 1 //set to 0 if updating multiple servers at once
+@NoPromptForPassword 1
+force_install_dir /opt/pzserver/
+//for servers which don't need a login
+login anonymous
+app_update 380870 validate
+quit
+EOL
+
+criaAtalhoBin "$diretorioInstall/run.sh" "$installName"
 
 }   
