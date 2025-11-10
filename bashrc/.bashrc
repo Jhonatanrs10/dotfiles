@@ -30,9 +30,6 @@ alias yt-dlp-mp3='yt-dlp -x --audio-format mp3 --audio-quality 0'
 alias mpv720p60='mpv --profile=720p60'
 alias mpv1080p30='mpv --profile=1080p30'
 alias mpv1080p60="mpv --profile=1080p60"
-# Servers
-alias mineserver='bash ~/.bashmenu/MINEJRS/run.sh'
-alias palserver='bash ~/.bashmenu/PalServer/run.sh'
 # Code
 alias codehere='code . && exit'
 alias codedotfiles="code ~/.dotfiles && exit"

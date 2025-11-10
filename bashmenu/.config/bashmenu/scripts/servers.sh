@@ -293,12 +293,5 @@ installProjectZomboidServer(){
     uninstallPastaAtalhoBinMesmoNome "$installName"
     criaDiretorioInstall "$dBashMenu/$installName"
     installSteamCMD
-
-    criarArq "#!/bin/sh
-steamcmd +@ShutdownOnFailedCommand 1 +@NoPromptForPassword 1 +force_install_dir "$diretorioInstall" +login anonymous +app_update 108600 validate +quit" "$diretorioInstall/update_zomboid.txt"
-
-criarArq "export PATH=$PATH:/usr/games
-steamcmd +runscript $HOME/update_zomboid.txt" "run.sh"
-#criaAtalhoBin "$diretorioInstall/run.sh" "$installName"
-
+    criarArq "steamcmd +force_install_dir "$diretorioInstall" +login anonymous +app_update 380870 validate +quit" "run_install_and_update.sh" # 108600 ou 380870
 }   
