@@ -481,11 +481,13 @@ gsettingsInactiveOff(){
 defaultInodeDirectory(){
     echo "Default Applications   
 [1]Nautilus for FileManager
-[2]PCManFM for FileManager"
+[2]PCManFM for FileManager
+[3]Thunar for FileManager"
     read resp
     case $resp in
         1)xdg-mime default org.gnome.Nautilus.desktop inode/directory;;
         2)xdg-mime default pcmanfm.desktop inode/directory;;
+        3)xdg-mime default thunar.desktop inode/directory;;
         *)
     esac
 }
