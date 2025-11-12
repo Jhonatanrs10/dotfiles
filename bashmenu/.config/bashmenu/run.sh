@@ -18,13 +18,8 @@ dependenciasAtalhov2
 # Lista de opções (texto e função correspondente)
 opcoes=(
   "Pos Install::myBasePosInstall"
-  "Grub Setup::grubSetup"
-  "Pacman Setup::pacmanSetup"
-  "Samba Setup::sambaSetup"
-  "Yay Setup::yaySetup"
   "Montar NTFS::myBaseMountNTFS"
   "Linkar Home::myBaselnHome"
-  "Video Driver::installVideoDriver"
   "VirtManager::installVirtManager"
   "Diretório Inode Padrão::defaultInodeDirectory"
   "Configuração Git::gitconfig"
@@ -60,6 +55,7 @@ opcoes=(
   "Reparar Pacman::repairPM"
   "Discord Config Hyprland::hyprlandDiscordX"
   "SteamDeckMode::setupSteamDeckMode"
+  "TESTE TESTE TESTE::atalhoWireMix"
   )
 
 linhas_terminal=$(tput lines)
