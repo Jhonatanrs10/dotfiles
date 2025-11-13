@@ -13,7 +13,6 @@ myBasePosInstall(){
     sambaSetup
     configsSetup
     desktopSetup
-    
 }
 
 pacmanSetup(){
