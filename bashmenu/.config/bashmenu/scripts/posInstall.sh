@@ -54,9 +54,9 @@ Options: [1]Configure, [2]No"
     read resp
 	case $resp in
 		1)
+            packagesManager "$myBaseBootloader"
             sudo cp /etc/default/grub /etc/default/grub$DATANOW.bkp
             sudo cp /boot/grub/grub.cfg /boot/grub/grub$DATANOW.cfg.bkp
-            packagesManager "os-prober"
             sudo grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
             sudo sed -i "/GRUB_DISABLE_OS_PROBER=false/"'s/^#//' /etc/default/grub
             sudo grub-mkconfig -o /boot/grub/grub.cfg
