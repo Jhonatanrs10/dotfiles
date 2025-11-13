@@ -20,8 +20,8 @@
     },
 	"clock": {
      "formatbkp": "{:%R}",
-     "format": "{:%A %R}",
-     "format-alt": "{:%a.%d %b %R}",
+     "format": "{:%a.%d %b %R}",
+     "format-alt": "{:%A %R}",
      "tooltip-format": "{:%A, %d de %B de %Y - %H:%M}"
     },
   "tray": {
