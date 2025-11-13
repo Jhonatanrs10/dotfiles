@@ -134,7 +134,8 @@ sambaSetup(){
     case $resp in
         1)
         sudo pacman -S --needed samba
-        DATANOW=$(date +%Y%m%d-%H%M%S)
+        sudo smbpasswd -a "$USER"
+        sudo smbpasswd -e "$USER"
 
         RAND=$(cat /dev/urandom | tr -dc 'A-Z0-9' | head -c 6)
         NETBIOS_NAME="Samba$RAND"
@@ -142,8 +143,7 @@ sambaSetup(){
         echo "Using NetBIOS name: $NETBIOS_NAME"
 
         sudo mv /etc/samba/smb.conf /etc/samba/smb-bkp$DATANOW.conf
-        sudo smbpasswd -a "$USER"
-        sudo smbpasswd -e "$USER"
+        
         mkdir -p "$HOME/Samba/User"
         sudo chmod 777 "$HOME/Samba"
         sudo mkdir -p /home/samba
