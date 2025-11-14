@@ -55,3 +55,4 @@ picom &
 xset -b &
 kdeconnect-indicator &
 syncthing --no-browser &
+sh ~/.screenlayout/monitors.sh &
