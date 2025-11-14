@@ -281,25 +281,6 @@ myBaseI3Backlight(){
     #criarArq 'light' "$HOME/.config/i3/brightness"
 }
 
-myDotfiles() {
-    packagesManager "stow"
-    cd "$HOME"
-
-    if [ -d "$HOME/.dotfiles" ]; then
-        echo "🔄 Diretório .dotfiles já existe. Limpando stow..."
-        cd "$HOME/.dotfiles" || return
-        stow -D */
-    else
-        echo "📥 Clonando repositório de dotfiles..."
-        git clone https://github.com/Jhonatanrs10/dotfiles
-        mv dotfiles/ .dotfiles/
-        cd "$HOME/.dotfiles" || return
-    fi
-
-    echo "✅ Aplicando stow..."
-    stow */
-}
-
 lidSwitchIgnore(){
     sudo sed -i 's/^#HandleLidSwitch=suspend/HandleLidSwitch=ignore/' /etc/systemd/logind.conf
     sudo sed -i 's/^HandleLidSwitch=suspend/HandleLidSwitch=ignore/' /etc/systemd/logind.conf

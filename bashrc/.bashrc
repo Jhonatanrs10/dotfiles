@@ -38,9 +38,11 @@ alias vimdotfiles="cd ~/.dotfiles && nvim ."
 # Git Status
 alias mydotfiles='
   cd ~/.dotfiles && git pull && git status
-  read -p "Deseja atualizar seu repositório de dotfiles? (y/N) " confirm &&
+  read -p "Deseja atualizar seu repositório de dotfiles? (y/N/diff) " confirm &&
   if [[ "$confirm" == [yY] ]]; then
      git add . && git commit -m "att" && git push
+  elif [[ "$confirm" == "diff" ]]; then
+     git diff
   fi
 '
 # My Bash
