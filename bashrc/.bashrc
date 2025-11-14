@@ -19,6 +19,7 @@ alias discordX='ELECTRON_OZONE_PLATFORM_HINT= discord --no-sandbox && exit'
 alias shutdownnow="systemctl poweroff"
 alias rebootnow="systemctl reboot"
 alias archkerneleditgrub="sudo nano /etc/default/grub"
+alias rhyprpaper="killall hyprpaper && hyprpaper & exit"
 # MangoHud
 alias mangovktest="mangohud vkcube"
 alias mangogltest="mangohud glxgears"
