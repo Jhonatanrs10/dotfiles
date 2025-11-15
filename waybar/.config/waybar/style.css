@@ -32,6 +32,7 @@ window#waybar:first-child > box {
     padding-top: 10;
     border-bottom: 3px solid transparent;
     padding-bottom: 5;
+    min-width: 25px;
     color: @base02;
 }
 #workspaces button.active {
@@ -39,6 +40,7 @@ window#waybar:first-child > box {
     padding-top: 10;
     border-bottom: 3px solid @base00;
     padding-bottom: 5;
+    min-width: 25px;
     color: @base02;
 }
 #workspaces button:hover {
