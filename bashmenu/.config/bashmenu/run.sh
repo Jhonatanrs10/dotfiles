@@ -56,7 +56,7 @@ opcoes=(
   "Ignorar Ação da Bandeja::lidSwitchIgnore"
   "Reparar Pacman::repairPM"
   "Discord Config Hyprland::hyprlandDiscordX"
-  "SteamDeckMode::setupSteamDeckMode"
+  "SteamOSMode::setupSteamOSMode"
   "TESTE TESTE TESTE::atalhoWireMix"
   )
 

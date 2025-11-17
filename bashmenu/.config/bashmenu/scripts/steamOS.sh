@@ -13,9 +13,9 @@
 #GAMESCOPE
 #--expose-wayland na nvidia causa bug na tela
 
-setupSteamDeckMode(){
+setupSteamOSMode(){
     packagesManager "$myBaseSteam $myBaseMangoHud $myBaseGamescope"
-    SESSION_NAME="SteamDeck"
+    SESSION_NAME="SteamOS"
     FILENAME="${SESSION_NAME}Mode.desktop"
     EXITFILENAME="${SESSION_NAME}Exit.sh"
     EXEC_COMMAND="sh -c 'WLR_XWAYLAND=/usr/bin/Xwayland gamescope -w 1600 -h 900 -W 1600 -H 900 -r 60 -f -C 5000 -e --cursor Adwaita --force-grab-cursor --mangoapp -- steam -steamdeck -steamos3'"
@@ -24,7 +24,7 @@ setupSteamDeckMode(){
     #/usr/share/xsessions
     #/usr/share/wayland-sessions
 
-    echo "SteamDeckMode
+    echo "SteamOSMode
 [1] App, [2] Session"
     read resp
     case $resp in
@@ -35,7 +35,7 @@ setupSteamDeckMode(){
 }
 
 appSteamOS(){
-    echo "SteamDeckMode
+    echo "SteamOSMode
 [1] Criar App, [2] Remover App"
     read resp
     case $resp in
@@ -44,7 +44,7 @@ appSteamOS(){
             cat <<EOF | sudo tee "${APP_DIR}/${FILENAME}"
 [Desktop Entry]
 Name=${SESSION_NAME} Mode
-Comment=Uma sessão de games com aparência de Steam Deck.
+Comment=Uma sessão de games com aparência de SteamOS.
 Exec=${EXEC_COMMAND}
 Icon=steam
 Type=Application
@@ -60,7 +60,7 @@ EOF
 }
 
 sessionSteamOS(){
-    echo "SteamDeckMode
+    echo "SteamOSMode
 [1] Criar Sessão, [2] Remover Sessão"
     read resp
     case $resp in
@@ -69,7 +69,7 @@ sessionSteamOS(){
             cat <<EOF | sudo tee "${SESSION_DIR}/${FILENAME}"
 [Desktop Entry]
 Name=${SESSION_NAME} Mode
-Comment=Uma sessão de games com aparência de Steam Deck.
+Comment=Uma sessão de games com aparência de SteamOS.
 Exec=${EXEC_COMMAND}
 Icon=steam
 Type=Application
