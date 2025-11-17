@@ -10,7 +10,9 @@ RESET="\033[0m"
 sourceFolder(){
     for src in `ls $1`; do
         source $1/$src
+        #echo "$1/$src"
     done
+    #sleep 10
 }
 sourceFolder "./scripts"
 dependenciasAtalhov2

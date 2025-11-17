@@ -14,22 +14,59 @@
 #--expose-wayland na nvidia causa bug na tela
 
 setupSteamDeckMode(){
+    packagesManager "$myBaseSteam $myBaseMangoHud $myBaseGamescope"
     SESSION_NAME="SteamDeck"
     FILENAME="${SESSION_NAME}Mode.desktop"
     EXITFILENAME="${SESSION_NAME}Exit.sh"
-    EXEC_COMMAND="gamescope -w 1600 -h 900 -W 1600 -H 900 -r 60 -f -C 5000 -e --cursor Adwaita --force-grab-cursor --mangoapp -- steam -steamdeck -steamos3"
+    EXEC_COMMAND="sh -c 'WLR_XWAYLAND=/usr/bin/Xwayland gamescope -w 1600 -h 900 -W 1600 -H 900 -r 60 -f -C 5000 -e --cursor Adwaita --force-grab-cursor --mangoapp -- steam -steamdeck -steamos3'"
     APP_DIR="$HOME/.local/share/applications"
-    XSESSION_DIR="/usr/share/xsessions"
-    WSESSION_DIR="/usr/share/wayland-sessions"
+    SESSION_DIR="/usr/share/xsessions"
+    #/usr/share/xsessions
+    #/usr/share/wayland-sessions
+
     echo "SteamDeckMode
-[1] Criar Sessão, [2] Remover Sessão, [3] Dependencias"
+[1] App, [2] Session"
+    read resp
+    case $resp in
+		1)appSteamOS;;
+        2)sessionSteamOS;;
+		*);;
+	esac
+}
+
+appSteamOS(){
+    echo "SteamDeckMode
+[1] Criar App, [2] Remover App"
     read resp
     case $resp in
 		1)
             sudo mkdir -p "$APP_DIR"
-            sudo mkdir -p "$XSESSION_DIR"
-            #sudo mkdir -p "$WSESSION_DIR"
             cat <<EOF | sudo tee "${APP_DIR}/${FILENAME}"
+[Desktop Entry]
+Name=${SESSION_NAME} Mode
+Comment=Uma sessão de games com aparência de Steam Deck.
+Exec=${EXEC_COMMAND}
+Icon=steam
+Type=Application
+Categories=Game;
+EOF
+            sudo chmod 777 "${APP_DIR}/${FILENAME}"
+            ;;
+        2)
+            sudo rm $APP_DIR/$FILENAME
+            ;;
+        *);;
+	esac
+}
+
+sessionSteamOS(){
+    echo "SteamDeckMode
+[1] Criar Sessão, [2] Remover Sessão"
+    read resp
+    case $resp in
+		1)
+            sudo mkdir -p "$SESSION_DIR"
+            cat <<EOF | sudo tee "${SESSION_DIR}/${FILENAME}"
 [Desktop Entry]
 Name=${SESSION_NAME} Mode
 Comment=Uma sessão de games com aparência de Steam Deck.
@@ -42,20 +79,13 @@ EOF
 #!/bin/bash
 steam -shutdown
 EOF
-            sudo chmod 777 "${APP_DIR}/${FILENAME}"
+            sudo chmod 777 "${SESSION_DIR}/${FILENAME}"
             sudo chmod 777 "${APP_DIR}/${EXITFILENAME}"
-            sudo cp $APP_DIR/$FILENAME $XSESSION_DIR
-            #sudo cp $APP_DIR/$FILENAME $WSESSION_DIR
-            echo "A nova sessão '${SESSION_NAME}' agora está disponível no seu display manager.";;
+            ;;
         2)
-            sudo rm $XSESSION_DIR/$FILENAME
-            #sudo rm $WSESSION_DIR/$FILENAME
-            sudo rm $APP_DIR/$FILENAME
+            sudo rm $SESSION_DIR/$FILENAME
             sudo rm $APP_DIR/$EXITFILENAME
-            echo "Arquivos removidos.";;
-        3)
-            packagesManager "$myBaseSteam $myBaseMangoHud $myBaseGamescope";;
-		*)
+            ;;
+        *);;
 	esac
-
 }
