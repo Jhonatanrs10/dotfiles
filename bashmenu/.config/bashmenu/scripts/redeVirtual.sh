@@ -1,6 +1,37 @@
 #!/usr/bin/env sh
-#https://github.com/ChaoticWeg/discord.sh
+installRedeVirtual(){
+        echo "Rede Virtual
+[1] Zerotier, [2] Ngrok [3] Playit.gg"
+    read resp
+    case $resp in
+		1)installZerotier;;
+        2)installNgrok;;
+        3)installPlayITGG;;
+		*);;
+	esac
+}
+
+installZerotier(){
+    roomZerotier="d3ecf5726df2c372"
+    echo "Zerotier para Ubuntu[1] ou Arch[2]"
+    read escolha
+    if [ "$escolha" = "1" ]; then
+        sudo dpkg --configure -a
+        curl -s 'https://raw.githubusercontent.com/zerotier/ZeroTierOne/master/doc/contact%40zerotier.com.gpg' | gpg --import && \
+        if z=$(curl -s 'https://install.zerotier.com/' | gpg); then echo "$z" | sudo bash; fi
+        enableSystemctl "zerotier-one"
+        sudo zerotier-cli join $roomZerotier
+    elif [ "$escolha" = "2" ]; then
+        echo "PAMAC ou PACMAN"
+        packagesManager "zerotier-one"
+        enableSystemctl "zerotier-one"
+        sudo zerotier-cli join $roomZerotier
+    fi 
+   
+}
+
 installNgrok(){
+    #https://github.com/ChaoticWeg/discord.sh
     arqNgrok="https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz"
     arqDiscord="https://github.com/ChaoticWeg/discord.sh/archive/refs/heads/master.zip"
     uninstallPastaAtalhoBinMesmoNome "Ngrok"
@@ -35,4 +66,8 @@ else
     bash '$PWD'/discord/discord.sh --webhook-url="$WEBHOOK" --title "IP DO SERVIDOR" --description "$ServerIp"
 fi' "$diretorioNgrok/discord.sh"
 	criaAtalhoBin "$diretorioNgrok/start.sh" "Ngrok"
+}
+
+installPlayITGG(){
+    yay -S playit-bin
 }

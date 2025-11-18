@@ -4,6 +4,7 @@
 #bash ./steamcmd.sh +login anonymous +app_update 1110390 validate +quit
 
 serversLinuxUser() {
+    packagesManager "screen"
     if id "$linuxUserServer" &>/dev/null; then
         echo "O usuário '$linuxUserServer' já existe. Ignorando a criação do usuário."
         sudo -u $linuxUserServer -s 
