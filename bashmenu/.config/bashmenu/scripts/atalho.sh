@@ -40,6 +40,7 @@ Version=1.0
 Type=Application
 Name=$1
 GenericName=jrs
+Categories=jrs;
 Comment=$2
 Exec=$3
 Icon=$7

@@ -28,6 +28,7 @@ dependenciasAtalhov2() {
     local wrapper="$dBashMenu/.jrs.sh"
     local link_name="jrs"
     local link_path="/usr/bin/$link_name"
+    local link_pathatalho="$HOME/.local/share/applications/jrs/jrs-BashMenu.desktop"
 
     # Verifica se o arquivo wrapper já existe
     if [ ! -f "$wrapper" ]; then
@@ -49,10 +50,11 @@ EOF
     fi
 
     # Verifica se o link simbólico existe e o cria se não
-    if [ ! -L "$link_path" ]; then
+    if [ ! -L "$link_path" ] || [ ! -e "$link_pathatalho" ] ; then
         echo "O link simbólico para '$link_name' não existe. Criando agora..."
         sudo ln -sf "$wrapper" "$link_path"
         echo "Atalho '$link_name' criado com sucesso!"
+        #criaAtalho "jrs (BashMenu)" "Meu menu de Bashs" "jrs" "$HOME" "true" "BashMenu" "terminal"
     else
         echo "Atalho '$link_name' já está instalado."
         
