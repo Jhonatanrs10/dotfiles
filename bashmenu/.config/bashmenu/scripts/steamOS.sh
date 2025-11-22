@@ -16,10 +16,10 @@
 setupSteamOSMode(){
     packagesManager "$myBaseSteam $myBaseMangoHud $myBaseGamescope"
     SESSION_NAME="SteamOS"
-    FILENAME="${SESSION_NAME}Mode.desktop"
-    EXITFILENAME="${SESSION_NAME}Exit.sh"
-    EXEC_COMMAND="sh -c 'WLR_XWAYLAND=/usr/bin/Xwayland gamescope -w 1600 -h 900 -W 1600 -H 900 -r 60 -S stretch -f -C 5000 -e --cursor Adwaita --force-grab-cursor --mangoapp -- steam -steamdeck -steamos3'"
-    APP_DIR="$HOME/.local/share/applications"
+    FILENAME="jrs-${SESSION_NAME}Mode.desktop"
+    EXITFILENAME="jrs-${SESSION_NAME}Exit.sh"
+    EXEC_COMMAND="sh -c 'WLR_XWAYLAND=/usr/bin/Xwayland gamescope -w 1600 -h 900 -W 1600 -H 900 -S stretch -f -C 5000 -e --cursor Adwaita --force-grab-cursor --mangoapp -- steam -steamdeck -steamos3'"
+    APP_DIR="$HOME/.local/share/applications/jrs"
     SESSION_DIR="/usr/share/xsessions"
     #/usr/share/xsessions
     #/usr/share/wayland-sessions
