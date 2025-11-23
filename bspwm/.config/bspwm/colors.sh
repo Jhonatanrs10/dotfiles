@@ -1,5 +1,5 @@
-wallpaper="w5.png"
-base00="#599E71"
+wallpaper="w6.png"
+base00="#c10b0b"
 base01="#333333"
 base02="#ffffff"
 base03="#7d7d7d"

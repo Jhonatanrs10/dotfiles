@@ -5,10 +5,10 @@
 	"modules-left": ["hyprland/workspaces"],
 	"modules-center": ["clock"],
 	"modules-right": [
-    "battery",
-    "pulseaudio",
-    "group/tray-expander",
-    "trayoff"
+    "batteryoff",
+    "pulseaudiooff",
+    "trayoff",
+    "group/tray-expander"
   ],
 	"hyprland/workspaces": {
      "format": "{icon}",
@@ -27,11 +27,12 @@
     },
   "group/tray-expander": {
     "orientation": "inherit",
+    "on-click": true,
     "drawer": {
       "transition-duration": 600,
       "children-class": "tray-group-item"
     },
-    "modules": ["custom/expand-icon", "tray"]
+    "modules": ["custom/expand-icon", "battery", "pulseaudio", "tray"]
   },
   "custom/expand-icon": {
     "format": "  ",

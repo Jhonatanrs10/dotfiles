@@ -13,6 +13,10 @@
 #GAMESCOPE
 #--expose-wayland na nvidia causa bug na tela
 
+#Arranque
+#CS2
+#WLR_XWAYLAND=/usr/bin/Xwayland gamescope -w 1024 -h 768 -W 1024 -H 768 -r 75 -S stretch -f --immediate-flips --rt --force-grab-cursor --mangoapp -- %command%
+
 setupSteamOSMode(){
     packagesManager "$myBaseSteam $myBaseMangoHud $myBaseGamescope"
     SESSION_NAME="SteamOS"
