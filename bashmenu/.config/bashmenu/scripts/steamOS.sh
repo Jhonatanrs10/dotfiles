@@ -17,16 +17,23 @@
 #CS2
 #WLR_XWAYLAND=/usr/bin/Xwayland gamescope -w 1024 -h 768 -W 1024 -H 768 -r 75 -S stretch -f --immediate-flips --rt --force-grab-cursor --mangoapp -- %command%
 
+gamescopePriorityConf(){
+    sudo setcap 'CAP_SYS_NICE=eip' $(which gamescope)
+    sudo tee /etc/modprobe.d/nvidia-modeset.conf <<< 'options nvidia_drm modeset=1 fbdev=1'
+}
+
 setupSteamOSMode(){
     packagesManager "$myBaseSteam $myBaseMangoHud $myBaseGamescope"
     SESSION_NAME="SteamOS"
     FILENAME="jrs-${SESSION_NAME}Mode.desktop"
     EXITFILENAME="jrs-${SESSION_NAME}Exit.sh"
-    EXEC_COMMAND="sh -c 'WLR_XWAYLAND=/usr/bin/Xwayland gamescope -w 1600 -h 900 -W 1600 -H 900 -S stretch -f -C 5000 -e --cursor Adwaita --force-grab-cursor --mangoapp -- steam -steamdeck -steamos3'"
+    EXEC_COMMAND="sh -c 'gamescope -w 1600 -h 900 -W 1600 -H 900 -S stretch -f -C 5000 -e --cursor Adwaita --force-grab-cursor --mangoapp -- steam -steamdeck -steamos3'"
     APP_DIR="$HOME/.local/share/applications/jrs"
     SESSION_DIR="/usr/share/xsessions"
     #/usr/share/xsessions
     #/usr/share/wayland-sessions
+
+    gamescopePriorityConf
 
     echo "SteamOSMode
 [1] App, [2] Session"
