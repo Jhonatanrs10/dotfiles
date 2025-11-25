@@ -72,11 +72,18 @@ window#waybar:first-child > box {
 }
 #tray,
 #cpu,
-#battery,
-#network,
-#bluetooth,
-#pulseaudio{
+#battery{
+  font-size: 15px;
   min-width: 12px;
   margin: 0 7.5px;
 }
-
+#network,
+#bluetooth,
+#pulseaudio{
+  font-size: 15px;
+  min-width: 12px;
+  margin: 0 7.5px;
+}
+#custom-expand-icon {
+    font-size: 15px;
+}

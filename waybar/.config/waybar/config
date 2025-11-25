@@ -39,7 +39,7 @@
     "tooltip": false
   },
   "tray": {
-    "icon-size": 12,
+    "icon-size": 15,
     "spacing": 12
   },
      "bluetooth": {
@@ -62,7 +62,7 @@
     "spacing": 1,
     "on-click": "omarchy-launch-wifi"
   },
-      "pulseaudio": {
+    "pulseaudio": {
     "format": "{icon}",
     "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
     "on-click-right": "$TERMINAL --class=Wiremix -e wiremix",
