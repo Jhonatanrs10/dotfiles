@@ -1,0 +1,27 @@
+##I3BARS###
+bar {
+	status_command i3status 
+	position top 
+	mode dock
+	tray_output primary
+    #tray_output HDMI-0
+	tray_padding 2
+	workspace_buttons yes
+	workspace_min_width 25
+	separator_symbol ":"
+	strip_workspace_numbers yes
+	strip_workspace_name no
+	binding_mode_indicator yes
+	padding 0 0 5 0
+	colors {
+	    #i3bar
+	    background $color2
+	    statusline $color3
+	    separator $color3
+	    focused_workspace  $color1 $color2 $color3
+	    active_workspace   $color2 $color2 $color3
+	    inactive_workspace $color2 $color2 $color3
+	    urgent_workspace   $color2 $color5 $color3
+       	binding_mode       $color2 $color2 $color3
+    }
+}

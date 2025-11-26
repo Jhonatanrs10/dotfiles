@@ -1,15 +1,9 @@
 ######Jhonatanrs I3-WM config######
 
-set $color1 #1793d1
-set $color2 #000000
-set $color3 #ffffff
-set $color4 #7d7d7d
-set $color5 #900000
-set $color6 #000000
-set $color7 #a08000
+include ~/.config/i3/colors
 
 set $mod Mod4
-set $textFont Caskaydia Mono Nerd Font 11
+set $textFont Caskaydia Mono Nerd Font 9
 set $appMenu2 dmenu_run
 set $appMenu rofi -show drun
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -31,16 +25,11 @@ set $espacoentrejanelas 5px
 font pango:$textFont
 
 ###AutoStart###
-#exec --no-startup-id picom
-#exec_always --no-startup-id $HOME/.config/polybar/polybar.sh
+exec --no-startup-id picom
 exec --no-startup-id dex --autostart --environment i3
-#exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
-#exec --no-startup-id volumeicon
-#exec --no-startup-id xfce4-power-manager
-#exec --no-startup-id nitrogen --restore
-#exec --no-startup-id feh --bg-scale ~/.config/wallpapers/main.png
 exec --no-startup-id xsetroot -solid black
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg
@@ -48,7 +37,14 @@ exec --no-startup-id /usr/bin/dunst
 exec --no-startup-id xset -b
 exec --no-startup-id kdeconnect-indicator
 exec --no-startup-id syncthing --no-browser
+exec_always --no-startup-id ~/.screenlayout/monitors.sh
+
+###BAR###
+#include ~/.config/i3status/bar
+exec_always --no-startup-id $HOME/.config/polybar/polybar.sh
+
 ###Binds###
+bindsym $mod+t exec --no-startup-id ~/.config/jrs/setTheme.sh 
 bindsym $mod+d exec --no-startup-id $appMenu
 bindsym $mod+x exec --no-startup-id $MyFileManager
 bindsym $mod+c exec --no-startup-id $MyBrowser
@@ -58,9 +54,6 @@ bindsym $mod+Shift+Return exec --no-startup-id i3-sensible-terminal
 bindsym $mod+Shift+q kill
 bindsym Mod1+F4 kill
 bindsym --whole-window $mod+button2 floating toggle
-#bindsym $mod+n exec --no-startup-id nitrogen && convert -resize "$(xrandr | grep "*" | awk '{ print $1 }')!" -blur 0x10 $(cat .config/nitrogen/bg-saved.cfg | sed -n '2 p' | sed 's/file=//') /usr/share/backgrounds/main.png, mode "default"
-#bindsym 7 exec --no-startup-id nitrogen && convert -resize "$(xrandr | grep "*" | awk '{ print $1 }')!" -blur 0x10 $(cat .config/nitrogen/bg-saved.cfg | sed -n '2 p' | sed 's/file=//') $HOME/.config/i3/wallpaperI3Lock.png, mode "default"
-#bindsym $mod+Ctrl+p exec --no-startup-id killall picom & dunstify -t 1000 --hints int:transient:1 "Picom" "Stopped" --icon=picom
 bindsym $mod+Ctrl+p exec --no-startup-id \
     (pgrep picom > /dev/null && killall picom && dunstify -t 1000 --hints int:transient:1 "Picom" "Stopped" --icon=picom || (picom & dunstify -t 1000 --hints int:transient:1 "Picom" "Started" --icon=picom))
 bindsym $mod+Ctrl+b bar mode toggle
@@ -68,20 +61,13 @@ bindsym $mod+b exec --no-startup-id polybar-msg cmd toggle
 bindsym $mod+p exec --no-startup-id $HOME/.config/jrs/powerprofiles.sh
 
 ###Power###
-#bindsym $mod+l exec --no-startup-id $locker
-#bindsym $mod+Shift+e exec --no-startup-id i3-msg exit
-#bindsym $mod+Ctrl+7 exec --no-startup-id $locker && systemctl suspend
 bindsym $mod+l exec --no-startup-id $locker
 bindsym $mod+Ctrl+l exec --no-startup-id $HOME/.config/jrs/power.sh
-#bindsym $mod+Ctrl+8 exec --no-startup-id $locker && systemctl hibernate
-#bindsym $mod+Ctrl+9 exec --no-startup-id systemctl reboot
-#bindsym $mod+Ctrl+0 exec --no-startup-id systemctl poweroff -i
 
 ###Print###
 bindsym --release $mod+Print exec --no-startup-id mkdir -p ~/Pictures/PrtSc | scrot ~/Pictures/PrtSc/Screenshot_%Y-%m-%d_%H-%M-%S.png
 bindsym --release Print exec --no-startup-id mkdir -p ~/Pictures/PrtSc | scrot -f -s ~/Pictures/PrtSc/Cutshot_%Y-%m-%d_%H-%M-%S.png
 bindsym --release $mod+z exec --no-startup-id xcolor -s
-#bindsym --release $mod+z exec --no-startup-id $HOME/.config/jrs/getcol.sh
 
 ###Window###
 bindsym Mod1+Tab focus right
@@ -119,18 +105,17 @@ bindsym $mod+Shift+w sticky toggle
 bindsym $mod+Ctrl+Up exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym $mod+Ctrl+Down exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% 
 bindsym $mod+Ctrl+m exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle 
-bindsym $mod+Ctrl+Right exec --no-startup-id brightnessctl set 5%-
-bindsym $mod+Ctrl+Left exec --no-startup-id brightnessctl set +5%
-#bindsym 4 exec --no-startup-id light -A 5 && echo `light` > $HOME/.config/i3/brightness
-#bindsym 5 exec --no-startup-id light -U 5 && echo `light` > $HOME/.config/i3/brightness
+
+bindsym $mod+Ctrl+Right exec --no-startup-id brightnessctl set 5%- && $refresh_i3status
+bindsym $mod+Ctrl+Left exec --no-startup-id brightnessctl set +5% && $refresh_i3status
+
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
-#bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5 && echo `light` > $HOME/.config/i3/brightness &&  $refresh_i3status
-#bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5 && echo `light` > $HOME/.config/i3/brightness  &&  $refresh_i3status
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set 5%- &&  $refresh_i3status
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set +5% &&  $refresh_i3status
+
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set 5%- && $refresh_i3status
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set +5% && $refresh_i3status
 
 ###Workspaces###
 bindsym $mod+1 workspace number $ws1
@@ -153,7 +138,7 @@ bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
-bindsym $mod+Shift+r reload
+bindsym $mod+Shift+r restart & reload
 bindsym $mod+Shift+c restart
 floating_modifier $mod
 
@@ -172,41 +157,7 @@ workspace_layout default
 #for_window [title=galculator] floating enable
 #for_window [instance=nvidia-settings] floating enable
 #for_window [instance=$appMenu] floating enable resize set 600 300
-
-##I3BARS###
-bar {
-	status_command i3status 
-	position bottom 
-	mode dock
-	tray_output primary
-    #tray_output HDMI-0
-	tray_padding 2
-	workspace_buttons yes
-	workspace_min_width 25
-	separator_symbol ":"
-	strip_workspace_numbers yes
-	strip_workspace_name no
-	binding_mode_indicator yes
-	padding 0 0 5 0
-	colors {
-	    #i3bar
-	    background $color2
-	    statusline $color3
-	    separator $color3
-	    focused_workspace  $color1 $color2 $color3
-	    active_workspace   $color2 $color2 $color3
-	    inactive_workspace $color2 $color2 $color3
-	    urgent_workspace   $color2  $color5  $color3
-       binding_mode       $color2 $color2 $color3
-    }
-}
-#class                  borda       background  texto         indicator   child_border
-client.focused          $color1 $color1 $color3 $color1 $color1
-client.focused_inactive $color4 $color4 $color2 $color4 $color4
-client.unfocused        $color4 $color4 $color2 $color4 $color4
-client.urgent           $color7 $color5 $color3 $color5 $color5
-client.placeholder      $color6 $color6 $color3 $color6 $color6
-client.background       $color3
+for_window [class=".*"] border pixel
 
 #Resize
 bindsym Mod1+Left resize shrink width 10 px or 10 ppt

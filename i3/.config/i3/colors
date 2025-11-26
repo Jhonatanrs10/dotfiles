@@ -1,0 +1,17 @@
+exec_always --no-startup-id feh --bg-fill ~/.config/wallpapers/w6.png
+set $color1 #c10b0b
+set $color2 #333333
+set $color3 #ffffff
+set $color4 #7d7d7d
+set $color5 #000000
+set $color6 #000000
+set $color7 #000000
+
+#class                  borda       background  texto         indicator   child_border
+client.focused          $color1 $color1 $color3 $color1 $color1
+client.focused_inactive $color1 $color4 $color2 $color4 $color4
+client.unfocused        $color4 $color4 $color2 $color4 $color4
+client.urgent           $color7 $color5 $color3 $color5 $color5
+client.placeholder      $color6 $color6 $color3 $color6 $color6
+client.background       $color3
+

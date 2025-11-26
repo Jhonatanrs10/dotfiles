@@ -59,6 +59,24 @@ echo "* {
     base07: #$JRS_BLACK_COLOR;
 }" > ~/.config/rofi/colors.rasi
 
+# i3wm colors setup
+echo 'exec_always --no-startup-id feh --bg-fill ~/.config/wallpapers/'$JRS_WALLPAPER'
+set $color1 #'$JRS_MAIN_COLOR'
+set $color2 #'$JRS_BAR_COLOR'
+set $color3 #'$JRS_TEXT_COLOR'
+set $color4 #'$JRS_UNFOCUSED_COLOR'
+set $color5 #'$JRS_BLACK_COLOR'
+set $color6 #'$JRS_BLACK_COLOR'
+set $color7 #'$JRS_BLACK_COLOR'
+
+#class                  borda       background  texto         indicator   child_border
+client.focused          $color1 $color1 $color3 $color1 $color1
+client.focused_inactive $color1 $color4 $color2 $color4 $color4
+client.unfocused        $color4 $color4 $color2 $color4 $color4
+client.urgent           $color7 $color5 $color3 $color5 $color5
+client.placeholder      $color6 $color6 $color3 $color6 $color6
+client.background       $color3
+' > ~/.config/i3/colors
 
 # Bspwm colors setup
 echo 'wallpaper="'$JRS_WALLPAPER'"
@@ -203,3 +221,5 @@ hyprctl hyprpaper reload ,"~/.config/wallpapers/$JRS_WALLPAPER"
 pkill -USR1 -x sxhkd &
 bspc wm -r &
 dunstctl reload &
+i3-msg restart &
+i3-msg reload &
