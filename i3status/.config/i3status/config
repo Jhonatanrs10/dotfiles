@@ -7,7 +7,7 @@
 
 general {
 	colors = true
-        interval = 5
+    interval = 5
 	color_good = "#ffffff"
 	color_bad = "#FF0000"
 	color_degraded = "#FFFF00"

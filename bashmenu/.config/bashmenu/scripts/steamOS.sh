@@ -17,9 +17,10 @@
 #CS2
 #WLR_XWAYLAND=/usr/bin/Xwayland gamescope -w 1024 -h 768 -W 1024 -H 768 -r 75 -S stretch -f --immediate-flips --rt --force-grab-cursor --mangoapp -- %command%
 
-gamescopePriorityConf(){
+configSteamOS(){
     sudo setcap 'CAP_SYS_NICE=eip' $(which gamescope)
     sudo tee /etc/modprobe.d/nvidia-modeset.conf <<< 'options nvidia_drm modeset=1 fbdev=1'
+    sudo usermod -aG gamemode $USER
 }
 
 setupSteamOSMode(){
@@ -32,15 +33,13 @@ setupSteamOSMode(){
     SESSION_DIR="/usr/share/xsessions"
     #/usr/share/xsessions
     #/usr/share/wayland-sessions
-
-    gamescopePriorityConf
-
     echo "SteamOSMode
-[1] App, [2] Session"
+[1] App, [2] Session, [3] Config"
     read resp
     case $resp in
 		1)appSteamOS;;
         2)sessionSteamOS;;
+        3)configSteamOS;;
 		*);;
 	esac
 }
