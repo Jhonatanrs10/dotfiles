@@ -5,7 +5,7 @@
 killall -q polybar
 
 # Aguarda até que os processos sejam encerrados (máximo de 2 segundos)
-while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
+while pgrep -u $UID -x polybar >/dev/null; do sleep 2; done
 
 ## 2. Inicialização em Múltiplos Monitores
 # Verifica se há mais de um monitor e inicia uma instância para cada um

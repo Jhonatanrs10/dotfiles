@@ -149,6 +149,7 @@ echo '#!/bin/bash
 
 hyprctl reload & 
 killall -SIGUSR2 waybar &
+killall polybar &
 hyprctl hyprpaper reload ,"~/.config/wallpapers/$JRS_WALLPAPER"
 pkill -USR1 -x sxhkd &
 bspc wm -r &
