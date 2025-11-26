@@ -1,7 +1,7 @@
 ##I3BARS###
 bar {
 	status_command i3status 
-	position top 
+	position bottom 
 	mode dock
 	tray_output primary
     #tray_output HDMI-0
