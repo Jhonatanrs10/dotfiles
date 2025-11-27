@@ -91,7 +91,7 @@ theme_RedBerserk[black]="000000"
 theme_RedBerserk[wallpaper]="w7.png"
 
 declare -A theme_AnimeVibe
-theme_AnimeVibe[main]="1793d1"
+theme_AnimeVibe[main]="008da9"
 theme_AnimeVibe[bar]="333333"
 theme_AnimeVibe[text]="ffffff"
 theme_AnimeVibe[unfocused]="7d7d7d"

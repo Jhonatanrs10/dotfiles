@@ -4,7 +4,7 @@ nodejslts() {
     read escolha
     if [ "$escolha" = "1" ]; then
         installName="NodeJS"
-        criaDiretorioInstall "$dBashMenu/$installName"
+        criaDiretorioInstall "$JRS_DIR/$installName"
         criaPastaBaixaExtrai "$diretorioInstall" "https://nodejs.org/dist/v20.9.0/node-v20.9.0-linux-x64.tar.xz" "node.tar.xz"
         sudo cp -r $diretorioInstall/* /usr/
         export PATH=/usr/node*/bin:$PATH

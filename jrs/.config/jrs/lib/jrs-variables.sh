@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-dBashMenu="$HOME/.bashmenu"
+JRS_DIR="$HOME/.dir_jrs"
 linuxUserServer="servers"
 nomeRun="run"
 DATANOW=$(date "+[%d-%m-%Y][%H-%M]")

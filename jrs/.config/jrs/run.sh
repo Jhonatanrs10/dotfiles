@@ -14,8 +14,8 @@ sourceFolder(){
     done
     #sleep 10
 }
-sourceFolder "./scripts"
-dependenciasAtalhov2
+sourceFolder "./lib"
+dependencies
 
 # Lista de opções (texto e função correspondente)
 opcoes=(
@@ -68,7 +68,7 @@ total_paginas=$(( (total_opcoes + opcoes_por_pagina - 1) / opcoes_por_pagina ))
 mostrar_menu() {
   clear
   echo -e "${CYAN}${RESET}"
-  echo -e "${GREEN}  BASHMENU - Página $((pagina + 1))/${total_paginas}${RESET}"
+  echo -e "${GREEN}  SCRIPTS - Página $((pagina + 1))/${total_paginas}${RESET}"
   echo -e "${CYAN}${RESET}"
 
   inicio=$((pagina * opcoes_por_pagina))

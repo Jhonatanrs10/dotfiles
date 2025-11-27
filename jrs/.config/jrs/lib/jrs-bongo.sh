@@ -4,7 +4,7 @@ bongo(){
     uninstallPastaAtalhoBinMesmoNome "winBongo"
     packagesManager "g++ gcc libxdo xdotool libxdo-dev libsdl2-dev libsfml-dev sdl2 sfml x11 xrandr make"
     echo -e "[INFO] - INSTALANDO BONGOCAT - [INFO]"
-    criaDiretorio "diretorioBongo" "$dBashMenu/winBongo"
+    criaDiretorio "diretorioBongo" "$JRS_DIR/winBongo"
     cd $diretorioBongo
     criaPastaBaixaExtrai "$diretorioBongo" "$bongocat" "bongo.zip"
     mv $diretorioBongo/*/* .

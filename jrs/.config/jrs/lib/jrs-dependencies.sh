@@ -1,12 +1,12 @@
 #!/usr/bin/env sh
 dependenciasAtalho(){
-    echo "INSTALAR ATALHO BASHMENU 
+    echo "INSTALAR ATALHO 
 Diretório atual:
 $PWD
 Este é o diretório do $nomeRun.sh (s/n)"
     read resp
     if [ "$resp" = "s" ]; then
-        wrapper="$dBashMenu/.jrs.sh"
+        wrapper="$JRS_DIR/.jrs.sh"
 
         echo "Criando wrapper em: $wrapper"
 
@@ -24,11 +24,10 @@ EOF
     fi
 }
 
-dependenciasAtalhov2() {
-    local wrapper="$dBashMenu/.jrs.sh"
+dependencies() {
+    local wrapper="$JRS_DIR/.jrs.sh"
     local link_name="jrs"
     local link_path="/usr/bin/$link_name"
-    local link_pathatalho="$HOME/.local/share/applications/jrs/jrs-BashMenu.desktop"
 
     # Verifica se o arquivo wrapper já existe
     if [ ! -f "$wrapper" ]; then

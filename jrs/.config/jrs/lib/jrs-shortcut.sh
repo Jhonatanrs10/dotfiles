@@ -110,11 +110,11 @@ setupAppimage(){
     sudo rm $HOME/.local/share/applications/jrs/jrs-Appimage-*
     echo "Criando diretorio AppImages"
     sleep 2
-    mkdir -p $dBashMenu/AppImages
-    for vApp in `ls $dBashMenu/AppImages`
+    mkdir -p $JRS_DIR/AppImages
+    for vApp in `ls $JRS_DIR/AppImages`
     do
-        chmod 777 $dBashMenu/AppImages/$vApp
-        criaAtalho "${vApp%.*}" "An Appimage" "./$vApp" "$dBashMenu/AppImages" "false" "Appimage-${vApp%.*}" "application-default-icon"
+        chmod 777 $JRS_DIR/AppImages/$vApp
+        criaAtalho "${vApp%.*}" "An Appimage" "./$vApp" "$JRS_DIR/AppImages" "false" "Appimage-${vApp%.*}" "application-default-icon"
     done
 }
 
@@ -143,7 +143,7 @@ AtalhoTerminalBin(){
 }
 
 criaAtalhoTerminalBin(){
-    criaDiretorioInstall "$dBashMenu/Bins"   
+    criaDiretorioInstall "$JRS_DIR/Bins"   
     echo "DIGITE OU COLE O COMANDO DE TERMINAL:"
     read comandoTerminal
     echo "DIGITE OU COLE O NOME DO ATALHO/ARQUIVO BIN:"
@@ -168,7 +168,7 @@ removeAtalhoBinJrs(){
     echo "DIGITE O NOME DO ATALHO/ARQUIVO BIN QUE DESEJA REMOVER: (SEM O 'jrs-')"
     read atalhoBin
     removeAtalhoBin "$atalhoBin"
-    rm $dBashMenu/Bins/$atalhoBin.sh
+    rm $JRS_DIR/Bins/$atalhoBin.sh
     cd $HOME
 }
 
@@ -182,7 +182,7 @@ removeAtalhoBin(){
 #removeAtalhoBin "nome do atalho na pasta /usr/bin/ sempre deixar esse campo preenchido pra nao apagar a pasta bin"
 
 criaArqRunDiretorioInstall(){
-    criaDiretorio "shortcuts" "$dBashMenu/Shortcuts"
+    criaDiretorio "shortcuts" "$JRS_DIR/Shortcuts"
     echo -e 'DIGITE O DIRETORIO OU DIRETORIO/ARQUIVO.EXTENSION Ex:/home/user/Downloads Ou /home/user/teste.txt'
     read nesseDir
     echo 'DIGITE UM NOME PARA O ATALHO'
@@ -191,7 +191,7 @@ criaArqRunDiretorioInstall(){
 } 
 
 uninstallPastaAtalhoBinMesmoNome(){
-    uninstallPastaAtalhoBin "$dBashMenu/$1" "$1.desktop" "$1" 
+    uninstallPastaAtalhoBin "$JRS_DIR/$1" "$1.desktop" "$1" 
 }
 #uninstallPastaAtalhoBinMesmoNome "Nome igual em Pasta, Atalho e Bin"
 

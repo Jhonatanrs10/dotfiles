@@ -36,7 +36,7 @@ installNgrok(){
     arqDiscord="https://github.com/ChaoticWeg/discord.sh/archive/refs/heads/master.zip"
     uninstallPastaAtalhoBinMesmoNome "Ngrok"
     echo -e "[INFO] - DEPENDENCIAS - [INFO]"
-    criaDiretorio "diretorioNgrok" "$dBashMenu/Ngrok"
+    criaDiretorio "diretorioNgrok" "$JRS_DIR/Ngrok"
     baixaArq "diretorioNome" "$arqNgrok" "$diretorioNgrok/ngrok.tgz"
     baixaArq "diretorioNome" "$arqDiscord" "$diretorioNgrok/bot.zip"
     echo -e "[INFO] - INSTALANDO NGROK - [INFO]"

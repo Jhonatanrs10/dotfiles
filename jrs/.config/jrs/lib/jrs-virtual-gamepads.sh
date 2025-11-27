@@ -4,7 +4,7 @@ virtualGamepads(){
     packagesManager "nodejs-lts-hydrogen npm"
     installName="VirtualGamepads"
     uninstallPastaAtalhoBinMesmoNome "$installName"
-    criaDiretorioInstall "$dBashMenu/$installName"
+    criaDiretorioInstall "$JRS_DIR/$installName"
     criaPastaBaixaExtrai "$diretorioInstall" "https://codeload.github.com/jehervy/node-virtual-gamepads/zip/refs/heads/master" "nvg.zip"
     mv */* .
     npm install

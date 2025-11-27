@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 installPokexgames(){
     pxg="https://download.pokexgames.com/pxg-linux.zip"
-    diretorioPokexgames="$dBashMenu/Pokexgames"
+    diretorioPokexgames="$JRS_DIR/Pokexgames"
     uninstallPastaAtalhoBinMesmoNome "Pokexgames"
 	criaPastaBaixaExtrai "$diretorioPokexgames" "$pxg" "pxg.zip"
     criaAtalho "Pokexgames" "Tibia Pokemon" "./pxgme-linux" "$diretorioPokexgames" "false" "Pokexgames" "application-default-icon"
@@ -13,7 +13,7 @@ installMinecraft(){
 	verMine="https://tlauncher.org/jar"
 	uninstallPastaAtalhoBinMesmoNome "MinecraftTlauncher"
 	echo -e "[INFO] - CRIANDO DIRETORIOS... - [INFO]"
-	criaDiretorio "diretorioMine" "$dBashMenu/MinecraftTlauncher"
+	criaDiretorio "diretorioMine" "$JRS_DIR/MinecraftTlauncher"
 	echo -e "[INFO] - BAIXANDO ARQUIVOS... - [INFO]"
 	baixaArq "diretorioNome" "$verMine" "$diretorioMine/tlauncher.zip"
     extrairArq "$diretorioMine"

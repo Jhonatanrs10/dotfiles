@@ -3,7 +3,7 @@ SCRIPTMODELO(){
 
     installName="SCRIPTMODELO"
     uninstallPastaAtalhoBinMesmoNome "$installName"
-    criaDiretorioInstall "$dBashMenu/$installName"
+    criaDiretorioInstall "$JRS_DIR/$installName"
 
     #criaPastaBaixaExtrai "$diretorioInstall" "Link" "mod.jar"
 

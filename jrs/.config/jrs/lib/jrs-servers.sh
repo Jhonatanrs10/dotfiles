@@ -44,7 +44,7 @@ installFivem(){
     uninstallPastaAtalhoBinMesmoNome "$fivemNome"
 
 	echo -e "[INFO] - INSTALANDO FIVEM SERVER - [INFO]"
-	criaDiretorio "diretorioServer" "$dBashMenu/$fivemNome"
+	criaDiretorio "diretorioServer" "$JRS_DIR/$fivemNome"
 	criaPastaBaixaExtrai "$diretorioServer" "$verFivem" "fx.tar.xz"
 	
 	criaPastaBaixaExtrai "$diretorioServer" "$cfxData" "data.zip"
@@ -186,7 +186,7 @@ installMinecraftServer(){
 	link="https://piston-data.mojang.com/v1/objects/4707d00eb834b446575d89a61a11b5d548d8c001/server.jar"
 
 	echo -e "[INFO] - CRIANDO DIRETORIOS... - [INFO]"
-	criaDiretorioInstall "$dBashMenu/MinecraftServer"
+	criaDiretorioInstall "$JRS_DIR/MinecraftServer"
 
 	echo -e "[INFO] - BAIXANDO ARQUIVOS... - [INFO]"
 	baixaArq "diretorioNome" "$link" "$diretorioInstall/server.jar"
@@ -218,7 +218,7 @@ sampServer(){
 
     installName="SampServer"
     uninstallPastaAtalhoBinMesmoNome "$installName"
-    criaDiretorioInstall "$dBashMenu/$installName"
+    criaDiretorioInstall "$JRS_DIR/$installName"
 
 
     criaPastaBaixaExtrai "$diretorioInstall" "http://files.sa-mp.com/samp037svr_R2-1.tar.gz" "samp.tar.gz"
@@ -254,7 +254,7 @@ stream_rate 1000" "$diretorioInstall/server.cfg"
 terrariaServer(){
     installName="TerrariaServer"
     uninstallPastaAtalhoBinMesmoNome "$installName"
-    criaDiretorioInstall "$dBashMenu/$installName"
+    criaDiretorioInstall "$JRS_DIR/$installName"
     criaPastaBaixaExtrai "$diretorioInstall" "https://terraria.org/api/download/pc-dedicated-server/terraria-server-1449.zip" "ts.zip"
     chmod 770 $diretorioInstall/*/Linux/TerrariaServer.bin.x86_64
     criaArqRunDiretorioInstall "#!/usr/bin/env sh
@@ -268,7 +268,7 @@ installUnturnedServer(){
 
     installName="UnturnedServer"
     uninstallPastaAtalhoBinMesmoNome "$installName"
-    criaDiretorioInstall "$dBashMenu/$installName"
+    criaDiretorioInstall "$JRS_DIR/$installName"
     
     criarArq "Name JardimRecreio
 Map PEI
@@ -292,7 +292,7 @@ bash ServerHelper.sh +LanServer/JardimRecreio" "$diretorioInstall/run.sh"
 installProjectZomboidServer(){
     installName="PZserver"
     uninstallPastaAtalhoBinMesmoNome "$installName"
-    criaDiretorioInstall "$dBashMenu/$installName"
+    criaDiretorioInstall "$JRS_DIR/$installName"
     installSteamCMD
     criarArq "steamcmd +force_install_dir "$diretorioInstall" +login anonymous +app_update 380870 validate +quit" "run_install_and_update.sh" # 108600 ou 380870
 }   

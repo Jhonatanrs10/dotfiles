@@ -39,7 +39,7 @@ setLink(){
 }
 
 yesorno(){
-    echo -e "[BashMenu] $1 [s/n]"
+    echo -e "$1 [s/n]"
     read resp
     if [ "$resp" = "s" ]; then
         $2
@@ -48,9 +48,9 @@ yesorno(){
 #yesorno "Titulo" "Script"
 
 baixaDebs(){
-    criaDiretorio "diretorioBaixaDebs" "$dBashMenu/tempArqs"
+    criaDiretorio "diretorioBaixaDebs" "$JRS_DIR/tempArqs"
     clear
-    echo -e "[BashMenu] Deseja baixar $1? [s/n]"
+    echo -e "Deseja baixar $1? [s/n]"
     read resp
     if [ "$resp" = s ]; then
         baixaArq "diretorioNome" "$2" "$diretorioBaixaDebs/$1.deb"
