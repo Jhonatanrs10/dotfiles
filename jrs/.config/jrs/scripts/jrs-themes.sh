@@ -1,7 +1,5 @@
 #!/bin/bash
 
-source $HOME/.config/jrs/lib/jrs-functions.sh
-
 # --- Definição dos Temas ---
 
 declare -A theme_Archlinux
@@ -328,7 +326,8 @@ echo '#!/bin/bash
     foreground = "#'$JRS_TEXT_COLOR'"
     frame_color = "#'$JRS_BAD_COLOR'"' > $HOME/.config/dunst/dunstrc.d/colors.conf
 
-reload-all-wm
+
+source $HOME/.config/jrs/scripts/jrs-reload-wm.sh
 
 #dunstify -t 1000 --hints int:transient:1 "Theme" "$varNomeTema" --icon=preferences-desktop-theme
 
