@@ -1,5 +1,6 @@
 #!/bin/bash
 source $HOME/.config/jrs/lib/jrs-functions.sh
+reload-all-wm > /dev/null 2>&1 &
 cd ~/.dotfiles && git pull && git status
 read -p "Deseja atualizar seu repositório de dotfiles? (y/N/diff) " confirm &&
 if [[ "$confirm" == [yY] ]]; then
@@ -7,5 +8,5 @@ if [[ "$confirm" == [yY] ]]; then
 elif [[ "$confirm" == "diff" ]]; then
     git diff
 fi
-reload-all-wm 2> /dev/null &
+
 
