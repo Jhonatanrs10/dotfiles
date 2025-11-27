@@ -85,7 +85,7 @@ reload-all-wm(){
         hyprctl reload & 
         killall -SIGUSR2 waybar &
         killall polybar &
-        hyprctl hyprpaper reload ,"~/.config/wallpapers/$JRS_WALLPAPER"
+        bash ~/.config/hypr/hyprpaper.sh &
         pkill -USR1 -x sxhkd &
         bspc wm -r &
         dunstctl reload &

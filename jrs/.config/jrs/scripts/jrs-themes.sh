@@ -184,6 +184,9 @@ JRS_WALLPAPER="${chosen_theme[wallpaper]}"
 echo "reload = ~/.config/wallpapers/$JRS_WALLPAPER
 wallpaper = , ~/.config/wallpapers/$JRS_WALLPAPER" > ~/.config/hypr/hyprpaper.conf
 
+echo "hyprctl hyprpaper preload ~/.config/wallpapers/$JRS_WALLPAPER
+hyprctl hyprpaper wallpaper , ~/.config/wallpapers/$JRS_WALLPAPER" > ~/.config/hypr/hyprpaper.sh
+
 # Hyprland colors setup
 echo '$wallpaper = '$JRS_WALLPAPER'
 $color1 = '$JRS_MAIN_COLOR'
