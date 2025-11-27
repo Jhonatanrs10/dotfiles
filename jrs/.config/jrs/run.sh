@@ -56,7 +56,6 @@ opcoes=(
   "Reparar Pacman::repairPM"
   "Discord Config Hyprland::hyprlandDiscordX"
   "SteamOSMode::setupSteamOSMode"
-  "TESTE TESTE TESTE::atalhoWireMix"
   )
 
 linhas_terminal=$(tput lines)
