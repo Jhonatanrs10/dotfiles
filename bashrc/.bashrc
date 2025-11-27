@@ -34,6 +34,8 @@ alias mpv1080p60="mpv --profile=1080p60"
 alias codehere='code . && exit'
 alias codedotfiles="code ~/.dotfiles && exit"
 alias vimdotfiles="cd ~/.dotfiles && nvim ."
+# SSH
+alias sshlocalserver="ssh jhonatanrs@192.168.0.134"
 # Git Status
 alias mydotfiles='
   cd ~/.dotfiles && git pull && git status
