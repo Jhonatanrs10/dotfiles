@@ -16,10 +16,6 @@ super + c
 super + b 
 	polybar-msg cmd toggle
 
-# Inicia/Para Picom
-super + ctrl + p
-    pgrep picom > /dev/null && killall picom && dunstify -t 1000 --hints int:transient:1 "Picom" "Stopped" --icon=picom || (picom & dunstify -t 1000 --hints int:transient:1 "Picom" "Started" --icon=picom)
-
 # power profiles
 super + p 
 	$HOME/.config/jrs/scripts/jrs-power-profiles.sh
