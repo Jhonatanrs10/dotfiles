@@ -122,17 +122,8 @@ EOF
 
     # 2. Gerar a string de opções (apenas o Nome Amigável)
     local options=$(echo "$theme_list" | cut -d'|' -f1)
-
-    # 3. Detectar sessão e escolher o menu
-    local menu_cmd=""
-    if [ "$XDG_SESSION_TYPE" = "x11" ] && command -v rofi &>/dev/null; then
-        menu_cmd="rofi -dmenu -i -p Themes"
-    elif [ "$XDG_SESSION_TYPE" = "wayland" ] && command -v rofi &>/dev/null; then
-        menu_cmd="rofi -dmenu -i -p Themes"
-    else
-        echo "ERRO: Nenhuma ferramenta de menu adequada encontrada." >&2
-        exit 1
-    fi
+    
+    menu_cmd="rofi -dmenu -i -p Themes"
 
     # 4. Mostrar menu e obter seleção do usuário (Nome Amigável)
     local chosen_name=$(echo -e "$options" | $menu_cmd)
@@ -330,5 +321,5 @@ dunstctl reload &
 i3-msg restart &
 i3-msg reload &
 
-dunstify -t 1000 --hints int:transient:1 "Theme" "$varNomeTema" --icon=preferences-desktop-theme
+#dunstify -t 1000 --hints int:transient:1 "Theme" "$varNomeTema" --icon=preferences-desktop-theme
 
