@@ -7,5 +7,5 @@ if [[ "$confirm" == [yY] ]]; then
 elif [[ "$confirm" == "diff" ]]; then
     git diff
 fi
-reload-all-wm
+reload-all-wm 2> /dev/null &
 
