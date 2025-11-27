@@ -30,7 +30,7 @@ super + t
 
 # make sxhkd reload its configuration files:
 super + shift + r
-	pkill -USR1 -x sxhkd && bspc wm -r
+	~/.config/jrs/scripts/jrs-reload-wm.sh
 
 # close and kill
 super + shift + q
