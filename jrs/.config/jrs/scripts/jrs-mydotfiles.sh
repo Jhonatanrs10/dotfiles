@@ -1,7 +1,7 @@
 #!/bin/bash
 source $HOME/.config/jrs/lib/jrs-functions.sh
-reload-all-wm > /dev/null 2>&1 &
 cd ~/.dotfiles && git pull && git status
+reload-all-wm > /dev/null 2>&1 &
 read -p "Deseja atualizar seu repositório de dotfiles? (y/N/diff) " confirm &&
 if [[ "$confirm" == [yY] ]]; then
     git add . && git commit -m "att" && git push
