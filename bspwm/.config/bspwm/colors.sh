@@ -1,5 +1,5 @@
-wallpaper="w8.png"
-base00="#008da9"
+wallpaper="w9.png"
+base00="#329940"
 base01="#333333"
 base02="#ffffff"
 base03="#7d7d7d"
