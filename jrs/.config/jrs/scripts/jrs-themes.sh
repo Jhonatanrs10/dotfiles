@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source $HOME/.config/jrs/lib/jrs-functions.sh
+
 # --- Definição dos Temas ---
 
 declare -A theme_Archlinux
@@ -111,6 +113,7 @@ theme_SasamiGreen[degraded]="a08000"
 theme_SasamiGreen[white]="ffffff"
 theme_SasamiGreen[black]="000000"
 theme_SasamiGreen[wallpaper]="w9.png"
+
 # Rofi Theme
 rofiTheme(){
     
@@ -322,15 +325,7 @@ echo '#!/bin/bash
     foreground = "#'$JRS_TEXT_COLOR'"
     frame_color = "#'$JRS_BAD_COLOR'"' > $HOME/.config/dunst/dunstrc.d/colors.conf
 
-hyprctl reload & 
-killall -SIGUSR2 waybar &
-killall polybar &
-hyprctl hyprpaper reload ,"~/.config/wallpapers/$JRS_WALLPAPER"
-pkill -USR1 -x sxhkd &
-bspc wm -r &
-dunstctl reload &
-i3-msg restart &
-i3-msg reload &
+reload-all-wm
 
 #dunstify -t 1000 --hints int:transient:1 "Theme" "$varNomeTema" --icon=preferences-desktop-theme
 

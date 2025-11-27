@@ -1,4 +1,5 @@
-#!/usr/bin/env sh
+#!/bin/bash
+
 forLength(){
     echo $1
     read txtForLength
@@ -77,4 +78,18 @@ rofi-or-wofi(){
     echo "ERROR: No suitable menu found" >&2
     exit 1
   fi
+}
+
+reload-all-wm(){
+    if [ "$XDG_CURRENT_DESKTOP" = "i3" ] || [ "$XDG_CURRENT_DESKTOP" = "bspwm" ] || [ "$XDG_CURRENT_DESKTOP" = "Hyprland" ];then
+        hyprctl reload & 
+        killall -SIGUSR2 waybar &
+        killall polybar &
+        hyprctl hyprpaper reload ,"~/.config/wallpapers/$JRS_WALLPAPER"
+        pkill -USR1 -x sxhkd &
+        bspc wm -r &
+        dunstctl reload &
+        i3-msg restart &
+        i3-msg reload &
+    fi
 }

@@ -37,7 +37,8 @@ alias vimdotfiles="cd ~/.dotfiles && nvim ."
 # SSH
 alias sshlocalserver="ssh jhonatanrs@192.168.0.134"
 # Git Status
-alias mydotfiles='
+alias mydotfiles="bash $HOME/.config/jrs/scripts/jrs-mydotfiles.sh"
+alias mydotfiles2='
   cd ~/.dotfiles && git pull && git status
   read -p "Deseja atualizar seu repositório de dotfiles? (y/N/diff) " confirm &&
   if [[ "$confirm" == [yY] ]]; then
