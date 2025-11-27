@@ -22,11 +22,7 @@ super + ctrl + p
 
 # power profiles
 super + p 
-	$HOME/.config/jrs/powerprofiles.sh
-
-# picom sync
-#super + s 
-#	$HOME/.config/jrs/picomsync.sh
+	$HOME/.config/jrs/scripts/jrs-power-profiles.sh
 
 # xcolor
 super + z
@@ -34,7 +30,7 @@ super + z
 
 # theme mode
 super + t 
-	$HOME/.config/jrs/setTheme.sh
+	$HOME/.config/jrs/scripts/jrs-themes.sh
 
 # make sxhkd reload its configuration files:
 super + shift + r
@@ -146,7 +142,7 @@ super + ctrl + 7
 super + l 
 	i3lock -c 000000 && sleep 1
 super + ctrl + l 
-	$HOME/.config/jrs/power.sh
+	$HOME/.config/jrs/scripts/jrs-power.sh
 super + ctrl + 8
 	systemctl hibernate
 super + ctrl + 9 

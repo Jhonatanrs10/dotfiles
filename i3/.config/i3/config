@@ -45,7 +45,7 @@ exec_always --no-startup-id ~/.screenlayout/monitors.sh
 exec_always --no-startup-id $HOME/.config/polybar/polybar.sh
 
 ###Binds###
-bindsym $mod+t exec --no-startup-id ~/.config/jrs/setTheme.sh 
+bindsym $mod+t exec --no-startup-id ~/.config/jrs/scripts/jrs-themes.sh 
 bindsym $mod+d exec --no-startup-id $appMenu
 bindsym $mod+x exec --no-startup-id $MyFileManager
 bindsym $mod+c exec --no-startup-id $MyBrowser
@@ -58,11 +58,11 @@ bindsym --whole-window $mod+button2 floating toggle
 bindsym $mod+Ctrl+p exec --no-startup-id pgrep picom > /dev/null && killall picom && dunstify -t 1000 --hints int:transient:1 "Picom" "Stopped" --icon=picom || (picom & dunstify -t 1000 --hints int:transient:1 "Picom" "Started" --icon=picom)
 bindsym $mod+Ctrl+b bar mode toggle
 bindsym $mod+b exec --no-startup-id polybar-msg cmd toggle
-bindsym $mod+p exec --no-startup-id $HOME/.config/jrs/powerprofiles.sh
+bindsym $mod+p exec --no-startup-id $HOME/.config/jrs/scripts/jrs-power-profiles.sh
 
 ###Power###
 bindsym $mod+l exec --no-startup-id $locker
-bindsym $mod+Ctrl+l exec --no-startup-id $HOME/.config/jrs/power.sh
+bindsym $mod+Ctrl+l exec --no-startup-id $HOME/.config/jrs/scripts/jrs-power.sh
 
 ###Print###
 bindsym --release $mod+Print exec --no-startup-id mkdir -p ~/Pictures/PrtSc | scrot ~/Pictures/PrtSc/Screenshot_%Y-%m-%d_%H-%M-%S.png

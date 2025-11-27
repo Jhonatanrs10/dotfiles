@@ -1,6 +1,6 @@
 #!/bin/bash
 [global]
-    timeout = 5000
+    timeout = 3000
     idle_threshold = 0
     ignore_dbusclose = true
     monitor = 0
@@ -67,15 +67,15 @@
 [urgency_low]
     background = "#333333aa"
     foreground = "#ffffff"
-    timeout = 5
+    timeout = 1
 [urgency_normal]
     background = "#333333aa"
     foreground = "#ffffff"
-    timeout = 5
+    timeout = 3
     override_pause_level = 30
 [urgency_critical]
     background = "#333333aa"
     foreground = "#ffffff"
     frame_color = "#900000"
-    timeout = 10
+    timeout = 9
     override_pause_level = 60
