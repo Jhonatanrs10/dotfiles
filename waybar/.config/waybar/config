@@ -27,7 +27,6 @@
     },
   "group/tray-expander": {
     "orientation": "inherit",
-    "on-click": true,
     "drawer": {
       "transition-duration": 600,
       "children-class": "tray-group-item"

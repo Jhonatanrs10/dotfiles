@@ -2,17 +2,6 @@
 
 # --- Definição dos Temas ---
 
-declare -A theme_teste
-theme_teste[main]="1793d1"
-theme_teste[bar]="333333"
-theme_teste[text]="ffffff"
-theme_teste[unfocused]="7d7d7d"
-theme_teste[bad]="900000"
-theme_teste[degraded]="a08000"
-theme_teste[white]="ffffff"
-theme_teste[black]="000000"
-theme_teste[wallpaper]="teste.png"
-
 declare -A theme_Archlinux
 theme_Archlinux[main]="1793d1"
 theme_Archlinux[bar]="333333"
@@ -90,44 +79,77 @@ theme_Red[white]="ffffff"
 theme_Red[black]="000000"
 theme_Red[wallpaper]="w6.png"
 
+declare -A theme_RedBerserk
+theme_RedBerserk[main]="c10b0b"
+theme_RedBerserk[bar]="333333"
+theme_RedBerserk[text]="ffffff"
+theme_RedBerserk[unfocused]="7d7d7d"
+theme_RedBerserk[bad]="900000"
+theme_RedBerserk[degraded]="a08000"
+theme_RedBerserk[white]="ffffff"
+theme_RedBerserk[black]="000000"
+theme_RedBerserk[wallpaper]="w7.png"
+
+declare -A theme_AnimeVibe
+theme_AnimeVibe[main]="1793d1"
+theme_AnimeVibe[bar]="333333"
+theme_AnimeVibe[text]="ffffff"
+theme_AnimeVibe[unfocused]="7d7d7d"
+theme_AnimeVibe[bad]="900000"
+theme_AnimeVibe[degraded]="a08000"
+theme_AnimeVibe[white]="ffffff"
+theme_AnimeVibe[black]="000000"
+theme_AnimeVibe[wallpaper]="w8.png"
+
 # Rofi Theme
 rofiTheme(){
     
-    options="Archlinux
-Sakura Tree
-Gento Anime
-Mountain
-Halloween
-Green Place
-One Piece Red
-Teste"
+    # 1. Definição Simplificada e ORDENADA:
+    # Formato: "Nome Amigável | Nome_do_Arquivo"
+    # Adicione ou remova linhas aqui na ordem exata que você deseja.
+    local theme_list=$(cat <<EOF
+Archlinux      |    theme_Archlinux
+Sakura Tree    |    theme_Sakura
+Gento Anime    |    theme_Gentoo
+Mountain       |    theme_Mountain
+Halloween      |    theme_HalloweenBoy
+Green Place    |    theme_GreenPlace
+Luffy Red      |    theme_Red
+Berserk Red    |    theme_RedBerserk
+Old Anime      |    theme_AnimeVibe
+EOF
+)
 
-    # Detect session type and choose appropriate menu
+    # 2. Gerar a string de opções (apenas o Nome Amigável)
+    local options=$(echo "$theme_list" | cut -d'|' -f1)
+
+    # 3. Detectar sessão e escolher o menu
+    local menu_cmd=""
     if [ "$XDG_SESSION_TYPE" = "x11" ] && command -v rofi &>/dev/null; then
-    menu_cmd="rofi -dmenu -i -p Themes"
-    elif [ "$XDG_SESSION_TYPE" = "wayland" ] && command -v wofi &>/dev/null; then
-    #menu_cmd="wofi --dmenu --prompt=Options"
-    menu_cmd="rofi -dmenu -i -p Themes"
+        menu_cmd="rofi -dmenu -i -p Themes"
+    elif [ "$XDG_SESSION_TYPE" = "wayland" ] && command -v rofi &>/dev/null; then
+        menu_cmd="rofi -dmenu -i -p Themes"
     else
-    echo "ERROR: No suitable menu found" >&2
-    exit 1
+        echo "ERRO: Nenhuma ferramenta de menu adequada encontrada." >&2
+        exit 1
     fi
 
-    # Show menu and get user selection
-    chosen=$(echo -e "$options" | $menu_cmd)
+    # 4. Mostrar menu e obter seleção do usuário (Nome Amigável)
+    local chosen_name=$(echo -e "$options" | $menu_cmd)
 
-    # Execute chosen action
-    case "$chosen" in
-    "Archlinux")varTema="theme_Archlinux";;
-    "Sakura Tree")varTema="theme_Sakura";;
-    "Gento Anime")varTema="theme_Gentoo";;
-    "Mountain")varTema="theme_Mountain";;
-    "Halloween")varTema="theme_HalloweenBoy";;
-    "Green Place")varTema="theme_GreenPlace";;
-    "One Piece Red")varTema="theme_Red";;
-    "Teste")varTema="theme_teste";;
-    *) exit 1 ;;
-    esac
+    # 5. Mapear o Nome Amigável de volta para o Nome do Arquivo
+    if [ -n "$chosen_name" ]; then
+        # Encontra a linha completa usando o nome escolhido
+        local full_line=$(echo "$theme_list" | grep -F "$chosen_name" | head -n 1)
+        
+        # Extrai o Nome do Arquivo (segundo campo após o separador '|')
+        # Usamos 'tr' para remover espaços em branco extras antes de atribuir
+        varTema=$(echo "$full_line" | cut -d'|' -f2 | tr -d '[:space:]')
+        
+    else
+        varTema=""
+        exit 1
+    fi
     
 }
 

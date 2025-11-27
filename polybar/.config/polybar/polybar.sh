@@ -1,11 +1,16 @@
 #!/usr/bin/env bash
 
+cat <<EOF | xrdb -merge
+Xcursor.theme: Adwaita
+Xcursor.size: 24
+EOF
+
 ## 1. Limpeza
 # Encerra instâncias de barra já em execução (quiet mode)
 killall -q polybar
 
 # Aguarda até que os processos sejam encerrados (máximo de 2 segundos)
-while pgrep -u $UID -x polybar >/dev/null; do sleep 2; done
+while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 ## 2. Inicialização em Múltiplos Monitores
 # Verifica se há mais de um monitor e inicia uma instância para cada um

@@ -5,10 +5,9 @@
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
 # My Default Theme
-#export GTK_THEME=
-#export GTK_ICON_THEME=Papirus-Dark
-#export XCURSOR_THEME=
-#export XCURSOR_SIZE=24
+export GTK_THEME=adw-gtk3-dark
+export GTK_ICON_THEME=Papirus-Dark
+export XCURSOR_SIZE=24
 export XCURSOR_THEME=Adwaita
 
 # My Default Apps
