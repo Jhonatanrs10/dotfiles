@@ -101,6 +101,16 @@ theme_AnimeVibe[white]="ffffff"
 theme_AnimeVibe[black]="000000"
 theme_AnimeVibe[wallpaper]="w8.png"
 
+declare -A theme_SasamiGreen
+theme_SasamiGreen[main]="329940"
+theme_SasamiGreen[bar]="333333"
+theme_SasamiGreen[text]="ffffff"
+theme_SasamiGreen[unfocused]="7d7d7d"
+theme_SasamiGreen[bad]="900000"
+theme_SasamiGreen[degraded]="a08000"
+theme_SasamiGreen[white]="ffffff"
+theme_SasamiGreen[black]="000000"
+theme_SasamiGreen[wallpaper]="w9.png"
 # Rofi Theme
 rofiTheme(){
     
@@ -110,6 +120,7 @@ rofiTheme(){
     local theme_list=$(cat <<EOF
 Archlinux      |    theme_Archlinux
 Sakura Tree    |    theme_Sakura
+Sasami Green   |    theme_SasamiGreen
 Gento Anime    |    theme_Gentoo
 Mountain       |    theme_Mountain
 Halloween      |    theme_HalloweenBoy
