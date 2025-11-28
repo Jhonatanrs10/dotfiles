@@ -112,6 +112,17 @@ theme_SasamiGreen[white]="ffffff"
 theme_SasamiGreen[black]="000000"
 theme_SasamiGreen[wallpaper]="w9.png"
 
+declare -A theme_Thorfinn
+theme_Thorfinn[main]="3D2823"
+theme_Thorfinn[bar]="333333"
+theme_Thorfinn[text]="ffffff"
+theme_Thorfinn[unfocused]="7d7d7d"
+theme_Thorfinn[bad]="900000"
+theme_Thorfinn[degraded]="a08000"
+theme_Thorfinn[white]="ffffff"
+theme_Thorfinn[black]="000000"
+theme_Thorfinn[wallpaper]="w10.png"
+
 # Rofi Theme
 rofiTheme(){
     
@@ -129,6 +140,7 @@ Green Place    |    theme_GreenPlace
 Luffy Red      |    theme_Red
 Berserk Red    |    theme_RedBerserk
 Old Anime      |    theme_AnimeVibe
+Thorfin        |    theme_Thorfinn
 EOF
 )
 

@@ -1,8 +1,8 @@
-exec_always --no-startup-id feh --bg-fill ~/.config/wallpapers/w9.png
-set $color1 #329940
-set $color2 #333333
-set $color3 #ffffff
-set $color4 #7d7d7d
+exec_always --no-startup-id feh --bg-fill ~/.config/wallpapers/w3.png
+set $color1 #6F8AA5
+set $color2 #151A21
+set $color3 #DFDFDF
+set $color4 #2E4760
 set $color5 #000000
 set $color6 #000000
 set $color7 #000000
