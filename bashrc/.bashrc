@@ -19,6 +19,7 @@ alias shutdownnow="systemctl poweroff"
 alias rebootnow="systemctl reboot"
 alias archkerneleditgrub="sudo nano /etc/default/grub"
 alias rhyprpaper="killall hyprpaper && hyprpaper & exit"
+alias jrs-debugs="bash $HOME/.config/jrs/scripts/jrs-debugs.sh"
 # MangoHud
 alias mangovktest="mangohud vkcube"
 alias mangogltest="mangohud glxgears"
@@ -38,15 +39,6 @@ alias vimdotfiles="cd ~/.dotfiles && nvim ."
 alias sshlocalserver="ssh jhonatanrs@192.168.0.134"
 # Git Status
 alias mydotfiles="bash $HOME/.config/jrs/scripts/jrs-mydotfiles.sh"
-alias mydotfiles2='
-  cd ~/.dotfiles && git pull && git status
-  read -p "Deseja atualizar seu repositório de dotfiles? (y/N/diff) " confirm &&
-  if [[ "$confirm" == [yY] ]]; then
-     git add . && git commit -m "att" && git push
-  elif [[ "$confirm" == "diff" ]]; then
-     git diff
-  fi
-'
 # My Bash
 #PS1='[\u@\h \W]\$ '
 PS1='[\w]\$ '

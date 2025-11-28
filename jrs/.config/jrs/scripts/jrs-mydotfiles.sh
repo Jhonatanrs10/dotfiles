@@ -1,5 +1,4 @@
 #!/bin/bash
-source $HOME/.config/jrs/lib/jrs-functions.sh
 cd ~/.dotfiles && git pull && git status
 read -p "Deseja atualizar seu repositório de dotfiles? (y/N/diff) " confirm &&
 if [[ "$confirm" == [yY] ]]; then

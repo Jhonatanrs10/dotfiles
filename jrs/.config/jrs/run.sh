@@ -55,7 +55,7 @@ opcoes=(
   "Ignorar Ação da Bandeja::lidSwitchIgnore"
   "Reparar Pacman::repairPM"
   "Discord Config Hyprland::hyprlandDiscordX"
-  "SteamOSMode::setupSteamOSMode"
+  "SteamOSMode::steamos-setup"
   )
 
 linhas_terminal=$(tput lines)

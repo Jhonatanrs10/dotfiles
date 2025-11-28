@@ -2,126 +2,138 @@
 
 # --- Definição dos Temas ---
 
-declare -A theme_Archlinux
-theme_Archlinux[main]="1793d1"
-theme_Archlinux[bar]="333333"
-theme_Archlinux[text]="ffffff"
-theme_Archlinux[unfocused]="7d7d7d"
-theme_Archlinux[bad]="900000"
-theme_Archlinux[degraded]="a08000"
-theme_Archlinux[white]="ffffff"
-theme_Archlinux[black]="000000"
-theme_Archlinux[wallpaper]="w.png"
+declare -A theme_archlinux
+theme_archlinux[main]="1793d1"
+theme_archlinux[bar]="333333"
+theme_archlinux[text]="ffffff"
+theme_archlinux[unfocused]="7d7d7d"
+theme_archlinux[bad]="900000"
+theme_archlinux[degraded]="a08000"
+theme_archlinux[white]="ffffff"
+theme_archlinux[black]="000000"
+theme_archlinux[wallpaper]="archlinux.png"
 
-declare -A theme_Sakura 
-theme_Sakura[main]="D37CAF"
-theme_Sakura[bar]="0A0F2D"
-theme_Sakura[text]="FEEBEE"
-theme_Sakura[unfocused]="FCD6E2"
-theme_Sakura[bad]="900000"
-theme_Sakura[degraded]="a08000"
-theme_Sakura[white]="ffffff"
-theme_Sakura[black]="000000"
-theme_Sakura[wallpaper]="w1.png"
+declare -A theme_focus
+theme_focus[main]="161616"
+theme_focus[bar]="333333"
+theme_focus[text]="ffffff"
+theme_focus[unfocused]="7d7d7d"
+theme_focus[bad]="900000"
+theme_focus[degraded]="a08000"
+theme_focus[white]="ffffff"
+theme_focus[black]="000000"
+theme_focus[wallpaper]="focus.png"
 
-declare -A theme_Gentoo 
-theme_Gentoo[main]="6E56AF"
-theme_Gentoo[bar]="3B3F57"
-theme_Gentoo[text]="F7F8FC"
-theme_Gentoo[unfocused]="604878"
-theme_Gentoo[bad]="900000"
-theme_Gentoo[degraded]="a08000"
-theme_Gentoo[white]="ffffff"
-theme_Gentoo[black]="000000"
-theme_Gentoo[wallpaper]="w2.png"
+declare -A theme_red
+theme_red[main]="c10b0b"
+theme_red[bar]="333333"
+theme_red[text]="ffffff"
+theme_red[unfocused]="7d7d7d"
+theme_red[bad]="900000"
+theme_red[degraded]="a08000"
+theme_red[white]="ffffff"
+theme_red[black]="000000"
+theme_red[wallpaper]="red.png"
 
-declare -A theme_Mountain 
-theme_Mountain[main]="6F8AA5"
-theme_Mountain[bar]="151A21"
-theme_Mountain[text]="DFDFDF"
-theme_Mountain[unfocused]="2E4760"
-theme_Mountain[bad]="900000"
-theme_Mountain[degraded]="a08000"
-theme_Mountain[white]="ffffff"
-theme_Mountain[black]="000000"
-theme_Mountain[wallpaper]="w3.png"
+declare -A theme_green
+theme_green[main]="329940"
+theme_green[bar]="333333"
+theme_green[text]="ffffff"
+theme_green[unfocused]="7d7d7d"
+theme_green[bad]="900000"
+theme_green[degraded]="a08000"
+theme_green[white]="ffffff"
+theme_green[black]="000000"
+theme_green[wallpaper]="green.png"
 
-declare -A theme_HalloweenBoy
-theme_HalloweenBoy[main]="DA7038"
-theme_HalloweenBoy[bar]="333333"
-theme_HalloweenBoy[text]="ffffff"
-theme_HalloweenBoy[unfocused]="7d7d7d"
-theme_HalloweenBoy[bad]="900000"
-theme_HalloweenBoy[degraded]="a08000"
-theme_HalloweenBoy[white]="ffffff"
-theme_HalloweenBoy[black]="000000"
-theme_HalloweenBoy[wallpaper]="w4.png"
+declare -A theme_pink 
+theme_pink[main]="D37CAF"
+theme_pink[bar]="0A0F2D"
+theme_pink[text]="FEEBEE"
+theme_pink[unfocused]="FCD6E2"
+theme_pink[bad]="900000"
+theme_pink[degraded]="a08000"
+theme_pink[white]="ffffff"
+theme_pink[black]="000000"
+theme_pink[wallpaper]="pink.png"
 
-declare -A theme_GreenPlace
-theme_GreenPlace[main]="599E71"
-theme_GreenPlace[bar]="333333"
-theme_GreenPlace[text]="ffffff"
-theme_GreenPlace[unfocused]="7d7d7d"
-theme_GreenPlace[bad]="900000"
-theme_GreenPlace[degraded]="a08000"
-theme_GreenPlace[white]="ffffff"
-theme_GreenPlace[black]="000000"
-theme_GreenPlace[wallpaper]="w5.png"
+declare -A theme_rgb
+theme_rgb[main]="0BE0F7"
+theme_rgb[bar]="333333"
+theme_rgb[text]="ffffff"
+theme_rgb[unfocused]="7d7d7d"
+theme_rgb[bad]="900000"
+theme_rgb[degraded]="a08000"
+theme_rgb[white]="ffffff"
+theme_rgb[black]="000000"
+theme_rgb[wallpaper]="rgb.png"
 
-declare -A theme_Red
-theme_Red[main]="c10b0b"
-theme_Red[bar]="333333"
-theme_Red[text]="ffffff"
-theme_Red[unfocused]="7d7d7d"
-theme_Red[bad]="900000"
-theme_Red[degraded]="a08000"
-theme_Red[white]="ffffff"
-theme_Red[black]="000000"
-theme_Red[wallpaper]="w6.png"
+declare -A theme_gentoo 
+theme_gentoo[main]="6E56AF"
+theme_gentoo[bar]="3B3F57"
+theme_gentoo[text]="F7F8FC"
+theme_gentoo[unfocused]="604878"
+theme_gentoo[bad]="900000"
+theme_gentoo[degraded]="a08000"
+theme_gentoo[white]="ffffff"
+theme_gentoo[black]="000000"
+theme_gentoo[wallpaper]="gentoo.png"
 
-declare -A theme_RedBerserk
-theme_RedBerserk[main]="c10b0b"
-theme_RedBerserk[bar]="333333"
-theme_RedBerserk[text]="ffffff"
-theme_RedBerserk[unfocused]="7d7d7d"
-theme_RedBerserk[bad]="900000"
-theme_RedBerserk[degraded]="a08000"
-theme_RedBerserk[white]="ffffff"
-theme_RedBerserk[black]="000000"
-theme_RedBerserk[wallpaper]="w7.png"
+declare -A theme_mountain 
+theme_mountain[main]="6F8AA5"
+theme_mountain[bar]="151A21"
+theme_mountain[text]="DFDFDF"
+theme_mountain[unfocused]="2E4760"
+theme_mountain[bad]="900000"
+theme_mountain[degraded]="a08000"
+theme_mountain[white]="ffffff"
+theme_mountain[black]="000000"
+theme_mountain[wallpaper]="mountain.png"
 
-declare -A theme_AnimeVibe
-theme_AnimeVibe[main]="008da9"
-theme_AnimeVibe[bar]="333333"
-theme_AnimeVibe[text]="ffffff"
-theme_AnimeVibe[unfocused]="7d7d7d"
-theme_AnimeVibe[bad]="900000"
-theme_AnimeVibe[degraded]="a08000"
-theme_AnimeVibe[white]="ffffff"
-theme_AnimeVibe[black]="000000"
-theme_AnimeVibe[wallpaper]="w8.png"
+declare -A theme_halloween_boy
+theme_halloween_boy[main]="DA7038"
+theme_halloween_boy[bar]="333333"
+theme_halloween_boy[text]="ffffff"
+theme_halloween_boy[unfocused]="7d7d7d"
+theme_halloween_boy[bad]="900000"
+theme_halloween_boy[degraded]="a08000"
+theme_halloween_boy[white]="ffffff"
+theme_halloween_boy[black]="000000"
+theme_halloween_boy[wallpaper]="halloween-boy.png"
 
-declare -A theme_SasamiGreen
-theme_SasamiGreen[main]="329940"
-theme_SasamiGreen[bar]="333333"
-theme_SasamiGreen[text]="ffffff"
-theme_SasamiGreen[unfocused]="7d7d7d"
-theme_SasamiGreen[bad]="900000"
-theme_SasamiGreen[degraded]="a08000"
-theme_SasamiGreen[white]="ffffff"
-theme_SasamiGreen[black]="000000"
-theme_SasamiGreen[wallpaper]="w9.png"
+declare -A theme_minimalist_green
+theme_minimalist_green[main]="599E71"
+theme_minimalist_green[bar]="333333"
+theme_minimalist_green[text]="ffffff"
+theme_minimalist_green[unfocused]="7d7d7d"
+theme_minimalist_green[bad]="900000"
+theme_minimalist_green[degraded]="a08000"
+theme_minimalist_green[white]="ffffff"
+theme_minimalist_green[black]="000000"
+theme_minimalist_green[wallpaper]="minimalist-green.png"
 
-declare -A theme_Thorfinn
-theme_Thorfinn[main]="3D2823"
-theme_Thorfinn[bar]="333333"
-theme_Thorfinn[text]="ffffff"
-theme_Thorfinn[unfocused]="7d7d7d"
-theme_Thorfinn[bad]="900000"
-theme_Thorfinn[degraded]="a08000"
-theme_Thorfinn[white]="ffffff"
-theme_Thorfinn[black]="000000"
-theme_Thorfinn[wallpaper]="w10.png"
+declare -A theme_old_anime
+theme_old_anime[main]="008da9"
+theme_old_anime[bar]="333333"
+theme_old_anime[text]="ffffff"
+theme_old_anime[unfocused]="7d7d7d"
+theme_old_anime[bad]="900000"
+theme_old_anime[degraded]="a08000"
+theme_old_anime[white]="ffffff"
+theme_old_anime[black]="000000"
+theme_old_anime[wallpaper]="old-anime.png"
+
+declare -A theme_vinland_saga
+theme_vinland_saga[main]="3D2823"
+theme_vinland_saga[bar]="333333"
+theme_vinland_saga[text]="ffffff"
+theme_vinland_saga[unfocused]="7d7d7d"
+theme_vinland_saga[bad]="900000"
+theme_vinland_saga[degraded]="a08000"
+theme_vinland_saga[white]="ffffff"
+theme_vinland_saga[black]="000000"
+theme_vinland_saga[wallpaper]="vinland-saga.png"
+
 
 # Rofi Theme
 rofiTheme(){
@@ -130,17 +142,18 @@ rofiTheme(){
     # Formato: "Nome Amigável | Nome_do_Arquivo"
     # Adicione ou remova linhas aqui na ordem exata que você deseja.
     local theme_list=$(cat <<EOF
-Archlinux      |    theme_Archlinux
-Sakura Tree    |    theme_Sakura
-Sasami Green   |    theme_SasamiGreen
-Gento Anime    |    theme_Gentoo
-Mountain       |    theme_Mountain
-Halloween      |    theme_HalloweenBoy
-Green Place    |    theme_GreenPlace
-Luffy Red      |    theme_Red
-Berserk Red    |    theme_RedBerserk
-Old Anime      |    theme_AnimeVibe
-Thorfin        |    theme_Thorfinn
+Archlinux           |    theme_archlinux
+Focus               |    theme_focus
+Red                 |    theme_red
+Green               |    theme_green
+Pink                |    theme_pink
+RGB                 |    theme_rgb
+Gento Anime         |    theme_gentoo
+Mountain            |    theme_mountain
+Halloween Boy       |    theme_halloween_boy
+Minimalist Green    |    theme_minimalist_green
+Old Anime           |    theme_old_anime
+Vinland Saga        |    theme_vinland_saga
 EOF
 )
 
@@ -171,9 +184,8 @@ EOF
 }
 
 rofiTheme
-
 declare -n chosen_theme="$varTema"
-
+#declare -n chosen_theme="theme_archlinux"
 
 # Atribui os valores do tema escolhido às variáveis JRS_*
 JRS_MAIN_COLOR="${chosen_theme[main]}"
