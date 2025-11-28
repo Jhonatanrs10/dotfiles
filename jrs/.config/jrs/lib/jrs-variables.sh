@@ -1,8 +1,6 @@
 #!/usr/bin/bash
 
 JRS_DIR="$HOME/.dir_jrs"
-linuxUserServer="servers"
-nomeRun="run"
 DATANOW=$(date "+[%d-%m-%Y][%H-%M]")
 myBaseKernel="base linux linux-firmware intel-ucode sof-firmware"
 myBaseKernelLts="base linux-lts linux-firmware intel-ucode sof-firmware"
@@ -29,7 +27,7 @@ myBaseRar="bzip2 cpio gzip lha xz lzop p7zip tar unace unrar zip unzip"
 myBaseNotify="libnotify dunst"
 myBaseDaemons="notification-daemon power-profiles-daemon openssh syncthing"
 myBaseFlatpak="flatpak"
-myBaseShell="bash bash-completion"
+myBaseShell="bash bash-completion shfmt"
 myBaseUtilitys="nano neovim brightnessctl fastfetch yt-dlp stow curl tree jq imagemagick cmatrix btop ranger xsel pacman-contrib base-devel git ffmpeg fwupd samba udisks2 gvfs gvfs-mtp gvfs-smb gvfs-afc polkit net-tools joyutils man-db wireless_tools"
 myBaseXfce4="xfce4 xfce4-goodies xfce4-docklike-plugin lightdm-gtk-greeter lightdm-gtk-greeter-settings lightdm"
 myBaseKde="dolphin dolphin-plugins dragon elisa filelight gwenview leafpad okular kcalc konsole plasma-desktop sddm"

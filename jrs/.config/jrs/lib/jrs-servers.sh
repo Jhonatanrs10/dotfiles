@@ -4,69 +4,69 @@
 #bash ./steamcmd.sh +login anonymous +app_update 1110390 validate +quit
 
 serversLinuxUser() {
-    packagesManager "screen"
-    if id "$linuxUserServer" &>/dev/null; then
-        echo "O usuário '$linuxUserServer' já existe. Ignorando a criação do usuário."
-        sudo -u $linuxUserServer -s 
-    else
-        echo "O usuário '$linuxUserServer' não foi encontrado. Criando usuário..."
-        sudo useradd -m $linuxUserServer
-        if [ $? -eq 0 ]; then
-            echo "Usuário '$linuxUserServer' criado com sucesso."
-            echo "senha para $linuxUserServer:"
-            sudo passwd $linuxUserServer
-            sudo -u $linuxUserServer -s 
-        else
-            echo "Erro: Falha ao criar o usuário '$linuxUserServer'."
-        fi
-    fi
-    # sudo userdel servers
+	linuxUserServer="servers"
+	packagesManager "screen"
+	if id "$linuxUserServer" >/dev/null 2>&1; then
+		echo "O usuário '$linuxUserServer' já existe. Ignorando a criação do usuário."
+		sudo -u $linuxUserServer -s
+	else
+		echo "O usuário '$linuxUserServer' não foi encontrado. Criando usuário..."
+		sudo useradd -m $linuxUserServer
+		if [ $? -eq 0 ]; then
+			echo "Usuário '$linuxUserServer' criado com sucesso."
+			echo "senha para $linuxUserServer:"
+			sudo passwd $linuxUserServer
+			sudo -u $linuxUserServer -s
+		else
+			echo "Erro: Falha ao criar o usuário '$linuxUserServer'."
+		fi
+	fi
+	# sudo userdel servers
 }
 
-installSteamCMD(){
-    packagesManager "steamcmd"
+installSteamCMD() {
+	packagesManager "steamcmd"
 }
 
-installFivem(){
-    verFivem0="https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/6136-97e3790629f188c887ee11d119d7a705c8a9f9f0/fx.tar.xz"
-    verFivem="https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/7290-a654bcc2adfa27c4e020fc915a1a6343c3b4f921/fx.tar.xz"
-    cfxData="https://github.com/citizenfx/cfx-server-data/archive/refs/heads/master.zip"
-    modMenu="https://github.com/TomGrobbe/vMenu/releases/download/v3.5.0/vMenu-v3.5.0.zip"
-    pvpMode="https://github.com/fcarvalho-bruno/enablepvp/archive/refs/heads/master.zip"
-    handEditor="https://github.com/FRANkiller13/FiveM-Handling-Editor/archive/refs/heads/master.zip"
-    streetRace="https://github.com/bepo13/FiveM-StreetRaces/archive/refs/heads/master.zip"
-    modCars="https://github.com/25danijelmesec03/FiveM-Car-Pack-1/archive/refs/heads/main.zip"
-    fixHoles="https://github.com/Bob74/bob74_ipl/archive/refs/heads/master.zip"
-    carCmd="https://forum.cfx.re/uploads/default/original/3X/3/9/394edb23c58fc64e23411306a40e63788a3a587b.zip"
+installFivem() {
+	verFivem0="https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/6136-97e3790629f188c887ee11d119d7a705c8a9f9f0/fx.tar.xz"
+	verFivem="https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/7290-a654bcc2adfa27c4e020fc915a1a6343c3b4f921/fx.tar.xz"
+	cfxData="https://github.com/citizenfx/cfx-server-data/archive/refs/heads/master.zip"
+	modMenu="https://github.com/TomGrobbe/vMenu/releases/download/v3.5.0/vMenu-v3.5.0.zip"
+	pvpMode="https://github.com/fcarvalho-bruno/enablepvp/archive/refs/heads/master.zip"
+	handEditor="https://github.com/FRANkiller13/FiveM-Handling-Editor/archive/refs/heads/master.zip"
+	streetRace="https://github.com/bepo13/FiveM-StreetRaces/archive/refs/heads/master.zip"
+	modCars="https://github.com/25danijelmesec03/FiveM-Car-Pack-1/archive/refs/heads/main.zip"
+	fixHoles="https://github.com/Bob74/bob74_ipl/archive/refs/heads/master.zip"
+	carCmd="https://forum.cfx.re/uploads/default/original/3X/3/9/394edb23c58fc64e23411306a40e63788a3a587b.zip"
 
-    echo "FIVEM NAME FOLDER"
-    read fivemNome
-    uninstallPastaAtalhoBinMesmoNome "$fivemNome"
+	echo "FIVEM NAME FOLDER"
+	read fivemNome
+	uninstallPastaAtalhoBinMesmoNome "$fivemNome"
 
 	echo -e "[INFO] - INSTALANDO FIVEM SERVER - [INFO]"
 	criaDiretorio "diretorioServer" "$JRS_DIR/$fivemNome"
 	criaPastaBaixaExtrai "$diretorioServer" "$verFivem" "fx.tar.xz"
-	
+
 	criaPastaBaixaExtrai "$diretorioServer" "$cfxData" "data.zip"
-    mv $diretorioServer/cfx-* $diretorioServer/server-data
-	
+	mv $diretorioServer/cfx-* $diretorioServer/server-data
+
 	criaDiretorio "diretorioResource" "$diretorioServer/server-data/resources/[jhonatanrs]"
 
 	criaPastaBaixaExtrai "$diretorioServer/server-data/resources/vMenu" "$modMenu" "modmenu.zip"
 	criaPastaBaixaExtrai "$diretorioResource/" "$handEditor" "handEditor.zip"
 	criaPastaBaixaExtrai "$diretorioResource/" "$pvpMode" "pvpMode.zip"
 	criaPastaBaixaExtrai "$diretorioResource/" "$streetRace" "streetRace.zip"
-    #criaPastaBaixaExtrai "$diretorioResource/" "$modCars" "modCars.zip"
-    criaPastaBaixaExtrai "$diretorioResource/" "$fixHoles" "fixHoles.zip"
-    #criaPastaBaixaExtrai "$diretorioResource/" "$carCmd" "carCmd.zip"
+	#criaPastaBaixaExtrai "$diretorioResource/" "$modCars" "modCars.zip"
+	criaPastaBaixaExtrai "$diretorioResource/" "$fixHoles" "fixHoles.zip"
+	#criaPastaBaixaExtrai "$diretorioResource/" "$carCmd" "carCmd.zip"
 
-
-    mv $diretorioResource/FiveM-StreetRaces-master/StreetRaces $diretorioResource/StreetRaces
-    rm -r $diretorioResource/FiveM-StreetRaces-master
+	mv $diretorioResource/FiveM-StreetRaces-master/StreetRaces $diretorioResource/StreetRaces
+	rm -r $diretorioResource/FiveM-StreetRaces-master
 	# cp $diretorioResource/vMenu/config/permissions.cfg $diretorioServer/server-data/permissions.cfg
-	
-    echo -e "License key for your server (https://keymaster.fivem.net)"
-    read lk
+
+	echo -e "License key for your server (https://keymaster.fivem.net)"
+	read lk
 
 	criarArq "#!/usr/bin/env sh
 cd $diretorioServer/server-data && bash $diretorioServer/run.sh +exec server.cfg" "$diretorioServer/fivemexec.sh"
@@ -92,7 +92,7 @@ end)' "$diretorioServer/server-data/resources/[gamemodes]/basic-gamemode/basic_c
     }
 </style>" "$diretorioServer/server-data/resources/[test]/example-loadscreen/index.html"
 
-    addNoArq '# Only change the IP if youre using a server with multiple network interfaces, otherwise change the port only.
+	addNoArq '# Only change the IP if youre using a server with multiple network interfaces, otherwise change the port only.
 endpoint_add_tcp 0.0.0.0:30120
 endpoint_add_udp 0.0.0.0:30120
 
@@ -178,10 +178,10 @@ set steam_webApiKey
 # License key for your server (https://keymaster.fivem.net)
 sv_licenseKey '"$lk"'' "$diretorioServer/server-data/server.cfg"
 
-criaAtalhoBin "$diretorioServer/fivemexec.sh" "$fivemNome"
-}   
+	criaAtalhoBin "$diretorioServer/fivemexec.sh" "$fivemNome"
+}
 
-installMinecraftServer(){
+installMinecraftServer() {
 	uninstallPastaAtalhoBinMesmoNome "MinecraftServer"
 	link="https://piston-data.mojang.com/v1/objects/4707d00eb834b446575d89a61a11b5d548d8c001/server.jar"
 
@@ -202,7 +202,7 @@ motd=\u00A71Jardim Recreio  \u00A77By Jhonatanrs
 server-port=25565
 enable-command-block=true" "server.properties"
 
-    criarArq "#!/usr/bin/env bash
+	criarArq "#!/usr/bin/env bash
 #echo 'EM CASO DE ERRO VERIFIQUE A VERSAO DO JAVA
 #Press ENTER'
 #read caso
@@ -210,25 +210,24 @@ cd $diretorioInstall
 java -jar server.jar nogui" "run.sh"
 
 	criaAtalho "MinecraftServer" "Create your own Minecraft Server" "bash run.sh" "$diretorioInstall" "true" "Minecraft Server" "/usr/share/icons/Papirus-Dark/64x64/apps/mine-test.svg"
-    criaAtalhoBin "$diretorioInstall/run.sh" "MinecraftServer"
+	criaAtalhoBin "$diretorioInstall/run.sh" "MinecraftServer"
 	echo -e "[INFO] - SCRIPT FINALIZADO - [INFO]"
 }
 
-sampServer(){
+sampServer() {
 
-    installName="SampServer"
-    uninstallPastaAtalhoBinMesmoNome "$installName"
-    criaDiretorioInstall "$JRS_DIR/$installName"
+	installName="SampServer"
+	uninstallPastaAtalhoBinMesmoNome "$installName"
+	criaDiretorioInstall "$JRS_DIR/$installName"
 
+	criaPastaBaixaExtrai "$diretorioInstall" "http://files.sa-mp.com/samp037svr_R2-1.tar.gz" "samp.tar.gz"
+	mv */* .
 
-    criaPastaBaixaExtrai "$diretorioInstall" "http://files.sa-mp.com/samp037svr_R2-1.tar.gz" "samp.tar.gz"
-    mv */* .
-
-    criarArq "#!/usr/bin/env sh
+	criarArq "#!/usr/bin/env sh
 cd $diretorioInstall
 ./samp03svr" "$diretorioInstall/run.sh"
 
-    criarArq "echo Executing Server Config...
+	criarArq "echo Executing Server Config...
 lanmode 1
 rcon_password 0
 maxplayers 20
@@ -246,31 +245,31 @@ weapon_rate 40
 stream_distance 300.0
 stream_rate 1000" "$diretorioInstall/server.cfg"
 
-    criaAtalho "$installName" "Server SAMP em Segundo Plano" "./samp03svr" "$diretorioInstall" "true" "$installName" "application-default-icon"
-    criaAtalhoBin "$diretorioInstall/run.sh" "$installName"
+	criaAtalho "$installName" "Server SAMP em Segundo Plano" "./samp03svr" "$diretorioInstall" "true" "$installName" "application-default-icon"
+	criaAtalhoBin "$diretorioInstall/run.sh" "$installName"
 
-}   
+}
 
-terrariaServer(){
-    installName="TerrariaServer"
-    uninstallPastaAtalhoBinMesmoNome "$installName"
-    criaDiretorioInstall "$JRS_DIR/$installName"
-    criaPastaBaixaExtrai "$diretorioInstall" "https://terraria.org/api/download/pc-dedicated-server/terraria-server-1449.zip" "ts.zip"
-    chmod 770 $diretorioInstall/*/Linux/TerrariaServer.bin.x86_64
-    criaArqRunDiretorioInstall "#!/usr/bin/env sh
+terrariaServer() {
+	installName="TerrariaServer"
+	uninstallPastaAtalhoBinMesmoNome "$installName"
+	criaDiretorioInstall "$JRS_DIR/$installName"
+	criaPastaBaixaExtrai "$diretorioInstall" "https://terraria.org/api/download/pc-dedicated-server/terraria-server-1449.zip" "ts.zip"
+	chmod 770 $diretorioInstall/*/Linux/TerrariaServer.bin.x86_64
+	criaArqRunDiretorioInstall "#!/usr/bin/env sh
 cd $diretorioInstall/*/Linux
 ./TerrariaServer.bin.x86_64"
-    criaAtalho "$installName" "Terraria Server PC" "bash run.sh" "$diretorioInstall" "true" "$installName" "application-default-icon"
-    criaAtalhoBin "$diretorioInstall/run.sh" "$installName"
-}   
+	criaAtalho "$installName" "Terraria Server PC" "bash run.sh" "$diretorioInstall" "true" "$installName" "application-default-icon"
+	criaAtalhoBin "$diretorioInstall/run.sh" "$installName"
+}
 
-installUnturnedServer(){
+installUnturnedServer() {
 
-    installName="UnturnedServer"
-    uninstallPastaAtalhoBinMesmoNome "$installName"
-    criaDiretorioInstall "$JRS_DIR/$installName"
-    
-    criarArq "Name JardimRecreio
+	installName="UnturnedServer"
+	uninstallPastaAtalhoBinMesmoNome "$installName"
+	criaDiretorioInstall "$JRS_DIR/$installName"
+
+	criarArq "Name JardimRecreio
 Map PEI
 Maxplayers 10
 Port 27015
@@ -280,19 +279,19 @@ pve
 welcome Bem Vindo ao bairro!!
 cheats on" "$HOME/.steam/SteamApps/common/U3DS/Servers/JardimRecreio/Server/Commands.dat"
 
-    criarArq "#!/usr/bin/env sh
+	criarArq "#!/usr/bin/env sh
 steamcmd +login anonymous +app_update 1110390 +quit
 cd $HOME/.steam/SteamApps/common/U3DS
 bash ServerHelper.sh +LanServer/JardimRecreio" "$diretorioInstall/run.sh"
 
-    #criaAtalhoBin "$diretorioInstall/run.sh" "$installName"
+	#criaAtalhoBin "$diretorioInstall/run.sh" "$installName"
 
-}   
+}
 
-installProjectZomboidServer(){
-    installName="PZserver"
-    uninstallPastaAtalhoBinMesmoNome "$installName"
-    criaDiretorioInstall "$JRS_DIR/$installName"
-    installSteamCMD
-    criarArq "steamcmd +force_install_dir "$diretorioInstall" +login anonymous +app_update 380870 validate +quit" "run_install_and_update.sh" # 108600 ou 380870
-}   
+installProjectZomboidServer() {
+	installName="PZserver"
+	uninstallPastaAtalhoBinMesmoNome "$installName"
+	criaDiretorioInstall "$JRS_DIR/$installName"
+	installSteamCMD
+	criarArq "steamcmd +force_install_dir "$diretorioInstall" +login anonymous +app_update 380870 validate +quit" "run_install_and_update.sh" # 108600 ou 380870
+}

@@ -3,7 +3,7 @@ dependenciasAtalho(){
     echo "INSTALAR ATALHO 
 Diretório atual:
 $PWD
-Este é o diretório do $nomeRun.sh (s/n)"
+Este é o diretório do run.sh (s/n)"
     read resp
     if [ "$resp" = "s" ]; then
         wrapper="$JRS_DIR/.jrs.sh"
@@ -13,7 +13,7 @@ Este é o diretório do $nomeRun.sh (s/n)"
         cat <<EOF > "$wrapper"
 #!/usr/bin/env bash
 cd "$PWD"
-bash "$nomeRun.sh"
+bash "run.sh"
 EOF
 
         chmod +x "$wrapper"
@@ -40,7 +40,7 @@ dependencies() {
         cat <<EOF > "$wrapper"
 #!/usr/bin/env bash
 cd "$PWD"
-bash "$nomeRun.sh"
+bash "run.sh"
 EOF
 
         # Torna o arquivo executável

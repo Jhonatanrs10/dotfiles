@@ -1,21 +1,21 @@
 #!/usr/bin/env sh
-bongo(){
-    bongocat="https://github.com/kuroni/bongocat-osu/archive/refs/heads/master.zip"
-    uninstallPastaAtalhoBinMesmoNome "winBongo"
-    packagesManager "g++ gcc libxdo xdotool libxdo-dev libsdl2-dev libsfml-dev sdl2 sfml x11 xrandr make"
-    echo -e "[INFO] - INSTALANDO BONGOCAT - [INFO]"
-    criaDiretorio "diretorioBongo" "$JRS_DIR/winBongo"
-    cd $diretorioBongo
-    criaPastaBaixaExtrai "$diretorioBongo" "$bongocat" "bongo.zip"
-    mv $diretorioBongo/*/* .
-    #cp -r $diretorioBongo/*/* .
-    cp Makefile.linux Makefile
-    make
-    mv $diretorioBongo/bin/bongo $diretorioBongo/bongo
-    criarArq "#!/usr/bin/env sh
+bongo() {
+	bongocat="https://github.com/kuroni/bongocat-osu/archive/refs/heads/master.zip"
+	uninstallPastaAtalhoBinMesmoNome "winBongo"
+	packagesManager "g++ gcc libxdo xdotool libxdo-dev libsdl2-dev libsfml-dev sdl2 sfml x11 xrandr make"
+	echo -e "[INFO] - INSTALANDO BONGOCAT - [INFO]"
+	criaDiretorio "diretorioBongo" "$JRS_DIR/winBongo"
+	cd $diretorioBongo
+	criaPastaBaixaExtrai "$diretorioBongo" "$bongocat" "bongo.zip"
+	mv $diretorioBongo/*/* .
+	#cp -r $diretorioBongo/*/* .
+	cp Makefile.linux Makefile
+	make
+	mv $diretorioBongo/bin/bongo $diretorioBongo/bongo
+	criarArq "#!/usr/bin/env sh
 cd $diretorioBongo
 ./bongo" "$diretorioBongo/bongo.sh"
-    criarArq '{
+	criarArq '{
  "mode": 1,
     "resolution": {
         "letterboxing": false,
@@ -76,6 +76,6 @@ cd $diretorioBongo
     }
 }
 ' "$diretorioBongo/config.json"
-    criaAtalho "BongoCat" "WEBCAM Avatar" "bash $diretorioBongo/bongo.sh" "$diretorioBongo" "false" "winBongo" "$diretorioBongo/ico/bongo.ico"
-    criaAtalhoBin "$diretorioBongo/bongo.sh" "winBongo"
+	criaAtalho "BongoCat" "WEBCAM Avatar" "bash $diretorioBongo/bongo.sh" "$diretorioBongo" "false" "winBongo" "$diretorioBongo/ico/bongo.ico"
+	criaAtalhoBin "$diretorioBongo/bongo.sh" "winBongo"
 }
