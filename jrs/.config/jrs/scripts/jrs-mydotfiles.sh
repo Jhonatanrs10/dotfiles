@@ -33,11 +33,11 @@ while [[ "$continuar_loop" == [yY] ]]; do
 
 	if [[ "$confirm" == [yY] ]]; then
 		# Opção: Atualizar (add, commit e push)
-		echo "🚀 Trying to commit and push..."
+		echo -e "\n🚀 Trying to commit and push...\n"
 		git add . && git commit -m "att" && git push
 	elif [[ "$confirm" == "diff" ]]; then
 		# Opção: Mostrar diferenças
-		echo "🔍 Showing differences..."
+		echo -e "\n🔍 Showing differences...\n"
 		git diff
 	elif [[ "$confirm" == [nN] ]]; then
 		# Opção: Sair do loop (define a variável de controle para algo diferente de 'y'/'Y')
@@ -49,4 +49,5 @@ while [[ "$continuar_loop" == [yY] ]]; do
 
 done
 
-echo "✅ Script de atualização de dotfiles encerrado."
+echo -e "\n✅ Script de atualização de dotfiles encerrado.\n"
+sleep 1
