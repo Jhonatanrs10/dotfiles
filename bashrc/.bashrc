@@ -30,6 +30,8 @@ alias mpv1080p60="mpv --profile=1080p60"
 alias codehere='code . && exit'
 # SSH
 alias sshlocalserver="ssh jhonatanrs@192.168.0.134"
+# Dotfiles
+alias mydotfiles="bash ~/.config/jrs/scripts/jrs-mydotfiles.sh"
 # My Bash
 #PS1='[\u@\h \W]\$ '
 PS1='[\w]\$ '
