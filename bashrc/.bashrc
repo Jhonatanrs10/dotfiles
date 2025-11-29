@@ -31,6 +31,7 @@ alias mpv1080p30='mpv --profile=1080p30'
 alias mpv1080p60="mpv --profile=1080p60"
 # Code
 alias codehere='code . && exit'
+alias codedotfiles='code ~/.dotfiles && exit'
 # SSH
 alias sshlocalserver="ssh jhonatanrs@192.168.0.134"
 # Dotfiles

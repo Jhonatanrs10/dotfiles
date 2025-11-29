@@ -29,7 +29,7 @@ while [[ "$continuar_loop" == [yY] ]]; do
 	fi
 
 	# Pergunta ao usuário o que fazer
-	read -r -p "Do you want to **update** your dotfiles repository? (y/N/diff/code): " confirm
+	read -r -p "Do you want to **update** your dotfiles repository? (y/N/diff): " confirm
 
 	if [[ "$confirm" == [yY] ]]; then
 		# Opção: Atualizar (add, commit e push)
@@ -42,7 +42,7 @@ while [[ "$continuar_loop" == [yY] ]]; do
 		read sleep_before_enter
 	elif [[ "$confirm" == "code" ]]; then
 		continuar_loop="n"
-		code ~/.dotfiles
+		code ~/.dotfiles && exit
 	elif [[ "$confirm" == "nvim" ]]; then
 		continuar_loop="n"
 		cd ~/.dotfiles && nvim .
