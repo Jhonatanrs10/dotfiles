@@ -29,7 +29,7 @@ while [[ "$continuar_loop" == [yY] ]]; do
 	fi
 
 	# Pergunta ao usuário o que fazer
-	read -r -p "Do you want to **update** your dotfiles repository? (y/N/diff) " confirm
+	read -r -p "Do you want to **update** your dotfiles repository? (y/N/diff/code): " confirm
 
 	if [[ "$confirm" == [yY] ]]; then
 		# Opção: Atualizar (add, commit e push)
@@ -40,6 +40,12 @@ while [[ "$continuar_loop" == [yY] ]]; do
 		echo -e "\n🔍 Showing differences...\n"
 		git diff
 		read sleep_before_enter
+	elif [[ "$confirm" == "code" ]]; then
+		continuar_loop="n"
+		code ~/.dotfiles
+	elif [[ "$confirm" == "nvim" ]]; then
+		continuar_loop="n"
+		cd ~/.dotfiles && nvim .
 	elif [[ "$confirm" == [nN] ]]; then
 		# Opção: Sair do loop (define a variável de controle para algo diferente de 'y'/'Y')
 		continuar_loop="n"
@@ -49,6 +55,3 @@ while [[ "$continuar_loop" == [yY] ]]; do
 	fi
 
 done
-
-echo -e "\n✅ Script de atualização de dotfiles encerrado.\n"
-sleep 1
