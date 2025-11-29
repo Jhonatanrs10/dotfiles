@@ -2,7 +2,7 @@
 #teste
 jrs-menu-1() {
 	options="Reload Window Manager\nRestart Hyprpaper"
-	menu_cmd="rofi -dmenu -i -p Debugs"
+	menu_cmd="rofi -dmenu -i -p Debug"
 	chosen=$(echo -e "$options" | $menu_cmd)
 	case "$chosen" in
 	"Reload Window Manager") bash ~/.config/jrs/scripts/jrs-reload-wm.sh ;;

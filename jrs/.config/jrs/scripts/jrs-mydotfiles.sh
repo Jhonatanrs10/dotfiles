@@ -39,6 +39,7 @@ while [[ "$continuar_loop" == [yY] ]]; do
 		# Opção: Mostrar diferenças
 		echo -e "\n🔍 Showing differences...\n"
 		git diff
+		read sleep_before_enter
 	elif [[ "$confirm" == [nN] ]]; then
 		# Opção: Sair do loop (define a variável de controle para algo diferente de 'y'/'Y')
 		continuar_loop="n"
