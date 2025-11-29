@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#teste
 jrs-menu-1() {
 	options="Reload Window Manager\nRestart Hyprpaper"
 	menu_cmd="rofi -dmenu -i -p Debugs"
