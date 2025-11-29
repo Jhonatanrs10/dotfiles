@@ -18,6 +18,9 @@ alias archsshdstart="sudo systemctl start sshd"
 alias shutdownnow="systemctl poweroff"
 alias rebootnow="systemctl reboot"
 alias archkerneleditgrub="sudo nano /etc/default/grub"
+# Mango Hud
+alias mhvk="mangohud glxgears"
+alias mhgl="mangohud vkcube"
 # Yt-dlp
 alias yt-dlp-mp4-720p='yt-dlp -f "bestvideo[height<=720][ext=mp4]+bestaudio[ext=m4a]/mp4" --merge-output-format mp4'
 alias yt-dlp-mp4='yt-dlp -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4" --merge-output-format mp4'
