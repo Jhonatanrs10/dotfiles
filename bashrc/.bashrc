@@ -18,8 +18,6 @@ alias archsshdstart="sudo systemctl start sshd"
 alias shutdownnow="systemctl poweroff"
 alias rebootnow="systemctl reboot"
 alias archkerneleditgrub="sudo nano /etc/default/grub"
-alias rhyprpaper="killall hyprpaper && hyprpaper & exit"
-alias jrs-debugs="bash $HOME/.config/jrs/scripts/jrs-debugs.sh"
 # MangoHud
 alias mangovktest="mangohud vkcube"
 alias mangogltest="mangohud glxgears"
