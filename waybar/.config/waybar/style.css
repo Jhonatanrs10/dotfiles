@@ -24,7 +24,7 @@ window#waybar:first-child > box {
     margin: 0;	/*default: 5*/
     padding: 0px 6px 0px 6px;
     border-radius: 0px; /*default: 6*/
-    background-color: alpha(@base01, 0.60); /*default: alpha(@base01, 0.60);*/
+    /*default: alpha(@base01, 0.60);*/
 }
 #workspaces button {
     /*background-color: #fff000;*/

@@ -1,154 +1,198 @@
 #!/usr/bin/bash
 
-myBasePosInstall(){
-    pacmanSetup
-    yaySetup
-    grubSetup
-    kernelSetup
-    driverSetup
-    audioSetup
-    baseSetup
-    appsSetup
-    startSetup
-    sambaSetup
-    configsSetup
-    desktopSetup
-}
+myBasePosInstall() {
+	echo "[0]Pos Install Setup
+[1]Pacman
+[2]Yay
+[3]Grub
+[4]Kernel
+[5]Driver
+[6]Audio
+[7]Base
+[8]Apps
+[9]Start
+[10]Samba
+[11]Configs
+[12]Desktop
+"
 
-pacmanSetup(){
-     echo "PACMAN
-Options: [1]Configure, [2]No"
-    read resp
+	read resp
 	case $resp in
-		1)
-            sudo cp /etc/pacman.conf /etc/pacman$DATANOW.conf.bkp
-            sudo sed -i 's/ParallelDownloads = 5/ParallelDownloads = 10\nILoveCandy\nColor/g' /etc/pacman.conf
-            sudo sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
-            sudo pacman -Syyu
-        ;;
-        *)
-        ;;
-    esac
+	1) pacmanSetup ;;
+	2) yaySetup ;;
+	3) grubSetup ;;
+	4) kernelSetup ;;
+	5) driverSetup ;;
+	6) audioSetup ;;
+	7) baseSetup ;;
+	8) appsSetup ;;
+	9) startSetup ;;
+	10) sambaSetup ;;
+	11) configsSetup ;;
+	12) desktopSetup ;;
+	0)
+		pacmanSetup
+		yaySetup
+		grubSetup
+		kernelSetup
+		driverSetup
+		audioSetup
+		baseSetup
+		appsSetup
+		startSetup
+		sambaSetup
+		configsSetup
+		desktopSetup
+		;;
+	*) ;;
+	esac
+
 }
 
-yaySetup(){
-    echo "YAY
+pacmanSetup() {
+	echo "PACMAN
 Options: [1]Configure, [2]No"
-    read resp
+	read resp
 	case $resp in
-		1)
-            sudo pacman -S --needed git base-devel
-            cd $HOME
-            git clone https://aur.archlinux.org/yay.git
-            cd yay
-            makepkg -si
-        ;;
-        *)
-        ;;
-    esac
+	1)
+		sudo cp /etc/pacman.conf /etc/pacman$DATANOW.conf.bkp
+		sudo sed -i 's/ParallelDownloads = 5/ParallelDownloads = 10\nILoveCandy\nColor/g' /etc/pacman.conf
+		sudo sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
+		sudo pacman -Syyu
+		;;
+	*) ;;
+	esac
 }
 
-grubSetup(){
-        echo "GRUB
+yaySetup() {
+	echo "YAY
 Options: [1]Configure, [2]No"
-    read resp
+	read resp
 	case $resp in
-		1)
-            packagesManager "$myBaseBootloader"
-            sudo cp /etc/default/grub /etc/default/grub$DATANOW.bkp
-            sudo cp /boot/grub/grub.cfg /boot/grub/grub$DATANOW.cfg.bkp
-            sudo grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
-            sudo sed -i "/GRUB_DISABLE_OS_PROBER=false/"'s/^#//' /etc/default/grub
-            sudo grub-mkconfig -o /boot/grub/grub.cfg
-            ;;
-        *)
-        ;;
-    esac
+	1)
+		sudo pacman -S --needed git base-devel
+		cd $HOME
+		git clone https://aur.archlinux.org/yay.git
+		cd yay
+		makepkg -si
+		;;
+	*) ;;
+	esac
 }
 
-kernelSetup(){
-    echo "KERNEL
+grubSetup() {
+	echo "GRUB
+Options: [1]Configure, [2]No"
+	read resp
+	case $resp in
+	1)
+		packagesManager "$myBaseBootloader"
+		sudo cp /etc/default/grub /etc/default/grub$DATANOW.bkp
+		sudo cp /boot/grub/grub.cfg /boot/grub/grub$DATANOW.cfg.bkp
+		sudo grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+		sudo sed -i "/GRUB_DISABLE_OS_PROBER=false/"'s/^#//' /etc/default/grub
+		sudo grub-mkconfig -o /boot/grub/grub.cfg
+		;;
+	*) ;;
+	esac
+}
+
+kernelSetup() {
+	echo "KERNEL
 [1]Linux [2]Linux-lts [3]Linux-zen"
-    read resp
+	read resp
 	case $resp in
-        1)packagesManager "$myBaseKernel";;
-        2)packagesManager "$myBaseKernelLts";;
-        3)packagesManager "$myBaseKernelZen";;
-        *)
-    esac
+	1) packagesManager "$myBaseKernel" ;;
+	2) packagesManager "$myBaseKernelLts" ;;
+	3) packagesManager "$myBaseKernelZen" ;;
+	*) ;;
+	esac
 }
 
-driverSetup(){
-    echo "DRIVER
+driverSetup() {
+	echo "DRIVER
 [1]Configure [2]No"
-    read resp
+	read resp
 	case $resp in
-        1)installVideoDriver;;
-        *)
-    esac
+	1) installVideoDriver ;;
+	*) ;;
+	esac
 }
 
-audioSetup(){
-    echo "AUDIO
+audioSetup() {
+	echo "AUDIO
 [1]Pipeware [2]PulseAudio"
-    read resp
+	read resp
 	case $resp in
-        1)packagesManager "$myBaseAudioPipeware";;
-        2)packagesManager "$myBaseAudioPulse";;
-        *)
-    esac
+	1) packagesManager "$myBaseAudioPipeware" ;;
+	2) packagesManager "$myBaseAudioPulse" ;;
+	*) ;;
+	esac
 }
 
-baseSetup(){
-    echo "BASE
+baseSetup() {
+	echo "BASE
 [1]Configure [2]No"
-    read resp
+	read resp
 	case $resp in
-        1)packagesManager "$myBaseBootloader $myBaseFileSystem $myBaseNetwork $myBaseFirewall $myBaseUtilitys $myBaseBluetooth $myBaseCodecs $myBaseXorg $myBaseWayland $myBaseIcons $myBaseThemes $myBaseFonts $myBaseRar $myBaseNotify $myBaseDaemons $myBaseFlatpak $myBaseShell";;
-        *)
-    esac
+	1) packagesManager "$myBaseBootloader $myBaseFileSystem $myBaseNetwork $myBaseFirewall $myBaseUtilitys $myBaseBluetooth $myBaseCodecs $myBaseXorg $myBaseWayland $myBaseIcons $myBaseThemes $myBaseFonts $myBaseRar $myBaseNotify $myBaseDaemons $myBaseFlatpak $myBaseShell" ;;
+	*) ;;
+	esac
 }
 
-appsSetup(){
-    echo "APPS
+appsSetup() {
+	echo "APPS
 [1]Configure [2]No"
-    read resp
+	read resp
 	case $resp in
-        1)packagesManager "$myBaseGlobalApps";;
-        *)
-    esac
+	1)
+		packagesManager "$myBaseBrowser"
+		packagesManager "$myBaseAudioApp"
+		packagesManager "$myBaseVideoApp"
+		packagesManager "$myBaseGraphicDesignApp"
+		packagesManager "$myBaseSecurityApp"
+		packagesManager "$myBaseDiskManagerApp"
+		packagesManager "$myBaseOfficeApp"
+		packagesManager "$myBaseVideoEditorApp"
+		packagesManager "$myBaseCodingApp"
+		packagesManager "$myBaseTorrentApp"
+		packagesManager "$myBaseDiscordApp"
+		packagesManager "$myBaseConnectApp"
+		;;
+	*) ;;
+	esac
 }
 
-startSetup(){
-    enableSystemctl "bluetooth"
-    enableSystemctl "NetworkManager"
-    enableSystemctl "power-profiles-daemon"
-    enableSystemctl "sshd"
+startSetup() {
+	enableSystemctl "bluetooth"
+	enableSystemctl "NetworkManager"
+	enableSystemctl "power-profiles-daemon"
+	enableSystemctl "sshd"
 }
 
-sambaSetup(){
-    echo "SAMBA
+sambaSetup() {
+	echo "SAMBA
 [1]Configure [2]No"
-    read -r resp
-    case $resp in
-        1)
-        sudo pacman -S --needed samba
-        sudo smbpasswd -a "$USER"
-        sudo smbpasswd -e "$USER"
+	read -r resp
+	case $resp in
+	1)
+		sudo pacman -S --needed samba
+		sudo smbpasswd -a "$USER"
+		sudo smbpasswd -e "$USER"
 
-        RAND=$(cat /dev/urandom | tr -dc 'A-Z0-9' | head -c 6)
-        NETBIOS_NAME="Samba$RAND"
+		RAND=$(cat /dev/urandom | tr -dc 'A-Z0-9' | head -c 6)
+		NETBIOS_NAME="Samba$RAND"
 
-        echo "Using NetBIOS name: $NETBIOS_NAME"
+		echo "Using NetBIOS name: $NETBIOS_NAME"
 
-        sudo mv /etc/samba/smb.conf /etc/samba/smb-bkp$DATANOW.conf
-        
-        mkdir -p "$HOME/Samba/User"
-        sudo chmod 777 "$HOME/Samba"
-        sudo mkdir -p /home/samba
-        sudo chmod 777 /home/samba
+		sudo mv /etc/samba/smb.conf /etc/samba/smb-bkp$DATANOW.conf
 
-        echo "[global]
+		mkdir -p "$HOME/Samba/User"
+		sudo chmod 777 "$HOME/Samba"
+		sudo mkdir -p /home/samba
+		sudo chmod 777 /home/samba
+
+		echo "[global]
     workgroup = WORKGROUP
     preferred master = no
     local master = no
@@ -188,67 +232,71 @@ sambaSetup(){
     write list = $USER
     force directory mode = 0777
     directory mode = 0777
-    create mode = 0777" | sudo tee /etc/samba/smb.conf > /dev/null
+    create mode = 0777" | sudo tee /etc/samba/smb.conf >/dev/null
 
-        ln -s /home/samba "$HOME/Samba/Guest"
-        enableSystemctl "smb"
-        enableSystemctl "nmb"
-        #sudo systemctl restart smbd nmbd
-        #sudo useradd -m samba
-        #sudo passwd samba
-        ;;
-        *)
-        ;;
-    esac
+		ln -s /home/samba "$HOME/Samba/Guest"
+		enableSystemctl "smb"
+		enableSystemctl "nmb"
+		#sudo systemctl restart smbd nmbd
+		#sudo useradd -m samba
+		#sudo passwd samba
+		;;
+	*) ;;
+	esac
 }
 
-configsSetup(){
-    echo "CONFIGS
+configsSetup() {
+	echo "CONFIGS
 [1]Configure [2]No"
-    read resp
+	read resp
 	case $resp in
-        1)
-            flatpak override --user --filesystem=~/.icons:ro --filesystem=~/.local/share/icons:ro
-            sudo rm -f /usr/share/applications/rofi* 
-            myBaseI3Backlight
-            myBaseI3Touchpad
-            lidSwitchIgnore
-            criaAtalho "Wiremix Audio" "Audio Tui" "wiremix" "$HOME" "true" "Wiremix" "pavucontrol"
-            ;;
-        *)
-    esac
+	1)
+		flatpak override --user --filesystem=~/.icons:ro --filesystem=~/.local/share/icons:ro
+		sudo rm -f /usr/share/applications/rofi*
+		myBaseI3Backlight
+		myBaseI3Touchpad
+		lidSwitchIgnore
+		criaAtalho "Wiremix Audio" "Audio Tui" "wiremix" "$HOME" "true" "Wiremix" "pavucontrol"
+		;;
+	*) ;;
+	esac
 }
 
-desktopSetup(){
-    echo "DESKTOP
+desktopSetup() {
+	echo "DESKTOP
 [1]Hyprland [2]Bspwm [3]I3wm [4]Gnome [5]KDE"
-    read resp
+	read resp
 	case $resp in
-        1)
-            packagesManager "$myBaseHyprland"
-            enableSystemctl "ly";; 
-        2)
-            packagesManager "$myBaseBspwm"
-            enableSystemctl "ly";; 
-        3)
-            packagesManager "$myBaseI3wm"
-            enableSystemctl "ly";; 
-        4)
-            packagesManager "$myBaseGnome"
-            enableSystemctl "gdm";;
-        5)
-            packagesManager "$myBaseKde"
-            enableSystemctl "sddm";;
-        *)
-    esac
+	1)
+		packagesManager "$myBaseHyprland $wmBaseFileManager $wmBaseTerminal $wmBasePdfApp"
+		enableSystemctl "ly"
+		;;
+	2)
+		packagesManager "$myBaseBspwm $wmBaseFileManager $wmBaseTerminal $wmBasePdfApp"
+		enableSystemctl "ly"
+		;;
+	3)
+		packagesManager "$myBaseI3wm $wmBaseFileManager $wmBaseTerminal $wmBasePdfApp"
+		enableSystemctl "ly"
+		;;
+	4)
+		packagesManager "$myBaseGnome"
+		enableSystemctl "gdm"
+		;;
+	5)
+		packagesManager "$myBaseKde"
+		enableSystemctl "sddm"
+		;;
+	*) ;;
+	esac
 }
 
 ############
 ###OUTROS###
 ############
 
-lightdmConfig(){
-    echo "[greeter]
+lightdmConfig() {
+	echo "[greeter]
 theme-name = Breeze-Dark
 icon-theme-name = Papirus-Dark
 cursor-theme-name = Adwaita
@@ -257,8 +305,8 @@ background = /usr/share/backgrounds/main.png
 font-name = Caskaydia Mono Nerd Font 11" | sudo tee -a /etc/lightdm/lightdm-gtk-greeter.conf
 }
 
-myBaseI3Touchpad(){
-    sudo mkdir -p /etc/X11/xorg.conf.d && sudo tee <<'EOF' /etc/X11/xorg.conf.d/90-touchpad.conf 1> /dev/null
+myBaseI3Touchpad() {
+	sudo mkdir -p /etc/X11/xorg.conf.d && sudo tee /etc/X11/xorg.conf.d/90-touchpad.conf <<'EOF' 1>/dev/null
 Section "InputClass"
 Identifier "touchpad"
 MatchIsTouchpad "on"
@@ -268,98 +316,94 @@ EndSection
 EOF
 }
 
-installVirtManager(){
-    packagesManager "$myBaseVirt" "VirtManager"
-    enableSystemctl "libvirtd"  
-    sudo virsh net-autostart default
-    #sudo virsh net-start default  
+installVirtManager() {
+	packagesManager "$myBaseVirt" "VirtManager"
+	enableSystemctl "libvirtd"
+	sudo virsh net-autostart default
+	#sudo virsh net-start default
 }
 
-myBaseI3Backlight(){
-    #sudo chmod +s /usr/bin/light
-    echo 'ACTION=="add", SUBSYSTEM=="backlight", RUN+="/bin/chgrp wheel $sys$devpath/brightness", RUN+="/bin/chmod g+w $sys$devpath/brightness"' | sudo tee /etc/udev/rules.d/backlight.rules
-    #criarArq 'light' "$HOME/.config/i3/brightness"
+myBaseI3Backlight() {
+	#sudo chmod +s /usr/bin/light
+	echo 'ACTION=="add", SUBSYSTEM=="backlight", RUN+="/bin/chgrp wheel $sys$devpath/brightness", RUN+="/bin/chmod g+w $sys$devpath/brightness"' | sudo tee /etc/udev/rules.d/backlight.rules
+	#criarArq 'light' "$HOME/.config/i3/brightness"
 }
 
-lidSwitchIgnore(){
-    sudo sed -i 's/^#HandleLidSwitch=suspend/HandleLidSwitch=ignore/' /etc/systemd/logind.conf
-    sudo sed -i 's/^HandleLidSwitch=suspend/HandleLidSwitch=ignore/' /etc/systemd/logind.conf
+lidSwitchIgnore() {
+	sudo sed -i 's/^#HandleLidSwitch=suspend/HandleLidSwitch=ignore/' /etc/systemd/logind.conf
+	sudo sed -i 's/^HandleLidSwitch=suspend/HandleLidSwitch=ignore/' /etc/systemd/logind.conf
 }
 
-
-
-myBaseMountNTFS(){
-    # somente leitura pode ser o modo de energia do windows em dualboot (modo de reinicialização rapida)
-    echo "Mount /media/homec?
+myBaseMountNTFS() {
+	# somente leitura pode ser o modo de energia do windows em dualboot (modo de reinicialização rapida)
+	echo "Mount /media/homec?
 Options: [1]Yes, [2]No"
-    read resp
+	read resp
 	case $resp in
-		1)
-            sudo fdisk -l
-            echo "Digite o caminho do disco Ex.: /dev/sdb1"
-            read DEVSD
-            sudo cp /etc/fstab /etc/fstab$DATANOW.bkp
-            sudo mkdir -p /media/homec
-            #id -u
-            #id -g
-            sudo tee -a /etc/fstab <<< '# '$DEVSD' 
+	1)
+		sudo fdisk -l
+		echo "Digite o caminho do disco Ex.: /dev/sdb1"
+		read DEVSD
+		sudo cp /etc/fstab /etc/fstab$DATANOW.bkp
+		sudo mkdir -p /media/homec
+		#id -u
+		#id -g
+		sudo tee -a /etc/fstab <<<'# '$DEVSD' 
 UUID='$(sudo blkid -s UUID -o value $DEVSD)' /media/homec ntfs uid='$(id -u)',gid='$(id -g)',rw,user,exec,umask=000 0 0'
-            cat /etc/fstab
-            sleep 5
-            #rm -r ~/.steam/steam/steamapps/compatdata
-            #mkdir -p ~/.steam/steam/steamapps/compatdata
-            #ln -s ~/.steam/steam/steamapps/compatdata /media/gamedisk/Steam/steamapps/
-            ;;
-        *)
-        ;;
-    esac
+		cat /etc/fstab
+		sleep 5
+		#rm -r ~/.steam/steam/steamapps/compatdata
+		#mkdir -p ~/.steam/steam/steamapps/compatdata
+		#ln -s ~/.steam/steam/steamapps/compatdata /media/gamedisk/Steam/steamapps/
+		;;
+	*) ;;
+	esac
 }
 
-myBaselnHome(){
-    echo "Gerar /media/homec links ?
+myBaselnHome() {
+	echo "Gerar /media/homec links ?
 Options: [1]Yes, [2]No"
-    read resp
+	read resp
 	case $resp in
-		1)
-        ln -s /media/homec/Desktop $HOME
-        ln -s /media/homec/Documents $HOME
-        ln -s /media/homec/Downloads $HOME
-        ln -s /media/homec/Pictures $HOME
-        ln -s /media/homec/Videos $HOME
-        ln -s /media/homec/Music $HOME
-        ln -s /media/homec/Heroic $HOME
-        ;;
-        *)
-        ;;
-    esac
-    
+	1)
+		ln -s /media/homec/Desktop $HOME
+		ln -s /media/homec/Documents $HOME
+		ln -s /media/homec/Downloads $HOME
+		ln -s /media/homec/Pictures $HOME
+		ln -s /media/homec/Videos $HOME
+		ln -s /media/homec/Music $HOME
+		ln -s /media/homec/Heroic $HOME
+		;;
+	*) ;;
+	esac
+
 }
 
 ## Olds ##
 
-appPosNetwork(){
-    echo "[ARCH] Network"
-    echo "INSTALAR NETWORKMANAGER"
-    packagesManager "networkmanager nm-connection-editor network-manager-applet"
-    #sudo systemctl enable NetworkManager.service
-    #sudo systemctl start NetworkManager.service --now
-    enableSystemctl "NetworkManager"
-    #echo "REMOVER IWD (wifi terminal archinstall)"
-    #removePacotes "iwd"
+appPosNetwork() {
+	echo "[ARCH] Network"
+	echo "INSTALAR NETWORKMANAGER"
+	packagesManager "networkmanager nm-connection-editor network-manager-applet"
+	#sudo systemctl enable NetworkManager.service
+	#sudo systemctl start NetworkManager.service --now
+	enableSystemctl "NetworkManager"
+	#echo "REMOVER IWD (wifi terminal archinstall)"
+	#removePacotes "iwd"
 }
- 
-appPosNvidiaDriverProp(){
-        #https://github.com/lutris/docs/blob/master/InstallingDrivers.md#arch--manjaro--other-arch-linux-derivatives
-        #causa crash no gdm o pacote: nvidia-dkms
-        #https://codigocristo.github.io/driver_nvidia.html
-        #packagesManager "$myBaseNvidia"
-        packagesManager "nvidia-open nvidia-utils lib32-nvidia-utils nvidia-settings"
-        echo "https://github.com/korvahannu/arch-nvidia-drivers-installation-guide"
-        sleep 10
-}    
 
-appPosManualConfig(){ 
-    echo "---------------------
+appPosNvidiaDriverProp() {
+	#https://github.com/lutris/docs/blob/master/InstallingDrivers.md#arch--manjaro--other-arch-linux-derivatives
+	#causa crash no gdm o pacote: nvidia-dkms
+	#https://codigocristo.github.io/driver_nvidia.html
+	#packagesManager "$myBaseNvidia"
+	packagesManager "nvidia-open nvidia-utils lib32-nvidia-utils nvidia-settings"
+	echo "https://github.com/korvahannu/arch-nvidia-drivers-installation-guide"
+	sleep 10
+}
+
+appPosManualConfig() {
+	echo "---------------------
 Configuracoes Manuais
 ---------------------
 [PACMAN]
@@ -394,24 +438,24 @@ grub-mkconfig -o /boot/grub/grub.cfg
 [Steam Linux & Windows]
 https://github.com/ValveSoftware/Proton/wiki/Using-a-NTFS-disk-with-Linux-and-Windows
 "
-read enterprasair
+	read enterprasair
 }
 
-appPosBluetoothFix(){
-    echo "[1]Fix Bluetooth & Network Interference [2]Remove Fix"
-    read esco
-    if [ "$esco" = "1" ]; then
-        sudo tee /etc/modprobe.d/iwlwifi-opt.conf <<< "options iwlwifi bt_coex_active=N"
-    elif [ "$esco" = "2" ]; then
-        sudo rm /etc/modprobe.d/iwlwifi-opt.conf
-    fi
+appPosBluetoothFix() {
+	echo "[1]Fix Bluetooth & Network Interference [2]Remove Fix"
+	read esco
+	if [ "$esco" = "1" ]; then
+		sudo tee /etc/modprobe.d/iwlwifi-opt.conf <<<"options iwlwifi bt_coex_active=N"
+	elif [ "$esco" = "2" ]; then
+		sudo rm /etc/modprobe.d/iwlwifi-opt.conf
+	fi
 }
 
-appPosTecladoConfig(){
-    echo "[ARCH] Keyboard BR"
-    setxkbmap -model abnt2 -layout br
-    #echo "setxkbmap -model abnt2 -layout br" >> ~/.profile
-    sudo tee /etc/X11/xorg.conf.d/10-evdev.conf <<< 'Section "InputClass"
+appPosTecladoConfig() {
+	echo "[ARCH] Keyboard BR"
+	setxkbmap -model abnt2 -layout br
+	#echo "setxkbmap -model abnt2 -layout br" >> ~/.profile
+	sudo tee /etc/X11/xorg.conf.d/10-evdev.conf <<<'Section "InputClass"
 Identifier "evdev keyboard catchall"
 MatchIsKeyboard "on"
 MatchDevicePath "/dev/input/event*"
@@ -421,54 +465,53 @@ Option "XkbVariant" "abnt2"
 EndSection'
 }
 
-appPosTimeNTP(){
-    sudo timedatectl set-ntp true
-    sudo hwclock --systohc
+appPosTimeNTP() {
+	sudo timedatectl set-ntp true
+	sudo hwclock --systohc
 }
 
-xfce4Config(){
-    xfce4-panel --quit
-    pkill xfconfd
-    rm -rf ~/.config/xfce4/panel
-    rm -rf ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml
-    xfce4-config
-    xfce4-panel &
+xfce4Config() {
+	xfce4-panel --quit
+	pkill xfconfd
+	rm -rf ~/.config/xfce4/panel
+	rm -rf ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml
+	xfce4-config
+	xfce4-panel &
 }
 
-gsettingsInactiveOn(){
-    xset s on +dpms
-    gsettings set org.gnome.desktop.session idle-delay 300
-    gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'suspend'
-    gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 600
-    gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-type 'suspend'
-    gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-timeout 300
+gsettingsInactiveOn() {
+	xset s on +dpms
+	gsettings set org.gnome.desktop.session idle-delay 300
+	gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'suspend'
+	gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 600
+	gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-type 'suspend'
+	gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-timeout 300
 }
 
-gsettingsInactiveOff(){
-    xset s off -dpms
-    gsettings set org.gnome.desktop.session idle-delay 0
-    gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'nothing'
-    gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 0
-    gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-type 'nothing'
-    gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-timeout 0
+gsettingsInactiveOff() {
+	xset s off -dpms
+	gsettings set org.gnome.desktop.session idle-delay 0
+	gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'nothing'
+	gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 0
+	gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-type 'nothing'
+	gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-timeout 0
 }
 
-defaultInodeDirectory(){
-    echo "Default Applications   
+defaultInodeDirectory() {
+	echo "Default Applications   
 [1]Nautilus for FileManager
 [2]PCManFM for FileManager
 [3]Thunar for FileManager"
-    read resp
-    case $resp in
-        1)xdg-mime default org.gnome.Nautilus.desktop inode/directory;;
-        2)xdg-mime default pcmanfm.desktop inode/directory;;
-        3)xdg-mime default thunar.desktop inode/directory;;
-        *)
-    esac
+	read resp
+	case $resp in
+	1) xdg-mime default org.gnome.Nautilus.desktop inode/directory ;;
+	2) xdg-mime default pcmanfm.desktop inode/directory ;;
+	3) xdg-mime default thunar.desktop inode/directory ;;
+	*) ;;
+	esac
 }
 
-hyprlandDiscordX(){
-    criaAtalho "DiscordX (Flatpak)" "Discord em Xwayland" "env ELECTRON_OZONE_PLATFORM_HINT= com.discordapp.Discord --no-sandbox" "$HOME" "false" "discordFlatpak" "discord"
-    criaAtalho "DiscordX (Pacman)" "Discord em Xwayland" "env ELECTRON_OZONE_PLATFORM_HINT= discord --no-sandbox" "$HOME" "false" "discordPacman" "discord"
+hyprlandDiscordX() {
+	criaAtalho "DiscordX (Flatpak)" "Discord em Xwayland" "env ELECTRON_OZONE_PLATFORM_HINT= com.discordapp.Discord --no-sandbox" "$HOME" "false" "discordFlatpak" "discord"
+	criaAtalho "DiscordX (Pacman)" "Discord em Xwayland" "env ELECTRON_OZONE_PLATFORM_HINT= discord --no-sandbox" "$HOME" "false" "discordPacman" "discord"
 }
-
