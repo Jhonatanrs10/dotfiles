@@ -67,7 +67,7 @@ total_paginas=$(( (total_opcoes + opcoes_por_pagina - 1) / opcoes_por_pagina ))
 mostrar_menu() {
   clear
   echo -e "${CYAN}${RESET}"
-  echo -e "${GREEN}  SCRIPTS - Página $((pagina + 1))/${total_paginas}${RESET}"
+  echo -e "${GREEN}  SCRIPTS - Page $((pagina + 1))/${total_paginas}${RESET}"
   echo -e "${CYAN}${RESET}"
 
   inicio=$((pagina * opcoes_por_pagina))
@@ -86,10 +86,10 @@ executar_opcao() {
     funcao="${opcoes[idx-1]##*::}"
     echo -e "\nExecutando: ${CYAN}$funcao${RESET}\n"
     $funcao
-    echo -e "\n${YELLOW}Pressione Enter para voltar ao menu...${RESET}"
+    echo -e "\n${YELLOW}Press Enter to return to the menu...${RESET}"
     read
   else
-    echo -e "${RED}Opção inválida!${RESET}"
+    echo -e "${RED}Invalid option!${RESET}"
     sleep 1
   fi
 }
@@ -97,8 +97,8 @@ executar_opcao() {
 while true; do
   mostrar_menu
 
-  echo -e "\n${YELLOW}Use ↑ ↓ para navegar${RESET}\n"
-  echo -ne "${CYAN}Digite o número da opção ou 'q' para sair:${RESET} "
+  echo -e "\n${YELLOW}Use ↑ ↓ to navigate${RESET}\n"
+  echo -ne "${CYAN}Enter the option number or 'q' to exit:${RESET} "
 read -rsn1 input
 
 # Verifica se é seta
@@ -116,7 +116,7 @@ case "$input" in
     ;;
   q)
     clear
-    echo -e "${RED}Saindo do menu. Até logo!${RESET}"
+    echo -e "${RED}Exiting the menu. See you later!${RESET}"
     exit 0
     ;;
   "")

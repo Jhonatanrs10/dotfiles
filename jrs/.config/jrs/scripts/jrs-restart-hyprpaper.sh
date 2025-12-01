@@ -25,6 +25,7 @@ $PROCESS_NAME &
 
 if [ $? -eq 0 ]; then
 	echo "✅ $PROCESS_NAME iniciado com sucesso em background."
+	dunstify -t 1500 --hints int:transient:1 "Hyprpaper" "Restarted" --icon=pinta
 else
 	echo "❌ Erro ao iniciar $PROCESS_NAME."
 fi
