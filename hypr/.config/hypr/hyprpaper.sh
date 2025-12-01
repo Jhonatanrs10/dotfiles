@@ -1,2 +1,2 @@
-hyprctl hyprpaper preload ~/.config/wallpapers/green.png
-hyprctl hyprpaper wallpaper , ~/.config/wallpapers/green.png
+hyprctl hyprpaper preload ~/.config/wallpapers/red.png
+hyprctl hyprpaper wallpaper , ~/.config/wallpapers/red.png
