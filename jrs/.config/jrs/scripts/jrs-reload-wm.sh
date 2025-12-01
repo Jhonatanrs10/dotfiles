@@ -5,6 +5,7 @@ reload_Hyprland() {
 	killall -SIGUSR2 waybar &
 	bash ~/.config/hypr/hyprpaper.sh &
 	dunstctl reload &
+	pkill -USR2 btop &
 	dunstify -t 1500 --hints int:transient:1 "$XDG_CURRENT_DESKTOP" "Reloading" --icon=preferences-desktop-theme
 }
 
@@ -13,6 +14,7 @@ reload_bspwm() {
 	pkill -USR1 -x sxhkd &
 	bspc wm -r &
 	dunstctl reload &
+	pkill -USR2 btop &
 	dunstify -t 1500 --hints int:transient:1 "$XDG_CURRENT_DESKTOP" "Reloading" --icon=preferences-desktop-theme
 }
 
@@ -21,6 +23,7 @@ reload_i3() {
 	i3-msg restart &
 	i3-msg reload &
 	dunstctl reload &
+	pkill -USR2 btop &
 	dunstify -t 1500 --hints int:transient:1 "$XDG_CURRENT_DESKTOP" "Reloading" --icon=preferences-desktop-theme
 }
 

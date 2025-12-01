@@ -146,6 +146,18 @@ theme_vinland_saga[white]="ffffff"
 theme_vinland_saga[black]="000000"
 theme_vinland_saga[wallpaper]="vinland-saga.png"
 
+declare -A theme_gray
+theme_gray[main]="7d7d7d"
+theme_gray[bar]="1E1E1E"
+theme_gray[bar_opacity]="0.60"
+theme_gray[text]="ffffff"
+theme_gray[unfocused]="313131"
+theme_gray[bad]="900000"
+theme_gray[degraded]="a08000"
+theme_gray[white]="ffffff"
+theme_gray[black]="000000"
+theme_gray[wallpaper]="gray.png"
+
 # Rofi Theme
 rofiTheme() {
 
@@ -166,6 +178,7 @@ Halloween Boy       |    theme_halloween_boy
 Minimalist Green    |    theme_minimalist_green
 Old Anime           |    theme_old_anime
 Vinland Saga        |    theme_vinland_saga
+Minimalist Gray     |    theme_gray
 EOF
 	)
 
@@ -379,6 +392,90 @@ echo '#!/bin/bash
     background = "#'$JRS_BAR_COLOR'aa"
     foreground = "#'$JRS_TEXT_COLOR'"
     frame_color = "#'$JRS_BAD_COLOR'"' >$HOME/.config/dunst/dunstrc.d/colors.conf
+
+# Btop colors setup
+echo '# Theme: colors
+# By: Jhonatanrs
+
+# Main bg
+theme[main_bg]="#'$JRS_BAR_COLOR$JRS_POLYBAR_OPACITY'"
+
+# Main text color
+theme[main_fg]="#'$JRS_TEXT_COLOR'"
+
+# Title color for boxes
+theme[title]="#'$JRS_TEXT_COLOR'"
+
+# Highlight color for keyboard shortcuts
+theme[hi_fg]="#'$JRS_MAIN_COLOR'"
+
+# Background color of selected item in processes box
+theme[selected_bg]="#'$JRS_MAIN_COLOR'"
+
+# Foreground color of selected item in processes box
+theme[selected_fg]="#'$JRS_TEXT_COLOR'"
+
+# Color of inactive/disabled text
+theme[inactive_fg]="#'$JRS_UNFOCUSED_COLOR'"
+
+# Misc colors for processes box including mini cpu graphs, details memory graph and details status text
+theme[proc_misc]="#7dcfff"
+
+# Cpu box outline color
+theme[cpu_box]="#'$JRS_MAIN_COLOR'"
+
+# Memory/disks box outline color
+theme[mem_box]="#'$JRS_MAIN_COLOR'"
+
+# Net up/down box outline color
+theme[net_box]="#'$JRS_MAIN_COLOR'"
+
+# Processes box outline color
+theme[proc_box]="#'$JRS_MAIN_COLOR'"
+
+# Box divider line and small boxes line color
+theme[div_line]="#'$JRS_MAIN_COLOR'"
+
+# Temperature graph colors
+theme[temp_start]="#'$JRS_MAIN_COLOR'"
+theme[temp_mid]=""
+theme[temp_end]="#'$JRS_BAR_COLOR'"
+
+# CPU graph colors
+theme[cpu_start]="#'$JRS_MAIN_COLOR'"
+theme[cpu_mid]=""
+theme[cpu_end]="#'$JRS_BAR_COLOR'"
+
+# Mem/Disk free meter
+theme[free_start]="#'$JRS_MAIN_COLOR'"
+theme[free_mid]=""
+theme[free_end]="#'$JRS_BAR_COLOR'"
+
+# Mem/Disk cached meter
+theme[cached_start]="#'$JRS_MAIN_COLOR'"
+theme[cached_mid]=""
+theme[cached_end]="#'$JRS_BAR_COLOR'"
+
+# Mem/Disk available meter
+theme[available_start]="#'$JRS_MAIN_COLOR'"
+theme[available_mid]=""
+theme[available_end]="#'$JRS_BAR_COLOR'"
+
+# Mem/Disk used meter
+theme[used_start]="#'$JRS_MAIN_COLOR'"
+theme[used_mid]=""
+theme[used_end]="#'$JRS_BAR_COLOR'"
+
+# Download graph colors
+theme[download_start]="#'$JRS_MAIN_COLOR'"
+theme[download_mid]=""
+theme[download_end]="#'$JRS_BAR_COLOR'"
+
+# Upload graph colors
+theme[upload_start]="#'$JRS_MAIN_COLOR'"
+theme[upload_mid]=""
+theme[upload_end]="#'$JRS_BAR_COLOR'"
+' >$HOME/.config/btop/themes/colors.theme
 
 source $HOME/.config/jrs/scripts/jrs-reload-wm.sh
 
