@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/bash
 installRedeVirtual(){
         echo "Rede Virtual
 [1] Zerotier, [2] Ngrok [3] Playit.gg"
@@ -47,15 +47,15 @@ installNgrok(){
 Connect your account (https://ngrok.com/)\nEx.:ngrok config add-authtoken ******"
 	read auth_key
 	./$auth_key
-    criarArq "#!/usr/bin/env sh
+    criarArq "#!/bin/bash
 bash $diretorioNgrok/discord.sh & bash $diretorioNgrok/ngrok.sh" "$diretorioNgrok/start.sh"
-    criarArq "#!/usr/bin/env sh
+    criarArq "#!/bin/bash
 	cd $diretorioNgrok
 	./ngrok tcp 25565" "$diretorioNgrok/ngrok.sh"
 	echo -e "
 COLE AQUI O LINK DA API DO BOT WEBHOOK DO DISCORD"
 	read webh
-    criarArq '#!/usr/bin/env sh
+    criarArq '#!/bin/bash
 sleep 15
 WEBHOOK="'$webh'"
 ServerIp=`curl -s localhost:4040/api/tunnels | jq -r .tunnels[0].public_url`

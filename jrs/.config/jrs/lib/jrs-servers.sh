@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/bash
 #https://developer.valvesoftware.com/wiki/SteamCMD#Linux
 #essa linha corrige possiveis erros restaurando as configuracoes padrao do SteamCMD validando-as
 #bash ./steamcmd.sh +login anonymous +app_update 1110390 validate +quit
@@ -68,7 +68,7 @@ installFivem() {
 	echo -e "License key for your server (https://keymaster.fivem.net)"
 	read lk
 
-	criarArq "#!/usr/bin/env sh
+	criarArq "#!/bin/bash
 cd $diretorioServer/server-data && bash $diretorioServer/run.sh +exec server.cfg" "$diretorioServer/fivemexec.sh"
 
 	#remove NPCs
@@ -223,7 +223,7 @@ sampServer() {
 	criaPastaBaixaExtrai "$diretorioInstall" "http://files.sa-mp.com/samp037svr_R2-1.tar.gz" "samp.tar.gz"
 	mv */* .
 
-	criarArq "#!/usr/bin/env sh
+	criarArq "#!/bin/bash
 cd $diretorioInstall
 ./samp03svr" "$diretorioInstall/run.sh"
 
@@ -256,7 +256,7 @@ terrariaServer() {
 	criaDiretorioInstall "$JRS_DIR/$installName"
 	criaPastaBaixaExtrai "$diretorioInstall" "https://terraria.org/api/download/pc-dedicated-server/terraria-server-1449.zip" "ts.zip"
 	chmod 770 $diretorioInstall/*/Linux/TerrariaServer.bin.x86_64
-	criaArqRunDiretorioInstall "#!/usr/bin/env sh
+	criaArqRunDiretorioInstall "#!/bin/bash
 cd $diretorioInstall/*/Linux
 ./TerrariaServer.bin.x86_64"
 	criaAtalho "$installName" "Terraria Server PC" "bash run.sh" "$diretorioInstall" "true" "$installName" "application-default-icon"
@@ -279,7 +279,7 @@ pve
 welcome Bem Vindo ao bairro!!
 cheats on" "$HOME/.steam/SteamApps/common/U3DS/Servers/JardimRecreio/Server/Commands.dat"
 
-	criarArq "#!/usr/bin/env sh
+	criarArq "#!/bin/bash
 steamcmd +login anonymous +app_update 1110390 +quit
 cd $HOME/.steam/SteamApps/common/U3DS
 bash ServerHelper.sh +LanServer/JardimRecreio" "$diretorioInstall/run.sh"

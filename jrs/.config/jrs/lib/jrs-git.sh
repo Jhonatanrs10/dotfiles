@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/bash
 
 gitconfig(){
     #https://docs.github.com/pt/get-started/getting-started-with-git/caching-your-github-credentials-in-git

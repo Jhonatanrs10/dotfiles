@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/bash
 
 virtualPulseAudioReset() {
 	pulseaudio -k

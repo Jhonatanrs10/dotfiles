@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/bash
 nodejslts() {
     echo "Nodejs Manual[1] ou pacman[2]"
     read escolha

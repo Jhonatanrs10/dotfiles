@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/bash
 virtualGamepads(){
     echo "Dependencias"
     packagesManager "nodejs-lts-hydrogen npm"
@@ -9,7 +9,7 @@ virtualGamepads(){
     mv */* .
     npm install
     sudo npm install -g qrcode-terminal
-    echo '#!/usr/bin/env sh
+    echo '#!/bin/bash
 	cd '"$diretorioInstall"'
     sudo echo http://$(ip route get 1 | sed -n '"'"'s/.*src \([0-9.]\+\).*/\1/p'"'"'):80 | qrcode-terminal
     sudo node main.js' > $diretorioInstall/run.sh

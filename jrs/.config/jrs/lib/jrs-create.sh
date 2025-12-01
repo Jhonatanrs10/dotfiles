@@ -1,8 +1,4 @@
-#!/usr/bin/env sh
-criaArqRunDiretorioInstall2() {
-	criarArq "$1" "$diretorioInstall/run.sh"
-}
-#criaArqRunDiretorioInstall2 "conteudo arquivo run.sh"
+#!/bin/bash
 
 criaDiretorioInstall() {
 	export diretorioInstall="$1"

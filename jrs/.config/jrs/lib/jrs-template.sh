@@ -1,5 +1,5 @@
-#!/usr/bin/env sh
-SCRIPTMODELO(){
+#!/bin/bash
+TEMPLATE(){
 
     installName="SCRIPTMODELO"
     uninstallPastaAtalhoBinMesmoNome "$installName"
@@ -10,7 +10,7 @@ SCRIPTMODELO(){
     #entra em pasta * pega arquivos * e move uma pasta atras .  
     #mv */* .
 
-    #criaArqRunDiretorioInstall "#!/usr/bin/env sh
+    #criaArqRunDiretorioInstall "#!/bin/bash
 #cd $diretorioInstall
 #./nomearquivo"
 

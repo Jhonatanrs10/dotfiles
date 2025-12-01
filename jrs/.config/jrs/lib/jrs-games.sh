@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/bash
 installPokexgames(){
     pxg="https://download.pokexgames.com/pxg-linux.zip"
     diretorioPokexgames="$JRS_DIR/Pokexgames"
@@ -19,7 +19,7 @@ installMinecraft(){
     extrairArq "$diretorioMine"
 	cd $diretorioMine
     tlauncher=`ls *.jar`
-    criarArq "#!/usr/bin/env sh
+    criarArq "#!/bin/bash
 	cd $diretorioMine
 	java -jar $tlauncher" "$diretorioMine/tlauncher.sh"
     criaAtalho "MinecraftTlauncher" "Create your own world on Xorg" "bash tlauncher.sh" "$diretorioMine" "false" "TLauncher" "/usr/share/icons/Papirus-Dark/64x64/apps/minecraft.svg"

@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/bash
 javaVersion(){
     echo "DEBIAN BASE
 sudo update-alternatives --config java

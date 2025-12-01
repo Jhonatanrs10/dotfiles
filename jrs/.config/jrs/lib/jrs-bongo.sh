@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/bash
 bongo() {
 	bongocat="https://github.com/kuroni/bongocat-osu/archive/refs/heads/master.zip"
 	uninstallPastaAtalhoBinMesmoNome "winBongo"
@@ -12,7 +12,7 @@ bongo() {
 	cp Makefile.linux Makefile
 	make
 	mv $diretorioBongo/bin/bongo $diretorioBongo/bongo
-	criarArq "#!/usr/bin/env sh
+	criarArq "#!/bin/bash
 cd $diretorioBongo
 ./bongo" "$diretorioBongo/bongo.sh"
 	criarArq '{

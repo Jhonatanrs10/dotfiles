@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/bash
 extrairArq() {
 	echo "EXTRAINDO..."
 	for arq in $(ls $1); do
