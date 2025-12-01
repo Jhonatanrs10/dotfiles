@@ -353,5 +353,5 @@ echo '#!/bin/bash
 
 source $HOME/.config/jrs/scripts/jrs-reload-wm.sh
 
-#dunstify -t 1000 --hints int:transient:1 "Theme" "$varNomeTema" --icon=preferences-desktop-theme
+#dunstify -t 1500 --hints int:transient:1 "Theme" "$varNomeTema" --icon=preferences-desktop-theme
 

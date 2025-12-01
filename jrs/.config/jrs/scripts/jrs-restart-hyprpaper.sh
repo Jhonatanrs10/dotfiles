@@ -12,6 +12,7 @@ pkill $PROCESS_NAME
 # Verificar se o processo foi fechado e esperar um pouco
 if [ $? -eq 0 ]; then
 	echo "$PROCESS_NAME fechado com sucesso. Aguardando 1 segundo..."
+	dunstify -t 1500 --hints int:transient:1 "Hyprpaper" "Restarting" --icon=lximage
 	sleep 1
 else
 	echo "Nenhuma instância de $PROCESS_NAME foi encontrada ou houve um erro ao fechar."
@@ -25,7 +26,6 @@ $PROCESS_NAME &
 
 if [ $? -eq 0 ]; then
 	echo "✅ $PROCESS_NAME iniciado com sucesso em background."
-	dunstify -t 1500 --hints int:transient:1 "Hyprpaper" "Restarted" --icon=pinta
 else
 	echo "❌ Erro ao iniciar $PROCESS_NAME."
 fi
