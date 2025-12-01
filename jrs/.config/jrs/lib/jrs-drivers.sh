@@ -6,37 +6,43 @@ installVideoDriver() {
 	while true; do
 		echo "Escolha o driver que deseja instalar:"
 		echo "1 - NVIDIA"
-		echo "2 - Intel (moderno)"
-		echo "3 - Intel (antigo / xf86-video-intel )"
-		echo "4 - AMD (moderno)"
-		echo "5 - AMD (antigo)"
+		echo "2 - NVIDIA DKMS"
+		echo "3 - Intel (moderno)"
+		echo "4 - Intel (antigo / xf86-video-intel )"
+		echo "5 - AMD (moderno)"
+		echo "6 - AMD (antigo)"
 		read -rp "Digite o número da opção desejada: 
 " choice
 
 		case $choice in
 		1)
 			DRIVER_NAME="NVIDIA"
-			DRIVER_PACKAGES=$myBaseNvidia
+			DRIVER_PACKAGES="$myBaseNvidia $myBaseNvidiaExtras"
 			break
 			;;
 		2)
-			DRIVER_NAME="Intel (moderno)"
-			DRIVER_PACKAGES=$myBaseIntel
+			DRIVER_NAME="NVIDIA"
+			DRIVER_PACKAGES="$myBaseNvidiaDkms $myBaseNvidiaExtras"
 			break
 			;;
 		3)
-			DRIVER_NAME="Intel (antigo)"
-			DRIVER_PACKAGES=$myBaseIntelOld
+			DRIVER_NAME="Intel (moderno)"
+			DRIVER_PACKAGES="$myBaseIntel"
 			break
 			;;
 		4)
-			DRIVER_NAME="AMD (moderno)"
-			DRIVER_PACKAGES=$myBaseAmd
+			DRIVER_NAME="Intel (antigo)"
+			DRIVER_PACKAGES="$myBaseIntelOld"
 			break
 			;;
 		5)
+			DRIVER_NAME="AMD (moderno)"
+			DRIVER_PACKAGES="$myBaseAmd"
+			break
+			;;
+		6)
 			DRIVER_NAME="AMD (antigo)"
-			DRIVER_PACKAGES=$myBaseAmdOld
+			DRIVER_PACKAGES="$myBaseAmdOld"
 			break
 			;;
 		*) return ;;
