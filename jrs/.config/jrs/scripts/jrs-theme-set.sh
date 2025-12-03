@@ -190,7 +190,7 @@ hi("StatusLine", { fg = "#'$JRS_BAR_COLOR'", bg = "#'$JRS_TEXT_COLOR'", bold = t
 hi("StatusLineNC", { fg = "#'$JRS_BAR_COLOR'", bg = "#'$JRS_TEXT_COLOR'" })
 hi("Comment", { fg = "#57a64a", italic = true })
 hi("String", { fg = "#CE9178" })
-hi("Keyword", { fg = "#C586C0", bold = true })' >$HOME/.config/nvim/colors/colors.lua
+hi("Keyword", { fg = "#C586C0", bold = true })' >$HOME/.config/nvim/bkp/colors/colors.lua
 
 # NVIM colors setup
 echo 'local colors = {
