@@ -26,7 +26,7 @@ super + z
 
 # theme mode
 super + t 
-	$HOME/.config/jrs/scripts/jrs-themes.sh
+	$HOME/.config/jrs/scripts/jrs-theme-set.sh
 
 # make sxhkd reload its configuration files:
 super + shift + r

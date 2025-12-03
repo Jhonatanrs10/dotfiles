@@ -45,7 +45,7 @@ exec_always --no-startup-id ~/.screenlayout/monitors.sh
 exec_always --no-startup-id $HOME/.config/polybar/polybar.sh
 
 ###Binds###
-bindsym $mod+t exec --no-startup-id ~/.config/jrs/scripts/jrs-themes.sh 
+bindsym $mod+t exec --no-startup-id ~/.config/jrs/scripts/jrs-theme-set.sh 
 bindsym $mod+d exec --no-startup-id $appMenu
 bindsym $mod+x exec --no-startup-id $MyFileManager
 bindsym $mod+c exec --no-startup-id $MyBrowser
