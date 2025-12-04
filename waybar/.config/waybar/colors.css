@@ -8,5 +8,5 @@
 @define-color base07 #000000;
 
 window#waybar:first-child > box {
-    background-color: alpha(@base01, 0.60);
+    background-color: alpha(@base01, 0.70);
 }

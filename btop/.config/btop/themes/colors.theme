@@ -2,7 +2,7 @@
 # By: Jhonatanrs
 
 # Main bg
-theme[main_bg]="#33333399"
+theme[main_bg]="#333333B3"
 
 # Main text color
 theme[main_fg]="#ffffff"
