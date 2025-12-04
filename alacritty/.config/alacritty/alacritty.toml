@@ -22,5 +22,3 @@ style = "Regular"
 [window]
 dimensions = { columns = 60, lines = 25}
 blur = true
-opacity = 0.90
-

@@ -4,35 +4,35 @@ source $HOME/.config/jrs/scripts/jrs-themes.sh
 
 select_theme_with_rofi() {
 
-	local theme_name display_name
-	local theme_names
-	readarray -t theme_names < <(declare -A | grep -oP 'declare -A \Ktheme_[^=]*' | sort)
-	display_names_output=""
-	display_names_and_variables=""
-	for theme_name in "${theme_names[@]}"; do
-		eval "display_name=\${${theme_name}[name]:-}"
-		if [[ -z "$display_name" ]]; then
-			local raw_name="${theme_name/theme_/}"
-			display_name="$(echo "${raw_name^}" | tr '_' ' ')"
-		fi
-		display_names_output+="$display_name\n"
-		display_names_and_variables+="$display_name|$theme_name\n"
-	done
-	display_names_output=$(echo -e "$display_names_output")
+  local theme_name display_name
+  local theme_names
+  readarray -t theme_names < <(declare -A | grep -oP 'declare -A \Ktheme_[^=]*' | sort)
+  display_names_output=""
+  display_names_and_variables=""
+  for theme_name in "${theme_names[@]}"; do
+    eval "display_name=\${${theme_name}[name]:-}"
+    if [[ -z "$display_name" ]]; then
+      local raw_name="${theme_name/theme_/}"
+      display_name="$(echo "${raw_name^}" | tr '_' ' ')"
+    fi
+    display_names_output+="$display_name\n"
+    display_names_and_variables+="$display_name|$theme_name\n"
+  done
+  display_names_output=$(echo -e "$display_names_output")
 
-	local options=$display_names_output
+  local options=$display_names_output
 
-	menu_cmd="rofi -dmenu -i -p Themes"
+  menu_cmd="rofi -dmenu -i -p Themes"
 
-	chosen_name=$(echo -e "$options" | $menu_cmd)
+  chosen_name=$(echo -e "$options" | $menu_cmd)
 
-	if [ -n "$chosen_name" ]; then
-		selected_theme=$(echo -e "$display_names_and_variables" | grep -F "$chosen_name" | head -n 1)
-		selected_theme=$(echo "$selected_theme" | cut -d'|' -f2 | tr -d '[:space:]')
-	else
-		selected_theme=""
-		exit 1
-	fi
+  if [ -n "$chosen_name" ]; then
+    selected_theme=$(echo -e "$display_names_and_variables" | grep -F "$chosen_name" | head -n 1)
+    selected_theme=$(echo "$selected_theme" | cut -d'|' -f2 | tr -d '[:space:]')
+  else
+    selected_theme=""
+    exit 1
+  fi
 
 }
 
@@ -54,17 +54,17 @@ JRS_WALLPAPER="${chosen_theme[wallpaper]}"
 
 case $JRS_BAR_OPACITY in
 "0")
-	JRS_WAYBAR_OPACITY="0.0"
-	JRS_POLYBAR_OPACITY="00"
-	;;
+  JRS_WAYBAR_OPACITY="0.0"
+  JRS_POLYBAR_OPACITY="00"
+  ;;
 "1")
-	JRS_WAYBAR_OPACITY="1.0"
-	JRS_POLYBAR_OPACITY="FF"
-	;;
+  JRS_WAYBAR_OPACITY="1.0"
+  JRS_POLYBAR_OPACITY="FF"
+  ;;
 *)
-	JRS_WAYBAR_OPACITY="0.60"
-	JRS_POLYBAR_OPACITY="99"
-	;;
+  JRS_WAYBAR_OPACITY="0.60"
+  JRS_POLYBAR_OPACITY="99"
+  ;;
 esac
 
 ###########################################################################################
@@ -231,20 +231,22 @@ echo "[colors]
     draw_bold_text_with_bright_colors = true
 [colors.primary]
     background = '#$JRS_BAR_COLOR'
-    foreground = '#$JRS_TEXT_COLOR'" >$HOME/.config/alacritty/colors.toml
+    foreground = '#$JRS_TEXT_COLOR'
+[window]
+opacity = $JRS_WAYBAR_OPACITY" >$HOME/.config/alacritty/colors.toml
 
 # Dunst colors setup
 echo '#!/bin/bash
 [global]
     frame_color = "#'$JRS_MAIN_COLOR'"
 [urgency_low]
-    background = "#'$JRS_BAR_COLOR'aa"
+    background = "#'$JRS_BAR_COLOR$JRS_POLYBAR_OPACITY'"
     foreground = "#'$JRS_TEXT_COLOR'"
 [urgency_normal]
-    background = "#'$JRS_BAR_COLOR'aa"
+    background = "#'$JRS_BAR_COLOR$JRS_POLYBAR_OPACITY'"
     foreground = "#'$JRS_TEXT_COLOR'"
 [urgency_critical]
-    background = "#'$JRS_BAR_COLOR'aa"
+    background = "#'$JRS_BAR_COLOR$JRS_POLYBAR_OPACITY'"
     foreground = "#'$JRS_TEXT_COLOR'"
     frame_color = "#'$JRS_BAD_COLOR'"' >$HOME/.config/dunst/dunstrc.d/colors.conf
 
@@ -333,4 +335,3 @@ theme[upload_end]="#'$JRS_BAR_COLOR'"
 ' >$HOME/.config/btop/themes/colors.theme
 
 source $HOME/.config/jrs/scripts/jrs-reload-wm.sh
-

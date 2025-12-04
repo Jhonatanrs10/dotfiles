@@ -3,3 +3,5 @@
 [colors.primary]
     background = '#333333'
     foreground = '#ffffff'
+[window]
+opacity = 0.60
