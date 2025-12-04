@@ -1,6 +1,6 @@
 # My Dotfiles 2025
 
-Antes de executar o comando, você **DEVE** garantir que os arquivos e diretórios de configuração **NÃO EXISTAM**.
+Before running the command, you **MUST** ensure that the configuration files and directories **DO NOT EXIST**.
 
 ```
 sudo pacman -S --needed stow git
