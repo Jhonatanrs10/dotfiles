@@ -27,10 +27,17 @@ select_theme_with_rofi() {
   chosen_name=$(echo -e "$options" | $menu_cmd)
 
   if [ -n "$chosen_name" ]; then
-    selected_theme=$(echo -e "$display_names_and_variables" | grep -F "$chosen_name" | head -n 1)
-    selected_theme=$(echo "$selected_theme" | cut -d'|' -f2 | tr -d '[:space:]')
+    if echo -e "$options" | grep -F -x -q "$chosen_name"; then
+        echo "✅ '$chosen_name' é uma opção válida."
+        selected_theme=$(echo -e "$display_names_and_variables" | grep -F "$chosen_name" | head -n 1)
+        selected_theme=$(echo "$selected_theme" | cut -d'|' -f2 | tr -d '[:space:]')
+    else
+        echo "❌ '$chosen_name' não é uma opção válida."
+        selected_theme="theme_0"
+        exit 1
+    fi
   else
-    selected_theme=""
+    selected_theme="theme_0"
     exit 1
   fi
 
@@ -38,7 +45,7 @@ select_theme_with_rofi() {
 
 select_theme_with_rofi
 declare -n chosen_theme="$selected_theme"
-#declare -n chosen_theme="theme_archlinux"
+#declare -n chosen_theme="theme_0"
 
 # Atribui os valores do tema escolhido às variáveis JRS_*
 JRS_MAIN_COLOR="${chosen_theme[main]}"

@@ -7,12 +7,12 @@ YELLOW="\033[33m"
 CYAN="\033[36m"
 RESET="\033[0m"
 
-sourceFolder(){
-    for src in `ls $1`; do
-        source $1/$src
-        #echo "$1/$src"
-    done
-    #sleep 10
+sourceFolder() {
+  for src in $(ls $1); do
+    source $1/$src
+    #echo "$1/$src"
+  done
+  #sleep 10
 }
 sourceFolder "./lib"
 dependencies
@@ -20,8 +20,8 @@ dependencies
 # Lista de opções (texto e função correspondente)
 opcoes=(
   "Pos Install::myBasePosInstall"
-  "Montar NTFS::myBaseMountNTFS"
-  "Linkar Home::myBaselnHome"
+  "Montar Disco::myBaseMountDisk"
+  "Link Simbólico::myBaselnHome"
   "VirtManager::installVirtManager"
   "Diretório Inode Padrão::defaultInodeDirectory"
   "Configuração Git::gitconfig"
@@ -56,13 +56,13 @@ opcoes=(
   "Reparar Pacman::repairPM"
   "Discord Config Hyprland::hyprlandDiscordX"
   "SteamOSMode::steamos-setup"
-  )
+)
 
 linhas_terminal=$(tput lines)
 opcoes_por_pagina=$((linhas_terminal - 7))
 pagina=0
 total_opcoes=${#opcoes[@]}
-total_paginas=$(( (total_opcoes + opcoes_por_pagina - 1) / opcoes_por_pagina ))
+total_paginas=$(((total_opcoes + opcoes_por_pagina - 1) / opcoes_por_pagina))
 
 mostrar_menu() {
   clear
@@ -83,7 +83,7 @@ mostrar_menu() {
 executar_opcao() {
   idx=$1
   if [[ "$idx" =~ ^[0-9]+$ ]] && [ "$idx" -ge 1 ] && [ "$idx" -le "$total_opcoes" ]; then
-    funcao="${opcoes[idx-1]##*::}"
+    funcao="${opcoes[idx - 1]##*::}"
     echo -e "\nExecutando: ${CYAN}$funcao${RESET}\n"
     $funcao
     echo -e "\n${YELLOW}Press Enter to return to the menu...${RESET}"
@@ -99,15 +99,15 @@ while true; do
 
   echo -e "\n${YELLOW}Use ↑ ↓ to navigate${RESET}\n"
   echo -ne "${CYAN}Enter the option number or 'q' to exit:${RESET} "
-read -rsn1 input
+  read -rsn1 input
 
-# Verifica se é seta
-if [[ $input == $'\x1b' ]]; then
-  read -rsn2 -t 0.1 input2
-  input+="$input2"
-fi
+  # Verifica se é seta
+  if [[ $input == $'\x1b' ]]; then
+    read -rsn2 -t 0.1 input2
+    input+="$input2"
+  fi
 
-case "$input" in
+  case "$input" in
   $'\x1b[A') # seta para cima
     if [ $pagina -gt 0 ]; then ((pagina--)); fi
     ;;
@@ -128,5 +128,5 @@ case "$input" in
     read -r restante
     executar_opcao "$input$restante"
     ;;
-esac
+  esac
 done

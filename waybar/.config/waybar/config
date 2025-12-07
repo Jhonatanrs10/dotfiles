@@ -4,12 +4,7 @@
 	"spacing": 0,
 	"modules-left": ["hyprland/workspaces"],
 	"modules-center": ["clock"],
-	"modules-right": [
-    "batteryoff",
-    "pulseaudiooff",
-    "trayoff",
-    "group/tray-expander"
-  ],
+	"modules-right": ["group/tray-expander"],
 	"hyprland/workspaces": {
      "format": "{icon}",
      "on-scroll-up": "hyprctl dispatch workspace e+1",
@@ -29,6 +24,7 @@
     "orientation": "inherit",
     "drawer": {
       "transition-duration": 600,
+      /*"click-to-reveal": true,*/
       "children-class": "tray-group-item"
     },
     "modules": ["custom/expand-icon", "battery", "pulseaudio", "tray"]
