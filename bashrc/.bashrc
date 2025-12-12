@@ -36,6 +36,8 @@ alias codedotfiles='code ~/.dotfiles && exit'
 alias sshlocalserver="ssh jhonatanrs@192.168.0.134"
 # Dotfiles
 alias mydotfiles="bash ~/.config/jrs/scripts/jrs-mydotfiles.sh"
+# Servers
+alias mineserver="cd ~/Servers/MINEJRS && bash run.sh"
 # My Bash
 #PS1='[\u@\h \W]\$ '
 PS1='[\w]\$ '
