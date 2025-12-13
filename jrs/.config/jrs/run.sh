@@ -34,6 +34,7 @@ opcoes=(
   "Servidor FiveM::installFivem"
   "Servidor Unturned::installUnturnedServer"
   "Servidor Project Zomboid::installProjectZomboidServer"
+  "Servidor Palworld::installPalworldServer"
   "Servidor SA-MP::sampServer"
   "Servidor Terraria::terrariaServer"
   "Node LTS::nodejslts"

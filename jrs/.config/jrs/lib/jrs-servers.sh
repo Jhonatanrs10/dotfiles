@@ -295,3 +295,13 @@ installProjectZomboidServer() {
 	installSteamCMD
 	criarArq "steamcmd +force_install_dir "$diretorioInstall" +login anonymous +app_update 380870 validate +quit" "run_install_and_update.sh" # 108600 ou 380870
 }
+
+installPalworldServer() {
+	installName="PalServer"
+	uninstallPastaAtalhoBinMesmoNome "$installName"
+	criaDiretorioInstall "$JRS_DIR/$installName"
+	installSteamCMD
+	criarArq "steamcmd +@sSteamCmdForcePlatformType linux +force_install_dir "$diretorioInstall" +login anonymous +app_update 2394010 validate +quit" "run_install_and_update.sh"
+	criarArq "chmod +x PalServer.sh
+./PalServer.sh -useperfthreads -NoAsyncLoadingThread -UseMultithreadForDS" "run_server.sh"
+}

@@ -1,7 +1,7 @@
 local colors = {
           -- Base colors (VS Code Dark+)
-          main_bg = "#333333",     -- Main editor background
-          selection_bg = "#c10b0b", -- Selection background
+          main_bg = "#1a1b26",     -- Main editor background
+          selection_bg = "#7d7d7d", -- Selection background
           line_bg = "#2A2D2E",     -- Cursor line background
           ui_fg = "#ffffff",       -- Main text/UI foreground
           comment_fg = "#6A9955",  -- Comments
