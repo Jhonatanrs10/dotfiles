@@ -46,6 +46,7 @@ myBaseHyprland="hyprland rofi waybar hyprlock hyprpaper hypridle hyprpicker wl-c
 myBaseBspwm="bspwm sxhkd polybar rofi picom scrot xcolor arandr i3lock polkit-gnome feh nwg-look lxappearance font-manager galculator system-config-printer cmus gnome-keyring seahorse network-manager-applet wiremix blueman ly"
 myBaseI3wm="i3 xss-lock i3status polybar rofi dmenu picom scrot xcolor arandr i3lock polkit-gnome feh nwg-look lxappearance font-manager galculator system-config-printer cmus gnome-keyring seahorse network-manager-applet wiremix blueman ly"
 #Window Manager Applications
+wmDisplayManager=""
 wmBaseFileManager="thunar thunar-archive-plugin tumbler ark"
 wmBaseTerminal="alacritty"
 wmBasePdfApp="xreader"

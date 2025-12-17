@@ -264,28 +264,28 @@ configsSetup() {
 
 desktopSetup() {
   echo "DESKTOP
-[1]Hyprland [2]Bspwm [3]I3wm [4]Gnome [5]KDE"
+[1]Hyprland [2]I3wm [3]Gnome [4]KDE [5]Xfce"
   read resp
   case $resp in
   1)
-    packagesManager "$myBaseHyprland $wmBaseFileManager $wmBaseTerminal $wmBasePdfApp"
-    enableSystemctl "ly"
+    packagesManager "$myBaseHyprland $wmDisplayManager $wmBaseFileManager $wmBaseTerminal $wmBasePdfApp"
+	#hyprland
     ;;
   2)
-    packagesManager "$myBaseBspwm $wmBaseFileManager $wmBaseTerminal $wmBasePdfApp"
-    enableSystemctl "ly"
+    packagesManager "$myBaseI3wm $wmDisplayManager $wmBaseFileManager $wmBaseTerminal $wmBasePdfApp"
+	#startx /usr/bin/i3
     ;;
   3)
-    packagesManager "$myBaseI3wm $wmBaseFileManager $wmBaseTerminal $wmBasePdfApp"
-    enableSystemctl "ly"
-    ;;
-  4)
     packagesManager "$myBaseGnome"
     enableSystemctl "gdm"
     ;;
-  5)
+  4)
     packagesManager "$myBaseKde"
     enableSystemctl "sddm"
+    ;;
+  5)
+    packagesManager "$myBaseXfce4"
+    enableSystemctl "lightdm"
     ;;
   *) ;;
   esac

@@ -8,6 +8,9 @@
 # Colors
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
+# DE
+alias start-hyprland="hyprland"
+alias start-i3wm="startx"
 # My Alias
 alias gitatt="git add . && git commit -m \"att\" && git push"
 alias ff="fastfetch"
