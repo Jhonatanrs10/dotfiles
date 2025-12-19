@@ -1,7 +1,7 @@
 [colors]
     draw_bold_text_with_bright_colors = true
 [colors.primary]
-    background = '#1a1b26'
+    background = '#1E1E1E'
     foreground = '#ffffff'
 [window]
-opacity = 1.0
+opacity = 0.80

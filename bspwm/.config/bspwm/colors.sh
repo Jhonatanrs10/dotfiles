@@ -1,6 +1,6 @@
-wallpaper="omarchy_default.png"
+wallpaper="gray.png"
 base00="#7d7d7d"
-base01="#1a1b26"
+base01="#1E1E1E"
 base02="#ffffff"
 base03="#313131"
 base04="#900000"

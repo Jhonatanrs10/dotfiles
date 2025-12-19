@@ -1,6 +1,6 @@
-exec_always --no-startup-id feh --bg-fill ~/.config/wallpapers/omarchy_default.png
+exec_always --no-startup-id feh --bg-fill ~/.config/wallpapers/gray.png
 set $color1 #7d7d7d
-set $color2 #1a1b26
+set $color2 #1E1E1E
 set $color3 #ffffff
 set $color4 #313131
 set $color5 #000000
