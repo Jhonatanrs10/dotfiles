@@ -210,3 +210,17 @@ theme_berserker[white]="ffffff"
 theme_berserker[black]="000000"
 theme_berserker[wallpaper]="berserker.png"
 
+declare -A theme_gruvbox
+theme_gruvbox[name]="Gruvbox"
+theme_gruvbox[main]="d4be98"
+theme_gruvbox[bar]="282828"
+theme_gruvbox[bar_opacity]="0.5"
+theme_gruvbox[text]="ffffff"
+theme_gruvbox[unfocused]="313131"
+theme_gruvbox[bad]="900000"
+theme_gruvbox[degraded]="a08000"
+theme_gruvbox[white]="ffffff"
+theme_gruvbox[black]="000000"
+theme_gruvbox[wallpaper]="gruvbox.png"
+
+
