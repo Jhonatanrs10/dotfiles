@@ -1,2 +1,16 @@
+alacritty/.config/alacritty/colors.toml
+bspwm/.config/bspwm/colors.sh
+dunst/.config/dunst/dunstrc.d/colors.conf
+hypr/.config/hypr/colors.conf
+hypr/.config/hypr/hyprpaper.conf
+hypr/.config/hypr/hyprpaper.sh
 hypr/.config/hypr/monitors.conf
 hypr/.config/hypr/workspaces.conf
+i3/.config/i3/colors
+kitty/.config/kitty/colors.conf
+nvim/.config/nvim/bkp/colors/colors.lua
+nvim/.config/nvim/lua/config/colors.lua
+polybar/.config/polybar/colors.ini
+rofi/.config/rofi/colors.rasi
+waybar/.config/waybar/colors.css
+wofi/.config/wofi/colors.css
