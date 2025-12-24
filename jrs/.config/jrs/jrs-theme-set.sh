@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source $HOME/.config/jrs/scripts/jrs-themes.sh
+source $HOME/.config/jrs/jrs-themes.sh
 
 select_theme_with_rofi() {
 
@@ -341,4 +341,4 @@ theme[upload_mid]=""
 theme[upload_end]="#'$JRS_BAR_COLOR'"
 ' >$HOME/.config/btop/themes/colors.theme
 
-source $HOME/.config/jrs/scripts/jrs-reload-wm.sh
+source $HOME/.config/jrs/jrs-reload-wm.sh

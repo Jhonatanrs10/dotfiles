@@ -1,7 +1,5 @@
 #!/bin/bash
 
-source $HOME/.config/jrs/lib/jrs-functions.sh
-
 picom-stop() {
   killall picom
   dunstify -t 2000 --hints int:transient:1 "Picom" "Stopped" --icon=picom

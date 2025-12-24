@@ -7,14 +7,7 @@ YELLOW="\033[33m"
 CYAN="\033[36m"
 RESET="\033[0m"
 
-sourceFolder() {
-  for src in $(ls $1); do
-    source $1/$src
-    #echo "$1/$src"
-  done
-  #sleep 10
-}
-sourceFolder "./lib"
+source jrs-base-functions.sh
 dependencies
 
 # Lista de opções (texto e função correspondente)
@@ -86,6 +79,7 @@ executar_opcao() {
   if [[ "$idx" =~ ^[0-9]+$ ]] && [ "$idx" -ge 1 ] && [ "$idx" -le "$total_opcoes" ]; then
     funcao="${opcoes[idx - 1]##*::}"
     echo -e "\nExecutando: ${CYAN}$funcao${RESET}\n"
+    #$dir_jrs/$funcao
     $funcao
     echo -e "\n${YELLOW}Press Enter to return to the menu...${RESET}"
     read

@@ -18,7 +18,7 @@ super + b
 
 # power profiles
 super + p 
-	$HOME/.config/jrs/scripts/jrs-power-profiles.sh
+	$HOME/.config/jrs/jrs-power-profiles.sh
 
 # xcolor
 super + z
@@ -26,11 +26,11 @@ super + z
 
 # theme mode
 super + t 
-	$HOME/.config/jrs/scripts/jrs-theme-set.sh
+	$HOME/.config/jrs/jrs-theme-set.sh
 
 # make sxhkd reload its configuration files:
 super + shift + r
-	~/.config/jrs/scripts/jrs-reload-wm.sh
+	~/.config/jrs/jrs-reload-wm.sh
 
 # close and kill
 super + shift + q
@@ -138,7 +138,7 @@ super + ctrl + 7
 super + l 
 	i3lock -c 000000 && sleep 1
 super + ctrl + l 
-	$HOME/.config/jrs/scripts/jrs-power.sh
+	$HOME/.config/jrs/jrs-power.sh
 super + ctrl + 8
 	systemctl hibernate
 super + ctrl + 9 
