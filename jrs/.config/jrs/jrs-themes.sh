@@ -223,4 +223,17 @@ theme_gruvbox[white]="ffffff"
 theme_gruvbox[black]="000000"
 theme_gruvbox[wallpaper]="gruvbox.png"
 
+declare -A theme_minecraft
+theme_minecraft[name]="Minecraft"
+theme_minecraft[main]="3C8527"
+theme_minecraft[bar]="262423"
+theme_minecraft[bar_opacity]="1"
+theme_minecraft[text]="ffffff"
+theme_minecraft[unfocused]="313131"
+theme_minecraft[bad]="900000"
+theme_minecraft[degraded]="a08000"
+theme_minecraft[white]="ffffff"
+theme_minecraft[black]="000000"
+theme_minecraft[wallpaper]="minecraft.png"
+
 
