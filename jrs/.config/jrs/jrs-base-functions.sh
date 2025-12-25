@@ -4,32 +4,32 @@
 source jrs-variables.sh
 ######
 
-TEMPLATE(){
+TEMPLATE() {
 
-    installName="SCRIPTMODELO"
-    uninstallPastaAtalhoBinMesmoNome "$installName"
-    criaDiretorioInstall "$JRS_DIR/$installName"
+	installName="SCRIPTMODELO"
+	uninstallPastaAtalhoBinMesmoNome "$installName"
+	criaDiretorioInstall "$JRS_DIR/$installName"
 
-    #criaPastaBaixaExtrai "$diretorioInstall" "Link" "mod.jar"
+	#criaPastaBaixaExtrai "$diretorioInstall" "Link" "mod.jar"
 
-    #entra em pasta * pega arquivos * e move uma pasta atras .  
-    #mv */* .
+	#entra em pasta * pega arquivos * e move uma pasta atras .
+	#mv */* .
 
-    #criaArqRunDiretorioInstall "#!/bin/bash
-#cd $diretorioInstall
-#./nomearquivo"
+	#criaArqRunDiretorioInstall "#!/bin/bash
+	#cd $diretorioInstall
+	#./nomearquivo"
 
-    criaAtalho "$installName" "Description" "bash run.sh" "$diretorioInstall" "false" "$installName" "application-default-icon"
-    criaAtalhoBin "$diretorioInstall/run.sh" "$installName"
+	criaAtalho "$installName" "Description" "bash run.sh" "$diretorioInstall" "false" "$installName" "application-default-icon"
+	criaAtalhoBin "$diretorioInstall/run.sh" "$installName"
 
-} 
+}
 
 sourceFolder() {
-  for src in $(ls $1); do
-    source $1/$src
-    #echo "$1/$src"
-  done
-  #sleep 10
+	for src in $(ls $1); do
+		source $1/$src
+		#echo "$1/$src"
+	done
+	#sleep 10
 }
 
 forLength() {
@@ -111,7 +111,6 @@ rofi-or-wofi() {
 		exit 1
 	fi
 }
-
 
 criaDiretorioInstall() {
 	export diretorioInstall="$1"
@@ -373,16 +372,16 @@ extrairArq() {
 }
 #extrairArq "$diretorioInstall"
 
-installPokexgames(){
-    pxg="https://download.pokexgames.com/pxg-linux.zip"
-    diretorioPokexgames="$JRS_DIR/Pokexgames"
-    uninstallPastaAtalhoBinMesmoNome "Pokexgames"
+installPokexgames() {
+	pxg="https://download.pokexgames.com/pxg-linux.zip"
+	diretorioPokexgames="$JRS_DIR/Pokexgames"
+	uninstallPastaAtalhoBinMesmoNome "Pokexgames"
 	criaPastaBaixaExtrai "$diretorioPokexgames" "$pxg" "pxg.zip"
-    criaAtalho "Pokexgames" "Tibia Pokemon" "./pxgme-linux" "$diretorioPokexgames" "false" "Pokexgames" "application-default-icon"
-    criaAtalhoBin "$diretorioPokexgames/pxgme-linux" "Pokexgames"
+	criaAtalho "Pokexgames" "Tibia Pokemon" "./pxgme-linux" "$diretorioPokexgames" "false" "Pokexgames" "application-default-icon"
+	criaAtalhoBin "$diretorioPokexgames/pxgme-linux" "Pokexgames"
 }
 
-installMinecraft(){
+installMinecraft() {
 	packagesManager "jre-openjdk"
 	verMine="https://tlauncher.org/jar"
 	uninstallPastaAtalhoBinMesmoNome "MinecraftTlauncher"
@@ -390,133 +389,133 @@ installMinecraft(){
 	criaDiretorio "diretorioMine" "$JRS_DIR/MinecraftTlauncher"
 	echo -e "[INFO] - BAIXANDO ARQUIVOS... - [INFO]"
 	baixaArq "diretorioNome" "$verMine" "$diretorioMine/tlauncher.zip"
-    extrairArq "$diretorioMine"
+	extrairArq "$diretorioMine"
 	cd $diretorioMine
-    tlauncher=`ls *.jar`
-    criarArq "#!/bin/bash
+	tlauncher=$(ls *.jar)
+	criarArq "#!/bin/bash
 	cd $diretorioMine
 	java -jar $tlauncher" "$diretorioMine/tlauncher.sh"
-    criaAtalho "MinecraftTlauncher" "Create your own world on Xorg" "bash tlauncher.sh" "$diretorioMine" "false" "TLauncher" "/usr/share/icons/Papirus-Dark/64x64/apps/minecraft.svg"
+	criaAtalho "MinecraftTlauncher" "Create your own world on Xorg" "bash tlauncher.sh" "$diretorioMine" "false" "TLauncher" "/usr/share/icons/Papirus-Dark/64x64/apps/minecraft.svg"
 	criaAtalhoBin "$diretorioMine/tlauncher.sh" "TLauncher"
 	echo -e "[INFO] - SCRIPT FINALIZADO - [INFO]"
 }
 
-gitconfig(){
-    #https://docs.github.com/pt/get-started/getting-started-with-git/caching-your-github-credentials-in-git
-    packagesManager "git gh github-cli"
-    gh auth login
-    #vars
-    echo "DIGITE SEU NOME:"
-    read name
-    echo "DIGITE SEU EMAIL:"
-    read email
-    branch = "main"
-    #global config
-    git config --global user.name "$name"
-    git config --global user.email "$email"
-    #repositorie config
-    #git config user.name "$name"
-    #git config user.email "$email"
-    #default branch
-    git config --global init.defaultBranch $branch
-    git branch -m $branch
+gitconfig() {
+	#https://docs.github.com/pt/get-started/getting-started-with-git/caching-your-github-credentials-in-git
+	packagesManager "git gh github-cli"
+	gh auth login
+	#vars
+	echo "DIGITE SEU NOME:"
+	read name
+	echo "DIGITE SEU EMAIL:"
+	read email
+	branch = "main"
+	#global config
+	git config --global user.name "$name"
+	git config --global user.email "$email"
+	#repositorie config
+	#git config user.name "$name"
+	#git config user.email "$email"
+	#default branch
+	git config --global init.defaultBranch $branch
+	git branch -m $branch
 
 }
 
-gitAutoPush(){
-    myGitsFolder="$HOME/Documents/GitHub"
-    listaOptions "$myGitsFolder" "myGits"
-    cd $myGitsFolder/$myGits
-    git status
-    yesorno "PULL" "git pull"
-    echo "COMMIT:"
-    read textCommit
-    yesorno "ADD" "git add ."
-    git status
-    yesorno "COMMIT ($textCommit)" "git commit -m "$textCommit""
-    git status
-    yesorno "PUSH" "git push --verbose"
-    git status
-    sleep 5
+gitAutoPush() {
+	myGitsFolder="$HOME/Documents/GitHub"
+	listaOptions "$myGitsFolder" "myGits"
+	cd $myGitsFolder/$myGits
+	git status
+	yesorno "PULL" "git pull"
+	echo "COMMIT:"
+	read textCommit
+	yesorno "ADD" "git add ."
+	git status
+	yesorno "COMMIT ($textCommit)" "git commit -m "$textCommit""
+	git status
+	yesorno "PUSH" "git push --verbose"
+	git status
+	sleep 5
 }
 
-javaVersion(){
-    echo "DEBIAN BASE
+javaVersion() {
+	echo "DEBIAN BASE
 sudo update-alternatives --config java
 
 ARCH 
 archlinux-java --help
     "
-    read finalizado
+	read finalizado
 }
 
-
 installJava() {
-  echo "=== Instalação de JRE no Arch Linux ==="
-  echo "Escolha a versão do JRE que deseja instalar:"
-  echo "1) jre-openjdk (última versão)"
-  echo "2) jre8-openjdk (OpenJDK 8)"
-  echo "3) jre11-openjdk (OpenJDK 11 LTS)"
-  echo "4) jre17-openjdk (OpenJDK 17 LTS)"
-  echo "5) Version"
-  echo "6) Sair"
+	echo "=== Instalação de JRE no Arch Linux ==="
+	echo "Escolha a versão do JRE que deseja instalar:"
+	echo "1) jre-openjdk (última versão)"
+	echo "2) jre8-openjdk (OpenJDK 8)"
+	echo "3) jre11-openjdk (OpenJDK 11 LTS)"
+	echo "4) jre17-openjdk (OpenJDK 17 LTS)"
+	echo "5) Version"
+	echo "6) Sair"
 
-  while true; do
-    read -rp "Digite o número da opção desejada: " choice
+	while true; do
+		read -rp "Digite o número da opção desejada: " choice
 
-    case $choice in
-      1)
-        pkg="jre-openjdk"
-        break
-        ;;
-      2)
-        pkg="jre8-openjdk"
-        break
-        ;;
-      3)
-        pkg="jre11-openjdk"
-        break
-        ;;
-      4)
-        pkg="jre17-openjdk"
-        break
-        ;;
-      5)javaVersion
-        exit 0
-        ;;
-      6)
-        echo "Saindo sem instalar nada."
-        exit 0
-        ;;
-      *)
-        echo "Opção inválida. Tente novamente."
-        ;;
-    esac
-  done
+		case $choice in
+		1)
+			pkg="jre-openjdk"
+			break
+			;;
+		2)
+			pkg="jre8-openjdk"
+			break
+			;;
+		3)
+			pkg="jre11-openjdk"
+			break
+			;;
+		4)
+			pkg="jre17-openjdk"
+			break
+			;;
+		5)
+			javaVersion
+			exit 0
+			;;
+		6)
+			echo "Saindo sem instalar nada."
+			exit 0
+			;;
+		*)
+			echo "Opção inválida. Tente novamente."
+			;;
+		esac
+	done
 
-  echo "Instalando pacote $pkg..."
-  sudo pacman -Syu --noconfirm
-  sudo pacman -S --needed --noconfirm "$pkg"
-  echo "Instalação concluída!"
+	echo "Instalando pacote $pkg..."
+	sudo pacman -Syu --noconfirm
+	sudo pacman -S --needed --noconfirm "$pkg"
+	echo "Instalação concluída!"
 }
 
 nodejslts() {
-    echo "Nodejs Manual[1] ou pacman[2]"
-    read escolha
-    if [ "$escolha" = "1" ]; then
-        installName="NodeJS"
-        criaDiretorioInstall "$JRS_DIR/$installName"
-        criaPastaBaixaExtrai "$diretorioInstall" "https://nodejs.org/dist/v20.9.0/node-v20.9.0-linux-x64.tar.xz" "node.tar.xz"
-        sudo cp -r $diretorioInstall/* /usr/
-        export PATH=/usr/node*/bin:$PATH
-        rm -r $diretorioInstall
-    elif [ "$escolha" = "2" ]; then
-        packagesManager "nodejs-lts-iron"
-        packagesManager "npm"
-    fi
+	echo "Nodejs Manual[1] ou pacman[2]"
+	read escolha
+	if [ "$escolha" = "1" ]; then
+		installName="NodeJS"
+		criaDiretorioInstall "$JRS_DIR/$installName"
+		criaPastaBaixaExtrai "$diretorioInstall" "https://nodejs.org/dist/v20.9.0/node-v20.9.0-linux-x64.tar.xz" "node.tar.xz"
+		sudo cp -r $diretorioInstall/* /usr/
+		export PATH=/usr/node*/bin:$PATH
+		rm -r $diretorioInstall
+	elif [ "$escolha" = "2" ]; then
+		packagesManager "nodejs-lts-iron"
+		packagesManager "npm"
+	fi
 }
 
-packagesManager(){
+packagesManager() {
 	#clear
 	echo "PACKAGES
 [$1]	
@@ -525,41 +524,41 @@ to uninstall for example a Pacman Package put [0] before option. Ex: [01]"
 	read resp
 
 	case $resp in
-		1)sudo pacman -S $1 --needed;;
-		2)yay -S $1 --needed;;
-		3)sudo pamac install $1;;
-		4)flatpak install $1;;
-		5)sudo apt install $1;;
-		01)for pacote in $1; do sudo pacman -R --noconfirm $pacote; done ;;
-		02)for pacote in $1; do yay -R --noconfirm $pacote; done ;;
-		03)for pacote in $1; do sudo pamac remove --no-confirm $pacote; done ;;
-		04)for pacote in $1; do flatpak remove -y $pacote; done ;;
-		05)for pacote in $1; do sudo apt remove -y $pacote; done ;;
-		*)
+	1) sudo pacman -S $1 --needed ;;
+	2) yay -S $1 --needed ;;
+	3) sudo pamac install $1 ;;
+	4) flatpak install $1 ;;
+	5) sudo apt install $1 ;;
+	01) for pacote in $1; do sudo pacman -R --noconfirm $pacote; done ;;
+	02) for pacote in $1; do yay -R --noconfirm $pacote; done ;;
+	03) for pacote in $1; do sudo pamac remove --no-confirm $pacote; done ;;
+	04) for pacote in $1; do flatpak remove -y $pacote; done ;;
+	05) for pacote in $1; do sudo apt remove -y $pacote; done ;;
+	*) ;;
 	esac
 	#sleep 5
 }
 
-repairPM(){
+repairPM() {
 	echo "[REPAIR PACKAGES MANAGER]
 Options: [1]Apt [2]Pacman"
 	read resp
 	case $resp in
-		1)
-			sudo dpkg --configure -a
-			sudo apt --fix-broken install -y
-			;;
-		2)
-			sudo rm /var/lib/pacman/db.lck
-			;;
-		*)
+	1)
+		sudo dpkg --configure -a
+		sudo apt --fix-broken install -y
+		;;
+	2)
+		sudo rm /var/lib/pacman/db.lck
+		;;
+	*) ;;
 	esac
 }
 #packagesManager "apt1 apt2 apt3"
 #repairPM
 
 myBasePosInstall() {
-  echo "[0]Pos Install Setup
+	echo "[0]Pos Install Setup
 [1]Pacman
 [2]Yay
 [3]Grub
@@ -574,183 +573,183 @@ myBasePosInstall() {
 [12]Desktop
 "
 
-  read resp
-  case $resp in
-  1) pacmanSetup ;;
-  2) yaySetup ;;
-  3) grubSetup ;;
-  4) kernelSetup ;;
-  5) driverSetup ;;
-  6) audioSetup ;;
-  7) baseSetup ;;
-  8) appsSetup ;;
-  9) startSetup ;;
-  10) sambaSetup ;;
-  11) configsSetup ;;
-  12) desktopSetup ;;
-  0)
-    pacmanSetup
-    yaySetup
-    grubSetup
-    kernelSetup
-    driverSetup
-    audioSetup
-    baseSetup
-    appsSetup
-    startSetup
-    sambaSetup
-    configsSetup
-    desktopSetup
-    ;;
-  *) ;;
-  esac
+	read resp
+	case $resp in
+	1) pacmanSetup ;;
+	2) yaySetup ;;
+	3) grubSetup ;;
+	4) kernelSetup ;;
+	5) driverSetup ;;
+	6) audioSetup ;;
+	7) baseSetup ;;
+	8) appsSetup ;;
+	9) startSetup ;;
+	10) sambaSetup ;;
+	11) configsSetup ;;
+	12) desktopSetup ;;
+	0)
+		pacmanSetup
+		yaySetup
+		grubSetup
+		kernelSetup
+		driverSetup
+		audioSetup
+		baseSetup
+		appsSetup
+		startSetup
+		sambaSetup
+		configsSetup
+		desktopSetup
+		;;
+	*) ;;
+	esac
 
 }
 
 pacmanSetup() {
-  echo "PACMAN
+	echo "PACMAN
 Options: [1]Configure, [2]No"
-  read resp
-  case $resp in
-  1)
-    sudo cp /etc/pacman.conf /etc/pacman$DATANOW.conf.bkp
-    sudo sed -i 's/ParallelDownloads = 5/ParallelDownloads = 10\nILoveCandy\nColor/g' /etc/pacman.conf
-    sudo sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
-    sudo pacman -Syyu
-    ;;
-  *) ;;
-  esac
+	read resp
+	case $resp in
+	1)
+		sudo cp /etc/pacman.conf /etc/pacman$DATANOW.conf.bkp
+		sudo sed -i 's/ParallelDownloads = 5/ParallelDownloads = 10\nILoveCandy\nColor/g' /etc/pacman.conf
+		sudo sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
+		sudo pacman -Syyu
+		;;
+	*) ;;
+	esac
 }
 
 yaySetup() {
-  echo "YAY
+	echo "YAY
 Options: [1]Configure, [2]No"
-  read resp
-  case $resp in
-  1)
-    sudo pacman -S --needed git base-devel
-    cd $HOME
-    git clone https://aur.archlinux.org/yay.git
-    cd yay
-    makepkg -si
-    ;;
-  *) ;;
-  esac
+	read resp
+	case $resp in
+	1)
+		sudo pacman -S --needed git base-devel
+		cd $HOME
+		git clone https://aur.archlinux.org/yay.git
+		cd yay
+		makepkg -si
+		;;
+	*) ;;
+	esac
 }
 
 grubSetup() {
-  echo "GRUB
+	echo "GRUB
 Options: [1]Configure, [2]No"
-  read resp
-  case $resp in
-  1)
-    packagesManager "$myBaseBootloader"
-    sudo cp /etc/default/grub /etc/default/grub$DATANOW.bkp
-    sudo cp /boot/grub/grub.cfg /boot/grub/grub$DATANOW.cfg.bkp
-    sudo grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
-    sudo sed -i "/GRUB_DISABLE_OS_PROBER=false/"'s/^#//' /etc/default/grub
-    sudo grub-mkconfig -o /boot/grub/grub.cfg
-    ;;
-  *) ;;
-  esac
+	read resp
+	case $resp in
+	1)
+		packagesManager "$myBaseBootloader"
+		sudo cp /etc/default/grub /etc/default/grub$DATANOW.bkp
+		sudo cp /boot/grub/grub.cfg /boot/grub/grub$DATANOW.cfg.bkp
+		sudo grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+		sudo sed -i "/GRUB_DISABLE_OS_PROBER=false/"'s/^#//' /etc/default/grub
+		sudo grub-mkconfig -o /boot/grub/grub.cfg
+		;;
+	*) ;;
+	esac
 }
 
 kernelSetup() {
-  echo "KERNEL
+	echo "KERNEL
 [1]Linux [2]Linux-lts [3]Linux-zen"
-  read resp
-  case $resp in
-  1) packagesManager "$myBaseKernel" ;;
-  2) packagesManager "$myBaseKernelLts" ;;
-  3) packagesManager "$myBaseKernelZen" ;;
-  *) ;;
-  esac
+	read resp
+	case $resp in
+	1) packagesManager "$myBaseKernel" ;;
+	2) packagesManager "$myBaseKernelLts" ;;
+	3) packagesManager "$myBaseKernelZen" ;;
+	*) ;;
+	esac
 }
 
 driverSetup() {
-  echo "DRIVER
+	echo "DRIVER
 [1]Configure [2]No"
-  read resp
-  case $resp in
-  1) installVideoDriver ;;
-  *) ;;
-  esac
+	read resp
+	case $resp in
+	1) installVideoDriver ;;
+	*) ;;
+	esac
 }
 
 audioSetup() {
-  echo "AUDIO
+	echo "AUDIO
 [1]Pipeware [2]PulseAudio"
-  read resp
-  case $resp in
-  1) packagesManager "$myBaseAudioPipeware" ;;
-  2) packagesManager "$myBaseAudioPulse" ;;
-  *) ;;
-  esac
+	read resp
+	case $resp in
+	1) packagesManager "$myBaseAudioPipeware" ;;
+	2) packagesManager "$myBaseAudioPulse" ;;
+	*) ;;
+	esac
 }
 
 baseSetup() {
-  echo "BASE
+	echo "BASE
 [1]Configure [2]No"
-  read resp
-  case $resp in
-  1) packagesManager "$myBaseBootloader $myBaseFileSystem $myBaseNetwork $myBaseFirewall $myBaseUtilitys $myBaseBluetooth $myBaseCodecs $myBaseXorg $myBaseWayland $myBaseIcons $myBaseThemes $myBaseFonts $myBaseRar $myBaseNotify $myBaseDaemons $myBaseFlatpak $myBaseShell" ;;
-  *) ;;
-  esac
+	read resp
+	case $resp in
+	1) packagesManager "$myBaseBootloader $myBaseFileSystem $myBaseNetwork $myBaseFirewall $myBaseUtilitys $myBaseBluetooth $myBaseCodecs $myBaseXorg $myBaseWayland $myBaseIcons $myBaseThemes $myBaseFonts $myBaseRar $myBaseNotify $myBaseDaemons $myBaseFlatpak $myBaseShell" ;;
+	*) ;;
+	esac
 }
 
 appsSetup() {
-  echo "APPS
+	echo "APPS
 [1]Configure [2]No"
-  read resp
-  case $resp in
-  1)
-    packagesManager "$myBaseBrowser"
-    packagesManager "$myBaseAudioApp"
-    packagesManager "$myBaseVideoApp"
-    packagesManager "$myBaseGraphicDesignApp"
-    packagesManager "$myBaseSecurityApp"
-    packagesManager "$myBaseDiskManagerApp"
-    packagesManager "$myBaseOfficeApp"
-    packagesManager "$myBaseVideoEditorApp"
-    packagesManager "$myBaseCodingApp"
-    packagesManager "$myBaseTorrentApp"
-    packagesManager "$myBaseDiscordApp"
-    packagesManager "$myBaseConnectApp"
-    ;;
-  *) ;;
-  esac
+	read resp
+	case $resp in
+	1)
+		packagesManager "$myBaseBrowser"
+		packagesManager "$myBaseAudioApp"
+		packagesManager "$myBaseVideoApp"
+		packagesManager "$myBaseGraphicDesignApp"
+		packagesManager "$myBaseSecurityApp"
+		packagesManager "$myBaseDiskManagerApp"
+		packagesManager "$myBaseOfficeApp"
+		packagesManager "$myBaseVideoEditorApp"
+		packagesManager "$myBaseCodingApp"
+		packagesManager "$myBaseTorrentApp"
+		packagesManager "$myBaseDiscordApp"
+		packagesManager "$myBaseConnectApp"
+		;;
+	*) ;;
+	esac
 }
 
 startSetup() {
-  enableSystemctl "bluetooth"
-  enableSystemctl "NetworkManager"
-  enableSystemctl "power-profiles-daemon"
-  enableSystemctl "sshd"
+	enableSystemctl "bluetooth"
+	enableSystemctl "NetworkManager"
+	enableSystemctl "power-profiles-daemon"
+	enableSystemctl "sshd"
 }
 
 sambaSetup() {
-  echo "SAMBA
+	echo "SAMBA
 [1]Configure [2]No"
-  read -r resp
-  case $resp in
-  1)
-    sudo pacman -S --needed samba
-    sudo smbpasswd -a "$USER"
-    sudo smbpasswd -e "$USER"
+	read -r resp
+	case $resp in
+	1)
+		sudo pacman -S --needed samba
+		sudo smbpasswd -a "$USER"
+		sudo smbpasswd -e "$USER"
 
-    RAND=$(cat /dev/urandom | tr -dc 'A-Z0-9' | head -c 6)
-    NETBIOS_NAME="Samba$RAND"
+		RAND=$(cat /dev/urandom | tr -dc 'A-Z0-9' | head -c 6)
+		NETBIOS_NAME="Samba$RAND"
 
-    echo "Using NetBIOS name: $NETBIOS_NAME"
+		echo "Using NetBIOS name: $NETBIOS_NAME"
 
-    sudo mv /etc/samba/smb.conf /etc/samba/smb-bkp$DATANOW.conf
+		sudo mv /etc/samba/smb.conf /etc/samba/smb-bkp$DATANOW.conf
 
-    mkdir -p "$HOME/Samba/User"
-    sudo chmod 777 "$HOME/Samba"
-    sudo mkdir -p /home/samba
-    sudo chmod 777 /home/samba
+		mkdir -p "$HOME/Samba/User"
+		sudo chmod 777 "$HOME/Samba"
+		sudo mkdir -p /home/samba
+		sudo chmod 777 /home/samba
 
-    echo "[global]
+		echo "[global]
     workgroup = WORKGROUP
     preferred master = no
     local master = no
@@ -792,61 +791,61 @@ sambaSetup() {
     directory mode = 0777
     create mode = 0777" | sudo tee /etc/samba/smb.conf >/dev/null
 
-    ln -s /home/samba "$HOME/Samba/Guest"
-    enableSystemctl "smb"
-    enableSystemctl "nmb"
-    #sudo systemctl restart smbd nmbd
-    #sudo useradd -m samba
-    #sudo passwd samba
-    ;;
-  *) ;;
-  esac
+		ln -s /home/samba "$HOME/Samba/Guest"
+		enableSystemctl "smb"
+		enableSystemctl "nmb"
+		#sudo systemctl restart smbd nmbd
+		#sudo useradd -m samba
+		#sudo passwd samba
+		;;
+	*) ;;
+	esac
 }
 
 configsSetup() {
-  echo "CONFIGS
+	echo "CONFIGS
 [1]Configure [2]No"
-  read resp
-  case $resp in
-  1)
-    flatpak override --user --filesystem=~/.icons:ro --filesystem=~/.local/share/icons:ro
-    sudo rm -f /usr/share/applications/rofi*
-    myBaseI3Backlight
-    myBaseI3Touchpad
-    lidSwitchIgnore
-    criaAtalho "Wiremix Audio" "Audio Tui" "wiremix" "$HOME" "true" "Wiremix" "pavucontrol"
-    ;;
-  *) ;;
-  esac
+	read resp
+	case $resp in
+	1)
+		flatpak override --user --filesystem=~/.icons:ro --filesystem=~/.local/share/icons:ro
+		sudo rm -f /usr/share/applications/rofi*
+		myBaseI3Backlight
+		myBaseI3Touchpad
+		lidSwitchIgnore
+		criaAtalho "Wiremix Audio" "Audio Tui" "wiremix" "$HOME" "true" "Wiremix" "pavucontrol"
+		;;
+	*) ;;
+	esac
 }
 
 desktopSetup() {
-  echo "DESKTOP
+	echo "DESKTOP
 [1]Hyprland [2]I3wm [3]Gnome [4]KDE [5]Xfce"
-  read resp
-  case $resp in
-  1)
-    packagesManager "$myBaseHyprland $wmDisplayManager $wmBaseFileManager $wmBaseTerminal $wmBasePdfApp"
-	#hyprland
-    ;;
-  2)
-    packagesManager "$myBaseI3wm $wmDisplayManager $wmBaseFileManager $wmBaseTerminal $wmBasePdfApp"
-	#startx /usr/bin/i3
-    ;;
-  3)
-    packagesManager "$myBaseGnome"
-    enableSystemctl "gdm"
-    ;;
-  4)
-    packagesManager "$myBaseKde"
-    enableSystemctl "sddm"
-    ;;
-  5)
-    packagesManager "$myBaseXfce4"
-    enableSystemctl "lightdm"
-    ;;
-  *) ;;
-  esac
+	read resp
+	case $resp in
+	1)
+		packagesManager "$myBaseHyprland $wmDisplayManager $wmBaseFileManager $wmBaseTerminal $wmBasePdfApp"
+		#hyprland
+		;;
+	2)
+		packagesManager "$myBaseI3wm $wmDisplayManager $wmBaseFileManager $wmBaseTerminal $wmBasePdfApp"
+		#startx /usr/bin/i3
+		;;
+	3)
+		packagesManager "$myBaseGnome"
+		enableSystemctl "gdm"
+		;;
+	4)
+		packagesManager "$myBaseKde"
+		enableSystemctl "sddm"
+		;;
+	5)
+		packagesManager "$myBaseXfce4"
+		enableSystemctl "lightdm"
+		;;
+	*) ;;
+	esac
 }
 
 ############
@@ -854,7 +853,7 @@ desktopSetup() {
 ############
 
 lightdmConfig() {
-  echo "[greeter]
+	echo "[greeter]
 theme-name = Breeze-Dark
 icon-theme-name = Papirus-Dark
 cursor-theme-name = Adwaita
@@ -864,7 +863,7 @@ font-name = Caskaydia Mono Nerd Font 11" | sudo tee -a /etc/lightdm/lightdm-gtk-
 }
 
 myBaseI3Touchpad() {
-  sudo mkdir -p /etc/X11/xorg.conf.d && sudo tee /etc/X11/xorg.conf.d/90-touchpad.conf <<'EOF' 1>/dev/null
+	sudo mkdir -p /etc/X11/xorg.conf.d && sudo tee /etc/X11/xorg.conf.d/90-touchpad.conf <<'EOF' 1>/dev/null
 Section "InputClass"
 Identifier "touchpad"
 MatchIsTouchpad "on"
@@ -875,105 +874,105 @@ EOF
 }
 
 installVirtManager() {
-  packagesManager "$myBaseVirt" "VirtManager"
-  enableSystemctl "libvirtd"
-  sudo virsh net-autostart default
-  #sudo virsh net-start default
+	packagesManager "$myBaseVirt" "VirtManager"
+	enableSystemctl "libvirtd"
+	sudo virsh net-autostart default
+	#sudo virsh net-start default
 }
 
 myBaseI3Backlight() {
-  #sudo chmod +s /usr/bin/light
-  echo 'ACTION=="add", SUBSYSTEM=="backlight", RUN+="/bin/chgrp wheel $sys$devpath/brightness", RUN+="/bin/chmod g+w $sys$devpath/brightness"' | sudo tee /etc/udev/rules.d/backlight.rules
-  #criarArq 'light' "$HOME/.config/i3/brightness"
+	#sudo chmod +s /usr/bin/light
+	echo 'ACTION=="add", SUBSYSTEM=="backlight", RUN+="/bin/chgrp wheel $sys$devpath/brightness", RUN+="/bin/chmod g+w $sys$devpath/brightness"' | sudo tee /etc/udev/rules.d/backlight.rules
+	#criarArq 'light' "$HOME/.config/i3/brightness"
 }
 
 lidSwitchIgnore() {
-  sudo sed -i 's/^#HandleLidSwitch=suspend/HandleLidSwitch=ignore/' /etc/systemd/logind.conf
-  sudo sed -i 's/^HandleLidSwitch=suspend/HandleLidSwitch=ignore/' /etc/systemd/logind.conf
+	sudo sed -i 's/^#HandleLidSwitch=suspend/HandleLidSwitch=ignore/' /etc/systemd/logind.conf
+	sudo sed -i 's/^HandleLidSwitch=suspend/HandleLidSwitch=ignore/' /etc/systemd/logind.conf
 }
 
 myBaseMountDisk() {
 
-  my_disk_dir="/media/"
-  # somente leitura pode ser o modo de energia do windows em dualboot (modo de reinicialização rapida)
-  echo "Mount Disk?
+	my_disk_dir="/media/"
+	# somente leitura pode ser o modo de energia do windows em dualboot (modo de reinicialização rapida)
+	echo "Mount Disk?
 Options: [1]Yes, [2]No"
-  read resp
-  case $resp in
-  1)
-    sudo fdisk -l
-    echo "Digite o caminho do disco Ex.: /dev/sdb1"
-    read DEVSD
-    sudo cp /etc/fstab /etc/fstab$DATANOW.bkp
-    sudo mkdir -p $my_disk_dir$(sudo blkid -s UUID -o value $DEVSD)
-    #id -u
-    #id -g
-    echo "Type Disk
+	read resp
+	case $resp in
+	1)
+		sudo fdisk -l
+		echo "Digite o caminho do disco Ex.: /dev/sdb1"
+		read DEVSD
+		sudo cp /etc/fstab /etc/fstab$DATANOW.bkp
+		sudo mkdir -p $my_disk_dir$(sudo blkid -s UUID -o value $DEVSD)
+		#id -u
+		#id -g
+		echo "Type Disk
 Options: [1]ext4 [2]ntfs"
-    read resp
-    case $resp in
-    1)
-      sudo tee -a /etc/fstab <<<'# '$DEVSD' 
+		read resp
+		case $resp in
+		1)
+			sudo tee -a /etc/fstab <<<'# '$DEVSD' 
 UUID='$(sudo blkid -s UUID -o value $DEVSD)' '$my_disk_dir$(sudo blkid -s UUID -o value $DEVSD)' ext4 rw,exec,nosuid,nodev,nofail,x-gvfs-show 0 0'
-      sudo chown -R $USER:$USER $my_disk_dir$(sudo blkid -s UUID -o value $DEVSD)
-      ;;
-    2)
-      sudo tee -a /etc/fstab <<<'# '$DEVSD' 
+			sudo chown -R $USER:$USER $my_disk_dir$(sudo blkid -s UUID -o value $DEVSD)
+			;;
+		2)
+			sudo tee -a /etc/fstab <<<'# '$DEVSD' 
 UUID='$(sudo blkid -s UUID -o value $DEVSD)' '$my_disk_dir$(sudo blkid -s UUID -o value $DEVSD)' ntfs uid='$(id -u)',gid='$(id -g)',rw,user,exec,nofail,umask=000 0 0'
-      ;;
-    *) ;;
-    esac
-    cat /etc/fstab
-    sleep 5
+			;;
+		*) ;;
+		esac
+		cat /etc/fstab
+		sleep 5
 
-    #rm -r ~/.steam/steam/steamapps/compatdata
-    #mkdir -p ~/.steam/steam/steamapps/compatdata
-    #ln -s ~/.steam/steam/steamapps/compatdata /media/gamedisk/Steam/steamapps/
-    ;;
-  *) ;;
-  esac
+		#rm -r ~/.steam/steam/steamapps/compatdata
+		#mkdir -p ~/.steam/steam/steamapps/compatdata
+		#ln -s ~/.steam/steam/steamapps/compatdata /media/gamedisk/Steam/steamapps/
+		;;
+	*) ;;
+	esac
 }
 
 myBaselnHome() {
-  echo "Gerar Link Simbólico na Home?
+	echo "Gerar Link Simbólico na Home?
 Options: [1]Yes, [2]No"
-  read resp
-  case $resp in
-  1)
-    echo "Digite o diretório que deseja um link (/media/Downloads)"
-    read resp
-    ln -s $resp $HOME
-    ;;
-  *) ;;
-  esac
+	read resp
+	case $resp in
+	1)
+		echo "Digite o diretório que deseja um link (/media/Downloads)"
+		read resp
+		ln -s $resp $HOME
+		;;
+	*) ;;
+	esac
 
 }
 
 ## Olds ##
 
 appPosNetwork() {
-  echo "[ARCH] Network"
-  echo "INSTALAR NETWORKMANAGER"
-  packagesManager "networkmanager nm-connection-editor network-manager-applet"
-  #sudo systemctl enable NetworkManager.service
-  #sudo systemctl start NetworkManager.service --now
-  enableSystemctl "NetworkManager"
-  #echo "REMOVER IWD (wifi terminal archinstall)"
-  #removePacotes "iwd"
+	echo "[ARCH] Network"
+	echo "INSTALAR NETWORKMANAGER"
+	packagesManager "networkmanager nm-connection-editor network-manager-applet"
+	#sudo systemctl enable NetworkManager.service
+	#sudo systemctl start NetworkManager.service --now
+	enableSystemctl "NetworkManager"
+	#echo "REMOVER IWD (wifi terminal archinstall)"
+	#removePacotes "iwd"
 }
 
 appPosNvidiaDriverProp() {
-  #https://github.com/lutris/docs/blob/master/InstallingDrivers.md#arch--manjaro--other-arch-linux-derivatives
-  #causa crash no gdm o pacote: nvidia-dkms
-  #https://codigocristo.github.io/driver_nvidia.html
-  #packagesManager "$myBaseNvidia"
-  packagesManager "nvidia-open nvidia-utils lib32-nvidia-utils nvidia-settings"
-  echo "https://github.com/korvahannu/arch-nvidia-drivers-installation-guide"
-  sleep 10
+	#https://github.com/lutris/docs/blob/master/InstallingDrivers.md#arch--manjaro--other-arch-linux-derivatives
+	#causa crash no gdm o pacote: nvidia-dkms
+	#https://codigocristo.github.io/driver_nvidia.html
+	#packagesManager "$myBaseNvidia"
+	packagesManager "nvidia-open nvidia-utils lib32-nvidia-utils nvidia-settings"
+	echo "https://github.com/korvahannu/arch-nvidia-drivers-installation-guide"
+	sleep 10
 }
 
 appPosManualConfig() {
-  echo "---------------------
+	echo "---------------------
 Configuracoes Manuais
 ---------------------
 [PACMAN]
@@ -1008,24 +1007,24 @@ grub-mkconfig -o /boot/grub/grub.cfg
 [Steam Linux & Windows]
 https://github.com/ValveSoftware/Proton/wiki/Using-a-NTFS-disk-with-Linux-and-Windows
 "
-  read enterprasair
+	read enterprasair
 }
 
 appPosBluetoothFix() {
-  echo "[1]Fix Bluetooth & Network Interference [2]Remove Fix"
-  read esco
-  if [ "$esco" = "1" ]; then
-    sudo tee /etc/modprobe.d/iwlwifi-opt.conf <<<"options iwlwifi bt_coex_active=N"
-  elif [ "$esco" = "2" ]; then
-    sudo rm /etc/modprobe.d/iwlwifi-opt.conf
-  fi
+	echo "[1]Fix Bluetooth & Network Interference [2]Remove Fix"
+	read esco
+	if [ "$esco" = "1" ]; then
+		sudo tee /etc/modprobe.d/iwlwifi-opt.conf <<<"options iwlwifi bt_coex_active=N"
+	elif [ "$esco" = "2" ]; then
+		sudo rm /etc/modprobe.d/iwlwifi-opt.conf
+	fi
 }
 
 appPosTecladoConfig() {
-  echo "[ARCH] Keyboard BR"
-  setxkbmap -model abnt2 -layout br
-  #echo "setxkbmap -model abnt2 -layout br" >> ~/.profile
-  sudo tee /etc/X11/xorg.conf.d/10-evdev.conf <<<'Section "InputClass"
+	echo "[ARCH] Keyboard BR"
+	setxkbmap -model abnt2 -layout br
+	#echo "setxkbmap -model abnt2 -layout br" >> ~/.profile
+	sudo tee /etc/X11/xorg.conf.d/10-evdev.conf <<<'Section "InputClass"
 Identifier "evdev keyboard catchall"
 MatchIsKeyboard "on"
 MatchDevicePath "/dev/input/event*"
@@ -1036,54 +1035,54 @@ EndSection'
 }
 
 appPosTimeNTP() {
-  sudo timedatectl set-ntp true
-  sudo hwclock --systohc
+	sudo timedatectl set-ntp true
+	sudo hwclock --systohc
 }
 
 xfce4Config() {
-  xfce4-panel --quit
-  pkill xfconfd
-  rm -rf ~/.config/xfce4/panel
-  rm -rf ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml
-  xfce4-config
-  xfce4-panel &
+	xfce4-panel --quit
+	pkill xfconfd
+	rm -rf ~/.config/xfce4/panel
+	rm -rf ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml
+	xfce4-config
+	xfce4-panel &
 }
 
 gsettingsInactiveOn() {
-  xset s on +dpms
-  gsettings set org.gnome.desktop.session idle-delay 300
-  gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'suspend'
-  gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 600
-  gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-type 'suspend'
-  gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-timeout 300
+	xset s on +dpms
+	gsettings set org.gnome.desktop.session idle-delay 300
+	gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'suspend'
+	gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 600
+	gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-type 'suspend'
+	gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-timeout 300
 }
 
 gsettingsInactiveOff() {
-  xset s off -dpms
-  gsettings set org.gnome.desktop.session idle-delay 0
-  gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'nothing'
-  gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 0
-  gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-type 'nothing'
-  gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-timeout 0
+	xset s off -dpms
+	gsettings set org.gnome.desktop.session idle-delay 0
+	gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'nothing'
+	gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 0
+	gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-type 'nothing'
+	gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-timeout 0
 }
 
 defaultInodeDirectory() {
-  echo "Default Applications   
+	echo "Default Applications   
 [1]Nautilus for FileManager
 [2]PCManFM for FileManager
 [3]Thunar for FileManager"
-  read resp
-  case $resp in
-  1) xdg-mime default org.gnome.Nautilus.desktop inode/directory ;;
-  2) xdg-mime default pcmanfm.desktop inode/directory ;;
-  3) xdg-mime default thunar.desktop inode/directory ;;
-  *) ;;
-  esac
+	read resp
+	case $resp in
+	1) xdg-mime default org.gnome.Nautilus.desktop inode/directory ;;
+	2) xdg-mime default pcmanfm.desktop inode/directory ;;
+	3) xdg-mime default thunar.desktop inode/directory ;;
+	*) ;;
+	esac
 }
 
 hyprlandDiscordX() {
-  criaAtalho "DiscordX (Flatpak)" "Discord em Xwayland" "env ELECTRON_OZONE_PLATFORM_HINT= com.discordapp.Discord --no-sandbox" "$HOME" "false" "discordFlatpak" "discord"
-  criaAtalho "DiscordX (Pacman)" "Discord em Xwayland" "env ELECTRON_OZONE_PLATFORM_HINT= discord --no-sandbox" "$HOME" "false" "discordPacman" "discord"
+	criaAtalho "DiscordX (Flatpak)" "Discord em Xwayland" "env ELECTRON_OZONE_PLATFORM_HINT= com.discordapp.Discord --no-sandbox" "$HOME" "false" "discordFlatpak" "discord"
+	criaAtalho "DiscordX (Pacman)" "Discord em Xwayland" "env ELECTRON_OZONE_PLATFORM_HINT= discord --no-sandbox" "$HOME" "false" "discordPacman" "discord"
 }
 
 #https://developer.valvesoftware.com/wiki/SteamCMD#Linux
@@ -1296,7 +1295,7 @@ enable-command-block=true" "server.properties"
 cd $diretorioInstall
 java -jar server.jar nogui" "run.sh"
 
-	criaAtalho "MinecraftServer" "Create your own Minecraft Server" "bash run.sh" "$diretorioInstall" "true" "Minecraft Server" "/usr/share/icons/Papirus-Dark/64x64/apps/mine-test.svg"
+	criaAtalho "Minecraft Server" "Create your own Minecraft Server" "bash run.sh" "$diretorioInstall" "true" "MinecraftServer" "minecraft"
 	criaAtalhoBin "$diretorioInstall/run.sh" "MinecraftServer"
 	echo -e "[INFO] - SCRIPT FINALIZADO - [INFO]"
 }
@@ -1393,20 +1392,20 @@ installPalworldServer() {
 ./PalServer.sh -useperfthreads -NoAsyncLoadingThread -UseMultithreadForDS" "run_server.sh"
 }
 
-criaAtalhoBin(){
-    varCriaAtalhoBin="n"
-    echo "Criar AtalhoBin? ($2) [s/n]"
-    read varCriaAtalhoBin
-    if [ "$varCriaAtalhoBin" = "s" ]; then
-        chmod +x $1
-        chmod 777 $1
-	    sudo ln -s $1 /usr/bin/jrs-$2  
-    fi
+criaAtalhoBin() {
+	varCriaAtalhoBin="n"
+	echo "Criar AtalhoBin? ($2) [s/n]"
+	read varCriaAtalhoBin
+	if [ "$varCriaAtalhoBin" = "s" ]; then
+		chmod +x $1
+		chmod 777 $1
+		sudo ln -s $1 /usr/bin/jrs-$2
+	fi
 }
 
-criaAtalho(){
-    mkdir -p $HOME/.local/share/applications/jrs
-    echo -e "[Desktop Entry]
+criaAtalho() {
+	mkdir -p $HOME/.local/share/applications/jrs
+	echo -e "[Desktop Entry]
 Version=1.0
 Type=Application
 Name=$1
@@ -1416,77 +1415,74 @@ Comment=$2
 Exec=$3
 Icon=$7
 Path=$4
-Terminal=$5" > $HOME/.local/share/applications/jrs/jrs-$6.desktop
+Terminal=$5" >$HOME/.local/share/applications/jrs/jrs-$6.desktop
 }
 
-criaAtalhoDesktop(){
-    echo "DIGITE O NOME DO ATALHO (tudo junto sem caracteres)"
-    read atalhoName
-    echo "DIGITE A DESCRICAO"
-    read atalhoDescricao
-    echo "DIGITE O DIRETORIO DO ARQUIVO"
-    read atalhoDiretorio
-    echo "DIGITE O COMANDO"
-    read atalhoComando
-    echo "DIGITE O DIRETORIO DO ICONE"
-    read atalhoIcone
-    echo "TERMINAL true OU false"
-    read atalhoTerminalTrueOuFalse
-    criaAtalho "$atalhoName" "$atalhoDescricao" "$atalhoComando" "$atalhoDiretorio" "$atalhoTerminalTrueOuFalse" "$atalhoName" "$atalhoIcone"
+criaAtalhoDesktop() {
+	echo "DIGITE O NOME DO ATALHO (tudo junto sem caracteres)"
+	read atalhoName
+	echo "DIGITE A DESCRICAO"
+	read atalhoDescricao
+	echo "DIGITE O DIRETORIO DO ARQUIVO"
+	read atalhoDiretorio
+	echo "DIGITE O COMANDO"
+	read atalhoComando
+	echo "DIGITE O DIRETORIO DO ICONE"
+	read atalhoIcone
+	echo "TERMINAL true OU false"
+	read atalhoTerminalTrueOuFalse
+	criaAtalho "$atalhoName" "$atalhoDescricao" "$atalhoComando" "$atalhoDiretorio" "$atalhoTerminalTrueOuFalse" "$atalhoName" "$atalhoIcone"
 }
 
-criaAtalhoDesktopRetroarchArch(){
-    removeAllDesktop "Retroarch"
-    RetroArchCores="/usr/lib/libretro"
-    RetroArchDiretorioGames="$HOME/Documents/Roms"
-    echoRead "Colar Diretorio das Roms:" "RetroArchDiretorioGames"
-    echo "ESCOLHA A BIOS/CORE PRA A ROM:"
-    listaOptions "$RetroArchCores" "RetroArchCore"
-    listaOptions "$RetroArchDiretorioGames" "RetroArchGameName"
-    criaAtalho "${RetroArchGameName%.*}" "Retroarch Game" "retroarch -f -L $RetroArchCores/$RetroArchCore $RetroArchDiretorioGames/$RetroArchGameName" "" "false" "Retroarch-${RetroArchGameName%.*}" "retroarch"
+criaAtalhoDesktopRetroarchArch() {
+	removeAllDesktop "Retroarch"
+	RetroArchCores="/usr/lib/libretro"
+	RetroArchDiretorioGames="$HOME/Documents/Roms"
+	echoRead "Colar Diretorio das Roms:" "RetroArchDiretorioGames"
+	echo "ESCOLHA A BIOS/CORE PRA A ROM:"
+	listaOptions "$RetroArchCores" "RetroArchCore"
+	listaOptions "$RetroArchDiretorioGames" "RetroArchGameName"
+	criaAtalho "${RetroArchGameName%.*}" "Retroarch Game" "retroarch -f -L $RetroArchCores/$RetroArchCore $RetroArchDiretorioGames/$RetroArchGameName" "" "false" "Retroarch-${RetroArchGameName%.*}" "retroarch"
 }
 
-removeAllDesktop(){
-    echoRead "DESEJA APAGAR OS ATALHOS $1 (s/n)" "resp"
-    if [ "$resp" = "s" ]; then
-        sudo rm $HOME/.local/share/applications/jrs/jrs-$1-*
-    fi
-    clear
+removeAllDesktop() {
+	echoRead "DESEJA APAGAR OS ATALHOS $1 (s/n)" "resp"
+	if [ "$resp" = "s" ]; then
+		sudo rm $HOME/.local/share/applications/jrs/jrs-$1-*
+	fi
+	clear
 }
 
-removeDesktopJRS(){
-    listaOptions "$HOME/.local/share/applications" "ptDesktop" "-d jrs-*"
-    echoRead "DESEJA APAGAR O ATALHO $ptDesktop (s/n)" "resp"
-    if [ "$resp" = "s" ]; then
-        sudo rm $HOME/.local/share/applications/jrs/$ptDesktop
-    fi
+removeDesktopJRS() {
+	listaOptions "$HOME/.local/share/applications" "ptDesktop" "-d jrs-*"
+	echoRead "DESEJA APAGAR O ATALHO $ptDesktop (s/n)" "resp"
+	if [ "$resp" = "s" ]; then
+		sudo rm $HOME/.local/share/applications/jrs/$ptDesktop
+	fi
 }
 
 #removeAllDesktop "palavrachave ex retroarch"
 
-criaAtalhoDesktopAppimage(){
-    removeAllDesktop "Appimage"
-    echoRead "COLE O DIRETORIO DOS APPIMAGES: " "appimageFolder"
-    mkdir -p $appimageFolder
-    for vApp in `ls $appimageFolder`
-        do
-            chmod 777 $appimageFolder/$vApp
-            criaAtalho "${vApp%.*}" "An Appimage" "./$vApp" "$appimageFolder" "false" "Appimage-${vApp%.*}" "application-default-icon"
-        done
-
+criaAtalhoDesktopAppimage() {
+	removeAllDesktop "Appimage"
+	echoRead "COLE O DIRETORIO DOS APPIMAGES: " "appimageFolder"
+	mkdir -p $appimageFolder
+	for vApp in $(ls $appimageFolder); do
+		chmod 777 $appimageFolder/$vApp
+		criaAtalho "${vApp%.*}" "An Appimage" "./$vApp" "$appimageFolder" "false" "Appimage-${vApp%.*}" "application-default-icon"
+	done
 
 }
 
-setupAppimage(){
-    sudo rm $HOME/.local/share/applications/jrs/jrs-Appimage-*
-    echo "Criando diretorio AppImages"
-    sleep 2
-    mkdir -p $JRS_DIR/AppImages
-    for vApp in `ls $JRS_DIR/AppImages`
-    do
-        chmod 777 $JRS_DIR/AppImages/$vApp
-        criaAtalho "${vApp%.*}" "An Appimage" "./$vApp" "$JRS_DIR/AppImages" "false" "Appimage-${vApp%.*}" "application-default-icon"
-    done
+setupAppimage() {
+	sudo rm $HOME/.local/share/applications/jrs/jrs-Appimage-*
+	echo "Criando diretorio AppImages"
+	sleep 2
+	mkdir -p $JRS_DIR/AppImages
+	for vApp in $(ls $JRS_DIR/AppImages); do
+		chmod 777 $JRS_DIR/AppImages/$vApp
+		criaAtalho "${vApp%.*}" "An Appimage" "./$vApp" "$JRS_DIR/AppImages" "false" "Appimage-${vApp%.*}" "application-default-icon"
+	done
 }
 
 #remove quebra de linha (arquivos SVG)
@@ -1494,93 +1490,91 @@ setupAppimage(){
 # cria um atalho .desktop
 #criaAtalho "nomedoatalho" "comentario" "execucao" "$diretorioInstall" "terminaltrueoufalse" "nomedoarquivo" '$HOME/.Jhonatanrs/Icons/nome.svg'
 
-AtalhoTerminalBin(){
-    varAtalhoTerminalBin="vazio"
-    clear
-    while [ "$varAtalhoTerminalBin" != "" ];
-    do
-        echo "ESCOLHA UMA DAS OPCOES:  [1]CriaAtalhoTBin, [2]removeAtalhoTBin"
-        read resp
-        if [ "$resp" = "1" ]; then
-            criaAtalhoTerminalBin
-        elif [ "$resp" = "2" ]; then
-            removeAtalhoBinJrs
-        else
-            echo "NENHUMA OPCAO FOI ESCOLHIDA."
-            exit 1
-        fi
-        clear
-    done
+AtalhoTerminalBin() {
+	varAtalhoTerminalBin="vazio"
+	clear
+	while [ "$varAtalhoTerminalBin" != "" ]; do
+		echo "ESCOLHA UMA DAS OPCOES:  [1]CriaAtalhoTBin, [2]removeAtalhoTBin"
+		read resp
+		if [ "$resp" = "1" ]; then
+			criaAtalhoTerminalBin
+		elif [ "$resp" = "2" ]; then
+			removeAtalhoBinJrs
+		else
+			echo "NENHUMA OPCAO FOI ESCOLHIDA."
+			exit 1
+		fi
+		clear
+	done
 }
 
-criaAtalhoTerminalBin(){
-    criaDiretorioInstall "$JRS_DIR/Bins"   
-    echo "DIGITE OU COLE O COMANDO DE TERMINAL:"
-    read comandoTerminal
-    echo "DIGITE OU COLE O NOME DO ATALHO/ARQUIVO BIN:"
-    read atalhoBin
-        criarArq "#!/bin/bash
+criaAtalhoTerminalBin() {
+	criaDiretorioInstall "$JRS_DIR/Bins"
+	echo "DIGITE OU COLE O COMANDO DE TERMINAL:"
+	read comandoTerminal
+	echo "DIGITE OU COLE O NOME DO ATALHO/ARQUIVO BIN:"
+	read atalhoBin
+	criarArq "#!/bin/bash
 $comandoTerminal" "$atalhoBin.sh"
-    criaAtalhoBin "$diretorioInstall/$atalhoBin.sh" "$atalhoBin"
+	criaAtalhoBin "$diretorioInstall/$atalhoBin.sh" "$atalhoBin"
 }
 
-criaAtalhoFlatpakBin(){
-    diretorioFlatpak="/var/lib/flatpak/exports/bin/"
-    for flatpak in `ls $diretorioFlatpak`
-    do
-        criaAtalhoBin "$diretorioFlatpak$flatpak" "$flatpak"
-    done
+criaAtalhoFlatpakBin() {
+	diretorioFlatpak="/var/lib/flatpak/exports/bin/"
+	for flatpak in $(ls $diretorioFlatpak); do
+		criaAtalhoBin "$diretorioFlatpak$flatpak" "$flatpak"
+	done
 }
 
-removeAtalhoBinJrs(){
-    cd /usr/bin
-    echo "[Bins]"
-    ls jrs-*
-    echo "DIGITE O NOME DO ATALHO/ARQUIVO BIN QUE DESEJA REMOVER: (SEM O 'jrs-')"
-    read atalhoBin
-    removeAtalhoBin "$atalhoBin"
-    rm $JRS_DIR/Bins/$atalhoBin.sh
-    cd $HOME
+removeAtalhoBinJrs() {
+	cd /usr/bin
+	echo "[Bins]"
+	ls jrs-*
+	echo "DIGITE O NOME DO ATALHO/ARQUIVO BIN QUE DESEJA REMOVER: (SEM O 'jrs-')"
+	read atalhoBin
+	removeAtalhoBin "$atalhoBin"
+	rm $JRS_DIR/Bins/$atalhoBin.sh
+	cd $HOME
 }
 
-removeAtalhoBin(){
-    if [ $1 = '' ]; then
-        echo "NAO COLOQUE UM VALOR VAZIO RISCO DE QUEBRAR O SISTEMA"
-    else
-        sudo rm /usr/bin/jrs-$1
-    fi
+removeAtalhoBin() {
+	if [ $1 = '' ]; then
+		echo "NAO COLOQUE UM VALOR VAZIO RISCO DE QUEBRAR O SISTEMA"
+	else
+		sudo rm /usr/bin/jrs-$1
+	fi
 }
 #removeAtalhoBin "nome do atalho na pasta /usr/bin/ sempre deixar esse campo preenchido pra nao apagar a pasta bin"
 
-criaArqRunDiretorioInstall(){
-    criaDiretorio "shortcuts" "$JRS_DIR/Shortcuts"
-    echo -e 'DIGITE O DIRETORIO OU DIRETORIO/ARQUIVO.EXTENSION Ex:/home/user/Downloads Ou /home/user/teste.txt'
-    read nesseDir
-    echo 'DIGITE UM NOME PARA O ATALHO'
-    read nomeDir
-    criaLinkSym "$nesseDir" "$shortcuts/$nomeDir"
-} 
+criaArqRunDiretorioInstall() {
+	criaDiretorio "shortcuts" "$JRS_DIR/Shortcuts"
+	echo -e 'DIGITE O DIRETORIO OU DIRETORIO/ARQUIVO.EXTENSION Ex:/home/user/Downloads Ou /home/user/teste.txt'
+	read nesseDir
+	echo 'DIGITE UM NOME PARA O ATALHO'
+	read nomeDir
+	criaLinkSym "$nesseDir" "$shortcuts/$nomeDir"
+}
 
-uninstallPastaAtalhoBinMesmoNome(){
-    uninstallPastaAtalhoBin "$JRS_DIR/$1" "$1.desktop" "$1" 
+uninstallPastaAtalhoBinMesmoNome() {
+	uninstallPastaAtalhoBin "$JRS_DIR/$1" "$1.desktop" "$1"
 }
 #uninstallPastaAtalhoBinMesmoNome "Nome igual em Pasta, Atalho e Bin"
 
-uninstallPastaAtalhoBin(){
-    uninstallApplica="n"
-    echo "Uninstall $3 [s/n]"
-    read uninstallApplica
-    if [ "$uninstallApplica" = "s" ]; then
-        if [ $2 = '' ]; then
-            echo "NAO COLOQUE UM VALOR VAZIO RISCO DE QUEBRAR O SISTEMA"
-        else
-            sudo rm -r $1 
-            sudo rm $HOME/.local/share/applications/jrs/jrs-$2
-            sudo rm /usr/bin/jrs-$3
-        fi
-        exit 1
-    fi
-    echo "..."
+uninstallPastaAtalhoBin() {
+	uninstallApplica="n"
+	echo "Uninstall $3 [s/n]"
+	read uninstallApplica
+	if [ "$uninstallApplica" = "s" ]; then
+		if [ $2 = '' ]; then
+			echo "NAO COLOQUE UM VALOR VAZIO RISCO DE QUEBRAR O SISTEMA"
+		else
+			sudo rm -r $1
+			sudo rm $HOME/.local/share/applications/jrs/jrs-$2
+			sudo rm /usr/bin/jrs-$3
+		fi
+		exit 1
+	fi
+	echo "..."
 }
 #remove .desktop, atalho no bin e pasta
 #uninstallPastaAtalhoBin "$HOME/.Jhonatanrs/pasta" "nomedoarquivo.desktop" "atalho na pasta /usr/bin/"
@@ -1736,82 +1730,82 @@ disableSystemctl() {
 
 }
 
-virtualGamepads(){
-    echo "Dependencias"
-    packagesManager "nodejs-lts-hydrogen npm"
-    installName="VirtualGamepads"
-    uninstallPastaAtalhoBinMesmoNome "$installName"
-    criaDiretorioInstall "$JRS_DIR/$installName"
-    criaPastaBaixaExtrai "$diretorioInstall" "https://codeload.github.com/jehervy/node-virtual-gamepads/zip/refs/heads/master" "nvg.zip"
-    mv */* .
-    npm install
-    sudo npm install -g qrcode-terminal
-    echo '#!/bin/bash
+virtualGamepads() {
+	echo "Dependencias"
+	packagesManager "nodejs-lts-hydrogen npm"
+	installName="VirtualGamepads"
+	uninstallPastaAtalhoBinMesmoNome "$installName"
+	criaDiretorioInstall "$JRS_DIR/$installName"
+	criaPastaBaixaExtrai "$diretorioInstall" "https://codeload.github.com/jehervy/node-virtual-gamepads/zip/refs/heads/master" "nvg.zip"
+	mv */* .
+	npm install
+	sudo npm install -g qrcode-terminal
+	echo '#!/bin/bash
 	cd '"$diretorioInstall"'
     sudo echo http://$(ip route get 1 | sed -n '"'"'s/.*src \([0-9.]\+\).*/\1/p'"'"'):80 | qrcode-terminal
-    sudo node main.js' > $diretorioInstall/run.sh
-    criaAtalho "Virtual Gamepads" "Virtual Gamepads Linux" "bash run.sh" "$diretorioInstall" "true" "$installName" "$diretorioInstall/public/images/SNES_controller.svg"
-    #criaAtalhoBin "$diretorioInstall/run.sh" "$installName"
+    sudo node main.js' >$diretorioInstall/run.sh
+	criaAtalho "Virtual Gamepads" "Virtual Gamepads Linux" "bash run.sh" "$diretorioInstall" "true" "$installName" "$diretorioInstall/public/images/SNES_controller.svg"
+	#criaAtalhoBin "$diretorioInstall/run.sh" "$installName"
 
-}  
+}
 
-installRedeVirtual(){
-        echo "Rede Virtual
+installRedeVirtual() {
+	echo "Rede Virtual
 [1] Zerotier, [2] Ngrok [3] Playit.gg"
-    read resp
-    case $resp in
-		1)installZerotier;;
-        2)installNgrok;;
-        3)installPlayITGG;;
-		*);;
+	read resp
+	case $resp in
+	1) installZerotier ;;
+	2) installNgrok ;;
+	3) installPlayITGG ;;
+	*) ;;
 	esac
 }
 
-installZerotier(){
-    roomZerotier="d3ecf5726df2c372"
-    echo "Zerotier para Ubuntu[1] ou Arch[2]"
-    read escolha
-    if [ "$escolha" = "1" ]; then
-        sudo dpkg --configure -a
-        curl -s 'https://raw.githubusercontent.com/zerotier/ZeroTierOne/master/doc/contact%40zerotier.com.gpg' | gpg --import && \
-        if z=$(curl -s 'https://install.zerotier.com/' | gpg); then echo "$z" | sudo bash; fi
-        enableSystemctl "zerotier-one"
-        sudo zerotier-cli join $roomZerotier
-    elif [ "$escolha" = "2" ]; then
-        echo "PAMAC ou PACMAN"
-        packagesManager "zerotier-one"
-        enableSystemctl "zerotier-one"
-        sudo zerotier-cli join $roomZerotier
-    fi 
-   
+installZerotier() {
+	roomZerotier="d3ecf5726df2c372"
+	echo "Zerotier para Ubuntu[1] ou Arch[2]"
+	read escolha
+	if [ "$escolha" = "1" ]; then
+		sudo dpkg --configure -a
+		curl -s 'https://raw.githubusercontent.com/zerotier/ZeroTierOne/master/doc/contact%40zerotier.com.gpg' | gpg --import &&
+			if z=$(curl -s 'https://install.zerotier.com/' | gpg); then echo "$z" | sudo bash; fi
+		enableSystemctl "zerotier-one"
+		sudo zerotier-cli join $roomZerotier
+	elif [ "$escolha" = "2" ]; then
+		echo "PAMAC ou PACMAN"
+		packagesManager "zerotier-one"
+		enableSystemctl "zerotier-one"
+		sudo zerotier-cli join $roomZerotier
+	fi
+
 }
 
-installNgrok(){
-    #https://github.com/ChaoticWeg/discord.sh
-    arqNgrok="https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz"
-    arqDiscord="https://github.com/ChaoticWeg/discord.sh/archive/refs/heads/master.zip"
-    uninstallPastaAtalhoBinMesmoNome "Ngrok"
-    echo -e "[INFO] - DEPENDENCIAS - [INFO]"
-    criaDiretorio "diretorioNgrok" "$JRS_DIR/Ngrok"
-    baixaArq "diretorioNome" "$arqNgrok" "$diretorioNgrok/ngrok.tgz"
-    baixaArq "diretorioNome" "$arqDiscord" "$diretorioNgrok/bot.zip"
-    echo -e "[INFO] - INSTALANDO NGROK - [INFO]"
+installNgrok() {
+	#https://github.com/ChaoticWeg/discord.sh
+	arqNgrok="https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz"
+	arqDiscord="https://github.com/ChaoticWeg/discord.sh/archive/refs/heads/master.zip"
+	uninstallPastaAtalhoBinMesmoNome "Ngrok"
+	echo -e "[INFO] - DEPENDENCIAS - [INFO]"
+	criaDiretorio "diretorioNgrok" "$JRS_DIR/Ngrok"
+	baixaArq "diretorioNome" "$arqNgrok" "$diretorioNgrok/ngrok.tgz"
+	baixaArq "diretorioNome" "$arqDiscord" "$diretorioNgrok/bot.zip"
+	echo -e "[INFO] - INSTALANDO NGROK - [INFO]"
 	cd $diretorioNgrok
 	extrairArq "$diretorioNgrok"
-    mv discord* discord
+	mv discord* discord
 	echo -e "
 Connect your account (https://ngrok.com/)\nEx.:ngrok config add-authtoken ******"
 	read auth_key
 	./$auth_key
-    criarArq "#!/bin/bash
+	criarArq "#!/bin/bash
 bash $diretorioNgrok/discord.sh & bash $diretorioNgrok/ngrok.sh" "$diretorioNgrok/start.sh"
-    criarArq "#!/bin/bash
+	criarArq "#!/bin/bash
 	cd $diretorioNgrok
 	./ngrok tcp 25565" "$diretorioNgrok/ngrok.sh"
 	echo -e "
 COLE AQUI O LINK DA API DO BOT WEBHOOK DO DISCORD"
 	read webh
-    criarArq '#!/bin/bash
+	criarArq '#!/bin/bash
 sleep 15
 WEBHOOK="'$webh'"
 ServerIp=`curl -s localhost:4040/api/tunnels | jq -r .tunnels[0].public_url`
@@ -1824,8 +1818,8 @@ fi' "$diretorioNgrok/discord.sh"
 	criaAtalhoBin "$diretorioNgrok/start.sh" "Ngrok"
 }
 
-installPlayITGG(){
-    yay -S playit-bin
+installPlayITGG() {
+	yay -S playit-bin
 }
 
 virtualPulseAudioReset() {
@@ -2025,29 +2019,27 @@ EOF
 # Sera criado uma pasta resourcepacks com os Resource Pack
 #
 
-criaPackMCMeta(){
+criaPackMCMeta() {
 	echo '{
 	  "pack": {
 	    "pack_format": 1,
 	    "description": "By Jhonatanrs"
 	  }
-	}' >> pack.mcmeta
+	}' >>pack.mcmeta
 }
 
-crop1ponto7Skins(){
+crop1ponto7Skins() {
 	# usando o ImageMagick cortamos a imagem para a versão 1.7 64x32 px
 	#sudo apt-get install imagemagick
-	for skin in `ls Skins`
-	do
+	for skin in $(ls Skins); do
 		mkdir -p Skins-Convertidas
 		convert Skins/$skin -crop 64x64+0-32 Skins-Convertidas/OLD-$skin
 		cp -a Skins/$skin Skins-Convertidas/NEW-$skin
 	done
 }
 
-criaResourcesSkins(){
-	for skin in `ls Skins-Convertidas`
-	do
+criaResourcesSkins() {
+	for skin in $(ls Skins-Convertidas); do
 		mkdir -p novaSource/assets/minecraft/textures/entity
 		cd novaSource
 		criaPackMCMeta
@@ -2056,7 +2048,7 @@ criaResourcesSkins(){
 		cp -a Skins-Convertidas/$skin novaSource/assets/minecraft/textures/entity/alex.png
 		cp -a Skins-Convertidas/$skin novaSource/assets/minecraft/textures/entity/steve.png
 		cp -a Skins-Convertidas/$skin novaSource/pack.png
-		cd novaSource 
+		cd novaSource
 		zip -r ${skin::-4}.zip *
 		mv ${skin::-4}.zip ../resourcepacks
 		cd ..
@@ -2064,7 +2056,7 @@ criaResourcesSkins(){
 	done
 }
 
-GeradorResourceSkinsMinecraft(){
+GeradorResourceSkinsMinecraft() {
 	crop1ponto7Skins
 	criaResourcesSkins
 	rm -r Skins-Convertidas
