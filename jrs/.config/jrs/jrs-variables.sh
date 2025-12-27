@@ -32,8 +32,8 @@ myBaseAudioPipeware="pipewire lib32-pipewire pipewire-alsa pipewire-audio pipewi
 myBaseAudioPulse="pulseaudio pulseaudio-alsa pulseaudio-jack pulseaudio-bluetooth"
 #Graphics Drivers
 myBaseNvidiaExtras="nvidia-settings nvidia-utils lib32-nvidia-utils libva-nvidia-driver cuda opencl-nvidia lib32-opencl-nvidia vdpauinfo clinfo"
-myBaseNvidia="nvidia"
-myBaseNvidiaDkms="dkms nvidia-dkms"
+myBaseNvidia="nvidia-open"
+myBaseNvidiaDkms="dkms nvidia-open-dkms"
 myBaseIntelOld="xf86-video-intel vulkan-intel libva-intel-driver libvdpau-va-gl"
 myBaseIntel="vulkan-intel libva-intel-driver libvdpau-va-gl"
 myBaseAmdOld="xf86-video-ati"

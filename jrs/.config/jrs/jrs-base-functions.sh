@@ -286,7 +286,10 @@ installVideoDriver() {
 	sudo pacman -S $DRIVER_PACKAGES --needed --noconfirm
 
 	# Se for NVIDIA, faz configurações adicionais
-	if [[ "$DRIVER_NAME" == "NVIDIA" ]]; then
+	echo "Avançar com configurações adicionais
+[1]Configure [2]No"
+	read USER_RESP
+	if [[ "$DRIVER_NAME" == "NVIDIA" && "$USER_RESP" == "Linux" ]]; then
 		echo "Configurando GRUB para NVIDIA..."
 
 		KERNEL_VERSION=$(uname -r | cut -d. -f1,2)
