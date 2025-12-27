@@ -1,5 +1,6 @@
 alacritty/.config/alacritty/colors.toml
 bspwm/.config/bspwm/colors.sh
+btop/.config/btop/themes/colors.theme
 dunst/.config/dunst/dunstrc.d/colors.conf
 hypr/.config/hypr/colors.conf
 hypr/.config/hypr/hyprpaper.conf
