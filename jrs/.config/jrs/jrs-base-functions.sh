@@ -558,47 +558,23 @@ Options: [1]Apt [2]Pacman"
 #repairPM
 
 myBasePosInstall() {
-	echo "[0]Pos Install Setup
-[1]Pacman
-[2]Yay
-[3]Grub
-[4]Kernel
-[5]Driver
-[6]Audio
-[7]Base
-[8]Apps
-[9]Start
-[10]Samba
-[11]Configs
-[12]Desktop
-"
+	echo "Pos-Install
+Options: [1]Configure, [2]No"
 
 	read resp
 	case $resp in
-	1) pacmanSetup ;;
-	2) yaySetup ;;
-	3) grubSetup ;;
-	4) kernelSetup ;;
-	5) driverSetup ;;
-	6) audioSetup ;;
-	7) baseSetup ;;
-	8) appsSetup ;;
-	9) startSetup ;;
-	10) sambaSetup ;;
-	11) configsSetup ;;
-	12) desktopSetup ;;
-	0)
+	1)
 		pacmanSetup
 		yaySetup
-		grubSetup
 		kernelSetup
-		driverSetup
 		audioSetup
 		baseSetup
+		driverSetup
 		appsSetup
 		startSetup
 		sambaSetup
 		configsSetup
+		grubSetup
 		desktopSetup
 		;;
 	*) ;;
@@ -692,7 +668,9 @@ baseSetup() {
 [1]Configure [2]No"
 	read resp
 	case $resp in
-	1) packagesManager "$myBaseBootloader $myBaseFileSystem $myBaseNetwork $myBaseFirewall $myBaseUtilitys $myBaseBluetooth $myBaseCodecs $myBaseXorg $myBaseWayland $myBaseIcons $myBaseThemes $myBaseFonts $myBaseRar $myBaseNotify $myBaseDaemons $myBaseFlatpak $myBaseShell" ;;
+	1)
+		packagesManager "$myBaseBootloader $myBaseFileSystem $myBaseNetwork $myBaseFirewall $myBaseBluetooth $myBaseCodecs $myBaseIcons $myBaseThemes $myBaseFonts $myBaseRar $myBaseNotify $myBaseDaemons $myBaseFlatpak $myBaseShell $myBaseUtilitys $myBaseXorg $myBaseWayland"
+		;;
 	*) ;;
 	esac
 }
@@ -703,18 +681,7 @@ appsSetup() {
 	read resp
 	case $resp in
 	1)
-		packagesManager "$myBaseBrowser"
-		packagesManager "$myBaseAudioApp"
-		packagesManager "$myBaseVideoApp"
-		packagesManager "$myBaseGraphicDesignApp"
-		packagesManager "$myBaseSecurityApp"
-		packagesManager "$myBaseDiskManagerApp"
-		packagesManager "$myBaseOfficeApp"
-		packagesManager "$myBaseVideoEditorApp"
-		packagesManager "$myBaseCodingApp"
-		packagesManager "$myBaseTorrentApp"
-		packagesManager "$myBaseDiscordApp"
-		packagesManager "$myBaseConnectApp"
+		packagesManager "$myBaseBrowser $myBaseAudioApp $myBaseVideoApp $myBaseGraphicDesignApp $myBaseSecurityApp $myBaseDiskManagerApp $myBaseOfficeApp $myBaseVideoEditorApp $myBaseCodingApp $myBaseTorrentApp $myBaseDiscordApp $myBaseConnectApp"
 		;;
 	*) ;;
 	esac
@@ -825,11 +792,11 @@ desktopSetup() {
 	read resp
 	case $resp in
 	1)
-		packagesManager "$myBaseHyprland $wmDisplayManager $wmBaseFileManager $wmBaseTerminal $wmBasePdfApp"
+		packagesManager "$myBaseHyprland $wmDisplayManager $wmApplicationLauncher $wmAudioControl $wmBacklightControl $wmBluetoothControl $wmNetworkManager $wmKeyring $wmDiskStatus $wmMusicPlayer $wmPrinters $wmCalculator $wmFontManager $wmImageViewer $wmAppearance $wmPolkit $wmBaseFileManager $wmBaseTerminal $wmBasePdfApp"
 		#hyprland
 		;;
 	2)
-		packagesManager "$myBaseI3wm $wmDisplayManager $wmBaseFileManager $wmBaseTerminal $wmBasePdfApp"
+		packagesManager "$myBaseI3wm $wmDisplayManager $wmApplicationLauncher $wmAudioControl $wmBacklightControl $wmBluetoothControl $wmNetworkManager $wmKeyring $wmDiskStatus $wmMusicPlayer $wmPrinters $wmCalculator $wmFontManager $wmImageViewer $wmAppearance $wmPolkit $wmBaseFileManager $wmBaseTerminal $wmBasePdfApp"
 		#startx /usr/bin/i3
 		;;
 	3)
