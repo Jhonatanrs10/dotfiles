@@ -785,6 +785,9 @@ configsSetup() {
 		myBaseI3Touchpad
 		lidSwitchIgnore
 		criaAtalho "Wiremix Audio" "Audio Tui" "wiremix" "$HOME" "true" "Wiremix" "pavucontrol"
+		setup_file_bashrc
+		setup_file_bash_profile
+		setup_file_profile
 		;;
 	*) ;;
 	esac
@@ -2033,23 +2036,31 @@ GeradorResourceSkinsMinecraft() {
 	rm -r Skins-Convertidas
 }
 
-setup-file-bashrc() {
-	criarArq "seu texto aqui" "$HOME/.bashrc"
+setup_file_bashrc() {
+	criarArq "#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ "'$-'" != *i* ]] && return
+
+[[ -f ~/.config/bashconfigs/bash_alias ]] && . ~/.config/bashconfigs/bash_alias
+" "$HOME/.bashrc"
 }
 
-setup-file-bash-profile() {
-	criarArq "seu texto aqui" "$HOME/.bash_profile"
+setup_file_bash_profile() {
+	criarArq '#
+# ~/.bash_profile
+#
+
+[[ -f ~/.bashrc ]] && . ~/.bashrc
+[[ -f ~/.config/bashconfigs/bash_vars ]] && . ~/.config/bashconfigs/bash_vars
+
+' "$HOME/.bash_profile"
 }
 
-setup-file-profile() {
+setup_file_profile() {
 	criarArq 'setxkbmap -model abnt2 -layout br
 echo "Xcursor.theme: Adwaita
 Xcursor.size: 24" | xrdb -merge' "$HOME/.profile"
-}
-
-setup-file-xinitrc() {
-	criarArq "export XDG_CURRENT_DESKTOP=i3
-export XDG_SESSION_DESKTOP=i3
-export XDG_SESSION_TYPE=x11
-exec i3" "$HOME/.xinitrc"
 }

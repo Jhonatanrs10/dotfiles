@@ -1,16 +1,11 @@
-#
-# ~/.bashrc
-#
-
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
-
+# My Bash
+PS1='[\w]\$ '
 # Colors
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 # DE
 alias start-hyprland="hyprland"
-alias start-i3wm="startx"
+alias start-i3wm="startx ~/.config/i3/start-i3"
 # My Alias
 alias gitatt="git add . && git commit -m \"att\" && git push"
 alias ff="fastfetch"
@@ -41,6 +36,4 @@ alias sshlocalserver="ssh jhonatanrs@192.168.0.134"
 alias mydotfiles="bash ~/.config/jrs/jrs-mydotfiles.sh"
 # Servers
 alias mineserver="cd ~/Servers/MINEJRS && bash run.sh"
-# My Bash
-#PS1='[\u@\h \W]\$ '
-PS1='[\w]\$ '
+

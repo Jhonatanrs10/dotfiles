@@ -1,9 +1,3 @@
-#
-# ~/.bash_profile
-#
-
-[[ -f ~/.bashrc ]] && . ~/.bashrc
-
 # My Default Theme
 export GTK_THEME=adw-gtk3-dark
 export GTK_ICON_THEME=Papirus-Dark
