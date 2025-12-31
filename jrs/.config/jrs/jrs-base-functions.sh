@@ -139,24 +139,25 @@ criaPastaBaixaExtrai() {
 
 criarArq() {
 	echo "$1" >$2
+	#criarArq "seu texto aqui" "nomedoarquivo.txt"
 }
 nomeDoArquivo() {
 	cd $1
 	return $(ls *$2*)
+	#nomeDoArquivo "diretorio" "caracter que possui ex .jar"
 }
 addNoArq() {
 	echo "$1" >>$2
+
+	#addNoArq "seu texto aqui" "nomedoarquivo.txt"
 }
 
 criarArqv2() {
 	cat <<REALEND >$2
 $1
 REALEND
+	#criarArqv2 "seu texto aqui" "diretorio/nomedoarquivo.txt"
 }
-#nomeDoArquivo "diretorio" "caracter que possui ex .jar"
-#criarArq "seu texto aqui" "nomedoarquivo.txt"
-#addNoArq "seu texto aqui" "nomedoarquivo.txt"
-#criarArqv2 "seu texto aqui" "diretorio/nomedoarquivo.txt"
 
 addArchi386() {
 	echo -e '[INFO] - ADCIONANDO ARQUITETURA DE 32 BITS - [INFO]'
@@ -2030,4 +2031,25 @@ GeradorResourceSkinsMinecraft() {
 	crop1ponto7Skins
 	criaResourcesSkins
 	rm -r Skins-Convertidas
+}
+
+setup-file-bashrc() {
+	criarArq "seu texto aqui" "$HOME/.bashrc"
+}
+
+setup-file-bash-profile() {
+	criarArq "seu texto aqui" "$HOME/.bash_profile"
+}
+
+setup-file-profile() {
+	criarArq 'setxkbmap -model abnt2 -layout br
+echo "Xcursor.theme: Adwaita
+Xcursor.size: 24" | xrdb -merge' "$HOME/.profile"
+}
+
+setup-file-xinitrc() {
+	criarArq "export XDG_CURRENT_DESKTOP=i3
+export XDG_SESSION_DESKTOP=i3
+export XDG_SESSION_TYPE=x11
+exec i3" "$HOME/.xinitrc"
 }
