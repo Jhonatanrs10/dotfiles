@@ -5,7 +5,7 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 # DE
 #alias start-hyprland="start-hyprland"
-alias start-i3wm="startx ~/.config/i3/start-i3"
+alias start-i3wm="startx ~/.config/i3/startx-i3"
 # My Alias
 alias gitatt="git add . && git commit -m \"att\" && git push"
 alias ff="fastfetch"

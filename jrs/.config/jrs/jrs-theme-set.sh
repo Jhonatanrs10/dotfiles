@@ -87,7 +87,7 @@ splash = false" >~/.config/hypr/hyprpaper.conf
 echo "if ! pgrep -x "hyprpaper" > /dev/null; then
     hyprpaper &
 fi
-hyprctl hyprpaper wallpaper , ~/.config/wallpapers/$JRS_WALLPAPER, cover" >~/.config/hypr/hyprpaper.sh
+hyprctl hyprpaper wallpaper , ~/.config/wallpapers/$JRS_WALLPAPER" >~/.config/hypr/hyprpaper.sh
 
 # Hyprland colors setup
 echo '$wallpaper = '$JRS_WALLPAPER'
@@ -137,7 +137,7 @@ base07 = #$JRS_BLACK_COLOR" >~/.config/polybar/colors.ini
 # Rofi colors setup
 echo "* {
     base00: #$JRS_MAIN_COLOR;
-    base01: #$JRS_BAR_COLOR;
+    base01: #$JRS_BAR_COLOR$JRS_POLYBAR_OPACITY;
     base02: #$JRS_TEXT_COLOR;
     base03: #$JRS_UNFOCUSED_COLOR;
     base04: #$JRS_BAD_COLOR;

@@ -50,6 +50,7 @@ window {
     height: 50%;
 }
 mainbox {
+    background-color: transparent;
     border: 0;
     padding: 0;
 }
@@ -78,15 +79,15 @@ element-text {
     text-color:       inherit;
 }
 element.normal.normal {
-    background-color: @base01;
+    background-color: transparent;
     text-color:       @base02;
 }
 element.normal.urgent {
-    background-color: @base01;
+    background-color: transparent;
     text-color:       @base02;
 }
 element.normal.active {
-    background-color: @base01;
+    background-color: transparent;
     text-color:       @base00;
 }
 element.selected.normal {
@@ -94,7 +95,7 @@ element.selected.normal {
     text-color:       @base02;
 }
 element.selected.urgent {
-    background-color: @base01;
+    background-color: transparent;
     text-color:       @base02;
 }
 element.selected.active {
@@ -102,15 +103,15 @@ element.selected.active {
     text-color:       @base02;
 }
 element.alternate.normal {
-    background-color: @base01;
+    background-color: transparent;
     text-color:       @base02;
 }
 element.alternate.urgent {
-    background-color: @base01;
+    background-color: transparent;
     text-color:       @base02;
 }
 element.alternate.active {
-    background-color: @base01;
+    background-color: transparent;
     text-color:       @base00;
 }
 scrollbar {
@@ -126,7 +127,7 @@ mode-switcher {
     border-color: @base00;
 }
 button.selected {
-    background-color: @base01;
+    background-color: transparent;
     text-color:       @base02;
 }
 inputbar {
