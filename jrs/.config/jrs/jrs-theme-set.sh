@@ -77,11 +77,17 @@ esac
 ###########################################################################################
 
 # Hyprpaper setup
-echo "reload = ~/.config/wallpapers/$JRS_WALLPAPER
-wallpaper = , ~/.config/wallpapers/$JRS_WALLPAPER" >~/.config/hypr/hyprpaper.conf
+echo "wallpaper {
+    monitor = 
+    path = ~/.config/wallpapers/$JRS_WALLPAPER
+    fit_mode = cover
+}
+splash = false" >~/.config/hypr/hyprpaper.conf
 
-echo "hyprctl hyprpaper preload ~/.config/wallpapers/$JRS_WALLPAPER
-hyprctl hyprpaper wallpaper , ~/.config/wallpapers/$JRS_WALLPAPER" >~/.config/hypr/hyprpaper.sh
+echo "if ! pgrep -x "hyprpaper" > /dev/null; then
+    hyprpaper &
+fi
+hyprctl hyprpaper wallpaper , ~/.config/wallpapers/$JRS_WALLPAPER, cover" >~/.config/hypr/hyprpaper.sh
 
 # Hyprland colors setup
 echo '$wallpaper = '$JRS_WALLPAPER'
