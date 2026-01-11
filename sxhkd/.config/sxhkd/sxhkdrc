@@ -131,8 +131,6 @@ XF86MonBrightnessDown
 
 ###Power###
 # quit/restart bspwm
-super + shift + e
-	bspc quit
 super + ctrl + 7
 	systemctl suspend
 super + l 

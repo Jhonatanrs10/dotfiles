@@ -101,7 +101,7 @@ virtualGamepads() {
 }
 
 installVirtManager() {
-	packagesManager "$myBaseVirt" "VirtManager"
+	packagesManager "$myBaseVirt"
 	enableSystemctl "libvirtd"
 	sudo virsh net-autostart default
 	#sudo virsh net-start default

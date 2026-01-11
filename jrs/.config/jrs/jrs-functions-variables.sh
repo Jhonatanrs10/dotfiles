@@ -79,6 +79,8 @@ myBaseDiscordApp="discord"
 myBaseConnectApp="kdeconnect"
 #Gaming
 myBaseSteam="steam"
+myBaseMinecraft="minecraft-launcher curseforge"
+myBaseHeroic="heroic-games-launcher-bin"
 myBaseMangoHud="mangohud lib32-mangohud"
 myBaseGamescope="gamescope lib32-gamemode gamemode"
 myBaseRetroarch="retroarch retroarch-assets-xmb retroarch-assets-ozone libretro-snes9x libretro-mgba libretro-beetle-psx"
@@ -86,3 +88,4 @@ myBaseRetroarch="retroarch retroarch-assets-xmb retroarch-assets-ozone libretro-
 myBaseVirt="qemu libvirt ebtables dnsmasq bridge-utils openbsd-netcat virt-manager"
 #Recording
 myBaseOBS="app/com.obsproject.Studio/x86_64/stable runtime/com.obsproject.Studio.Plugin.MoveTransition/x86_64/stable"
+myBaseStreamOverlay="app/com.hperrin.StreamOverlay/x86_64/stable"

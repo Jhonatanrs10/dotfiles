@@ -58,11 +58,11 @@ installVideoDriver() {
 	echo "Pacotes que serão instalados: $DRIVER_PACKAGES"
 
 	# Atualiza o sistema e instala pacotes básicos
-	sudo pacman -Syu --noconfirm
-	sudo pacman -S base-devel linux-headers git nano --needed --noconfirm
+	sudo pacman -Syu
+	sudo pacman -S base-devel linux-headers git nano --needed
 
 	# Instala os pacotes do driver escolhido
-	sudo pacman -S $DRIVER_PACKAGES --needed --noconfirm
+	sudo pacman -S $DRIVER_PACKAGES --needed 
 
 	# Se for NVIDIA, faz configurações adicionais
 	echo "Avançar com configurações adicionais

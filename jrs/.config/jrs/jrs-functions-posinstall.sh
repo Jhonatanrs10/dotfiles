@@ -418,26 +418,16 @@ https://github.com/ValveSoftware/Proton/wiki/Using-a-NTFS-disk-with-Linux-and-Wi
 ##########################
 
 myBasePosInstall() {
-	echo "Pos-Install
-Options: [1]Configure, [2]No"
-
-	read resp
-	case $resp in
-	1)
-		pacmanSetup
-		yaySetup
-		kernelSetup
-		audioSetup
-		baseSetup
-		driverSetup
-		appsSetup
-		startSetup
-		sambaSetup
-		configsSetup
-		grubSetup
-		desktopSetup
-		;;
-	*) ;;
-	esac
-
+	pacmanSetup
+	yaySetup
+	kernelSetup
+	audioSetup
+	baseSetup
+	driverSetup
+	appsSetup
+	startSetup
+	sambaSetup
+	configsSetup
+	grubSetup
+	desktopSetup
 }

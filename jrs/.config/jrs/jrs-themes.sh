@@ -19,7 +19,7 @@ declare -A theme_1
 theme_1[name]="Focus"
 theme_1[main]="7d7d7d"
 theme_1[bar]="1E1E1E"
-theme_1[bar_opacity]="0"
+theme_1[bar_opacity]="0.60"
 theme_1[text]="ffffff"
 theme_1[unfocused]="313131"
 theme_1[bad]="900000"
