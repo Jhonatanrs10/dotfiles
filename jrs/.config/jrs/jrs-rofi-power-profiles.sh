@@ -27,12 +27,12 @@ profile-power-saver() {
 
 if [ "$XDG_CURRENT_DESKTOP" = "i3" ] || [ "$XDG_CURRENT_DESKTOP" = "bspwm" ]; then
   if pgrep picom >/dev/null; then
-    options="Performance\nBalanced\nPower Saver\nPicom Stop"
+    options="  Performance\n  Balanced\n  Power Saver\n󰰙  Picom Stop"
   else
-    options="Performance\nBalanced\nPower Saver\nPicom Start"
+    options="  Performance\n  Balanced\n  Power Saver\n󰰙  Picom Start"
   fi
 else
-  options="Performance\nBalanced\nPower Saver"
+  options="  Performance\n  Balanced\n  Power Saver"
 fi
 
 menu_cmd="rofi -dmenu -i -p Profiles"
@@ -42,11 +42,11 @@ chosen=$(echo -e "$options" | $menu_cmd)
 
 # Execute chosen action
 case "$chosen" in
-"Performance") profile-performance ;;
-"Balanced") profile-balanced ;;
-"Power Saver") profile-power-saver ;;
-"Picom Start") picom-start ;;
-"Picom Stop") picom-stop ;;
+"  Performance") profile-performance ;;
+"  Balanced") profile-balanced ;;
+"  Power Saver") profile-power-saver ;;
+"󰰙  Picom Start") picom-start ;;
+"󰰙  Picom Stop") picom-stop ;;
 *) exit 1 ;;
 esac
 

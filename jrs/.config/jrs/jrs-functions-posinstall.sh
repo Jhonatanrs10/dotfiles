@@ -199,6 +199,7 @@ configsSetup() {
 		myBaseI3Touchpad
 		lidSwitchIgnore
 		criaAtalho "Wiremix Audio" "Audio Tui" "wiremix" "$HOME" "true" "Wiremix" "pavucontrol"
+		criaAtalho "Rofi Center" "My Rofi Center" "bash jrs-my-rofi-center.sh" "$HOME/.config/jrs" "false" "MyRofiCenter" "rofi"
 		setup_file_bashrc
 		setup_file_bash_profile
 		setup_file_profile

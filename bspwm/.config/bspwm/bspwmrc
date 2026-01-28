@@ -47,7 +47,7 @@ xsetroot -cursor_name left_ptr &
 blueman-applet &
 nm-applet &
 /usr/bin/dunst &
-/usr/bin/polkit-gnome/polkit-gnome-authentucation-agent-1 &
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 /usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg &
 feh --bg-fill ~/.config/wallpapers/$wallpaper &
 $HOME/.config/polybar/polybar.sh &

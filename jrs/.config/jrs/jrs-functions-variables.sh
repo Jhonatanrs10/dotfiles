@@ -23,7 +23,7 @@ myBaseNotify="libnotify dunst"
 myBaseDaemons="notification-daemon power-profiles-daemon openssh syncthing"
 myBaseFlatpak="flatpak"
 myBaseShell="bash bash-completion shfmt"
-myBaseUtilitys="nano neovim fastfetch yt-dlp stow curl tree jq imagemagick cmatrix btop ranger xsel pacman-contrib base-devel git ffmpeg fwupd samba udisks2 gvfs gvfs-mtp gvfs-smb gvfs-afc polkit net-tools joyutils man-db wireless_tools"
+myBaseUtilitys="nano neovim libinput fastfetch yt-dlp stow curl tree jq imagemagick cmatrix btop ranger xsel pacman-contrib base-devel git ffmpeg fwupd samba udisks2 gvfs gvfs-mtp gvfs-smb gvfs-afc polkit net-tools joyutils man-db wireless_tools"
 #Graphical Servers
 myBaseXorg="xorg xorg-xsetroot xorg-xhost xorg-server xorg-xinit"
 myBaseWayland="wayland egl-wayland"
@@ -40,13 +40,13 @@ myBaseAmdOld="xf86-video-ati"
 myBaseAmd="mesa vulkan-radeon libva-mesa-driver libvdpau-va-gl lib32-mesa lib32-vulkan-radeon lib32-libva-mesa-driver mesa-utils"
 #Window Managers and Desktop Environments
 myBaseXfce4="xfce4 xfce4-goodies xfce4-docklike-plugin lightdm-gtk-greeter lightdm-gtk-greeter-settings lightdm"
-myBaseKde="dolphin dolphin-plugins dragon elisa filelight gwenview okular kcalc konsole plasma-desktop sddm"
+myBaseKde="plasma dolphin dolphin-plugins dragon elisa filelight gwenview okular kcalc konsole sddm"
 myBaseGnome="gnome gnome-tweaks gdm"
-myBaseHyprland="hyprland waybar hyprlock hyprpaper hypridle hyprpicker wl-clipboard xdg-desktop-portal-hyprland grim slurp nwg-displays"
+myBaseHyprland="hyprland waybar hyprlock hyprpaper hypridle hyprpicker hyprshutdown wl-clipboard xdg-desktop-portal-hyprland grim slurp nwg-displays"
 myBaseBspwm="bspwm sxhkd polybar picom scrot xcolor arandr i3lock"
 myBaseI3wm="i3 xss-lock i3status polybar dmenu picom scrot xcolor arandr i3lock"
 #Window Manager Applications
-wmDisplayManager=""
+wmDisplayManager="sddm"
 wmApplicationLauncher="rofi"
 wmAudioControl="wiremix"
 wmBacklightControl="brightnessctl"
@@ -89,3 +89,14 @@ myBaseVirt="qemu libvirt ebtables dnsmasq bridge-utils openbsd-netcat virt-manag
 #Recording
 myBaseOBS="app/com.obsproject.Studio/x86_64/stable runtime/com.obsproject.Studio.Plugin.MoveTransition/x86_64/stable"
 myBaseStreamOverlay="app/com.hperrin.StreamOverlay/x86_64/stable"
+
+# My Default Apps
+#TEXT
+#TERMINAL
+#PDF VIEWER
+#FILE MANAGER
+#BROWSER
+#VIDEO PLAYER
+#IMAGE VIEWER
+#CALCULATOR
+#CALENDAR
