@@ -70,6 +70,7 @@ opcoes=(
 	"Diretório Inode Padrão::defaultInodeDirectory"
 	"Configuração Git::gitconfig"
 	"Bongo::bongo"
+	"RetroArch::installRetroArch"
 	"Pokexgames::installPokexgames"
 	"Minecraft::installMinecraft"
 	"Servidor Rede Virtual::installRedeVirtual"

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-options="  Discord (Flatpak)\n  Discord (Pacman)"
+options="  Discord (Flatpak)\n  Discord (Pacman)\n  SteamOS\n  SteamOS (Shutdown)"
 
 menu_cmd="rofi -dmenu -i -p Apps"
 
@@ -9,7 +9,9 @@ chosen=$(echo -e "$options" | $menu_cmd)
 
 # Execute chosen action
 case "$chosen" in
-"  Discord (Flatpak)") env ELECTRON_OZONE_PLATFORM_HINT= com.discordapp.Discord --no-sandbox;;
-"  Discord (Pacman)") env ELECTRON_OZONE_PLATFORM_HINT= discord --no-sandbox;;
-  *) exit 1 ;;
+"  Discord (Flatpak)") env ELECTRON_OZONE_PLATFORM_HINT= com.discordapp.Discord --no-sandbox ;;
+"  Discord (Pacman)") env ELECTRON_OZONE_PLATFORM_HINT= discord --no-sandbox ;;
+"  SteamOS") gamescope -w 1600 -h 900 -W 1600 -H 900 -S stretch -f -C 5000 -e --cursor Adwaita --force-grab-cursor --mangoapp -- steam -steamdeck -steamos3 ;;
+"  SteamOS (Shutdown)") steam -shutdown;;
+*) exit 1 ;;
 esac
