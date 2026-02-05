@@ -10,7 +10,7 @@ myBaseKernel="base linux linux-firmware intel-ucode sof-firmware"
 myBaseKernelLts="base linux-lts linux-firmware intel-ucode sof-firmware"
 myBaseKernelZen="base linux-zen linux-zen-headers linux-firmware intel-ucode sof-firmware"
 #Base
-myBaseFileSystem="ntfs-3g exfat-utils dosfstools"
+myBaseFileSystem="ntfs-3g exfat-utils dosfstools mtools"
 myBaseNetwork="networkmanager"
 myBaseFirewall="gufw"
 myBaseBluetooth="bluez bluez-tools bluez-utils"

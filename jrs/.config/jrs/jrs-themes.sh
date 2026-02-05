@@ -31,7 +31,7 @@ theme_1[wallpaper]="focus.png"
 declare -A theme_2
 theme_2[name]="Red"
 theme_2[main]="c10b0b"
-theme_2[bar]="333333"
+theme_2[bar]="010101"
 theme_2[bar_opacity]="0.60"
 theme_2[text]="ffffff"
 theme_2[unfocused]="7d7d7d"
@@ -144,6 +144,19 @@ theme_old_anime[degraded]="a08000"
 theme_old_anime[white]="ffffff"
 theme_old_anime[black]="000000"
 theme_old_anime[wallpaper]="old-anime.png"
+
+declare -A theme_gachiakuta
+theme_gachiakuta[name]="Gachiakuta"
+theme_gachiakuta[main]="c10b0b"
+theme_gachiakuta[bar]="333333"
+theme_gachiakuta[bar_opacity]="0.60"
+theme_gachiakuta[text]="ffffff"
+theme_gachiakuta[unfocused]="7d7d7d"
+theme_gachiakuta[bad]="900000"
+theme_gachiakuta[degraded]="a08000"
+theme_gachiakuta[white]="ffffff"
+theme_gachiakuta[black]="000000"
+theme_gachiakuta[wallpaper]="gachiakuta.png"
 
 declare -A theme_vinland_saga
 theme_vinland_saga[name]="Vinland Saga"
