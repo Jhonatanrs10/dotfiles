@@ -1,6 +1,6 @@
 #!/bin/bash
 
-options="  Search\n  Themes\n  Power Profiles\n󰀻  Apps\n  Debug\n󰐦  Quit"
+options="  Search\n󱓟  Launchers\n  Themes\n  Power Profiles\n  Debug\n󰐦  Quit"
 
 menu_cmd="rofi -dmenu -i -p Options"
 
@@ -10,9 +10,9 @@ chosen=$(echo -e "$options" | $menu_cmd)
 # Execute chosen action
 case "$chosen" in
 "  Search") rofi -show drun ;;
+"󱓟  Launchers") bash $HOME/.config/jrs/jrs-rofi-apps.sh ;;
 "  Themes") bash $HOME/.config/jrs/jrs-rofi-themes.sh ;;
 "  Power Profiles") bash $HOME/.config/jrs/jrs-rofi-power-profiles.sh ;;
-"󰀻  Apps") bash $HOME/.config/jrs/jrs-rofi-apps.sh ;;
 "  Debug") bash $HOME/.config/jrs/jrs-rofi-debug.sh ;;
 "󰐦  Quit") bash $HOME/.config/jrs/jrs-rofi-power.sh ;;
 "code") code ~/.dotfiles ;;

@@ -10,12 +10,16 @@ nwg_displays_768p() {
 	source $HOME/.config/jrs/jrs-reload-wm.sh
 }
 
-xrandr_480p(){
-	xrandr --output DVI-D-0 --off --output HDMI-0 --primary --mode 1280x1024 --pos 0x0 --rotate normal --output DP-0 --mode 1600x900 --pos 1280x0 --rotate normal --output DP-1 --off
+xrandr_720p(){
+	xrandr --output DP-0 --mode 1280x720 --pos 1280x0 --rotate normal
+}
+
+xrandr_900p(){
+	xrandr --output DP-0 --mode 1600x900 --pos 1280x0 --rotate normal
 }
 
 if [ "$XDG_CURRENT_DESKTOP" = "i3" ] || [ "$XDG_CURRENT_DESKTOP" = "bspwm" ]; then
-	options="EMBREVE"
+	options="eDP-0 720p\neDP-0 900p"
 else
 	options="eDP-1 480p\neDP-1 768p"
 fi
@@ -29,5 +33,7 @@ chosen=$(echo -e "$options" | $menu_cmd)
 case "$chosen" in
 "eDP-1 480p") nwg_displays_480p ;;
 "eDP-1 768p") nwg_displays_768p ;;
+"eDP-0 720p") xrandr_720p ;;
+"eDP-0 900p") xrandr_900p ;;
 *) exit 1 ;;
 esac

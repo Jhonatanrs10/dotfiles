@@ -202,6 +202,7 @@ configsSetup() {
 		setup_file_bashrc
 		setup_file_bash_profile
 		setup_file_profile
+		default-xdg-mime
 		;;
 	*) ;;
 	esac
@@ -357,6 +358,27 @@ gsettingsInactiveOff() {
 	gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-timeout 0
 }
 
+default-xdg-mime() {
+
+	xdg-settings set default-web-browser zen-browser.desktop
+
+	xdg-mime default thunar.desktop inode/directory
+
+	xdg-mime default feh.desktop image/jpeg image/png image/gif image/bmp image/webp
+
+	xdg-mime default xreader.desktop application/pdf
+
+	xdg-mime default alacritty.desktop x-scheme-handler/terminal
+
+	xdg-mime default galculator.desktop x-scheme-handler/calc
+
+	xdg-mime default ark.desktop application/zip application/x-tar application/x-7z-compressed application/x-rar
+
+	xdg-mime default cmus.desktop audio/mpeg audio/ogg audio/flac audio/x-wav
+
+	xdg-mime default font-manager.desktop font/ttf font/otf application/x-font-ttf application/x-font-otf
+}
+
 defaultInodeDirectory() {
 	echo "Default Applications   
 [1]Nautilus for FileManager
@@ -415,7 +437,7 @@ https://github.com/ValveSoftware/Proton/wiki/Using-a-NTFS-disk-with-Linux-and-Wi
 	read enterprasair
 }
 
-installRetroArch(){
+installRetroArch() {
 	packagesManager "$myBaseRetroarch"
 }
 
