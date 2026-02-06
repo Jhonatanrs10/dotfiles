@@ -199,6 +199,7 @@ configsSetup() {
 		myBaseI3Touchpad
 		lidSwitchIgnore
 		criaAtalho "Wiremix Audio" "Audio Tui" "wiremix" "$HOME" "true" "Wiremix" "pavucontrol"
+		criaAtalho "Syncthing" "Sync Folders" "xdg-open http://localhost:8384/" "$HOME" "false" "Syncthing" "syncthing"
 		setup_file_bashrc
 		setup_file_bash_profile
 		setup_file_profile
@@ -433,6 +434,9 @@ grub-mkconfig -o /boot/grub/grub.cfg
 ---------------------
 [Steam Linux & Windows]
 https://github.com/ValveSoftware/Proton/wiki/Using-a-NTFS-disk-with-Linux-and-Windows
+---------------------
+[Syncthing]
+Para syncronizar todas as pastas devem conter o MESMO: NOME e ID
 "
 	read enterprasair
 }
