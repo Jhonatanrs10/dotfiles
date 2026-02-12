@@ -42,7 +42,7 @@ myBaseAmd="mesa vulkan-radeon libva-mesa-driver libvdpau-va-gl lib32-mesa lib32-
 myBaseXfce4="xfce4 xfce4-goodies xfce4-docklike-plugin lightdm-gtk-greeter lightdm-gtk-greeter-settings lightdm"
 myBaseKde="plasma dolphin dolphin-plugins dragon elisa filelight gwenview okular kcalc konsole sddm"
 myBaseGnome="gnome gnome-tweaks gdm"
-myBaseHyprland="hyprland waybar hyprlock hyprpaper hypridle hyprpicker hyprshutdown wl-clipboard xdg-desktop-portal-hyprland grim slurp nwg-displays"
+myBaseHyprland="hyprland waybar hyprlock hyprpaper hypridle hyprpicker wl-clipboard xdg-desktop-portal-hyprland grim slurp nwg-displays"
 myBaseBspwm="bspwm sxhkd polybar picom scrot xcolor arandr i3lock"
 myBaseI3wm="i3 xss-lock i3status polybar dmenu picom scrot xcolor arandr i3lock"
 #Window Manager Applications
