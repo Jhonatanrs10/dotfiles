@@ -9,7 +9,7 @@ chosen=$(echo -e "$options" | $menu_cmd)
 
 # Execute chosen action
 case "$chosen" in
-"  Discord (Flatpak)") env ELECTRON_OZONE_PLATFORM_HINT= com.discordapp.Discord --no-sandbox ;;
+"  Discord (Flatpak)") env ELECTRON_OZONE_PLATFORM_HINT= flatpak run com.discordapp.Discord --no-sandbox ;;
 "  Discord (Pacman)") env ELECTRON_OZONE_PLATFORM_HINT= discord --no-sandbox ;;
 *) exit 1 ;;
 esac
