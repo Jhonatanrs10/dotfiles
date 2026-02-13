@@ -3,7 +3,9 @@
 
 packagesManager() {
 	#clear
-	echo "PACKAGES
+	echo "============
+= PACKAGES =
+============
 [$1]	
 Options: [1]Pacman, [2]Yay, [3]pamac, [4]Flatpak, [5]Apt
 to uninstall for example a Pacman Package put [0] before option. Ex: [01]"
