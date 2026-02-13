@@ -75,7 +75,7 @@ myBaseOfficeApp="libreoffice-fresh"
 myBaseVideoEditorApp="shotcut"
 myBaseCodingApp="code l3afpad"
 myBaseTorrentApp="qbittorrent"
-myBaseDiscordApp="discord"
+myBaseDiscordApp="com.discordapp.Discord"
 myBaseConnectApp="kdeconnect"
 #Gaming
 myBaseSteam="steam"
@@ -89,14 +89,3 @@ myBaseVirt="qemu libvirt ebtables dnsmasq bridge-utils openbsd-netcat virt-manag
 #Recording
 myBaseOBS="app/com.obsproject.Studio/x86_64/stable runtime/com.obsproject.Studio.Plugin.MoveTransition/x86_64/stable"
 myBaseStreamOverlay="app/com.hperrin.StreamOverlay/x86_64/stable"
-
-# My Default Apps
-#TEXT
-#TERMINAL
-#PDF VIEWER
-#FILE MANAGER
-#BROWSER
-#VIDEO PLAYER
-#IMAGE VIEWER
-#CALCULATOR
-#CALENDAR

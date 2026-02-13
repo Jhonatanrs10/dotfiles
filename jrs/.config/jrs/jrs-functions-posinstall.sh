@@ -99,13 +99,16 @@ appsSetup() {
 	read resp
 	case $resp in
 	1)
-		packagesManager "$myBaseBrowser $myBaseAudioApp $myBaseVideoApp $myBaseGraphicDesignApp $myBaseSecurityApp $myBaseDiskManagerApp $myBaseOfficeApp $myBaseVideoEditorApp $myBaseCodingApp $myBaseTorrentApp $myBaseDiscordApp $myBaseConnectApp"
+		packagesManager "$myBaseBrowser $myBaseAudioApp $myBaseVideoApp $myBaseGraphicDesignApp $myBaseSecurityApp $myBaseDiskManagerApp $myBaseOfficeApp $myBaseVideoEditorApp $myBaseCodingApp $myBaseTorrentApp $myBaseConnectApp"
+		packagesManager "$myBaseDiscordApp"
 		packagesManager "$myBaseSteam"
 		packagesManager "$myBaseMinecraft"
 		packagesManager "$myBaseHeroic"
 		packagesManager "$myBaseMangoHud"
 		packagesManager "$myBaseGamescope"
 		packagesManager "$myBaseRetroarch"
+		packagesManager "$myBaseOBS"
+		packagesManager "$myBaseStreamOverlay"
 		;;
 	*) ;;
 	esac
