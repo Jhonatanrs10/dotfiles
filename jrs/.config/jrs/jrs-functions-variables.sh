@@ -61,7 +61,7 @@ wmFontManager="font-manager"
 wmImageViewer="feh"
 wmAppearance="nwg-look lxappearance"
 wmPolkit="polkit-gnome"
-wmBaseFileManager="thunar thunar-archive-plugin tumbler ark"
+wmBaseFileManager="thunar thunar-archive-plugin thunar-volman tumbler ark"
 wmBaseTerminal="alacritty"
 wmBasePdfApp="xreader"
 #Global Applications
@@ -85,7 +85,7 @@ myBaseMangoHud="mangohud lib32-mangohud"
 myBaseGamescope="gamescope lib32-gamemode gamemode"
 myBaseRetroarch="retroarch retroarch-assets-xmb retroarch-assets-ozone libretro-snes9x libretro-mgba libretro-beetle-psx libretro-parallel-n64"
 #Virtualization
-myBaseVirt="qemu libvirt ebtables dnsmasq bridge-utils openbsd-netcat virt-manager"
+myBaseVirt="qemu libvirt ebtables dnsmasq iproute2 openbsd-netcat virt-manager" #bridge-utils
 #Recording
 myBaseOBS="app/com.obsproject.Studio/x86_64/stable runtime/com.obsproject.Studio.Plugin.MoveTransition/x86_64/stable"
 myBaseStreamOverlay="app/com.hperrin.StreamOverlay/x86_64/stable"
