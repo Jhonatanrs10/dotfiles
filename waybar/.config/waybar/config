@@ -1,25 +1,35 @@
 {
-	"height": 30,
-	"layer": "top",
-	"spacing": 0,
-	"modules-left": ["hyprland/workspaces"],
-	"modules-center": ["clock"],
-	"modules-right": ["group/tray-expander"],
-	"hyprland/workspaces": {
-     "format": "{icon}",
-     "on-scroll-up": "hyprctl dispatch workspace e+1",
-     "on-scroll-down": "hyprctl dispatch workspace e-1"
-    },
-    "hyprland/window": {
-     "format": "{}",
-     "max-length": 60
-    },
-	"clock": {
-     "formatbkp": "{:%R}",
-     "format": "{:%a.%d %b %I:%M %p}",
-     "format-alt": "{:%A %I:%M %p}",
-     "tooltip-format": "{:%A, %d de %B de %Y - %H:%M}"
-    },
+  "height": 30,
+  "layer": "top",
+  "spacing": 0,
+  "modules-left": [
+    "hyprland/workspaces"
+  ],
+  "modules-center": [
+    "clock"
+  ],
+  "modules-right": [
+    "bluetooth",
+    "network",
+    "pulseaudio",
+    "battery",
+    "group/tray-expander"
+  ],
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1"
+  },
+  "hyprland/window": {
+    "format": "{}",
+    "max-length": 60
+  },
+  "clock": {
+    "formatbkp": "{:%R}",
+    "format": "{:%a.%d %b %I:%M %p}",
+    "format-alt": "{:%A %I:%M %p}",
+    "tooltip-format": "{:%A, %d de %B de %Y - %H:%M}"
+  },
   "group/tray-expander": {
     "orientation": "inherit",
     "drawer": {
@@ -27,7 +37,10 @@
       /*"click-to-reveal": true,*/
       "children-class": "tray-group-item"
     },
-    "modules": ["custom/expand-icon", "battery", "pulseaudio", "tray"]
+    "modules": [
+      "custom/expand-icon",
+      "tray"
+    ]
   },
   "custom/expand-icon": {
     "format": "  ",
@@ -37,50 +50,84 @@
     "icon-size": 12,
     "spacing": 15
   },
-     "bluetooth": {
+  "bluetooth": {
     "format": "",
+    "format-off": "󰂲",
     "format-disabled": "󰂲",
-    "format-connected": "",
+    "format-connected": "󰂱",
+    "format-no-controller": "",
     "tooltip-format": "Devices connected: {num_connections}",
-    "on-click": "blueberry"
+    "on-click-right": "$TERMINAL -e bluetui"
   },
-      "network": {
-    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+  "network": {
+    "format-icons": [
+      "󰤯",
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ],
     "format": "{icon}",
     "format-wifi": "{icon}",
     "format-ethernet": "󰀂",
-    "format-disconnected": "󰤮",
-    "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
-    "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "format-disconnected": "󰤮 ",
+    "tooltip-format-wifi": "{ipaddr}\n{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-ethernet": "{ipaddr}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
     "tooltip-format-disconnected": "Disconnected",
     "interval": 3,
     "spacing": 1,
-    "on-click": ""
+    "on-click-right": "$TERMINAL -e impala"
   },
-    "pulseaudio": {
+  "pulseaudio": {
     "format": "{icon}",
     "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-    "on-click-right": "$TERMINAL --class=Wiremix -e wiremix",
+    "on-click-right": "$TERMINAL --class=Wiremix -e wiremix --tab output",
     "tooltip-format": "Playing at {volume}%",
     "scroll-step": 5,
     "format-muted": "",
     "format-icons": {
-      "default": ["", "", " "]
+      "default": [
+        "",
+        "",
+        " "
+      ]
     }
   },
- "cpu": {
+  "cpu": {
     "interval": 5,
     "format": "󰍛",
-    "on-click": "$TERMINAL -e btop"
+    "on-click-right": "$TERMINAL -e btop"
   },
-   "battery": {
+  "battery": {
     "format": "{capacity}% {icon}",
     "format-discharging": "{icon}",
     "format-charging": "{icon}",
     "format-plugged": "",
     "format-icons": {
-      "charging": ["󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
-      "default": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+      "charging": [
+        "󰢜",
+        "󰂆",
+        "󰂇",
+        "󰂈",
+        "󰢝",
+        "󰂉",
+        "󰢞",
+        "󰂊",
+        "󰂋",
+        "󰂅"
+      ],
+      "default": [
+        "󰁺",
+        "󰁻",
+        "󰁼",
+        "󰁽",
+        "󰁾",
+        "󰁿",
+        "󰂀",
+        "󰂁",
+        "󰂂",
+        "󰁹"
+      ]
     },
     "format-full": "󰂅",
     "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",

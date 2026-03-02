@@ -12,3 +12,4 @@ Exec=bash jrs-rofi.sh
 Icon=rofi
 Path=$HOME/.config/jrs
 Terminal=false" >$HOME/.local/share/applications/jrs/jrs-rofi.desktop
+dunstify -t 2000 --hints int:transient:1 "Rofi Desktop" "Created" --icon=applications-utilities

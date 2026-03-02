@@ -7,10 +7,8 @@ hypr/.config/hypr/hyprpaper.sh
 hypr/.config/hypr/monitors.conf
 hypr/.config/hypr/workspaces.conf
 i3/.config/i3/colors
-kitty/.config/kitty/colors.conf
 nvim/.config/nvim/bkp/colors/colors.lua
 nvim/.config/nvim/lua/config/colors.lua
 polybar/.config/polybar/colors.ini
 rofi/.config/rofi/colors.rasi
 waybar/.config/waybar/colors.css
-wofi/.config/wofi/colors.css

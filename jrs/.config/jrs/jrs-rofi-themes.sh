@@ -99,16 +99,6 @@ $color5 = '$JRS_BLACK_COLOR'
 $color6 = '$JRS_BLACK_COLOR'
 $color7 = '$JRS_BLACK_COLOR'' >~/.config/hypr/colors.conf
 
-# Wofi colors setup
-echo "@define-color base00 #$JRS_MAIN_COLOR;
-@define-color base01 #$JRS_BAR_COLOR;
-@define-color base02 #$JRS_TEXT_COLOR;
-@define-color base03 #$JRS_UNFOCUSED_COLOR;
-@define-color base04 #$JRS_BAD_COLOR;
-@define-color base05 #$JRS_DEGRADED_COLOR;
-@define-color base06 #$JRS_WHITE_COLOR;
-@define-color base07 #$JRS_BLACK_COLOR;" >~/.config/wofi/colors.css
-
 # Waybar colors setup
 echo "@define-color base00 #$JRS_MAIN_COLOR;
 @define-color base01 #$JRS_BAR_COLOR;
