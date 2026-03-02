@@ -25,7 +25,7 @@ profile-power-saver() {
   dunstify -t 2000 --hints int:transient:1 "Power Profile" "Power Saver" --icon=xfce4-cpugraph-plugin
 }
 
-if [ "$XDG_CURRENT_DESKTOP" = "i3" ] || [ "$XDG_CURRENT_DESKTOP" = "bspwm" ]; then
+if [ "$XDG_CURRENT_DESKTOP" = "i3" ]; then
   if pgrep picom >/dev/null; then
     options="  Performance\n  Balanced\n  Power Saver\n󰰙  Picom Stop"
   else

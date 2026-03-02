@@ -18,7 +18,7 @@ xrandr_default_resolution(){
 	xrandr --output eDP-1 --mode 1366x768 --pos 1280x0 --rotate normal
 }
 
-if [ "$XDG_CURRENT_DESKTOP" = "i3" ] || [ "$XDG_CURRENT_DESKTOP" = "bspwm" ]; then
+if [ "$XDG_CURRENT_DESKTOP" = "i3" ]; then
 	options="eDP-1 Default ResX\neDP-1 Low ResX"
 else
 	options="eDP-1 Default ResW\neDP-1 Low ResW"

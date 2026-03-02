@@ -43,8 +43,7 @@ myBaseXfce4="xfce4 xfce4-goodies xfce4-docklike-plugin lightdm-gtk-greeter light
 myBaseKde="plasma dolphin dolphin-plugins dragon elisa filelight gwenview okular kcalc konsole sddm"
 myBaseGnome="gnome gnome-tweaks gdm"
 myBaseHyprland="hyprland waybar hyprlock hyprpaper hypridle hyprpicker wl-clipboard xdg-desktop-portal-hyprland grim slurp nwg-displays"
-myBaseBspwm="bspwm sxhkd polybar picom scrot xcolor arandr i3lock"
-myBaseI3wm="i3 xss-lock i3status polybar dmenu picom scrot xcolor arandr i3lock"
+myBaseI3wm="i3 xss-lock polybar dmenu picom scrot xcolor arandr i3lock"
 #Window Manager Applications
 wmDisplayManager="sddm"
 wmApplicationLauncher="rofi"

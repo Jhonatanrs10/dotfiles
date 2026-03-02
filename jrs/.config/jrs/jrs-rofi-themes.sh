@@ -165,17 +165,6 @@ client.placeholder      $color6 $color6 $color3 $color6 $color6
 client.background       $color3
 ' >~/.config/i3/colors
 
-# Bspwm colors setup
-echo 'wallpaper="'$JRS_WALLPAPER'"
-base00="#'$JRS_MAIN_COLOR'"
-base01="#'$JRS_BAR_COLOR'"
-base02="#'$JRS_TEXT_COLOR'"
-base03="#'$JRS_UNFOCUSED_COLOR'"
-base04="#'$JRS_BAD_COLOR'"
-base05="#'$JRS_DEGRADED_COLOR'"
-base06="#'$JRS_WHITE_COLOR'"
-base07="#'$JRS_BLACK_COLOR'"' >$HOME/.config/bspwm/colors.sh
-
 # NVIM colors setup
 echo '-- Função auxiliar para definir destaques
 local hi = function(group, opts)
