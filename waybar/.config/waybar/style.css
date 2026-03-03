@@ -38,7 +38,7 @@ window#waybar:first-child > box {
 #workspaces button.active {
     padding: 5;
     padding-top: 10;
-    border-bottom: 3px solid @base00;
+    border-bottom: 3px solid transparent;
     padding-bottom: 5;
     min-width: 25px;
     color: @base02;

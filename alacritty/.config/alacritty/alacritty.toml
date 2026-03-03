@@ -1,4 +1,4 @@
-general.import = ["~/.config/alacritty/colors.toml"]
+general.import = ["~/.config/wallpapers/colors/default/alacritty/default.toml", "~/.config/alacritty/colors.toml"]
 
 [font]
 size = 11.0
