@@ -11,7 +11,7 @@ chosen=$(echo -e "$options" | $menu_cmd)
 case "$chosen" in
 "  Search") rofi -show drun ;;
 "󱓟  Launchers") bash $HOME/.config/jrs/jrs-rofi-apps.sh ;;
-"  Themes") bash $HOME/.config/jrs/jrs-rofi-themes.sh ;;
+"  Themes") bash $HOME/.config/jrs/jrs-rofi-set-theme.sh ;;
 "  Power Profiles") bash $HOME/.config/jrs/jrs-rofi-power-profiles.sh ;;
 "  Debug") bash $HOME/.config/jrs/jrs-rofi-debug.sh ;;
 "󰐦  Quit") bash $HOME/.config/jrs/jrs-rofi-power.sh ;;

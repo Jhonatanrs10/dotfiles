@@ -9,7 +9,7 @@ chosen=$(echo -e "$options" | $menu_cmd)
 
 # Execute chosen action
 case "$chosen" in
-"󱄋  Reload WM")bash $HOME/.config/jrs/jrs-reload-wm.sh;;
+"󱄋  Reload WM")bash $HOME/.config/jrs/jrs-wm-reload.sh;;
 "󱣵  Resolution WM") bash $HOME/.config/jrs/jrs-rofi-display-resolutions.sh ;;
 "󰹯  Rofi Desktop") bash $HOME/.config/jrs/jrs-rofi-desktop.sh ;;
 "  Kill Heroic & Gamescope") pkill -9 gamescope && pkill -9 -f "heroic" && wineserver -k;;

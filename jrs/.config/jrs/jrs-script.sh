@@ -8,7 +8,7 @@ CYAN="\033[36m"
 RESET="\033[0m"
 
 # Define o caminho completo (o Bash expande o ~ automaticamente)
-FUNCTIONS_PATH="$HOME/.config/jrs/jrs-functions*"
+FUNCTIONS_PATH="$HOME/.config/jrs/jrs-scripts*"
 
 # Ativa o nullglob para não dar erro se a pasta estiver vazia
 shopt -s nullglob
@@ -39,7 +39,7 @@ dependencies() {
 		cat <<EOF >"$wrapper"
 #!/bin/bash
 cd "$PWD"
-bash "jrs-scripts.sh"
+bash "jrs-script.sh"
 EOF
 
 		# Torna o arquivo executável
