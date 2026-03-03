@@ -46,10 +46,10 @@ exec_always --no-startup-id $HOME/.config/polybar/polybar.sh
 
 ###Binds###
 bindsym $mod+d exec --no-startup-id $appMenu
-bindsym $mod+x exec --no-startup-id $MyFileManager
-bindsym $mod+c exec --no-startup-id $MyBrowser
+bindsym $mod+x exec --no-startup-id $FILEMANAGER
+bindsym $mod+c exec --no-startup-id $BROWSERX
 bindsym $mod+Shift+d exec --no-startup-id $appMenu2
-bindsym $mod+Return exec --no-startup-id $MyTerminal
+bindsym $mod+Return exec --no-startup-id $TERMINAL
 bindsym $mod+Shift+Return exec --no-startup-id i3-sensible-terminal
 bindsym $mod+q kill
 bindsym Mod1+F4 kill

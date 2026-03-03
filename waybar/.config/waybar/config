@@ -1,7 +1,7 @@
 {
   "height": 30,
   "layer": "top",
-  "spacing": 0,
+  "spacing": 10,
   "modules-left": [
     "hyprland/workspaces"
   ],
@@ -9,11 +9,11 @@
     "clock"
   ],
   "modules-right": [
+    "group/tray-expander",
     "bluetooth",
     "network",
-    "pulseaudio",
     "battery",
-    "group/tray-expander"
+    "pulseaudio"
   ],
   "hyprland/workspaces": {
     "format": "{icon}",
@@ -34,7 +34,8 @@
     "orientation": "inherit",
     "drawer": {
       "transition-duration": 600,
-      /*"click-to-reveal": true,*/
+      "transition-left-to-right": false,
+      "click-to-reveal": true,
       "children-class": "tray-group-item"
     },
     "modules": [
@@ -43,12 +44,12 @@
     ]
   },
   "custom/expand-icon": {
-    "format": "  ",
+    "format": "   ",
     "tooltip": false
   },
   "tray": {
-    "icon-size": 12,
-    "spacing": 15
+    "icon-size": 16,
+    "spacing": 25
   },
   "bluetooth": {
     "format": "",
@@ -89,7 +90,7 @@
       "default": [
         "",
         "",
-        " "
+        ""
       ]
     }
   },
@@ -138,5 +139,5 @@
       "warning": 20,
       "critical": 10
     }
-  },
+  }
 }

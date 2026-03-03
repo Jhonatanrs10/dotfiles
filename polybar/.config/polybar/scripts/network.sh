@@ -5,7 +5,7 @@
 ETH_STATUS=$(cat /sys/class/net/e*/operstate 2>/dev/null)
 
 if [ "$ETH_STATUS" = "up" ]; then
-    echo " 󰀂 "
+    echo "  󰀂  "
     exit 0
 fi
 
@@ -16,10 +16,10 @@ if [ "$WIFI_STATUS" = "enabled" ]; then
     SSID=$(nmcli -t -f active,ssid dev wifi | grep '^yes' | cut -d: -f2)
     
     if [ -n "$SSID" ]; then
-        echo "  "
+        echo ""
     else
-        echo " 󰤮 "
+        echo "󰤮"
     fi
 else
-    echo " 󰤭 "
+    echo "󰤭"
 fi
