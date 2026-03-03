@@ -10,9 +10,9 @@
   ],
   "modules-right": [
     "group/tray-expander",
+    "battery",
     "bluetooth",
     "network",
-    "battery",
     "pulseaudio"
   ],
   "hyprland/workspaces": {
