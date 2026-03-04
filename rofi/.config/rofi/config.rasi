@@ -137,19 +137,18 @@ case-indicator {
     text-color: @base02;
 }
 entry {
-    spacing:    2;
+    spacing: 2;
     text-color: @base02;
-    background-color: @base011;
-    padding:    10px ;
+    padding: 10px ;
     margin: 10px;
-    placeholder:      "   Type to search";
-    placeholder-color: @base03;
+    placeholder: "   Type to search";
+    placeholder-color: @base02;
     border-color: @base03;
-    border: 0px 0px 0px 0px;
+    border: 0px 0px 1px 0px;
 }
 prompt {
     enabled: false;
-    spacing:    2;
+    spacing: 2;
     text-color: @base02;
 }
 inputbar {
@@ -157,13 +156,13 @@ inputbar {
     border: 0px 0px 0px 0px;
     margin: 0px 0px 0px 0px;
     padding: 0px 0px 0px 0px;
-    children:   [ entry ];
+    children: [ entry ];
 }
 textbox-prompt-colon {
     enabled: false;
-    expand:     false;
-    str:        ": ";
-    margin:     0px ;
+    expand: false;
+    str: ": ";
+    margin: 0px ;
     text-color: @base02;
 }
 
