@@ -1,5 +1,7 @@
 #!/bin/bash
 
+touch ~/.config/rofi/colors.rasi &&
+
 options="  Search\n󱓟  Launchers\n  Themes\n  Power Profiles\n  Debug\n󰐦  Quit"
 
 menu_cmd="rofi -dmenu -i -p Go"
