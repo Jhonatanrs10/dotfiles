@@ -133,6 +133,7 @@ base07 = #$JRS_BLACK_COLOR" >~/.config/polybar/colors.ini
 echo "* {
     base00: #$JRS_MAIN_COLOR;
     base01: #$JRS_BAR_COLOR$JRS_POLYBAR_OPACITY;
+	base011: #$JRS_BAR_COLOR;
     base02: #$JRS_TEXT_COLOR;
     base03: #$JRS_UNFOCUSED_COLOR;
     base04: #$JRS_BAD_COLOR;

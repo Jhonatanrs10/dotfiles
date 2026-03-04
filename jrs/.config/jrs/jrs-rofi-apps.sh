@@ -2,7 +2,7 @@
 
 options="  Discord Wayland\n  SteamOS"
 
-menu_cmd="rofi -dmenu -i -p Apps"
+menu_cmd='rofi -dmenu -i -placeholder "  Search..."'
 
 # Show menu and get user selection
 chosen=$(echo -e "$options" | $menu_cmd)

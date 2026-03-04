@@ -37,7 +37,7 @@ configuration {
     scroll-method: 1; 
     show-icons: true;
     combi-display-format: "{text} ({mode})";
-    font: "Caskaydia Mono Nerd Font 15";
+    font: "Caskaydia Mono Nerd Font 16";
 }
 
 window {
@@ -46,8 +46,8 @@ window {
     border: 2;
     border-radius: 0;
     padding: 0;
-    width: 40%;
-    height: 35%;
+    width: 30%;
+    height: 50%;
 }
 mainbox {
     background-color: transparent;
@@ -68,7 +68,7 @@ listview {
     border-color: @base00;
     spacing:      0px ;
     scrollbar:    false;
-    padding:      0px 0px 0px 0px ;
+    padding:      0px 0px 10px 0px ;
 }
 element {
     border:  0;
@@ -115,7 +115,6 @@ element.alternate.active {
     text-color:       @base00;
 }
 scrollbar {
-    enabled: false;
     background-color: @base02;
     handle-color: #7d7d7d;
     width:        4px ;
@@ -131,6 +130,11 @@ button.selected {
     background-color: transparent;
     text-color:       @base02;
 }
+inputbar {
+    spacing:    5;
+    text-color: @base02;
+    padding:    1px ;
+}
 case-indicator {
     spacing:    2;
     text-color: @base02;
@@ -138,28 +142,19 @@ case-indicator {
 entry {
     spacing:    2;
     text-color: @base02;
-    background-color: @base011;
-    padding:    10px ;
-    margin: 10px;
-    placeholder:      "   Type to search";
-    placeholder-color: @base03;
-    border-color: @base03;
-    border: 1px 1px 1px 1px;
 }
 prompt {
-    enabled: false;
     spacing:    2;
     text-color: @base02;
 }
 inputbar {
     border-color: @base02;
-    border: 0px 0px 0px 0px;
-    margin: 0px 0px 0px 0px;
-    padding: 0px 0px 0px 0px;
-    children:   [ entry ];
+    border: 0px 0px 1px 0px;
+    margin: 5px 10px 10px 10px;
+    padding: 5px 0px 5px 0px;
+    children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
 }
 textbox-prompt-colon {
-    enabled: false;
     expand:     false;
     str:        ": ";
     margin:     0px ;

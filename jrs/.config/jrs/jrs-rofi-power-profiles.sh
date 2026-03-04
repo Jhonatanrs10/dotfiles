@@ -35,7 +35,7 @@ else
   options="  Performance\n  Balanced\n  Power Saver"
 fi
 
-menu_cmd="rofi -dmenu -i -p Profiles"
+menu_cmd="rofi -dmenu -i -p Profiles -width 40"
 
 # Show menu and get user selection
 chosen=$(echo -e "$options" | $menu_cmd)
