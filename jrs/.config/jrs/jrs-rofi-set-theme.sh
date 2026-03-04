@@ -2,6 +2,62 @@
 
 source $HOME/.config/jrs/jrs-rofi-themes.sh
 
+nwg_look_light() {
+	mkdir -p $HOME/.local/share/nwg-look/
+	# Polybar colors setup
+	echo "# By: Jhonatanrs
+gtk-theme=adw-gtk3
+icon-theme=Papirus-Light
+font-name=CaskaydiaMono Nerd Font 11
+cursor-theme=Adwaita
+cursor-size=24
+toolbar-style=both-horiz
+toolbar-icons-size=large
+font-hinting=slight
+font-antialiasing=grayscale
+font-rgba-order=rgb
+text-scaling-factor=1.0
+color-scheme=prefer-light
+event-sounds=true
+input-feedback-sounds=true" >$HOME/.local/share/nwg-look/gsettings &&
+		nwg-look -a
+}
+
+nwg_look_dark() {
+	mkdir -p $HOME/.local/share/nwg-look/
+	# Polybar colors setup
+	echo "# By: Jhonatanrs
+gtk-theme=adw-gtk3-dark
+icon-theme=Papirus-Dark
+font-name=CaskaydiaMono Nerd Font 11
+cursor-theme=Adwaita
+cursor-size=24
+toolbar-style=both-horiz
+toolbar-icons-size=large
+font-hinting=slight
+font-antialiasing=grayscale
+font-rgba-order=rgb
+text-scaling-factor=1.0
+color-scheme=prefer-dark
+event-sounds=true
+input-feedback-sounds=true" >$HOME/.local/share/nwg-look/gsettings &&
+		nwg-look -a
+}
+
+code_light(){
+	mkdir -p $HOME/.config/Code\ -\ OSS/User/
+	echo '{
+    "workbench.colorTheme": "Default Light Modern"
+}' >$HOME/.config/Code\ -\ OSS/User/settings.json
+}
+
+code_dark(){
+	mkdir -p $HOME/.config/Code\ -\ OSS/User/
+	echo '{
+    "workbench.colorTheme": "Default Dark Modern"
+}' >$HOME/.config/Code\ -\ OSS/User/settings.json
+}
+
 select_theme_with_rofi() {
 
 	local theme_name display_name
@@ -63,6 +119,7 @@ JRS_DEGRADED_COLOR="${chosen_theme[degraded]}"
 JRS_WHITE_COLOR="${chosen_theme[white]}"
 JRS_BLACK_COLOR="${chosen_theme[black]}"
 JRS_WALLPAPER="${chosen_theme[wallpaper]}"
+JRS_THEME_MODE="${chosen_theme[theme_mode]}"
 
 case $JRS_BAR_OPACITY in
 "0")
@@ -76,6 +133,21 @@ case $JRS_BAR_OPACITY in
 *)
 	JRS_WAYBAR_OPACITY="0.80"
 	JRS_POLYBAR_OPACITY="CC"
+	;;
+esac
+
+case $JRS_THEME_MODE in
+"dark")
+	nwg_look_dark
+	code_dark
+	;;
+"light")
+	nwg_look_light
+	code_light
+	;;
+*)
+	nwg_look_dark
+	code_dark
 	;;
 esac
 
@@ -133,7 +205,6 @@ base07 = #$JRS_BLACK_COLOR" >~/.config/polybar/colors.ini
 echo "* {
     base00: #$JRS_MAIN_COLOR;
     base01: #$JRS_BAR_COLOR$JRS_POLYBAR_OPACITY;
-	base011: #$JRS_BAR_COLOR;
     base02: #$JRS_TEXT_COLOR;
     base03: #$JRS_UNFOCUSED_COLOR;
     base04: #$JRS_BAD_COLOR;

@@ -14,6 +14,7 @@ theme_0[degraded]="a08000"
 theme_0[white]="ffffff"
 theme_0[black]="000000"
 theme_0[wallpaper]="archlinux.png"
+theme_0[theme_mode]="dark"
 
 declare -A theme_1
 theme_1[name]="Focus"
@@ -27,6 +28,7 @@ theme_1[degraded]="a08000"
 theme_1[white]="ffffff"
 theme_1[black]="000000"
 theme_1[wallpaper]="focus.png"
+theme_1[theme_mode]="dark"
 
 declare -A theme_2
 theme_2[name]="Red"
@@ -40,6 +42,7 @@ theme_2[degraded]="a08000"
 theme_2[white]="ffffff"
 theme_2[black]="000000"
 theme_2[wallpaper]="red.png"
+theme_2[theme_mode]="dark"
 
 declare -A theme_3
 theme_3[name]="Green"
@@ -53,6 +56,7 @@ theme_3[degraded]="a08000"
 theme_3[white]="ffffff"
 theme_3[black]="000000"
 theme_3[wallpaper]="green.png"
+theme_3[theme_mode]="dark"
 
 declare -A theme_4
 theme_4[name]="Pink"
@@ -66,6 +70,7 @@ theme_4[degraded]="a08000"
 theme_4[white]="ffffff"
 theme_4[black]="000000"
 theme_4[wallpaper]="pink.png"
+theme_4[theme_mode]="dark"
 
 declare -A theme_5
 theme_5[name]="RGB"
@@ -79,6 +84,7 @@ theme_5[degraded]="a08000"
 theme_5[white]="ffffff"
 theme_5[black]="000000"
 theme_5[wallpaper]="rgb.png"
+theme_5[theme_mode]="dark"
 
 declare -A theme_gentoo
 theme_gentoo[name]="Gentoo"
@@ -92,6 +98,7 @@ theme_gentoo[degraded]="a08000"
 theme_gentoo[white]="ffffff"
 theme_gentoo[black]="000000"
 theme_gentoo[wallpaper]="gentoo.png"
+theme_gentoo[theme_mode]="dark"
 
 declare -A theme_mountain
 theme_mountain[name]="Mountain"
@@ -105,6 +112,7 @@ theme_mountain[degraded]="a08000"
 theme_mountain[white]="ffffff"
 theme_mountain[black]="000000"
 theme_mountain[wallpaper]="mountain.png"
+theme_mountain[theme_mode]="dark"
 
 declare -A theme_halloween_boy
 theme_halloween_boy[name]="Halloween Boy"
@@ -118,6 +126,7 @@ theme_halloween_boy[degraded]="a08000"
 theme_halloween_boy[white]="ffffff"
 theme_halloween_boy[black]="000000"
 theme_halloween_boy[wallpaper]="halloween-boy.png"
+theme_halloween_boy[theme_mode]="dark"
 
 declare -A theme_minimalist_green
 theme_minimalist_green[name]="Minimalist Green"
@@ -131,6 +140,7 @@ theme_minimalist_green[degraded]="a08000"
 theme_minimalist_green[white]="ffffff"
 theme_minimalist_green[black]="000000"
 theme_minimalist_green[wallpaper]="minimalist-green.png"
+theme_minimalist_green[theme_mode]="dark"
 
 declare -A theme_old_anime
 theme_old_anime[name]="Old Anime"
@@ -144,6 +154,7 @@ theme_old_anime[degraded]="a08000"
 theme_old_anime[white]="ffffff"
 theme_old_anime[black]="000000"
 theme_old_anime[wallpaper]="old-anime.png"
+theme_old_anime[theme_mode]="dark"
 
 declare -A theme_gachiakuta
 theme_gachiakuta[name]="Gachiakuta"
@@ -157,6 +168,7 @@ theme_gachiakuta[degraded]="a08000"
 theme_gachiakuta[white]="ffffff"
 theme_gachiakuta[black]="000000"
 theme_gachiakuta[wallpaper]="gachiakuta.png"
+theme_gachiakuta[theme_mode]="dark"
 
 declare -A theme_vinland_saga
 theme_vinland_saga[name]="Vinland Saga"
@@ -170,6 +182,7 @@ theme_vinland_saga[degraded]="a08000"
 theme_vinland_saga[white]="ffffff"
 theme_vinland_saga[black]="000000"
 theme_vinland_saga[wallpaper]="vinland-saga.png"
+theme_vinland_saga[theme_mode]="dark"
 
 declare -A theme_gray
 theme_gray[name]="Gray"
@@ -183,6 +196,7 @@ theme_gray[degraded]="a08000"
 theme_gray[white]="ffffff"
 theme_gray[black]="000000"
 theme_gray[wallpaper]="gray.png"
+theme_gray[theme_mode]="dark"
 
 declare -A theme_yellow
 theme_yellow[name]="Zenitsu"
@@ -196,6 +210,7 @@ theme_yellow[degraded]="a08000"
 theme_yellow[white]="ffffff"
 theme_yellow[black]="000000"
 theme_yellow[wallpaper]="yellow.png"
+theme_yellow[theme_mode]="dark"
 
 declare -A theme_omarchy
 theme_omarchy[name]="Omarchy"
@@ -209,6 +224,7 @@ theme_omarchy[degraded]="a08000"
 theme_omarchy[white]="ffffff"
 theme_omarchy[black]="000000"
 theme_omarchy[wallpaper]="omarchy_default.png"
+theme_omarchy[theme_mode]="dark"
 
 declare -A theme_berserker
 theme_berserker[name]="Berserker"
@@ -222,6 +238,7 @@ theme_berserker[degraded]="a08000"
 theme_berserker[white]="ffffff"
 theme_berserker[black]="000000"
 theme_berserker[wallpaper]="berserker.png"
+theme_berserker[theme_mode]="dark"
 
 declare -A theme_gruvbox
 theme_gruvbox[name]="Gruvbox"
@@ -235,6 +252,7 @@ theme_gruvbox[degraded]="a08000"
 theme_gruvbox[white]="ffffff"
 theme_gruvbox[black]="000000"
 theme_gruvbox[wallpaper]="gruvbox.png"
+theme_gruvbox[theme_mode]="dark"
 
 declare -A theme_minecraft
 theme_minecraft[name]="Minecraft"
@@ -248,6 +266,7 @@ theme_minecraft[degraded]="a08000"
 theme_minecraft[white]="ffffff"
 theme_minecraft[black]="000000"
 theme_minecraft[wallpaper]="minecraft.png"
+theme_minecraft[theme_mode]="dark"
 
 declare -A theme_japan_day
 theme_japan_day[name]="Japan Day"
@@ -261,6 +280,7 @@ theme_japan_day[degraded]="a08000"
 theme_japan_day[white]="ffffff"
 theme_japan_day[black]="000000"
 theme_japan_day[wallpaper]="japan-day.png"
+theme_japan_day[theme_mode]="dark"
 
 declare -A theme_japan_night
 theme_japan_night[name]="Japan Night"
@@ -274,6 +294,7 @@ theme_japan_night[degraded]="a08000"
 theme_japan_night[white]="ffffff"
 theme_japan_night[black]="000000"
 theme_japan_night[wallpaper]="japan-night.png"
+theme_japan_night[theme_mode]="dark"
 
 declare -A theme_ship_at_sea
 theme_ship_at_sea[name]="Ship at Sea"
@@ -287,5 +308,18 @@ theme_ship_at_sea[degraded]="a08000"
 theme_ship_at_sea[white]="ffffff"
 theme_ship_at_sea[black]="000000"
 theme_ship_at_sea[wallpaper]="ship-at-sea.png"
+theme_ship_at_sea[theme_mode]="dark"
 
-
+declare -A theme_white_orb
+theme_white_orb[name]="White Orb"
+theme_white_orb[main]="100f0f"
+theme_white_orb[bar]="fffcf0"
+theme_white_orb[bar_opacity]="0.5"
+theme_white_orb[text]="100f0f"
+theme_white_orb[unfocused]="7d7d7d"
+theme_white_orb[bad]="900000"
+theme_white_orb[degraded]="a08000"
+theme_white_orb[white]="ffffff"
+theme_white_orb[black]="000000"
+theme_white_orb[wallpaper]="white-orb.png"
+theme_white_orb[theme_mode]="light"

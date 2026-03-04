@@ -1,7 +1,6 @@
 * {
     base00: #1793d1;
     base01: #333333CC;
-	base011: #333333;
     base02: #ffffff;
     base03: #7d7d7d;
     base04: #900000;
@@ -93,7 +92,7 @@ element.normal.active {
 }
 element.selected.normal {
     background-color: @base00;
-    text-color:       @base02;
+    text-color:       @base01;
 }
 element.selected.urgent {
     background-color: transparent;
