@@ -2,12 +2,12 @@
 
 nwg_displays_low_resolution() {
 	echo "monitor=eDP-1,854x480@60.02,0x0,1.0" >$HOME/.config/hypr/monitors.conf
-	source $HOME/.config/jrs/jrs-wm-reload.sh
+	source $HOME/.config/jrs/jrs-reload-wm.sh
 }
 
 nwg_displays_default_resolution() {
 	echo "monitor=eDP-1,1366x768@60.02,0x0,1.0" >$HOME/.config/hypr/monitors.conf
-	source $HOME/.config/jrs/jrs-wm-reload.sh
+	source $HOME/.config/jrs/jrs-reload-wm.sh
 }
 
 xrandr_low_resolution(){

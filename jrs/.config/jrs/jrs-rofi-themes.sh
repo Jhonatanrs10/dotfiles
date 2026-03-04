@@ -287,3 +287,5 @@ theme_ship_at_sea[degraded]="a08000"
 theme_ship_at_sea[white]="ffffff"
 theme_ship_at_sea[black]="000000"
 theme_ship_at_sea[wallpaper]="ship-at-sea.png"
+
+

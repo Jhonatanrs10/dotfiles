@@ -204,6 +204,7 @@ configsSetup() {
 	1)
 		flatpak override --user --filesystem=~/.icons:ro --filesystem=~/.local/share/icons:ro
 		sudo rm -f /usr/share/applications/rofi*
+		sudo rm -f /usr/share/applications/wiremix*
 		myBaseI3Backlight
 		myBaseI3Touchpad
 		lidSwitchIgnore
@@ -291,7 +292,7 @@ setup_file_bashrc() {
 # If not running interactively, don't do anything
 [[ "'$-'" != *i* ]] && return
 
-[[ -f ~/.config/bashconfigs/bash_alias ]] && . ~/.config/bashconfigs/bash_alias
+[[ -f ~/.config/jrs/jrs-bash-alias.sh ]] && . ~/.config/jrs/jrs-bash-alias.sh
 " "$HOME/.bashrc"
 }
 
@@ -301,7 +302,7 @@ setup_file_bash_profile() {
 #
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
-[[ -f ~/.config/bashconfigs/bash_vars ]] && . ~/.config/bashconfigs/bash_vars
+[[ -f ~/.config/jrs/jrs-bash-exports.sh ]] && . ~/.config/jrs/jrs-bash-exports.sh
 
 ' "$HOME/.bash_profile"
 }

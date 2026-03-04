@@ -38,6 +38,7 @@ configuration {
     show-icons: true;
     combi-display-format: "{text} ({mode})";
     font: "Caskaydia Mono Nerd Font 15";
+    no-custom: true;
 }
 
 window {
@@ -144,7 +145,7 @@ entry {
     placeholder:      "   Type to search";
     placeholder-color: @base03;
     border-color: @base03;
-    border: 1px 1px 1px 1px;
+    border: 0px 0px 0px 0px;
 }
 prompt {
     enabled: false;
