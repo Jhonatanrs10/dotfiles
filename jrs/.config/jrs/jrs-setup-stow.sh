@@ -1,34 +1,44 @@
 #!/bin/bash
 
-# Caminhos (ajuste se necessário)
+# Definição dos caminhos
 DOTFILES_DIR="$HOME/.dotfiles"
 CONFIG_DIR="$HOME/.config"
-BKP_DIR="$HOME/.config/bkp_config"
+BKP_DIR="$HOME/.config/dotfiles_bkp"
 
 # Garante que a pasta de backup existe
 mkdir -p "$BKP_DIR"
 
-echo "--- Iniciando Backup Baseado em Dotfiles ---"
+echo "--- Iniciando Movimentação para Backup ---"
 
-# Entra na pasta de dotfiles para listar o que tem lá
-cd "$DOTFILES_DIR" || exit
+# Entra na pasta de dotfiles para listar o que você já gerencia
+cd "$DOTFILES_DIR" || { echo "Erro: Pasta $DOTFILES_DIR não encontrada."; exit 1; }
 
 # Loop apenas pelas pastas (*/) dentro de .dotfiles
 for folder in */; do
-    # Remove a barra '/' do final do nome da pasta
+    # Remove a barra '/' do final do nome da pasta (ex: 'nvim/' vira 'nvim')
     folder=${folder%/}
 
-    # Verifica se essa pasta também existe no seu ~/.config
+    # Verifica se essa pasta existe no seu ~/.config
     if [ -d "$CONFIG_DIR/$folder" ]; then
-        echo "Backup de: $folder..."
         
-        # Copia de ~/.config para a pasta de backup
-        # -a: preserva atributos (links, permissões, etc)
-        # -v: verbose (mostra o que está sendo feito)
-        cp -av "$CONFIG_DIR/$folder" "$BKP_DIR/"
+        # Se já existir uma pasta com o mesmo nome no backup, 
+        # renomeia a antiga com um timestamp para não perder nada
+        if [ -d "$BKP_DIR/$folder" ]; then
+            timestamp=$(date +%Y%m%d_%H%M%S)
+            mv "$BKP_DIR/$folder" "$BKP_DIR/${folder}_old_$timestamp"
+            echo "Aviso: Backup antigo de '$folder' renomeado."
+        fi
+
+        echo "Movendo: $CONFIG_DIR/$folder  ->  $BKP_DIR/"
+        
+        # O comando de mover propriamente dito
+        mv "$CONFIG_DIR/$folder" "$BKP_DIR/"
     else
-        echo "Aviso: '$folder' existe em dotfiles, mas não em $CONFIG_DIR. Pulando..."
+        echo "Pulando: '$folder' (não encontrada em $CONFIG_DIR)"
     fi
 done
+
+cd $DOTFILES_DIR
+stow */
 
 echo "--- Processo concluído! ---"
