@@ -61,6 +61,11 @@
     "format": "   ",
     "tooltip": false
   },
+  "custom/power-icon": {
+    "format": " ⏻  ",
+    "on-click": "bash ~/.config/jrs/jrs-rofi-power.sh",
+    "tooltip": false
+  },
   "tray": {
     "icon-size": 12,
     "spacing": 25
