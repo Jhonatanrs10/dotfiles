@@ -20,17 +20,7 @@ for folder in */; do
 
     # Verifica se essa pasta existe no seu ~/.config
     if [ -d "$CONFIG_DIR/$folder" ]; then
-        
-        # Se já existir uma pasta com o mesmo nome no backup, 
-        # renomeia a antiga com um timestamp para não perder nada
-        if [ -d "$BKP_DIR/$folder" ]; then
-            timestamp=$(date +%Y%m%d_%H%M%S)
-            mv "$BKP_DIR/$folder" "$BKP_DIR/${folder}_old_$timestamp"
-            echo "Aviso: Backup antigo de '$folder' renomeado."
-        fi
-
         echo "Movendo: $CONFIG_DIR/$folder  ->  $BKP_DIR/"
-        
         # O comando de mover propriamente dito
         mv "$CONFIG_DIR/$folder" "$BKP_DIR/"
     else
@@ -40,5 +30,6 @@ done
 
 cd $DOTFILES_DIR
 stow */
-
+rm $HOME/.config/hypr/colors.conf
+bash $HOME/.config/jrs/jrs-rofi-set-theme.sh
 echo "--- Processo concluído! ---"

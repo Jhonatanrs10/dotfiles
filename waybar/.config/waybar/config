@@ -96,7 +96,8 @@
     "tooltip-format-disconnected": "Disconnected",
     "interval": 3,
     "spacing": 1,
-    "on-click-right": "$TERMINAL -e impala"
+    "on-click-right": "$TERMINAL -e impala",
+    "on-click-middle": "$TERMINAL -e nmtui"
   },
   "pulseaudio": {
     "format": "{icon}",
