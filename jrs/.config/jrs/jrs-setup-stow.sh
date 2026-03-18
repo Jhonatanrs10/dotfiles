@@ -30,6 +30,7 @@ done
 
 cd $DOTFILES_DIR
 stow */
+bash $HOME/.config/jrs/jrs-bash-setup.sh
 rm $HOME/.config/hypr/colors.conf
 bash $HOME/.config/jrs/jrs-rofi-set-theme.sh
 echo "--- Processo concluído! ---"

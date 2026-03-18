@@ -210,9 +210,7 @@ configsSetup() {
 		lidSwitchIgnore
 		criaAtalho "Wiremix Audio" "Audio Tui" "wiremix --tab output" "$HOME" "true" "Wiremix" "pavucontrol"
 		criaAtalho "Syncthing" "Sync Folders" "xdg-open http://localhost:8384/" "$HOME" "false" "Syncthing" "syncthing"
-		setup_file_bashrc
-		setup_file_bash_profile
-		setup_file_profile
+	
 		default-xdg-mime
 		;;
 	*) ;;
@@ -282,35 +280,6 @@ myBaseI3Backlight() {
 lidSwitchIgnore() {
 	sudo sed -i 's/^#HandleLidSwitch=suspend/HandleLidSwitch=ignore/' /etc/systemd/logind.conf
 	sudo sed -i 's/^HandleLidSwitch=suspend/HandleLidSwitch=ignore/' /etc/systemd/logind.conf
-}
-
-setup_file_bashrc() {
-	criarArq "#
-# ~/.bashrc
-#
-
-# If not running interactively, don't do anything
-[[ "'$-'" != *i* ]] && return
-
-[[ -f ~/.config/jrs/jrs-bash-alias.sh ]] && . ~/.config/jrs/jrs-bash-alias.sh
-" "$HOME/.bashrc"
-}
-
-setup_file_bash_profile() {
-	criarArq '#
-# ~/.bash_profile
-#
-
-[[ -f ~/.bashrc ]] && . ~/.bashrc
-[[ -f ~/.config/jrs/jrs-bash-exports.sh ]] && . ~/.config/jrs/jrs-bash-exports.sh
-
-' "$HOME/.bash_profile"
-}
-
-setup_file_profile() {
-	criarArq 'setxkbmap -model abnt2 -layout br
-echo "Xcursor.theme: Adwaita
-Xcursor.size: 24" | xrdb -merge' "$HOME/.profile"
 }
 
 appPosBluetoothFix() {

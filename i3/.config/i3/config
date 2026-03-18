@@ -144,7 +144,7 @@ gaps inner $espacoentrejanelas
 gaps outer 0px
 smart_gaps off
 workspace_layout default
-for_window [class=".*"] border pixel
+for_window [class=".*"] border pixel 
 
 #Resize
 bindsym Mod1+Left resize shrink width 10 px or 10 ppt
