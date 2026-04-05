@@ -65,7 +65,7 @@ wmBaseTerminal="alacritty"
 wmBasePdfApp="xreader"
 #Global Applications
 myBaseBrowser="firefox chromium"
-myBaseAudioApp="amberol"
+myBaseAudioApp="amberol eartag"
 myBaseVideoApp="mpv"
 myBaseGraphicDesignApp="gimp inkscape"
 myBaseSecurityApp="bitwarden"

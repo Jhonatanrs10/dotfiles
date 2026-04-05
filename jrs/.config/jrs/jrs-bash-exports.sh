@@ -8,3 +8,4 @@ export XCURSOR_THEME=Adwaita
 export TERMINAL="alacritty"
 export FILEMANAGER="thunar"
 export BROWSER="xdg-open https:"
+export AUDIOPLAYER="amberol"

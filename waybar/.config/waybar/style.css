@@ -28,18 +28,18 @@ window#waybar:first-child > box {
 }
 #workspaces button {
     /*background-color: #fff000;*/
-    padding: 5;
-    padding-top: 10;
+    padding: 5px;
+    padding-top: 10px;
     border-bottom: 3px solid transparent;
-    padding-bottom: 5;
+    padding-bottom: 5px;
     min-width: 25px;
     color: @base02;
 }
 #workspaces button.active {
-    padding: 5;
-    padding-top: 10;
+    padding: 5px;
+    padding-top: 10px;
     border-bottom: 3px solid transparent;
-    padding-bottom: 5;
+    padding-bottom: 5px;
     min-width: 25px;
     color: @base02;
 }
