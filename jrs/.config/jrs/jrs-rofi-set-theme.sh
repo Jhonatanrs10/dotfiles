@@ -3,11 +3,16 @@
 source $HOME/.config/jrs/jrs-rofi-themes.sh
 
 nwg_look_light() {
-	mkdir -p $HOME/.local/share/nwg-look/
-	# Polybar colors setup
-	echo "# By: Jhonatanrs
-gtk-theme=adw-gtk3
-icon-theme=Papirus-Light
+    local THEME="adw-gtk3"
+    local ICONS="Papirus-Light"
+    local SCHEME="prefer-light"
+
+    mkdir -p "$HOME/.local/share/nwg-look/"
+
+    # 1. Atualiza o arquivo de configuração do nwg-look
+    cat <<EOF > "$HOME/.local/share/nwg-look/gsettings"
+gtk-theme=$THEME
+icon-theme=$ICONS
 font-name=CaskaydiaMono Nerd Font 11
 cursor-theme=Adwaita
 cursor-size=24
@@ -17,18 +22,33 @@ font-hinting=slight
 font-antialiasing=grayscale
 font-rgba-order=rgb
 text-scaling-factor=1.0
-color-scheme=prefer-light
+color-scheme=$SCHEME
 event-sounds=true
-input-feedback-sounds=true" >$HOME/.local/share/nwg-look/gsettings &&
-		nwg-look -a
+input-feedback-sounds=true
+EOF
+
+    # 2. Aplica via nwg-look (gera os arquivos .ini)
+    nwg-look -a
+
+    # 3. Força a atualização no GSettings (para o Thunar/GNOME-apps)
+    gsettings set org.gnome.desktop.interface gtk-theme "$THEME"
+    gsettings set org.gnome.desktop.interface icon-theme "$ICONS"
+    gsettings set org.gnome.desktop.interface color-scheme "$SCHEME"
+    
+    echo "Ambiente Dark aplicado com sucesso!"
 }
 
 nwg_look_dark() {
-	mkdir -p $HOME/.local/share/nwg-look/
-	# Polybar colors setup
-	echo "# By: Jhonatanrs
-gtk-theme=adw-gtk3-dark
-icon-theme=Papirus-Dark
+    local THEME="adw-gtk3-dark"
+    local ICONS="Papirus-Dark"
+    local SCHEME="prefer-dark"
+
+    mkdir -p "$HOME/.local/share/nwg-look/"
+
+    # 1. Atualiza o arquivo de configuração do nwg-look
+    cat <<EOF > "$HOME/.local/share/nwg-look/gsettings"
+gtk-theme=$THEME
+icon-theme=$ICONS
 font-name=CaskaydiaMono Nerd Font 11
 cursor-theme=Adwaita
 cursor-size=24
@@ -38,10 +58,20 @@ font-hinting=slight
 font-antialiasing=grayscale
 font-rgba-order=rgb
 text-scaling-factor=1.0
-color-scheme=prefer-dark
+color-scheme=$SCHEME
 event-sounds=true
-input-feedback-sounds=true" >$HOME/.local/share/nwg-look/gsettings &&
-		nwg-look -a
+input-feedback-sounds=true
+EOF
+
+    # 2. Aplica via nwg-look (gera os arquivos .ini)
+    nwg-look -a
+
+    # 3. Força a atualização no GSettings (para o Thunar/GNOME-apps)
+    gsettings set org.gnome.desktop.interface gtk-theme "$THEME"
+    gsettings set org.gnome.desktop.interface icon-theme "$ICONS"
+    gsettings set org.gnome.desktop.interface color-scheme "$SCHEME"
+    
+    echo "Ambiente Dark aplicado com sucesso!"
 }
 
 code_light(){
