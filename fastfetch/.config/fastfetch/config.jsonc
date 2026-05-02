@@ -28,11 +28,6 @@
         },
         {
             "key": " ",
-            "type": "bootmgr",
-            "format": "│boot    │ {1}"
-        },
-        {
-            "key": " ",
             "type": "title",
             "format": "│user    │ {host-name}@{user-name}"
         },
