@@ -210,8 +210,10 @@ configsSetup() {
 		lidSwitchIgnore
 		criaAtalho "Wiremix Audio" "Audio Tui" "wiremix --tab output" "$HOME" "true" "Wiremix" "pavucontrol"
 		criaAtalho "Syncthing" "Sync Folders" "xdg-open http://localhost:8384/" "$HOME" "false" "Syncthing" "syncthing"
-	
 		default-xdg-mime
+		setup_file_bashrc
+		setup_file_bash_profile
+		setup_file_profile
 		;;
 	*) ;;
 	esac
@@ -244,6 +246,101 @@ desktopSetup() {
 		;;
 	*) ;;
 	esac
+}
+
+stowSetup() {
+	echo "Stow Dotfiles
+[1]Configure [2]No"
+	read resp
+	case $resp in
+	1)
+		# Definição dos caminhos
+		DOTFILES_DIR="$HOME/.dotfiles"
+		CONFIG_DIR="$HOME/.config"
+		BKP_DIR="$HOME/.config/dotfiles_bkp"
+
+		# Garante que a pasta de backup existe
+		mkdir -p "$BKP_DIR"
+
+		echo "--- Iniciando Movimentação para Backup ---"
+
+		# Entra na pasta de dotfiles para listar o que você já gerencia
+		cd "$DOTFILES_DIR" || {
+			echo "Erro: Pasta $DOTFILES_DIR não encontrada."
+			exit 1
+		}
+
+		# Loop apenas pelas pastas (*/) dentro de .dotfiles
+		for folder in */; do
+			# Remove a barra '/' do final do nome da pasta (ex: 'nvim/' vira 'nvim')
+			folder=${folder%/}
+
+			# Verifica se essa pasta existe no seu ~/.config
+			if [ -d "$CONFIG_DIR/$folder" ]; then
+				echo "Movendo: $CONFIG_DIR/$folder  ->  $BKP_DIR/"
+				# O comando de mover propriamente dito
+				mv "$CONFIG_DIR/$folder" "$BKP_DIR/"
+			else
+				echo "Pulando: '$folder' (não encontrada em $CONFIG_DIR)"
+			fi
+		done
+
+		cd $DOTFILES_DIR
+		stow */
+		bash $HOME/.config/jrs/jrs-setup-bash.sh
+		rm $HOME/.config/hypr/colors.conf
+		bash $HOME/.config/jrs/jrs-rofi-set-theme.sh
+		echo "--- Processo concluído! ---"
+		;;
+	*) ;;
+	esac
+}
+
+setup_file_bashrc() {
+	local BASHRC="$HOME/.bashrc"
+
+	# Se o arquivo existe, cria um backup com timestamp
+	if [[ -f "$BASHRC" ]]; then
+		cp "$BASHRC" "${BASHRC}.bak.$(date +%Y%m%d_%H%M%S)"
+		echo "Backup de $BASHRC criado."
+	fi
+	echo "#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ "'$-'" != *i* ]] && return
+
+[[ -f ~/.config/jrs/jrs-bash-alias.sh ]] && . ~/.config/jrs/jrs-bash-alias.sh" >$HOME/.bashrc
+}
+
+setup_file_bash_profile() {
+	local BASHPROFILE="$HOME/.bash_profile"
+
+	# Se o arquivo existe, cria um backup com timestamp
+	if [[ -f "$BASHPROFILE" ]]; then
+		cp "$BASHPROFILE" "${BASHPROFILE}.bak.$(date +%Y%m%d_%H%M%S)"
+		echo "Backup de $BASHPROFILE criado."
+	fi
+	echo '#
+# ~/.bash_profile
+#
+
+[[ -f ~/.bashrc ]] && . ~/.bashrc
+[[ -f ~/.config/jrs/jrs-bash-exports.sh ]] && . ~/.config/jrs/jrs-bash-exports.sh' >$BASHPROFILE
+}
+
+setup_file_profile() {
+	local DOTPROFILE="$HOME/.profile"
+
+	# Se o arquivo existe, cria um backup com timestamp
+	if [[ -f "$DOTPROFILE" ]]; then
+		cp "$DOTPROFILE" "${DOTPROFILE}.bak.$(date +%Y%m%d_%H%M%S)"
+		echo "Backup de $DOTPROFILE criado."
+	fi
+	echo 'setxkbmap -model abnt2 -layout br
+echo "Xcursor.theme: Adwaita
+Xcursor.size: 24" | xrdb -merge' >$DOTPROFILE
 }
 
 ############
@@ -439,4 +536,5 @@ myBasePosInstall() {
 	configsSetup
 	grubSetup
 	desktopSetup
+	stowSetup
 }

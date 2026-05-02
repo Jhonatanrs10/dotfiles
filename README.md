@@ -1,10 +1,9 @@
-# My Dotfiles 2025
+# My Pos Install and Dotfiles for Archlinux Minimal 
 
-Before running the command, you **MUST** ensure that the configuration files and directories **DO NOT EXIST**.
 
 ```
 sudo pacman -S --needed stow git
 git clone https://github.com/Jhonatanrs10/dotfiles ~/.dotfiles
 cd ~/.dotfiles
-bash jrs/.config/jrs/jrs-setup-stow.sh
+bash jrs/.config/jrs/jrs-script.sh
 ```
