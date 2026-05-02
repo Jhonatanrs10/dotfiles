@@ -256,9 +256,6 @@ window#waybar:first-child > box {
     background-color: alpha(@base01, $JRS_WAYBAR_OPACITY);
 }" >~/.config/waybar/colors.css
 
-# Fastfetch colors setup
-echo 'fastfetch --color "#'$JRS_MAIN_COLOR'"' >~/.config/fastfetch/launch-fastfetch-colors.sh
-
 # Polybar colors setup
 echo "[colors]
 base00 = #$JRS_MAIN_COLOR

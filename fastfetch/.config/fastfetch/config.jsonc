@@ -86,17 +86,12 @@
         {
             "key": " ",
             "type": "de",
-            "format": "│de      │ {2} {5} ({3})"
+            "format": "│de      │ {2} ({3})"
         },
         {
             "key": " ",
             "type": "wm",
-            "format": "│wm      │ {2} {5} ({3})"
-        },
-        {
-            "key": " ",
-            "type": "wmtheme",
-            "format": "│wmtheme   │ {1}"
+            "format": "│wm      │ {2} ({3}) {5}"
         },
         {
             "key": " ",
