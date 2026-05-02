@@ -157,7 +157,10 @@
         {
             "key": " ",
             "type": "battery",
-            "format": "│battery   │ {1}"
+            "format": "│battery │ {4} [{5}]",
+            "percent": {
+                "type": 1
+            }
         },
         {
             "key": " ",
