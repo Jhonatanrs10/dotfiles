@@ -38,7 +38,7 @@ dependencies() {
 		# Cria o arquivo wrapper
 		cat <<EOF >"$wrapper"
 #!/bin/bash
-cd "$HOME/.config/jrs"
+cd "$HOME/.dotfiles/jrs/.config/jrs"
 bash "jrs-script.sh"
 EOF
 
@@ -64,9 +64,9 @@ dependencies
 # Lista de opções (texto e função correspondente)
 opcoes=(
 	"Pos Install::myBasePosInstall"
-	"Stow Dotfiles::stowSetup"
 	"Montar Disco::myBaseMountDisk"
 	"Link Simbólico::myBaselnHome"
+	"Stow Dotfiles::stowSetup"
 	"VirtManager::installVirtManager"
 	"Diretório Inode Padrão::defaultInodeDirectory"
 	"Configuração Git::gitconfig"
