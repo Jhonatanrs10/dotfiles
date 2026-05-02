@@ -1,6 +1,7 @@
 alacritty/.config/alacritty/colors.toml
 btop/.config/btop/themes/colors.theme
 dunst/.config/dunst/dunstrc.d/colors.conf
+fastfetch/.config/fastfetch/launch-fastfetch-colors.sh
 hypr/.config/hypr/colors.conf
 hypr/.config/hypr/hyprpaper.conf
 hypr/.config/hypr/hyprpaper.sh

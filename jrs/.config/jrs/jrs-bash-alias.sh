@@ -10,7 +10,7 @@ alias my-cosmic="cosmic-session"
 alias my-kde="dbus-run-session startplasma-wayland"
 # My Alias
 alias gitatt="git add . && git commit -m \"att\" && git push"
-alias ff="fastfetch"
+alias ff="bash ~/.config/fastfetch/launch-fastfetch-colors.sh"
 alias pacmanclearcache="sudo pacman -Scc"
 alias pacmanaurpackages="sudo pacman -Qm"
 alias flatpakremoveall="flatpak remove --all"

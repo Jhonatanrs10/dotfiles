@@ -1,6 +1,5 @@
 // Inspired by Catnap
 {
-    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
     "logo": {
         "type": "none",
         "padding": {
@@ -13,124 +12,177 @@
     },
     "modules": [
         {
-            "key": "╭────────╮",
-            "type": "custom"
+            "key": " ",
+            "type": "custom",
+            "format": "╭────────╮"
         },
         {
-            "key": "│{#31}host    {#keys}│",
+            "key": " ",
             "type": "host",
-            "format": "{name}{?vendor} ({vendor}){?}"
+            "format": "│host    │ {name}{?vendor} ({vendor}){?}"
         },
         {
-            "key": "│{#32}user    {#keys}│",
+            "key": " ",
+            "type": "bios",
+            "format": "│bios    │ {5} {2}"
+        },
+        {
+            "key": " ",
+            "type": "bootmgr",
+            "format": "│boot    │ {1}"
+        },
+        {
+            "key": " ",
             "type": "title",
-            "format": "{host-name}@{user-name}"
+            "format": "│user    │ {host-name}@{user-name}"
         },
         {
-            "key": "│{#33}distro  {#keys}│",
-            "type": "os"
+            "key": " ",
+            "type": "os",
+            "format": "│distro  │ {2}"
         },
         {
-            "key": "│{#34}kernel  {#keys}│",
-            "type": "kernel"
+            "key": " ",
+            "type": "kernel",
+            "format": "│kernel  │ {1} {2}"
         },
         {
-            "key": "│{#35}packages{#keys}│",
-            "type": "packages"
+            "key": " ",
+            "type": "packages",
+            "format": "│packages│ {pacman} (Pacman), {13} (Flatpak)"
         },
         {
             "type": "command",
-            "key": "│{#36}os age{#keys}  │",
-            "text": "birth_install=$(stat -c %W /); current=$(date +%s); days_difference=$(( (current - birth_install) / 86400 )); echo $days_difference days"
+            "key": " ",
+            "text": "birth_install=$(stat -c %W /); current=$(date +%s); days_difference=$(( (current - birth_install) / 86400 )); echo $days_difference days",
+            "format": "│os age  │ {1}"
         },
         {
             "type": "command",
-            "key": "│{#31}birthday{#keys}│",
-            "text": "birth_install=$(stat -c %W /); echo $(date -d @$birth_install '+%d %b %Y')"
+            "key": " ",
+            "text": "birth_install=$(stat -c %W /); echo $(date -d @$birth_install '+%d %b %Y')",
+            "format": "│birthday│ {1}"
         },
         {
-            "key": "│{#32}uptime  {#keys}│",
-            "type": "uptime"
+            "key": " ",
+            "type": "uptime",
+            "format": "│uptime  │ {10}"
         },
         {
-            "key": "│{#33}term    {#keys}│",
-            "type": "terminal"
+            "key": " ",
+            "type": "terminal",
+            "format": "│term    │ {1} {6}"
         },
         {
-            "key": "│{#34}shell   {#keys}│",
-            "type": "shell"
+            "key": " ",
+            "type": "shell",
+            "format": "│shell   │ {1} {4}"
         },
         {
-            "key": "│{#35}display {#keys}│",
-            "type": "display"
+            "key": " ",
+            "type": "display",
+            "format": "│display │ {1}x{2}({3}hz) in {12} [{7}]"
         },
         {
-            "key": "│{#36}de      {#keys}│",
-            "type": "de"
+            "key": " ",
+            "type": "de",
+            "format": "│de      │ {2} {5} ({3})"
         },
         {
-            "key": "│{#31}wm      {#keys}│",
-            "type": "wm"
+            "key": " ",
+            "type": "wm",
+            "format": "│wm      │ {2} {5} ({3})"
         },
         {
-            "key": "│{#32}wmtheme {#keys}│",
-            "type": "wmtheme"
+            "key": " ",
+            "type": "wmtheme",
+            "format": "│wmtheme   │ {1}"
         },
         {
-            "key": "│{#33}theme   {#keys}│",
-            "type": "theme"
+            "key": " ",
+            "type": "theme",
+            "format": "│theme   │ {2}"
         },
         {
-            "key": "│{#34}icons   {#keys}│",
-            "type": "icons"
+            "key": " ",
+            "type": "icons",
+            "format": "│icons   │ {2}"
         },
         {
-            "key": "│{#35}font    {#keys}│",
-            "type": "font"
+            "key": " ",
+            "type": "font",
+            "format": "│font    │ {5}"
         },
         {
-            "key": "│{#36}cursor  {#keys}│",
-            "type": "cursor"
+            "key": " ",
+            "type": "cursor",
+            "format": "│cursor  │ {1} ({2}px)"
         },
         {
-            "key": "│{#31}cpu     {#keys}│",
+            "key": " ",
             "type": "cpu",
-            "showPeCoreCount": true
+            "showPeCoreCount": true,
+            "format": "│cpu     │ {1} ({3}) ({6}/{7})"
         },
         {
-            "key": "│{#32}gpu     {#keys}│",
+            "key": " ",
             "type": "gpu",
-            "showPeCoreCount": true
+            "showPeCoreCount": true,
+            "format": "│gpu     │ {1} {2} ({3})"
         },
         {
-            "key": "│{#33}memory  {#keys}│",
-            "type": "memory"
+            "key": " ",
+            "type": "memory",
+            "format": "│memory  │ {1} / {2} ({3})",
+            "percent": {
+                "type": 1
+            }
         },
         {
-            "key": "│{#34}swap    {#keys}│",
-            "type": "swap"
+            "key": " ",
+            "type": "swap",
+            "format": "│swap    │ {1} / {2} ({3})",
+            "percent": {
+                "type": 1
+            }
         },
         {
-            "key": "│{#35}disk    {#keys}│",
+            "key": " ",
             "type": "disk",
-            "folders": "/"
+            "format": "│disk    │ {1} / {2} ({3}) ({20}) - {9}",
+            "percent": {
+                "type": 1
+            }
         },
         {
-            "key": "│{#36}battery {#keys}│",
-            "type": "battery"
+            "key": " ",
+            "type": "battery",
+            "format": "│battery   │ {1}"
         },
         {
-            "key": "│{#31}power   {#keys}│",
-            "type": "poweradapter"
+            "key": " ",
+            "type": "poweradapter",
+            "format": "│power   │ {1}"
         },
         {
-            "key": "│{#32}network {#keys}│",
+            "key": " ",
             "type": "localip",
-            "format": "{ipv4} ({ifname})"
+            "format": "│network │ {ipv4} ({ifname})"
         },
         {
-            "key": "╰────────╯",
-            "type": "custom"
+            "key": " ",
+            "type": "tpm",
+            "format": "│tpm     │ {2}"
+        },
+        {
+            "key": " ",
+            "type": "version",
+            "format": "│version │ {1} {2} {6}"
+        },
+        {
+            "key": " ",
+            "type": "custom",
+            "format": "╰────────╯"
         }
     ]
 }

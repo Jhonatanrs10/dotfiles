@@ -3,14 +3,14 @@
 source $HOME/.config/jrs/jrs-rofi-themes.sh
 
 nwg_look_light() {
-    local THEME="adw-gtk3"
-    local ICONS="Papirus-Light"
-    local SCHEME="prefer-light"
+	local THEME="adw-gtk3"
+	local ICONS="Papirus-Light"
+	local SCHEME="prefer-light"
 
-    mkdir -p "$HOME/.local/share/nwg-look/"
+	mkdir -p "$HOME/.local/share/nwg-look/"
 
-    # 1. Atualiza o arquivo de configuração do nwg-look
-    cat <<EOF > "$HOME/.local/share/nwg-look/gsettings"
+	# 1. Atualiza o arquivo de configuração do nwg-look
+	cat <<EOF >"$HOME/.local/share/nwg-look/gsettings"
 gtk-theme=$THEME
 icon-theme=$ICONS
 font-name=CaskaydiaMono Nerd Font 11
@@ -27,26 +27,26 @@ event-sounds=true
 input-feedback-sounds=true
 EOF
 
-    # 2. Aplica via nwg-look (gera os arquivos .ini)
-    nwg-look -a
+	# 2. Aplica via nwg-look (gera os arquivos .ini)
+	nwg-look -a
 
-    # 3. Força a atualização no GSettings (para o Thunar/GNOME-apps)
-    gsettings set org.gnome.desktop.interface gtk-theme "$THEME"
-    gsettings set org.gnome.desktop.interface icon-theme "$ICONS"
-    gsettings set org.gnome.desktop.interface color-scheme "$SCHEME"
-    
-    echo "Ambiente Dark aplicado com sucesso!"
+	# 3. Força a atualização no GSettings (para o Thunar/GNOME-apps)
+	gsettings set org.gnome.desktop.interface gtk-theme "$THEME"
+	gsettings set org.gnome.desktop.interface icon-theme "$ICONS"
+	gsettings set org.gnome.desktop.interface color-scheme "$SCHEME"
+
+	echo "Ambiente Dark aplicado com sucesso!"
 }
 
 nwg_look_dark() {
-    local THEME="adw-gtk3-dark"
-    local ICONS="Papirus-Dark"
-    local SCHEME="prefer-dark"
+	local THEME="adw-gtk3-dark"
+	local ICONS="Papirus-Dark"
+	local SCHEME="prefer-dark"
 
-    mkdir -p "$HOME/.local/share/nwg-look/"
+	mkdir -p "$HOME/.local/share/nwg-look/"
 
-    # 1. Atualiza o arquivo de configuração do nwg-look
-    cat <<EOF > "$HOME/.local/share/nwg-look/gsettings"
+	# 1. Atualiza o arquivo de configuração do nwg-look
+	cat <<EOF >"$HOME/.local/share/nwg-look/gsettings"
 gtk-theme=$THEME
 icon-theme=$ICONS
 font-name=CaskaydiaMono Nerd Font 11
@@ -63,25 +63,25 @@ event-sounds=true
 input-feedback-sounds=true
 EOF
 
-    # 2. Aplica via nwg-look (gera os arquivos .ini)
-    nwg-look -a
+	# 2. Aplica via nwg-look (gera os arquivos .ini)
+	nwg-look -a
 
-    # 3. Força a atualização no GSettings (para o Thunar/GNOME-apps)
-    gsettings set org.gnome.desktop.interface gtk-theme "$THEME"
-    gsettings set org.gnome.desktop.interface icon-theme "$ICONS"
-    gsettings set org.gnome.desktop.interface color-scheme "$SCHEME"
-    
-    echo "Ambiente Dark aplicado com sucesso!"
+	# 3. Força a atualização no GSettings (para o Thunar/GNOME-apps)
+	gsettings set org.gnome.desktop.interface gtk-theme "$THEME"
+	gsettings set org.gnome.desktop.interface icon-theme "$ICONS"
+	gsettings set org.gnome.desktop.interface color-scheme "$SCHEME"
+
+	echo "Ambiente Dark aplicado com sucesso!"
 }
 
-code_light(){
+code_light() {
 	mkdir -p $HOME/.config/Code\ -\ OSS/User/
 	echo '{
     "workbench.colorTheme": "Default Light Modern"
 }' >$HOME/.config/Code\ -\ OSS/User/settings.json
 }
 
-code_dark(){
+code_dark() {
 	mkdir -p $HOME/.config/Code\ -\ OSS/User/
 	echo '{
     "workbench.colorTheme": "Default Dark Modern"
@@ -152,18 +152,54 @@ JRS_WALLPAPER="${chosen_theme[wallpaper]}"
 JRS_THEME_MODE="${chosen_theme[theme_mode]}"
 
 case $JRS_BAR_OPACITY in
-    "0")   JRS_WAYBAR_OPACITY="0.0"; JRS_POLYBAR_OPACITY="00" ;; # 0%
-    "10")  JRS_WAYBAR_OPACITY="0.1"; JRS_POLYBAR_OPACITY="1A" ;; # 10%
-    "20")  JRS_WAYBAR_OPACITY="0.2"; JRS_POLYBAR_OPACITY="33" ;; # 20%
-    "30")  JRS_WAYBAR_OPACITY="0.3"; JRS_POLYBAR_OPACITY="4D" ;; # 30%
-    "40")  JRS_WAYBAR_OPACITY="0.4"; JRS_POLYBAR_OPACITY="66" ;; # 40%
-    "50")  JRS_WAYBAR_OPACITY="0.5"; JRS_POLYBAR_OPACITY="80" ;; # 50%
-    "60")  JRS_WAYBAR_OPACITY="0.6"; JRS_POLYBAR_OPACITY="99" ;; # 60%
-    "70")  JRS_WAYBAR_OPACITY="0.7"; JRS_POLYBAR_OPACITY="B3" ;; # 70%
-    "80")  JRS_WAYBAR_OPACITY="0.8"; JRS_POLYBAR_OPACITY="CC" ;; # 80%
-    "90")  JRS_WAYBAR_OPACITY="0.9"; JRS_POLYBAR_OPACITY="E6" ;; # 90%
-    "100") JRS_WAYBAR_OPACITY="1.0"; JRS_POLYBAR_OPACITY="FF" ;; # 100%
-    *)     JRS_WAYBAR_OPACITY="1.0"; JRS_POLYBAR_OPACITY="FF" ;; # Padrão (100%)
+"0")
+	JRS_WAYBAR_OPACITY="0.0"
+	JRS_POLYBAR_OPACITY="00"
+	;; # 0%
+"10")
+	JRS_WAYBAR_OPACITY="0.1"
+	JRS_POLYBAR_OPACITY="1A"
+	;; # 10%
+"20")
+	JRS_WAYBAR_OPACITY="0.2"
+	JRS_POLYBAR_OPACITY="33"
+	;; # 20%
+"30")
+	JRS_WAYBAR_OPACITY="0.3"
+	JRS_POLYBAR_OPACITY="4D"
+	;; # 30%
+"40")
+	JRS_WAYBAR_OPACITY="0.4"
+	JRS_POLYBAR_OPACITY="66"
+	;; # 40%
+"50")
+	JRS_WAYBAR_OPACITY="0.5"
+	JRS_POLYBAR_OPACITY="80"
+	;; # 50%
+"60")
+	JRS_WAYBAR_OPACITY="0.6"
+	JRS_POLYBAR_OPACITY="99"
+	;; # 60%
+"70")
+	JRS_WAYBAR_OPACITY="0.7"
+	JRS_POLYBAR_OPACITY="B3"
+	;; # 70%
+"80")
+	JRS_WAYBAR_OPACITY="0.8"
+	JRS_POLYBAR_OPACITY="CC"
+	;; # 80%
+"90")
+	JRS_WAYBAR_OPACITY="0.9"
+	JRS_POLYBAR_OPACITY="E6"
+	;; # 90%
+"100")
+	JRS_WAYBAR_OPACITY="1.0"
+	JRS_POLYBAR_OPACITY="FF"
+	;; # 100%
+*)
+	JRS_WAYBAR_OPACITY="1.0"
+	JRS_POLYBAR_OPACITY="FF"
+	;; # Padrão (100%)
 esac
 
 case $JRS_THEME_MODE in
@@ -219,6 +255,9 @@ echo "@define-color base00 #$JRS_MAIN_COLOR;
 window#waybar:first-child > box {
     background-color: alpha(@base01, $JRS_WAYBAR_OPACITY);
 }" >~/.config/waybar/colors.css
+
+# Fastfetch colors setup
+echo 'fastfetch --color "#'$JRS_MAIN_COLOR'"' >~/.config/fastfetch/launch-fastfetch-colors.sh
 
 # Polybar colors setup
 echo "[colors]
