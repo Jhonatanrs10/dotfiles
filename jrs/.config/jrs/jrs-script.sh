@@ -38,7 +38,7 @@ dependencies() {
 		# Cria o arquivo wrapper
 		cat <<EOF >"$wrapper"
 #!/bin/bash
-cd "$PWD"
+cd "$HOME/.config/jrs"
 bash "jrs-script.sh"
 EOF
 
