@@ -119,11 +119,11 @@ select_theme_with_rofi() {
 			selected_theme=$(echo "$selected_theme" | cut -d'|' -f2 | tr -d '[:space:]')
 		else
 			echo "❌ '$chosen_name' não é uma opção válida."
-			selected_theme="theme_0"
+			selected_theme="theme_0_dark"
 			exit 1
 		fi
 	else
-		selected_theme="theme_0"
+		selected_theme="theme_0_dark"
 		exit 1
 	fi
 
@@ -135,7 +135,7 @@ if [ -f "$HOME/.config/hypr/colors.conf" ]; then
 	declare -n chosen_theme="$selected_theme"
 else
 	echo "COLORS NÃO EXISTE"
-	declare -n chosen_theme="theme_0"
+	declare -n chosen_theme="theme_0_dark"
 fi
 
 # Atribui os valores do tema escolhido às variáveis JRS_*

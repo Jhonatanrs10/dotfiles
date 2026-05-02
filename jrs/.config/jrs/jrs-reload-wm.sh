@@ -2,7 +2,9 @@
 
 reload_Hyprland() {
   hyprctl reload &
-  killall -SIGUSR2 waybar &
+  killall waybar
+  sleep 0.2
+  waybar &>/dev/null &
   bash ~/.config/hypr/hyprpaper.sh &
   dunstctl reload &
   pkill -USR2 btop &
