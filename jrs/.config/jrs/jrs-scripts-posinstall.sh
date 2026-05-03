@@ -249,7 +249,7 @@ desktopSetup() {
 }
 
 stowSetup() {
-	echo "Stow Dotfiles
+	echo "DOTFILES
 [1]Configure [2]No"
 	read resp
 	case $resp in
@@ -287,10 +287,10 @@ stowSetup() {
 
 		cd $DOTFILES_DIR
 		stow */
-		bash $HOME/.config/jrs/jrs-setup-bash.sh
 		rm $HOME/.config/hypr/colors.conf
 		bash $HOME/.config/jrs/jrs-rofi-set-theme.sh
 		echo "--- Processo concluído! ---"
+		exit 0
 		;;
 	*) ;;
 	esac
