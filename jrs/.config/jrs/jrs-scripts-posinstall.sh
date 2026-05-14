@@ -208,7 +208,7 @@ configsSetup() {
 		myBaseI3Backlight
 		myBaseI3Touchpad
 		lidSwitchIgnore
-		criaAtalho "Wiremix Audio" "Audio Tui" "wiremix --tab output" "$HOME" "true" "Wiremix" "pavucontrol"
+		#criaAtalho "Wiremix Audio" "Audio Tui" "wiremix --tab output" "$HOME" "true" "Wiremix" "pavucontrol"
 		criaAtalho "Syncthing" "Sync Folders" "xdg-open http://localhost:8384/" "$HOME" "false" "Syncthing" "syncthing"
 		default-xdg-mime
 		setup_file_bashrc
