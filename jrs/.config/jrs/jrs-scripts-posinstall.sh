@@ -86,9 +86,7 @@ baseSetup() {
 [1]Configure [2]No"
 	read resp
 	case $resp in
-	1)
-		packagesManager "$myBaseBootloader $myBaseFileSystem $myBaseNetwork $myBaseFirewall $myBaseBluetooth $myBaseCodecs $myBaseIcons $myBaseThemes $myBaseFonts $myBaseRar $myBaseNotify $myBaseDaemons $myBaseFlatpak $myBaseShell $myBaseUtilitys $myBaseXorg $myBaseWayland"
-		;;
+	1) packagesManager "$myBaseBootloader $myBaseFileSystem $myBaseNetwork $myBaseFirewall $myBaseBluetooth $myBaseCodecs $myBaseIcons $myBaseThemes $myBaseFonts $myBaseRar $myBaseNotify $myBaseDaemons $myBaseFlatpak $myBaseShell $myBaseUtilitys $myBaseXorg $myBaseWayland" ;;
 	*) ;;
 	esac
 }
@@ -98,18 +96,7 @@ appsSetup() {
 [1]Configure [2]No"
 	read resp
 	case $resp in
-	1)
-		packagesManager "$myBaseBrowser $myBaseAudioApp $myBaseVideoApp $myBaseGraphicDesignApp $myBaseSecurityApp $myBaseDiskManagerApp $myBaseOfficeApp $myBaseVideoEditorApp $myBaseCodingApp $myBaseTorrentApp $myBaseConnectApp"
-		packagesManager "$myBaseDiscordApp"
-		packagesManager "$myBaseSteam"
-		packagesManager "$myBaseMinecraft"
-		packagesManager "$myBaseHeroic"
-		packagesManager "$myBaseMangoHud"
-		packagesManager "$myBaseGamescope"
-		packagesManager "$myBaseRetroarch"
-		packagesManager "$myBaseOBS"
-		packagesManager "$myBaseStreamOverlay"
-		;;
+	1) packagesManager "$myBaseBrowser $myBaseAudioApp $myBaseVideoApp $myBaseGraphicDesignApp $myBaseSecurityApp $myBaseDiskManagerApp $myBaseOfficeApp $myBaseVideoEditorApp $myBaseCodingApp $myBaseTorrentApp $myBaseConnectApp" ;;
 	*) ;;
 	esac
 }

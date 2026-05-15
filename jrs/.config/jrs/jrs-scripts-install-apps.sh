@@ -106,3 +106,36 @@ installVirtManager() {
 	sudo virsh net-autostart default
 	#sudo virsh net-start default
 }
+
+installApps() {
+	echo "APPS
+[1]  Discord
+[2]  Steam
+[3]  Minecraft
+[4]  Heroic Games Launcher
+[5]  MangoHud
+[6]  Gamescope
+[7]  Retroarch
+[8]  OBS Studio
+[9]  Stream Overlay
+"
+	read resp
+	case $resp in
+	1)
+		packagesManager "$myBaseDiscordApp"
+		packagesManager "$myBaseDiscordAppflatpak"
+		;;
+	2) packagesManager "$myBaseSteam" ;;
+	3) packagesManager "$myBaseMinecraft" ;;
+	4) packagesManager "$myBaseHeroic" ;;
+	5) packagesManager "$myBaseMangoHud" ;;
+	6) packagesManager "$myBaseGamescope" ;;
+	7) packagesManager "$myBaseRetroarch" ;;
+	8)
+		packagesManager "$myBaseOBS"
+		packagesManager "$myBaseOBSflatpak"
+		;;
+	9) packagesManager "$myBaseStreamOverlayflatpak" ;;
+	*) ;;
+	esac
+}

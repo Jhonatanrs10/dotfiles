@@ -74,7 +74,8 @@ myBaseOfficeApp="libreoffice-fresh"
 myBaseVideoEditorApp="shotcut"
 myBaseCodingApp="code l3afpad"
 myBaseTorrentApp="qbittorrent"
-myBaseDiscordApp="com.discordapp.Discord"
+myBaseDiscordApp="discord"
+myBaseDiscordAppflatpak="com.discordapp.Discord"
 myBaseConnectApp="kdeconnect"
 #Gaming
 myBaseSteam="steam"
@@ -86,5 +87,6 @@ myBaseRetroarch="retroarch retroarch-assets-xmb retroarch-assets-ozone libretro-
 #Virtualization
 myBaseVirt="qemu libvirt ebtables dnsmasq iproute2 openbsd-netcat virt-manager" #bridge-utils
 #Recording
-myBaseOBS="app/com.obsproject.Studio/x86_64/stable runtime/com.obsproject.Studio.Plugin.MoveTransition/x86_64/stable"
-myBaseStreamOverlay="app/com.hperrin.StreamOverlay/x86_64/stable"
+myBaseOBS="obs-studio obs-studio-plugin-browser"
+myBaseOBSflatpak="app/com.obsproject.Studio/x86_64/stable runtime/com.obsproject.Studio.Plugin.MoveTransition/x86_64/stable"
+myBaseStreamOverlayflatpak="app/com.hperrin.StreamOverlay/x86_64/stable"
