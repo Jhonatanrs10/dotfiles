@@ -35,6 +35,8 @@ EOF
 	gsettings set org.gnome.desktop.interface icon-theme "$ICONS"
 	gsettings set org.gnome.desktop.interface color-scheme "$SCHEME"
 
+	export GTK_THEME=$THEME
+
 	echo "Ambiente Dark aplicado com sucesso!"
 }
 
@@ -70,6 +72,8 @@ EOF
 	gsettings set org.gnome.desktop.interface gtk-theme "$THEME"
 	gsettings set org.gnome.desktop.interface icon-theme "$ICONS"
 	gsettings set org.gnome.desktop.interface color-scheme "$SCHEME"
+
+	export GTK_THEME=$THEME
 
 	echo "Ambiente Dark aplicado com sucesso!"
 }

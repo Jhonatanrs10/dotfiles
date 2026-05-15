@@ -47,7 +47,7 @@ myBaseI3wm="i3 xss-lock polybar dmenu picom scrot xcolor arandr i3lock"
 #Window Manager Applications
 wmDisplayManager="sddm"
 wmApplicationLauncher="rofi"
-wmAudioControl="wiremix"
+wmAudioControl="pavucontrol wiremix"
 wmBacklightControl="brightnessctl"
 wmBluetoothControl="bluetui"
 wmNetworkManager="networkmanager"
@@ -87,6 +87,6 @@ myBaseRetroarch="retroarch retroarch-assets-xmb retroarch-assets-ozone libretro-
 #Virtualization
 myBaseVirt="qemu libvirt ebtables dnsmasq iproute2 openbsd-netcat virt-manager" #bridge-utils
 #Recording
-myBaseOBS="obs-studio obs-studio-plugin-browser"
-myBaseOBSflatpak="app/com.obsproject.Studio/x86_64/stable runtime/com.obsproject.Studio.Plugin.MoveTransition/x86_64/stable"
+myBaseOBS="obs-studio obs-studio-plugin-browser pavucontrol"
+myBaseOBSflatpak="com.obsproject.Studio com.obsproject.Studio.Plugin.MoveTransition com.obsproject.Studio.Plugin.WaylandHotkeys"
 myBaseStreamOverlayflatpak="app/com.hperrin.StreamOverlay/x86_64/stable"

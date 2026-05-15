@@ -64,6 +64,7 @@ dependencies
 # Lista de opções (texto e função correspondente)
 opcoes=(
 	"Pos Install::myBasePosInstall"
+	"Apps Install::installApps"
 	"Montar Disco::myBaseMountDisk"
 	"Link Simbólico::myBaselnHome"
 	"Stow Dotfiles::stowSetup"
