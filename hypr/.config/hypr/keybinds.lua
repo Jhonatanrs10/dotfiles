@@ -20,11 +20,14 @@ hl.bind(mainMod .. " + SHIFT + SPACE", hl.dsp.window.float({ action = "toggle" }
 hl.bind(mainMod .. " + mouse:274", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ action = "toggle" }))
 hl.bind(mainMod .. " + V", hl.dsp.layout("togglesplit"))    -- dwindle only
-hl.bind(mainMod .. " + TAB", hl.dsp.window.cycle_next())
+hl.bind("ALT + TAB", hl.dsp.window.cycle_next())
 
 -- Group binds
 hl.bind(mainMod .. " + W", hl.dsp.group.toggle())
-hl.bind("ALT + TAB", hl.dsp.group.next())
+hl.bind(mainMod .. " + TAB", hl.dsp.group.next())
+hl.bind(mainMod .. " + SHIFT + left",  hl.dsp.group.move_window({ forward = false }))
+hl.bind(mainMod .. " + SHIFT + right",  hl.dsp.group.move_window({ forward = true }))
+
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
@@ -43,7 +46,7 @@ hl.bind(mainMod .. " + SHIFT + down",  hl.dsp.window.swap({ direction = "down" }
 for i = 1, 10 do
     local key = i % 10 -- 10 maps to key 0
     hl.bind(mainMod .. " + " .. key,             hl.dsp.focus({ workspace = i}))
-    hl.bind(mainMod .. " + SHIFT + " .. key,     hl.dsp.window.move({ workspace = i }))
+    hl.bind(mainMod .. " + SHIFT + " .. key,     hl.dsp.window.move({ workspace = i, follow =  false }))
 end
 
 -- Example special workspace (scratchpad)
@@ -75,11 +78,10 @@ hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"), { locked = tr
 hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
 
 -- Others
-
 hl.bind(mainMod .. "+ SHIFT + R", hl.dsp.exec_cmd("~/.config/jrs/jrs-reload-wm.sh"))
 hl.bind(mainMod .. "+ H", hl.dsp.exec_cmd("xdg-open https://wiki.hypr.land/"))
 
 -- Global Key
-
---hl.bind("Insert", hl.dsp.pass({ window = "class:^(com\\.obsproject\\.Studio)$" }))
+--hl.bind("A", hl.dsp.pass({ window = "class:^(com\\.obsproject\\.Studio)$" }))
 --hl.bind("Caps_Lock", hl.dsp.pass({ window = "class:^(com\\.obsproject\\.Studio)$" }))
+hl.bind("Insert", hl.dsp.send_shortcut({mods = "", key = "Insert", window = "class:^(com\\.obsproject\\.Studio)$" }))
