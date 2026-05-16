@@ -4,7 +4,7 @@ exit-wm() {
 	if [ "$XDG_CURRENT_DESKTOP" = "i3" ]; then
 		i3-msg exit
 	elif [ "$XDG_CURRENT_DESKTOP" = "Hyprland" ]; then
-		hyprctl dispatch exit
+		command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'
 	else
 		dunstify -t 2000 --hints int:transient:1 "i3wm or Hyprland" "Not founded." --icon=xfce4-cpugraph-plugin
 	fi

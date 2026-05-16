@@ -3,6 +3,7 @@ btop/.config/btop/themes/colors.theme
 dunst/.config/dunst/dunstrc.d/colors.conf
 fastfetch/.config/fastfetch/launch-fastfetch-colors.sh
 hypr/.config/hypr/colors.conf
+hypr/.config/hypr/colors.lua
 hypr/.config/hypr/hyprpaper.conf
 hypr/.config/hypr/hyprpaper.sh
 hypr/.config/hypr/monitors.conf

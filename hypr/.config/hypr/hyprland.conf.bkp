@@ -171,11 +171,8 @@ windowrule = match:title Rename.*, float on, size 461 129, center on, stay_focus
 windowrule = match:class .*, idle_inhibit fullscreen
 windowrule = match:title Open Folder, float on, size 750 450, center on, stay_focused on
 # Global Key
-bind = , Insert, pass, class:^(vesktop)$
-bind = , Insert, pass, class:^(discord)$
-bind = , Insert, pass, class:^(com.discordapp.Discord)$
-bind = , Insert, pass, class:^(com.obsproject.Studio)$
-bind = , CapsLock, pass, class:^(com.obsproject.Studio)$
+hl.bind("Insert", hl.dsp.pass({ window = "class:^(com\\.obsproject\\.Studio)$" }))
+hl.bind("Caps_Lock", hl.dsp.pass({ window = "class:^(com\\.obsproject\\.Studio)$" }))
 # Media Control
 bind = , XF86AudioPlay, exec, playerctl play-pause
 bind = , XF86AudioPause, exec, playerctl play-pause
@@ -200,8 +197,7 @@ bind = $mainMod, L, exec, hyprlock
 bind = $mainMod CTRL, 8, exec, systemctl hibernate
 bind = $mainMod CTRL, 9, exec, systemctl reboot
 bind = $mainMod CTRL, 0, exec, systemctl poweroff -i
-# ColorPicker
-bind = $mainMod, Z, exec, hyprpicker -a -f hex
+
 # Print
 bind =, Print, exec, mkdir -p ~/Pictures/PrtSc | grim -g "$(slurp)" - | wl-copy && wl-paste > ~/Pictures/PrtSc/Cutshot-$(date +%F_%T).png 
 bind = $mainMod, Print, exec, mkdir -p ~/Pictures/PrtSc | grim - | wl-copy && wl-paste > ~/Pictures/PrtSc/Screenshot-$(date +%F_%T).png

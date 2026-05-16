@@ -236,7 +236,7 @@ echo "if ! pgrep -x "hyprpaper" > /dev/null; then
 fi
 hyprctl hyprpaper wallpaper , ~/.config/wallpapers/$JRS_WALLPAPER" >~/.config/hypr/hyprpaper.sh
 
-# Hyprland colors setup
+# Hyprland colors setup OLD
 echo '$wallpaper = '$JRS_WALLPAPER'
 $color1 = '$JRS_MAIN_COLOR'
 $color2 = '$JRS_BAR_COLOR'
@@ -245,6 +245,16 @@ $color4 = '$JRS_UNFOCUSED_COLOR'
 $color5 = '$JRS_BLACK_COLOR'
 $color6 = '$JRS_BLACK_COLOR'
 $color7 = '$JRS_BLACK_COLOR'' >~/.config/hypr/colors.conf
+
+# Hyprland colors setup LUA
+echo 'wallpaper = "'$JRS_WALLPAPER'"
+color1 = "#'$JRS_MAIN_COLOR'"
+color2 = "#'$JRS_BAR_COLOR'"
+color3 = "#'$JRS_TEXT_COLOR'"
+color4 = "#'$JRS_UNFOCUSED_COLOR'"
+color5 = "#'$JRS_BLACK_COLOR'"
+color6 = "#'$JRS_BLACK_COLOR'"
+color7 = "#'$JRS_BLACK_COLOR'"' >~/.config/hypr/colors.lua
 
 # Waybar colors setup
 echo "@define-color base00 #$JRS_MAIN_COLOR;
