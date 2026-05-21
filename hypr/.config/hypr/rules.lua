@@ -75,10 +75,3 @@ hl.window_rule({
     match = { class = ".*" },
     idle_inhibit = "fullscreen",
 })
-
-hl.window_rule({
-    name  = "all-float",
-    match = { float = true },
-    size = {800, 400},
-    center = true,
-})

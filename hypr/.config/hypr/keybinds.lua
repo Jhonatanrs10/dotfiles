@@ -14,6 +14,7 @@ hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("$AUDIOPLAYER"))
 hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("$BROWSER"))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("killall -SIGUSR1 waybar"))
 hl.bind(mainMod .. " + Z", hl.dsp.exec_cmd("hyprpicker -a -f hex"))
+hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
 
 -- Window binds
 hl.bind(mainMod .. " + SHIFT + SPACE", hl.dsp.window.float({ action = "toggle" }))
@@ -27,7 +28,6 @@ hl.bind(mainMod .. " + W", hl.dsp.group.toggle())
 hl.bind(mainMod .. " + TAB", hl.dsp.group.next())
 hl.bind(mainMod .. " + SHIFT + left",  hl.dsp.group.move_window({ forward = false }))
 hl.bind(mainMod .. " + SHIFT + right",  hl.dsp.group.move_window({ forward = true }))
-
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
@@ -64,6 +64,10 @@ hl.bind(mainMod .. " + SHIFT + M", hl.dsp.window.resize({x = 480, y = 270, relat
 hl.bind(mainMod .. " + M", hl.dsp.window.center())
 
 -- Laptop multimedia keys for volume and LCD brightness
+hl.bind(mainMod .. " + CTRL + Up", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { locked = true, repeating = true })
+hl.bind(mainMod .. " + CTRL + Down", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),      { locked = true, repeating = true })
+hl.bind(mainMod .. " + CTRL + M",        hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),     { locked = true, repeating = true })
+
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { locked = true, repeating = true })
 hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),      { locked = true, repeating = true })
 hl.bind("XF86AudioMute",        hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),     { locked = true, repeating = true })
@@ -82,6 +86,6 @@ hl.bind(mainMod .. "+ SHIFT + R", hl.dsp.exec_cmd("~/.config/jrs/jrs-reload-wm.s
 hl.bind(mainMod .. "+ H", hl.dsp.exec_cmd("xdg-open https://wiki.hypr.land/"))
 
 -- Global Key
---hl.bind("A", hl.dsp.pass({ window = "class:^(com\\.obsproject\\.Studio)$" }))
+hl.bind("INSERT", hl.dsp.pass({ window = "class:^(com.obsproject.Studio)$" }))
 --hl.bind("Caps_Lock", hl.dsp.pass({ window = "class:^(com\\.obsproject\\.Studio)$" }))
-hl.bind("Insert", hl.dsp.send_shortcut({mods = "", key = "Insert", window = "class:^(com\\.obsproject\\.Studio)$" }))
+--hl.bind("INSERT", hl.dsp.global("com.obsproject.Studio:libobs.push-to-talk.1-INPUT_(INSERT)"))
