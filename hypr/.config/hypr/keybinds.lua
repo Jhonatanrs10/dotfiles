@@ -86,13 +86,8 @@ hl.bind(mainMod .. "+ SHIFT + R", hl.dsp.exec_cmd("~/.config/jrs/jrs-reload-wm.s
 hl.bind(mainMod .. "+ H", hl.dsp.exec_cmd("xdg-open https://wiki.hypr.land/"))
 
 -- Global Key
---hl.bind("INSERT", hl.dsp.pass({ window = "class:^(com\\.obsproject\\.Studio)$" }), { non_consuming = true })
---hl.bind("CAPS_LOCK", hl.dsp.pass({ window = "class:^(com\\.obsproject\\.Studio)$" }))
+hl.bind("INSERT", hl.dsp.pass({window = "class:^(discord)$"}), { non_consuming = true})
+hl.bind("INSERT", hl.dsp.pass({window = "class:^(discord)$"}), { non_consuming = true, release = true })
 
--- Global Key OBS
-
---hl.bind("CAPS_LOCK", hl.dsp.global("com.obsproject.Studio:libobs.push-to-talk.1-INPUT_(CAPSLOCK)"), { non_consuming = true })
---hl.bind("CAPS_LOCK", hl.dsp.global("com.obsproject.Studio:libobs.push-to-talk.1-INPUT_(CAPSLOCK)"), { non_consuming = true })
-
---hl.bind("INSERT", hl.dsp.global("com.obsproject.Studio:libobs.push-to-talk.1-INPUT_(INSERT)"), { non_consuming = true })
---hl.bind("INSERT", hl.dsp.global("com.obsproject.Studio:libobs.push-to-talk.1-INPUT_(INSERT)"), { non_consuming = true , release = true })
+--hl.bind("SHIFT + F10", hl.dsp.pass({window = "class:^(com\\.obsproject\\.Studio)$"}), { non_consuming = true})
+--hl.bind("SHIFT + F10", hl.dsp.pass({window = "class:^(com\\.obsproject\\.Studio)$"}), { non_consuming = true, release = true })
