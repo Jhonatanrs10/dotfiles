@@ -6,5 +6,5 @@ if [ $(bluetoothctl show | grep "Powered: yes" | wc -l) -gt 0 ]; then
     echo "" # White icon when on but disconnected
   fi
 else
-  echo "" # Dimmed icon when off
+  echo "󰂲" # Dimmed icon when off
 fi

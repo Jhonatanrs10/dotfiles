@@ -36,6 +36,7 @@ exec --no-startup-id /usr/bin/dunst
 exec --no-startup-id xset -b
 exec --no-startup-id kdeconnect-indicator
 exec --no-startup-id syncthing --no-browser
+exec --no-startup-id xsettingsd
 exec --no-startup-id nwg-look -a
 exec_always --no-startup-id ~/.screenlayout/monitors.sh
 

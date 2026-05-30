@@ -6,6 +6,7 @@ nwg_look_light() {
 	local THEME="adw-gtk3"
 	local ICONS="Papirus-Light"
 	local SCHEME="prefer-light"
+	local SCHEME_NUM="0"
 
 	mkdir -p "$HOME/.local/share/nwg-look/"
 
@@ -30,12 +31,59 @@ EOF
 	# 2. Aplica via nwg-look (gera os arquivos .ini)
 	nwg-look -a
 
+	#lxappearance
+	cat <<EOF >"$HOME/.config/xsettingsd/xsettingsd.conf"
+Net/ThemeName "$THEME"
+Net/IconThemeName "$ICONS"
+Gtk/CursorThemeName "Adwaita"
+Net/EnableEventSounds 1
+EnableInputFeedbackSounds 1
+Xft/Antialias 1
+Xft/Hinting 1
+Xft/HintStyle "hintslight"
+Xft/RGBA "rgb"
+EOF
+
+	#lxappearance
+	cat <<EOF >"$HOME/.config/gtk-3.0/settings.ini"
+[Settings]
+gtk-theme-name=$THEME
+gtk-icon-theme-name=$ICONS
+gtk-font-name=CaskaydiaMono Nerd Font 11
+gtk-cursor-theme-name=Adwaita
+gtk-cursor-theme-size=24
+gtk-toolbar-style=GTK_TOOLBAR_ICONS
+gtk-toolbar-icon-size=GTK_ICON_SIZE_LARGE_TOOLBAR
+gtk-button-images=1
+gtk-menu-images=1
+gtk-enable-event-sounds=1
+gtk-enable-input-feedback-sounds=1
+gtk-xft-antialias=1
+gtk-xft-hinting=1
+gtk-xft-hintstyle=hintslight
+gtk-xft-rgba=rgb
+gtk-application-prefer-dark-theme=$SCHEME_NUM
+gtk-modules=gail:atk-bridge
+EOF
+
+	#lxappearance
+	cat <<EOF >"$HOME/.config/gtk-4.0/settings.ini"
+[Settings]
+gtk-theme-name=$THEME
+gtk-icon-theme-name=$ICONS
+gtk-font-name=CaskaydiaMono Nerd Font 11
+gtk-cursor-theme-name=Adwaita
+gtk-cursor-theme-size=24
+gtk-application-prefer-dark-theme=$SCHEME_NUM
+EOF
+
 	# 3. Força a atualização no GSettings (para o Thunar/GNOME-apps)
 	gsettings set org.gnome.desktop.interface gtk-theme "$THEME"
 	gsettings set org.gnome.desktop.interface icon-theme "$ICONS"
 	gsettings set org.gnome.desktop.interface color-scheme "$SCHEME"
 
 	export GTK_THEME=$THEME
+	pkill -HUP xsettingsd
 
 	echo "Ambiente Dark aplicado com sucesso!"
 }
@@ -44,6 +92,7 @@ nwg_look_dark() {
 	local THEME="adw-gtk3-dark"
 	local ICONS="Papirus-Dark"
 	local SCHEME="prefer-dark"
+	local SCHEME_NUM="1"
 
 	mkdir -p "$HOME/.local/share/nwg-look/"
 
@@ -68,12 +117,60 @@ EOF
 	# 2. Aplica via nwg-look (gera os arquivos .ini)
 	nwg-look -a
 
+	#lxappearance
+	cat <<EOF >"$HOME/.config/xsettingsd/xsettingsd.conf"
+Net/ThemeName "$THEME"
+Net/IconThemeName "$ICONS"
+Gtk/CursorThemeName "Adwaita"
+Net/EnableEventSounds 1
+EnableInputFeedbackSounds 1
+Xft/Antialias 1
+Xft/Hinting 1
+Xft/HintStyle "hintslight"
+Xft/RGBA "rgb"
+EOF
+
+	#lxappearance
+	cat <<EOF >"$HOME/.config/gtk-3.0/settings.ini"
+[Settings]
+gtk-theme-name=$THEME
+gtk-icon-theme-name=$ICONS
+gtk-font-name=CaskaydiaMono Nerd Font 11
+gtk-cursor-theme-name=Adwaita
+gtk-cursor-theme-size=24
+gtk-toolbar-style=GTK_TOOLBAR_ICONS
+gtk-toolbar-icon-size=GTK_ICON_SIZE_LARGE_TOOLBAR
+gtk-button-images=1
+gtk-menu-images=1
+gtk-enable-event-sounds=1
+gtk-enable-input-feedback-sounds=1
+gtk-xft-antialias=1
+gtk-xft-hinting=1
+gtk-xft-hintstyle=hintslight
+gtk-xft-rgba=rgb
+gtk-application-prefer-dark-theme=$SCHEME_NUM
+gtk-modules=gail:atk-bridge
+EOF
+
+	#lxappearance
+	cat <<EOF >"$HOME/.config/gtk-4.0/settings.ini"
+[Settings]
+gtk-theme-name=$THEME
+gtk-icon-theme-name=$ICONS
+gtk-font-name=CaskaydiaMono Nerd Font 11
+gtk-cursor-theme-name=Adwaita
+gtk-cursor-theme-size=24
+gtk-application-prefer-dark-theme=$SCHEME_NUM
+EOF
+
 	# 3. Força a atualização no GSettings (para o Thunar/GNOME-apps)
 	gsettings set org.gnome.desktop.interface gtk-theme "$THEME"
 	gsettings set org.gnome.desktop.interface icon-theme "$ICONS"
 	gsettings set org.gnome.desktop.interface color-scheme "$SCHEME"
+	# Informa o esquema de cores escuro para apps GTK4/libadwaita
 
 	export GTK_THEME=$THEME
+	pkill -HUP xsettingsd
 
 	echo "Ambiente Dark aplicado com sucesso!"
 }
