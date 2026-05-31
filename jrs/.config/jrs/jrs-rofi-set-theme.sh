@@ -2,11 +2,13 @@
 
 source $HOME/.config/jrs/jrs-rofi-themes.sh
 
-nwg_look_light() {
+the_look_light() {
 	local THEME="adw-gtk3"
 	local ICONS="Papirus-Light"
 	local SCHEME="prefer-light"
 	local SCHEME_NUM="0"
+
+	code_light
 
 	mkdir -p "$HOME/.local/share/nwg-look/"
 
@@ -27,9 +29,6 @@ color-scheme=$SCHEME
 event-sounds=true
 input-feedback-sounds=true
 EOF
-
-	# 2. Aplica via nwg-look (gera os arquivos .ini)
-	nwg-look -a
 
 	#lxappearance
 	cat <<EOF >"$HOME/.config/xsettingsd/xsettingsd.conf"
@@ -85,14 +84,19 @@ EOF
 	export GTK_THEME=$THEME
 	pkill -HUP xsettingsd
 
+	# 2. Aplica via nwg-look (gera os arquivos .ini)
+	nwg-look -a
+
 	echo "Ambiente Dark aplicado com sucesso!"
 }
 
-nwg_look_dark() {
+the_look_dark() {
 	local THEME="adw-gtk3-dark"
 	local ICONS="Papirus-Dark"
 	local SCHEME="prefer-dark"
 	local SCHEME_NUM="1"
+
+	code_dark
 
 	mkdir -p "$HOME/.local/share/nwg-look/"
 
@@ -113,9 +117,6 @@ color-scheme=$SCHEME
 event-sounds=true
 input-feedback-sounds=true
 EOF
-
-	# 2. Aplica via nwg-look (gera os arquivos .ini)
-	nwg-look -a
 
 	#lxappearance
 	cat <<EOF >"$HOME/.config/xsettingsd/xsettingsd.conf"
@@ -171,6 +172,9 @@ EOF
 
 	export GTK_THEME=$THEME
 	pkill -HUP xsettingsd
+
+	# 2. Aplica via nwg-look (gera os arquivos .ini)
+	nwg-look -a
 
 	echo "Ambiente Dark aplicado com sucesso!"
 }
@@ -305,16 +309,13 @@ esac
 
 case $JRS_THEME_MODE in
 "dark")
-	nwg_look_dark
-	code_dark
+	the_look_dark
 	;;
 "light")
-	nwg_look_light
-	code_light
+	the_look_light
 	;;
 *)
-	nwg_look_dark
-	code_dark
+	the_look_dark
 	;;
 esac
 
