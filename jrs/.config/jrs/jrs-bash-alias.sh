@@ -16,6 +16,7 @@ alias pacmanaurpackages="sudo pacman -Qm"
 alias flatpakremoveall="flatpak remove --all"
 alias archsshdstart="sudo systemctl start sshd"
 alias archkerneleditgrub="sudo nano /etc/default/grub"
+alias ipsnw="arp -a"
 # Image Magick
 alias magick1080p="magick $1 -resize 1920x1080 $2"
 # Mango Hud
