@@ -85,6 +85,9 @@ hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = tr
 hl.bind(mainMod .. "+ SHIFT + R", hl.dsp.exec_cmd("~/.config/jrs/jrs-reload-wm.sh"))
 hl.bind(mainMod .. "+ H", hl.dsp.exec_cmd("xdg-open https://wiki.hypr.land/"))
 
+hl.bind("PRINT", hl.dsp.exec_cmd('mkdir -p ~/Pictures/PrtSc | grim -g "$(slurp)" - | wl-copy && wl-paste > ~/Pictures/PrtSc/Cutshot-$(date +%F_%T).png'))
+hl.bind(mainMod .. "+ PRINT", hl.dsp.exec_cmd("mkdir -p ~/Pictures/PrtSc | grim - | wl-copy && wl-paste > ~/Pictures/PrtSc/Screenshot-$(date +%F_%T).png"))
+
 -- Global Key
 hl.bind("INSERT", hl.dsp.pass({window = "class:^(discord)$"}), { non_consuming = true})
 hl.bind("INSERT", hl.dsp.pass({window = "class:^(discord)$"}), { non_consuming = true, release = true })
