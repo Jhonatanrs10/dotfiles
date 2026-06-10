@@ -63,6 +63,7 @@ wmPolkit="polkit-gnome"
 wmBaseFileManager="thunar thunar-archive-plugin thunar-volman tumbler ark"
 wmBaseTerminal="alacritty"
 wmBasePdfApp="xreader"
+wmBaseScreenshotApp="flameshot"
 #Global Applications
 myBaseBrowser="firefox chromium"
 myBaseAudioApp="amberol eartag"

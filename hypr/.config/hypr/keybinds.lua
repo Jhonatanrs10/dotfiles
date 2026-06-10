@@ -15,6 +15,7 @@ hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("$BROWSER"))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("killall -SIGUSR1 waybar"))
 hl.bind(mainMod .. " + Z", hl.dsp.exec_cmd("hyprpicker -a -f hex"))
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
+hl.bind("PRINT", hl.dsp.exec_cmd("flameshot gui"))
 
 -- Window binds
 hl.bind(mainMod .. " + SHIFT + SPACE", hl.dsp.window.float({ action = "toggle" }))
@@ -84,9 +85,8 @@ hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = tr
 -- Others
 hl.bind(mainMod .. "+ SHIFT + R", hl.dsp.exec_cmd("~/.config/jrs/jrs-reload-wm.sh"))
 hl.bind(mainMod .. "+ H", hl.dsp.exec_cmd("xdg-open https://wiki.hypr.land/"))
-
-hl.bind("PRINT", hl.dsp.exec_cmd('mkdir -p ~/Pictures/PrtSc | grim -g "$(slurp)" - | wl-copy && wl-paste > ~/Pictures/PrtSc/Cutshot-$(date +%F_%T).png'))
-hl.bind(mainMod .. "+ PRINT", hl.dsp.exec_cmd("mkdir -p ~/Pictures/PrtSc | grim - | wl-copy && wl-paste > ~/Pictures/PrtSc/Screenshot-$(date +%F_%T).png"))
+--hl.bind("PRINT", hl.dsp.exec_cmd('mkdir -p ~/Pictures/PrtSc | grim -g "$(slurp)" - | wl-copy && wl-paste > ~/Pictures/PrtSc/Cutshot-$(date +%F_%T).png'))
+--hl.bind(mainMod .. "+ PRINT", hl.dsp.exec_cmd("mkdir -p ~/Pictures/PrtSc | grim - | wl-copy && wl-paste > ~/Pictures/PrtSc/Screenshot-$(date +%F_%T).png"))
 
 -- Global Key
 hl.bind("INSERT", hl.dsp.pass({window = "class:^(discord)$"}), { non_consuming = true})
