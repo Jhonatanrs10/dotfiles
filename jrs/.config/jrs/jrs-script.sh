@@ -8,7 +8,7 @@ CYAN="\033[36m"
 RESET="\033[0m"
 
 # Define o caminho completo (o Bash expande o ~ automaticamente)
-FUNCTIONS_PATH="$HOME/.config/jrs/jrs-scripts*"
+FUNCTIONS_PATH="$HOME/.dotfiles/jrs/.config/jrs/jrs-scripts*"
 
 # Ativa o nullglob para não dar erro se a pasta estiver vazia
 shopt -s nullglob
