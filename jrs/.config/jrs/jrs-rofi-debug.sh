@@ -1,6 +1,6 @@
 #!/bin/bash
 
-options="󱄋  Reload WM\n󱣵  Resolution WM\n  Kill Heroic & Gamescope"
+options="󱣵  Resolution WM\n  Kill Heroic & Gamescope"
 
 menu_cmd="rofi -dmenu -i -p Options"
 
