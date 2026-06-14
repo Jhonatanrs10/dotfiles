@@ -19,7 +19,7 @@ chosen=$(echo -e "$options" | $menu_cmd)
 
 # Execute chosen action
 case "$chosen" in
-"⏻ Shutdown") exit-wm && systemctl poweroff ;;
+"⏻ Shutdown") exit-wm & systemctl poweroff ;;
 " Restart") systemctl reboot ;;
 "⏾ Suspend") systemctl suspend ;;
 "󰒲 Hibernate") systemctl hibernate ;;
