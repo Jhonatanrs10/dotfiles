@@ -2,13 +2,13 @@
 
 gitconfig() {
 	#https://docs.github.com/pt/get-started/getting-started-with-git/caching-your-github-credentials-in-git
-	packagesManager "git github-cli"
-	gh auth login
 	#vars
 	echo "DIGITE SEU NOME:"
 	read name
 	echo "DIGITE SEU EMAIL:"
 	read email
+	packagesManager "git github-cli"
+	gh auth login
 	#global config
 	git config --global user.name "$name"
 	git config --global user.email "$email"

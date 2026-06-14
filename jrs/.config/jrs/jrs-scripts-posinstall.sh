@@ -195,8 +195,11 @@ configsSetup() {
 		myBaseI3Backlight
 		myBaseI3Touchpad
 		lidSwitchIgnore
-		#criaAtalho "Wiremix Audio" "Audio Tui" "wiremix --tab output" "$HOME" "true" "Wiremix" "pavucontrol"
+		criaAtalho "Wiremix Audio" "Audio Tui" "wiremix --tab output" "$HOME" "true" "Wiremix" "pavucontrol"
 		criaAtalho "Syncthing" "Sync Folders" "xdg-open http://localhost:8384/" "$HOME" "false" "Syncthing" "syncthing"
+		criaAtalho "SteamOS (Exec)" "Steam with gamescope like SteamOS" "bash $HOME/.config/jrs/jrs-exec-steam-gamescope.sh" "$HOME" "false" "ExecSteamGamescope" "steam"
+		criaAtalho "Live Setup (Exec)" "Apps for live stream" "bash $HOME/.config/jrs/jrs-exec-live-setup.sh" "$HOME" "false" "ExecLiveSetup" "obs"
+		xDiscordforWayland
 		default-xdg-mime
 		setup_file_bashrc
 		setup_file_bash_profile
@@ -424,7 +427,8 @@ gsettingsInactiveOff() {
 
 default-xdg-mime() {
 
-	xdg-settings set default-web-browser zen-browser.desktop
+	#Variavel para browser setada em jrs-bash-exports.sh
+	#xdg-settings set default-web-browser zen-browser.desktop
 
 	xdg-mime default thunar.desktop inode/directory
 
@@ -457,7 +461,7 @@ defaultInodeDirectory() {
 	esac
 }
 
-hyprlandDiscordX() {
+xDiscordforWayland() {
 	criaAtalho "DiscordX (Flatpak)" "Discord em Xwayland" "env ELECTRON_OZONE_PLATFORM_HINT= com.discordapp.Discord --no-sandbox" "$HOME" "false" "discordFlatpak" "discord"
 	criaAtalho "DiscordX (Pacman)" "Discord em Xwayland" "env ELECTRON_OZONE_PLATFORM_HINT= discord --no-sandbox" "$HOME" "false" "discordPacman" "discord"
 }
@@ -502,10 +506,6 @@ https://github.com/ValveSoftware/Proton/wiki/Using-a-NTFS-disk-with-Linux-and-Wi
 Para syncronizar todas as pastas devem conter o MESMO: NOME e ID
 "
 	read enterprasair
-}
-
-installRetroArch() {
-	packagesManager "$myBaseRetroarch"
 }
 
 ##########################

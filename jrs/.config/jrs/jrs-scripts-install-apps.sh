@@ -118,6 +118,9 @@ installApps() {
 [7]  Retroarch
 [8]  OBS Studio
 [9]  Stream Overlay
+[10] VirtManager
+[11] PokeXGames
+[12] Minecraft TLauncher
 "
 	read resp
 	case $resp in
@@ -136,6 +139,9 @@ installApps() {
 		packagesManager "$myBaseOBSflatpak"
 		;;
 	9) packagesManager "$myBaseStreamOverlayflatpak" ;;
+	10) installVirtManager ;;
+	11) installPokexgames ;;
+	12) installMinecraft ;;
 	*) ;;
 	esac
 }

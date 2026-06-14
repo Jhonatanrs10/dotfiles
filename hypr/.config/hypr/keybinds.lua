@@ -8,7 +8,7 @@ local closeWindowBind2 = hl.bind("ALT + F4", hl.dsp.window.close())
 
 -- User
 hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd("$TERMINAL"))
-hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("~/.config/jrs/jrs-rofi.sh"))
+hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("rofi -show drun"))
 hl.bind(mainMod .. " + X", hl.dsp.exec_cmd("$FILEMANAGER"))
 hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("$AUDIOPLAYER"))
 hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("$BROWSER"))
@@ -84,6 +84,7 @@ hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = tr
 
 -- Others
 hl.bind(mainMod .. "+ SHIFT + R", hl.dsp.exec_cmd("~/.config/jrs/jrs-reload-wm.sh"))
+hl.bind(mainMod .. "+ R", hl.dsp.exec_cmd("~/.config/jrs/jrs-rofi.sh"))
 hl.bind(mainMod .. "+ H", hl.dsp.exec_cmd("xdg-open https://wiki.hypr.land/"))
 --hl.bind("PRINT", hl.dsp.exec_cmd('mkdir -p ~/Pictures/PrtSc | grim -g "$(slurp)" - | wl-copy && wl-paste > ~/Pictures/PrtSc/Cutshot-$(date +%F_%T).png'))
 --hl.bind(mainMod .. "+ PRINT", hl.dsp.exec_cmd("mkdir -p ~/Pictures/PrtSc | grim - | wl-copy && wl-paste > ~/Pictures/PrtSc/Screenshot-$(date +%F_%T).png"))
