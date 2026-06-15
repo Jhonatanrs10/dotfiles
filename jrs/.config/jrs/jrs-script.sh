@@ -24,39 +24,25 @@ done
 shopt -u nullglob
 
 dependencies() {
-	local wrapper="$JRS_DIR/.jrs.sh"
-	local link_name="jrs"
-	local link_path="/usr/bin/$link_name"
+    local link_name="jrs"
+    local link_path="/usr/bin/$link_name"
 
-	# Verifica se o arquivo wrapper já existe
-	if [ ! -f "$wrapper" ]; then
-		echo "O atalho '$link_name' não existe. Criando agora..."
+    if [ ! -f "$link_path" ]; then
+        echo "Criando o executável direto em $link_path..."
 
-		# Cria o diretório se ele não existir
-		mkdir -p "$(dirname "$wrapper")"
-
-		# Cria o arquivo wrapper
-		cat <<EOF >"$wrapper"
+        # Cria o arquivo direto na pasta /usr/bin usando sudo e tee
+        sudo tee "$link_path" > /dev/null <<EOF
 #!/bin/bash
 cd "$HOME/.dotfiles/jrs/.config/jrs"
 bash "jrs-script.sh"
 EOF
 
-		# Torna o arquivo executável
-		chmod +x "$wrapper"
-		echo "Arquivo wrapper criado em: $wrapper"
-	fi
-
-	# Verifica se o link simbólico existe e o cria se não
-	if [ ! -L "$link_path" ]; then
-		echo "O link simbólico para '$link_name' não existe. Criando agora..."
-		sudo ln -sf "$wrapper" "$link_path"
-		echo "Atalho '$link_name' criado com sucesso!"
-	else
-		echo "Atalho '$link_name' já está instalado."
-
-	fi
-	sleep 0
+        # Torna o arquivo em /usr/bin executável
+        sudo chmod +x "$link_path"
+        echo "Atalho '$link_name' instalado com sucesso!"
+    else
+        echo "Atalho '$link_name' já existe."
+    fi
 }
 
 dependencies
@@ -68,8 +54,6 @@ opcoes=(
 	"Montar Disco::myBaseMountDisk"
 	"Stow Dotfiles::stowSetup"
 	"Configuração Git::gitconfig"
-	"Pokexgames::installPokexgames"
-	"Minecraft::installMinecraft"
 	"Servidor Rede Virtual::installRedeVirtual"
 	"Servidor User::serversLinuxUser"
 	"Servidor Minecraft::installMinecraftServer"

@@ -2,7 +2,9 @@
 
 hl.on("hyprland.start", function () 
     hl.exec_cmd("dbus-update-activation-environment --all")
-    hl.exec_cmd("waybar & hyprpaper & hypridle")
+    hl.exec_cmd("waybar")
+    hl.exec_cmd("hyprpaper")
+    hl.exec_cmd("hypridle")
     hl.exec_cmd("kdeconnect-indicator")
     hl.exec_cmd("syncthing --no-browser")
     hl.exec_cmd("/usr/bin/dunst")
