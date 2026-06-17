@@ -72,6 +72,7 @@ opcoes=(
 	"Atalho Terminal::AtalhoTerminalBin"
 	"Setup AppImage::setupAppimage"
 	"Reparar Pacman::repairPM"
+	"User Locked::faillock_user"
 	"SteamOSMode::steamos-setup"
 )
 

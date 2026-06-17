@@ -331,3 +331,9 @@ uninstallPastaAtalhoBin() {
 }
 #remove .desktop, atalho no bin e pasta
 #uninstallPastaAtalhoBin "$HOME/.Jhonatanrs/pasta" "nomedoarquivo.desktop" "atalho na pasta /usr/bin/"
+
+faillock_user() {
+	echo "Digite o nome do usuario locked para o reset:"
+	read resp
+	faillock --user $resp --reset
+}
