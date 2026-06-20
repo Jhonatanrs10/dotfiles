@@ -215,11 +215,11 @@ desktopSetup() {
 	read resp
 	case $resp in
 	1)
-		packagesManager "$myBaseHyprland $wmDisplayManager $wmApplicationLauncher $wmAudioControl $wmBacklightControl $wmBluetoothControl $wmNetworkManager $wmKeyring $wmDiskStatus $wmMusicPlayer $wmPrinters $wmCalculator $wmFontManager $wmImageViewer $wmAppearance $wmPolkit $wmBaseFileManager $wmBaseTerminal $wmBasePdfApp $wmBaseScreenshotApp"
+		packagesManager "$myBaseHyprland $wmApplicationLauncher $wmAudioControl $wmBacklightControl $wmBluetoothControl $wmNetworkManager $wmKeyring $wmDiskStatus $wmMusicPlayer $wmPrinters $wmCalculator $wmFontManager $wmImageViewer $wmAppearance $wmPolkit $wmBaseFileManager $wmBaseTerminal $wmBasePdfApp $wmBaseScreenshotApp"
 		#hyprland
 		;;
 	2)
-		packagesManager "$myBaseI3wm $wmDisplayManager $wmApplicationLauncher $wmAudioControl $wmBacklightControl $wmBluetoothControl $wmNetworkManager $wmKeyring $wmDiskStatus $wmMusicPlayer $wmPrinters $wmCalculator $wmFontManager $wmImageViewer $wmAppearance $wmPolkit $wmBaseFileManager $wmBaseTerminal $wmBasePdfApp $wmBaseScreenshotApp"
+		packagesManager "$myBaseI3wm $wmApplicationLauncher $wmAudioControl $wmBacklightControl $wmBluetoothControl $wmNetworkManager $wmKeyring $wmDiskStatus $wmMusicPlayer $wmPrinters $wmCalculator $wmFontManager $wmImageViewer $wmAppearance $wmPolkit $wmBaseFileManager $wmBaseTerminal $wmBasePdfApp $wmBaseScreenshotApp"
 		#startx /usr/bin/i3
 		;;
 	3)
