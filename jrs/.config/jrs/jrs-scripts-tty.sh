@@ -12,7 +12,7 @@ setupIwdWiFi() {
 
 		sudo tee "/etc/iwd/main.conf" >/dev/null <<EOF
 [General]
-EnableNetworkConfiguration=true
+EnableNetworkConfiguration=True
 [Network]
 RoutePriorityOffset=300
 EnableIPv6=false

@@ -36,7 +36,7 @@ alias codedotfiles='code ~/.dotfiles && exit'
 # SSH
 alias sshlocalserver="ssh jhonatanrs@192.168.0.134"
 # Dotfiles
-alias mydotfiles="bash ~/.config/jrs/jrs-mydotfiles.sh"
+alias mydotfiles="bash ~/.config/jrs/jrs-exec-mydotfiles.sh"
 # Servers
 alias mineserver="cd ~/Servers/MINEJRS && bash run.sh"
 
