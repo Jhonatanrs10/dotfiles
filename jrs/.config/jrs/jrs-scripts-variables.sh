@@ -23,7 +23,7 @@ myBaseNotify="libnotify dunst"
 myBaseDaemons="notification-daemon xsettingsd power-profiles-daemon openssh syncthing"
 myBaseFlatpak="flatpak"
 myBaseShell="bash bash-completion shfmt"
-myBaseUtilitys="nano neovim libinput fastfetch yt-dlp stow wget curl tree jq imagemagick cmatrix btop ranger xsel pacman-contrib base-devel git ffmpeg fwupd samba udisks2 gvfs gvfs-mtp gvfs-smb gvfs-afc polkit net-tools joyutils man-db wireless_tools"
+myBaseUtilitys="nano neovim libinput fastfetch yt-dlp stow wget curl tree jq imagemagick cmatrix btop ranger xsel pacman-contrib base-devel git ffmpeg fwupd samba udisks2 gvfs gvfs-mtp gvfs-smb gvfs-afc polkit net-tools joyutils man-db wireless_tools dhcpcd"
 #Graphical Servers
 myBaseXorg="xorg xorg-xsetroot xorg-xhost xorg-server xorg-xinit"
 myBaseWayland="wayland egl-wayland"
