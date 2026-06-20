@@ -76,7 +76,7 @@
     "format-connected": "󰂱",
     "format-no-controller": "",
     "tooltip-format": "Devices connected: {num_connections}",
-    "on-click-right": "$TERMINAL -e bluetui"
+    "on-click-right": "alacritty -e bluetui"
   },
   "network": {
     "format-icons": [
@@ -95,13 +95,13 @@
     "tooltip-format-disconnected": "Disconnected",
     "interval": 3,
     "spacing": 1,
-    "on-click-right": "$TERMINAL -e nmtui",
-    "on-click-middle": "$TERMINAL -e nmtui"
+    "on-click-right": "alacritty -e nmtui",
+    "on-click-middle": "alacritty -e nmtui"
   },
   "pulseaudio": {
     "format": "{icon}",
     "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-    "on-click-right": "$TERMINAL --class=Wiremix -e wiremix --tab output",
+    "on-click-right": "alacritty --class=Wiremix -e wiremix --tab output",
     "tooltip-format": "Playing at {volume}%",
     "scroll-step": 5,
     "format-muted": "",
@@ -118,7 +118,7 @@
   "cpu": {
     "interval": 5,
     "format": "󰍛",
-    "on-click-right": "$TERMINAL -e btop"
+    "on-click-right": "alacritty -e btop"
   },
   "battery": {
     "format": "{capacity}% {icon}",

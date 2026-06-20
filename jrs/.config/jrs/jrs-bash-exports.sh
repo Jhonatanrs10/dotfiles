@@ -1,11 +1,11 @@
 # My Default Theme
 #export GTK_THEME=adw-gtk3-dark
 #export GTK_ICON_THEME=Papirus-Dark
-export XCURSOR_SIZE=24
-export XCURSOR_THEME=Adwaita
+#export XCURSOR_SIZE=24
+#export XCURSOR_THEME=Adwaita
 
 # My Default Apps
-export TERMINAL="alacritty"
-export FILEMANAGER="thunar"
-export BROWSER="xdg-open https:"
-export AUDIOPLAYER="amberol"
+#export TERMINAL="alacritty"
+#export FILEMANAGER="thunar"
+#export BROWSER="xdg-open https:"
+#export AUDIOPLAYER="amberol"

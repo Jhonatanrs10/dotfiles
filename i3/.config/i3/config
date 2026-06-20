@@ -48,7 +48,7 @@ exec_always --no-startup-id $HOME/.config/polybar/polybar.sh
 bindsym $mod+d exec --no-startup-id $menu
 bindsym $mod+x exec --no-startup-id thunar
 bindsym $mod+c exec --no-startup-id xdg-open https:
-bindsym $mod+Return exec --no-startup-id $TERMINAL
+bindsym $mod+Return exec --no-startup-id alacritty
 bindsym $mod+Shift+Return exec --no-startup-id i3-sensible-terminal
 bindsym $mod+q kill
 bindsym Mod1+F4 kill
@@ -92,7 +92,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 #bindsym $mod+a focus parent
-bindsym $mod+a exec --no-startup-id $AUDIOPLAYER
+bindsym $mod+a exec --no-startup-id amberol
 bindsym $mod+Shift+w sticky toggle
 
 ###Brightness and Sound###
