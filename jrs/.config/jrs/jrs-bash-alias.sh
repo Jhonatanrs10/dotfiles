@@ -1,5 +1,5 @@
 # My Bash
-PS1='[\w]\$ '
+#PS1='[\w]\$ '
 # Colors
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
