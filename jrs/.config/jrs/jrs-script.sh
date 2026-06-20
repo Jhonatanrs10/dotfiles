@@ -74,6 +74,7 @@ opcoes=(
 	"Reparar Pacman::repairPM"
 	"User Locked::faillock_user"
 	"SteamOSMode::steamos-setup"
+	"Iwd WIFI::setupIwdWiFi"
 )
 
 linhas_terminal=$(tput lines)
