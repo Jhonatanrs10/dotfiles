@@ -10,6 +10,16 @@ exit-wm() {
 	fi
 }
 
+shutdown-wm() {
+	if [ "$XDG_CURRENT_DESKTOP" = "i3" ]; then
+		systemctl poweroff
+	elif [ "$XDG_CURRENT_DESKTOP" = "Hyprland" ]; then
+		command -v hyprshutdown --post-cmd "systemctl poweroff" >/dev/null 2>&1 && hyprshutdown --post-cmd "systemctl poweroff" || hyprctl dispatch 'hl.dsp.exit()'
+	else
+		dunstify -t 2000 --hints int:transient:1 "i3wm or Hyprland" "Not founded." --icon=xfce4-cpugraph-plugin
+	fi
+}
+
 options="⏻ Shutdown\n Restart\n⏾ Suspend\n󰒲 Hibernate\n󰗽 Logout\n󰅚 Exit WM"
 
 menu_cmd="rofi -dmenu -i -p Options"
@@ -19,7 +29,7 @@ chosen=$(echo -e "$options" | $menu_cmd)
 
 # Execute chosen action
 case "$chosen" in
-"⏻ Shutdown") exit-wm & systemctl poweroff ;;
+"⏻ Shutdown") shutdown-wm ;;
 " Restart") systemctl reboot ;;
 "⏾ Suspend") systemctl suspend ;;
 "󰒲 Hibernate") systemctl hibernate ;;
