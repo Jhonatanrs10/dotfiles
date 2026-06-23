@@ -8,8 +8,6 @@ the_look_light() {
 	local SCHEME="prefer-light"
 	local SCHEME_NUM="0"
 
-	code_light
-
 	mkdir -p "$HOME/.local/share/nwg-look/"
 
 	# 1. Atualiza o arquivo de configuração do nwg-look
@@ -75,7 +73,8 @@ gtk-cursor-theme-name=Adwaita
 gtk-cursor-theme-size=24
 gtk-application-prefer-dark-theme=$SCHEME_NUM
 EOF
-
+	sleep 1
+	code_light
 	# 3. Força a atualização no GSettings (para o Thunar/GNOME-apps)
 	gsettings set org.gnome.desktop.interface gtk-theme "$THEME"
 	gsettings set org.gnome.desktop.interface icon-theme "$ICONS"
@@ -96,8 +95,6 @@ the_look_dark() {
 	local SCHEME="prefer-dark"
 	local SCHEME_NUM="1"
 
-	code_dark
-
 	mkdir -p "$HOME/.local/share/nwg-look/"
 
 	# 1. Atualiza o arquivo de configuração do nwg-look
@@ -163,7 +160,8 @@ gtk-cursor-theme-name=Adwaita
 gtk-cursor-theme-size=24
 gtk-application-prefer-dark-theme=$SCHEME_NUM
 EOF
-
+	sleep 1
+	code_dark
 	# 3. Força a atualização no GSettings (para o Thunar/GNOME-apps)
 	gsettings set org.gnome.desktop.interface gtk-theme "$THEME"
 	gsettings set org.gnome.desktop.interface icon-theme "$ICONS"
