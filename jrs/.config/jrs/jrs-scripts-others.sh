@@ -23,49 +23,18 @@ forLength() {
 }
 #forLength "Titulo" "numero/tamanho/length" "default value"
 
-listaOptions() {
-	zListaOptions="/tmp/zListaOptions.txt"
+options_list() {
+	zOptionsList="/tmp/zOptionsList.txt"
 	cd $1
-	ls $3 . >$zListaOptions
+	ls $3 . >$zOptionsList
 	cd $OLDPWD
-	echo "[ListaOptions] DIGITE O NUMERO DA SUA ESCOLHA:"
-	cat -n $zListaOptions
-	echo "[ListaOptions]"
-	read zLOption
+	echo "[Options List] DIGITE O NUMERO DA SUA ESCOLHA:"
+	cat -n $zOptionsList
+	echo "[Options List]"
+	read zOptionL
 	#pega conteudo do arquivo | numera o conteudo por linha | escolhe uma linha | elimina o numero da linha e deixa so o conteudo
-	export $2=$(cat $zListaOptions | grep -n ^ | grep ^$zLOption | cut -d: -f2)
+	export $2=$(cat $zOptionsList | grep -n ^ | grep ^$zOptionL | cut -d: -f2)
 }
-
-echoRead() {
-	echo $1
-	read $2
-}
-#echoRead "MSG" "VAR RETORNO"
-#listaOptions "/home/user/diretorio" "nome-variavel-retorno" "criterio do ls ex ls jrs-*"
-
-setLink() {
-	varLink="$1"
-}
-
-yesorno() {
-	echo -e "$1 [s/n]"
-	read resp
-	if [ "$resp" = "s" ]; then
-		$2
-	fi
-}
-#yesorno "Titulo" "Script"
-
-baixaDebs() {
-	criaDiretorio "diretorioBaixaDebs" "$JRS_DIR/tempArqs"
-	clear
-	echo -e "Deseja baixar $1? [s/n]"
-	read resp
-	if [ "$resp" = s ]; then
-		baixaArq "diretorioNome" "$2" "$diretorioBaixaDebs/$1.deb"
-	fi
-}
-#baixaDebs "Nomedoapp" "linkdodeb"
 
 baixaArq() {
 	if [ $1 = 'diretorio' ]; then
@@ -76,7 +45,7 @@ baixaArq() {
 }
 #baixaArq "diretorioNome Ou diretorio" "links" "diretorio/Nome.tar"
 
-rofi-or-wofi() {
+rofi_or_wofi() {
 	# Detect session type and choose appropriate menu
 	if [ "$XDG_SESSION_TYPE" = "x11" ] && command -v rofi &>/dev/null; then
 		menu_cmd="rofi -dmenu -i -p Profiles"
@@ -88,252 +57,138 @@ rofi-or-wofi() {
 	fi
 }
 
-myBaseMountDisk() {
 
-	my_disk_dir="/media/"
-	# somente leitura pode ser o modo de energia do windows em dualboot (modo de reinicialização rapida)
-	echo "Mount Disk?
-Options: [1]Yes, [2]No"
+
+manual_config() {
+	echo "---------------------
+Configuracoes Manuais
+---------------------
+[PACMAN]
+Remover comentarios em: /etc/pacman.conf
+#Color
+#ParallelDownloads = 10
+ILoveCandy
+#[multilib]
+#Include = /etc/pacman.d/mirrorlist
+---------------------
+[GNOME]
+Remover comentarios em: /etc/gdm3/custom.conf
+#WaylandEnable=false
+Apos editar, executar:
+sudo systemctl restart gdm3
+---------------------
+[THEME]
+Caso de erro com thema no i3 é so apagar as pastas gtk-* em .config na HOME
+---------------------
+[NVIDIA]
+https://github.com/korvahannu/arch-nvidia-drivers-installation-guide
+configurar no Xorg com
+sudo nvidia-xconfig
+---------------------
+[GRUB]
+sudo nano /etc/default/grub
+remover # da opcao 
+#GRUB_DISABLE_OS_PROBER=false
+apos isso executar
+grub-mkconfig -o /boot/grub/grub.cfg
+---------------------
+[Steam Linux & Windows]
+https://github.com/ValveSoftware/Proton/wiki/Using-a-NTFS-disk-with-Linux-and-Windows
+---------------------
+[Syncthing]
+Para syncronizar todas as pastas devem conter o MESMO: NOME e ID
+"
+	read enterprasair
+}
+
+setup_inode_directory() {
+	echo "Default Applications   
+[1]Nautilus for FileManager
+[2]PCManFM for FileManager
+[3]Thunar for FileManager"
 	read resp
 	case $resp in
-	1)
-		sudo fdisk -l
-		echo "Digite o caminho do disco Ex.: /dev/sdb1"
-		read DEVSD
-		sudo cp /etc/fstab /etc/fstab$DATANOW.bkp
-		sudo mkdir -p $my_disk_dir$(sudo blkid -s UUID -o value $DEVSD)
-		#id -u
-		#id -g
-		echo "Type Disk
-Options: [1]ext4 [2]ntfs"
-		read resp
-		case $resp in
-		1)
-			sudo tee -a /etc/fstab <<<'# '$DEVSD' 
-UUID='$(sudo blkid -s UUID -o value $DEVSD)' '$my_disk_dir$(sudo blkid -s UUID -o value $DEVSD)' ext4 rw,exec,nosuid,nodev,nofail,x-gvfs-show 0 0'
-			sudo chown -R $USER:$USER $my_disk_dir$(sudo blkid -s UUID -o value $DEVSD)
-			;;
-		2)
-			sudo tee -a /etc/fstab <<<'# '$DEVSD' 
-UUID='$(sudo blkid -s UUID -o value $DEVSD)' '$my_disk_dir$(sudo blkid -s UUID -o value $DEVSD)' ntfs uid='$(id -u)',gid='$(id -g)',rw,user,exec,nofail,umask=000 0 0'
-			;;
-		*) ;;
-		esac
-		cat /etc/fstab
-		sleep 5
-
-		#rm -r ~/.steam/steam/steamapps/compatdata
-		#mkdir -p ~/.steam/steam/steamapps/compatdata
-		#ln -s ~/.steam/steam/steamapps/compatdata /media/gamedisk/Steam/steamapps/
-		;;
+	1) xdg-mime default org.gnome.Nautilus.desktop inode/directory ;;
+	2) xdg-mime default pcmanfm.desktop inode/directory ;;
+	3) xdg-mime default thunar.desktop inode/directory ;;
 	*) ;;
 	esac
 }
 
-myBaselnHome() {
-	echo "Gerar Link Simbólico na Home?
-Options: [1]Yes, [2]No"
-	read resp
-	case $resp in
-	1)
-		echo "Digite o diretório que deseja um link (/media/Downloads)"
-		read resp
-		ln -s $resp $HOME
-		;;
-	*) ;;
-	esac
+setup_xdg_mime() {
 
+	#Variavel para browser setada em jrs-bash-exports.sh
+	#xdg-settings set default-web-browser zen-browser.desktop
+
+	xdg-mime default thunar.desktop inode/directory
+
+	xdg-mime default feh.desktop image/jpeg image/png image/gif image/bmp image/webp
+
+	xdg-mime default xreader.desktop application/pdf
+
+	xdg-mime default alacritty.desktop x-scheme-handler/terminal
+
+	xdg-mime default galculator.desktop x-scheme-handler/calc
+
+	xdg-mime default ark.desktop application/zip application/x-tar application/x-7z-compressed application/x-rar
+
+	xdg-mime default cmus.desktop audio/mpeg audio/ogg audio/flac audio/x-wav
+
+	xdg-mime default font-manager.desktop font/ttf font/otf application/x-font-ttf application/x-font-otf
 }
 
-criaAtalhoBin() {
-	varCriaAtalhoBin="n"
-	echo "Criar AtalhoBin? ($2) [s/n]"
-	read varCriaAtalhoBin
-	if [ "$varCriaAtalhoBin" = "s" ]; then
-		chmod +x $1
-		chmod 777 $1
-		sudo ln -s $1 /usr/bin/jrs-$2
+setup_keyboard() {
+	echo "[ARCH] Keyboard BR"
+	setxkbmap -model abnt2 -layout br
+	#echo "setxkbmap -model abnt2 -layout br" >> ~/.profile
+	sudo tee /etc/X11/xorg.conf.d/10-evdev.conf <<<'Section "InputClass"
+Identifier "evdev keyboard catchall"
+MatchIsKeyboard "on"
+MatchDevicePath "/dev/input/event*"
+Driver "evdev"
+Option "XkbLayout" "br"
+Option "XkbVariant" "abnt2"
+EndSection'
+}
+
+setup_bluetooth() {
+	echo "[1]Fix Bluetooth & Network Interference [2]Remove Fix"
+	read esco
+	if [ "$esco" = "1" ]; then
+		sudo tee /etc/modprobe.d/iwlwifi-opt.conf <<<"options iwlwifi bt_coex_active=N"
+	elif [ "$esco" = "2" ]; then
+		sudo rm /etc/modprobe.d/iwlwifi-opt.conf
 	fi
 }
 
-criaAtalho() {
-	mkdir -p $HOME/.local/share/applications/jrs
-	echo -e "[Desktop Entry]
-Version=1.0
-Type=Application
-Name=$1
-GenericName=jrs
-Categories=jrs;
-Comment=$2
-Exec=$3
-Icon=$7
-Path=$4
-Terminal=$5" >$HOME/.local/share/applications/jrs/jrs-$6.desktop
+setup_lid_switch_ignore() {
+	sudo sed -i 's/^#HandleLidSwitch=suspend/HandleLidSwitch=ignore/' /etc/systemd/logind.conf
+	sudo sed -i 's/^HandleLidSwitch=suspend/HandleLidSwitch=ignore/' /etc/systemd/logind.conf
 }
 
-criaAtalhoDesktop() {
-	echo "DIGITE O NOME DO ATALHO (tudo junto sem caracteres)"
-	read atalhoName
-	echo "DIGITE A DESCRICAO"
-	read atalhoDescricao
-	echo "DIGITE O DIRETORIO DO ARQUIVO"
-	read atalhoDiretorio
-	echo "DIGITE O COMANDO"
-	read atalhoComando
-	echo "DIGITE O DIRETORIO DO ICONE"
-	read atalhoIcone
-	echo "TERMINAL true OU false"
-	read atalhoTerminalTrueOuFalse
-	criaAtalho "$atalhoName" "$atalhoDescricao" "$atalhoComando" "$atalhoDiretorio" "$atalhoTerminalTrueOuFalse" "$atalhoName" "$atalhoIcone"
+setup_i3_backlight() {
+	#sudo chmod +s /usr/bin/light
+	echo 'ACTION=="add", SUBSYSTEM=="backlight", RUN+="/bin/chgrp wheel $sys$devpath/brightness", RUN+="/bin/chmod g+w $sys$devpath/brightness"' | sudo tee /etc/udev/rules.d/backlight.rules
+	#criarArq 'light' "$HOME/.config/i3/brightness"
 }
 
-criaAtalhoDesktopRetroarchArch() {
-	removeAllDesktop "Retroarch"
-	RetroArchCores="/usr/lib/libretro"
-	RetroArchDiretorioGames="$HOME/Documents/Roms"
-	echoRead "Colar Diretorio das Roms:" "RetroArchDiretorioGames"
-	echo "ESCOLHA A BIOS/CORE PRA A ROM:"
-	listaOptions "$RetroArchCores" "RetroArchCore"
-	listaOptions "$RetroArchDiretorioGames" "RetroArchGameName"
-	criaAtalho "${RetroArchGameName%.*}" "Retroarch Game" "retroarch -f -L $RetroArchCores/$RetroArchCore $RetroArchDiretorioGames/$RetroArchGameName" "" "false" "Retroarch-${RetroArchGameName%.*}" "retroarch"
+lightdm_config() {
+	echo "[greeter]
+theme-name = Breeze-Dark
+icon-theme-name = Papirus-Dark
+cursor-theme-name = Adwaita
+indicators = ~session;~spacer;~clock;~spacer;~power
+background = /usr/share/backgrounds/main.png
+font-name = Caskaydia Mono Nerd Font 11" | sudo tee -a /etc/lightdm/lightdm-gtk-greeter.conf
 }
 
-removeAllDesktop() {
-	echoRead "DESEJA APAGAR OS ATALHOS $1 (s/n)" "resp"
-	if [ "$resp" = "s" ]; then
-		sudo rm $HOME/.local/share/applications/jrs/jrs-$1-*
-	fi
-	clear
-}
-
-removeDesktopJRS() {
-	listaOptions "$HOME/.local/share/applications" "ptDesktop" "-d jrs-*"
-	echoRead "DESEJA APAGAR O ATALHO $ptDesktop (s/n)" "resp"
-	if [ "$resp" = "s" ]; then
-		sudo rm $HOME/.local/share/applications/jrs/$ptDesktop
-	fi
-}
-
-#removeAllDesktop "palavrachave ex retroarch"
-
-criaAtalhoDesktopAppimage() {
-	removeAllDesktop "Appimage"
-	echoRead "COLE O DIRETORIO DOS APPIMAGES: " "appimageFolder"
-	mkdir -p $appimageFolder
-	for vApp in $(ls $appimageFolder); do
-		chmod 777 $appimageFolder/$vApp
-		criaAtalho "${vApp%.*}" "An Appimage" "./$vApp" "$appimageFolder" "false" "Appimage-${vApp%.*}" "application-default-icon"
-	done
-
-}
-
-setupAppimage() {
-	sudo rm $HOME/.local/share/applications/jrs/jrs-Appimage-*
-	echo "Criando diretorio AppImages"
-	sleep 2
-	mkdir -p $JRS_DIR/AppImages
-	for vApp in $(ls $JRS_DIR/AppImages); do
-		chmod 777 $JRS_DIR/AppImages/$vApp
-		criaAtalho "${vApp%.*}" "An Appimage" "./$vApp" "$JRS_DIR/AppImages" "false" "Appimage-${vApp%.*}" "application-default-icon"
-	done
-}
-
-#remove quebra de linha (arquivos SVG)
-#https://miniwebtool.com/br/remove-line-breaks/
-# cria um atalho .desktop
-#criaAtalho "nomedoatalho" "comentario" "execucao" "$diretorioInstall" "terminaltrueoufalse" "nomedoarquivo" '$HOME/.Jhonatanrs/Icons/nome.svg'
-
-AtalhoTerminalBin() {
-	varAtalhoTerminalBin="vazio"
-	clear
-	while [ "$varAtalhoTerminalBin" != "" ]; do
-		echo "ESCOLHA UMA DAS OPCOES:  [1]CriaAtalhoTBin, [2]removeAtalhoTBin"
-		read resp
-		if [ "$resp" = "1" ]; then
-			criaAtalhoTerminalBin
-		elif [ "$resp" = "2" ]; then
-			removeAtalhoBinJrs
-		else
-			echo "NENHUMA OPCAO FOI ESCOLHIDA."
-			exit 1
-		fi
-		clear
-	done
-}
-
-criaAtalhoTerminalBin() {
-	criaDiretorioInstall "$JRS_DIR/Bins"
-	echo "DIGITE OU COLE O COMANDO DE TERMINAL:"
-	read comandoTerminal
-	echo "DIGITE OU COLE O NOME DO ATALHO/ARQUIVO BIN:"
-	read atalhoBin
-	criarArq "#!/bin/bash
-$comandoTerminal" "$atalhoBin.sh"
-	criaAtalhoBin "$diretorioInstall/$atalhoBin.sh" "$atalhoBin"
-}
-
-criaAtalhoFlatpakBin() {
-	diretorioFlatpak="/var/lib/flatpak/exports/bin/"
-	for flatpak in $(ls $diretorioFlatpak); do
-		criaAtalhoBin "$diretorioFlatpak$flatpak" "$flatpak"
-	done
-}
-
-removeAtalhoBinJrs() {
-	cd /usr/bin
-	echo "[Bins]"
-	ls jrs-*
-	echo "DIGITE O NOME DO ATALHO/ARQUIVO BIN QUE DESEJA REMOVER: (SEM O 'jrs-')"
-	read atalhoBin
-	removeAtalhoBin "$atalhoBin"
-	rm $JRS_DIR/Bins/$atalhoBin.sh
-	cd $HOME
-}
-
-removeAtalhoBin() {
-	if [ $1 = '' ]; then
-		echo "NAO COLOQUE UM VALOR VAZIO RISCO DE QUEBRAR O SISTEMA"
-	else
-		sudo rm /usr/bin/jrs-$1
-	fi
-}
-#removeAtalhoBin "nome do atalho na pasta /usr/bin/ sempre deixar esse campo preenchido pra nao apagar a pasta bin"
-
-criaArqRunDiretorioInstall() {
-	criaDiretorio "shortcuts" "$JRS_DIR/Shortcuts"
-	echo -e 'DIGITE O DIRETORIO OU DIRETORIO/ARQUIVO.EXTENSION Ex:/home/user/Downloads Ou /home/user/teste.txt'
-	read nesseDir
-	echo 'DIGITE UM NOME PARA O ATALHO'
-	read nomeDir
-	criaLinkSym "$nesseDir" "$shortcuts/$nomeDir"
-}
-
-uninstallPastaAtalhoBinMesmoNome() {
-	uninstallPastaAtalhoBin "$JRS_DIR/$1" "$1.desktop" "$1"
-}
-#uninstallPastaAtalhoBinMesmoNome "Nome igual em Pasta, Atalho e Bin"
-
-uninstallPastaAtalhoBin() {
-	uninstallApplica="n"
-	echo "Uninstall $3 [s/n]"
-	read uninstallApplica
-	if [ "$uninstallApplica" = "s" ]; then
-		if [ $2 = '' ]; then
-			echo "NAO COLOQUE UM VALOR VAZIO RISCO DE QUEBRAR O SISTEMA"
-		else
-			sudo rm -r $1
-			sudo rm $HOME/.local/share/applications/jrs/jrs-$2
-			sudo rm /usr/bin/jrs-$3
-		fi
-		exit 1
-	fi
-	echo "..."
-}
-#remove .desktop, atalho no bin e pasta
-#uninstallPastaAtalhoBin "$HOME/.Jhonatanrs/pasta" "nomedoarquivo.desktop" "atalho na pasta /usr/bin/"
-
-faillock_user() {
-	echo "Digite o nome do usuario locked para o reset:"
-	read resp
-	faillock --user $resp --reset
+setup_i3_touchpad() {
+	sudo mkdir -p /etc/X11/xorg.conf.d && sudo tee /etc/X11/xorg.conf.d/90-touchpad.conf <<'EOF' 1>/dev/null
+Section "InputClass"
+Identifier "touchpad"
+MatchIsTouchpad "on"
+Driver "libinput"
+Option "Tapping" "on"
+EndSection
+EOF
 }

@@ -1,8 +1,5 @@
 #!/usr/bin/bash
 
-#
-JRS_DIR="$HOME/.dir_jrs"
-DATANOW=$(date "+[%d-%m-%Y][%H-%M]")
 #Boot
 myBaseBootloader="grub efibootmgr os-prober"
 #Kernels

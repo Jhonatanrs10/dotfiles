@@ -1,37 +1,16 @@
 #!/bin/bash
 
-installRedeVirtual() {
-	echo "Rede Virtual
-[1] Zerotier, [2] Ngrok [3] Playit.gg"
-	read resp
-	case $resp in
-	1) installZerotier ;;
-	2) installNgrok ;;
-	3) installPlayITGG ;;
-	*) ;;
-	esac
-}
-
-installZerotier() {
+install_zerotier() {
 	roomZerotier="d3ecf5726df2c372"
-	echo "Zerotier para Ubuntu[1] ou Arch[2]"
-	read escolha
-	if [ "$escolha" = "1" ]; then
-		sudo dpkg --configure -a
-		curl -s 'https://raw.githubusercontent.com/zerotier/ZeroTierOne/master/doc/contact%40zerotier.com.gpg' | gpg --import &&
-			if z=$(curl -s 'https://install.zerotier.com/' | gpg); then echo "$z" | sudo bash; fi
-		enableSystemctl "zerotier-one"
-		sudo zerotier-cli join $roomZerotier
-	elif [ "$escolha" = "2" ]; then
-		echo "PAMAC ou PACMAN"
-		packagesManager "zerotier-one"
-		enableSystemctl "zerotier-one"
-		sudo zerotier-cli join $roomZerotier
-	fi
-
+	sudo pacman -S zerotier-one --needed
+	sudo systemctl enable "zerotier-one" --now
+	sudo zerotier-cli join $roomZerotier
 }
 
-installNgrok() {
+install_ngrok() {
+	source $HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-others.sh
+	source $HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-create.sh
+	source $HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-extract-file.sh
 	#https://github.com/ChaoticWeg/discord.sh
 	arqNgrok="https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz"
 	arqDiscord="https://github.com/ChaoticWeg/discord.sh/archive/refs/heads/master.zip"
@@ -42,7 +21,7 @@ installNgrok() {
 	baixaArq "diretorioNome" "$arqDiscord" "$diretorioNgrok/bot.zip"
 	echo -e "[INFO] - INSTALANDO NGROK - [INFO]"
 	cd $diretorioNgrok
-	extrairArq "$diretorioNgrok"
+	extract_file "$diretorioNgrok"
 	mv discord* discord
 	echo -e "
 Connect your account (https://ngrok.com/)\nEx.:ngrok config add-authtoken ******"
@@ -69,6 +48,18 @@ fi' "$diretorioNgrok/discord.sh"
 	criaAtalhoBin "$diretorioNgrok/start.sh" "Ngrok"
 }
 
-installPlayITGG() {
+install_playit() {
 	yay -S playit-bin
+}
+
+install_rede_virtual() {
+	echo "Rede Virtual
+[1] Zerotier, [2] Ngrok [3] Playit.gg"
+	read resp
+	case $resp in
+	1) install_zerotier ;;
+	2) install_ngrok ;;
+	3) install_playit ;;
+	*) ;;
+	esac
 }

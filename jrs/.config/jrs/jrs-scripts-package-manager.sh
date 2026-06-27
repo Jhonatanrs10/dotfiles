@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-packagesManager() {
+package_manager() {
 	#clear
 	echo "============
 = PACKAGES =
@@ -27,20 +27,4 @@ to uninstall for example a Pacman Package put [0] before option. Ex: [01]"
 	#sleep 5
 }
 
-repairPM() {
-	echo "[REPAIR PACKAGES MANAGER]
-Options: [1]Apt [2]Pacman"
-	read resp
-	case $resp in
-	1)
-		sudo dpkg --configure -a
-		sudo apt --fix-broken install -y
-		;;
-	2)
-		sudo rm /var/lib/pacman/db.lck
-		;;
-	*) ;;
-	esac
-}
-#packagesManager "apt1 apt2 apt3"
-#repairPM
+

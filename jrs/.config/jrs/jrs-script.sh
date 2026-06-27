@@ -1,5 +1,12 @@
 #!/bin/bash
 
+JRS_DIR="$HOME/.dir_jrs"
+
+source $HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-posinstall.sh
+source $HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-mount-disk.sh
+source $HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-git.sh
+source $HOME/.dotfiles/jrs/.config/jrs/jrs-servers.sh
+
 # Cores ANSI
 RED="\033[31m"
 GREEN="\033[32m"
@@ -7,74 +14,33 @@ YELLOW="\033[33m"
 CYAN="\033[36m"
 RESET="\033[0m"
 
-# Define o caminho completo (o Bash expande o ~ automaticamente)
-FUNCTIONS_PATH="$HOME/.dotfiles/jrs/.config/jrs/jrs-scripts*"
+link_name="jrs"
+link_path="/usr/bin/$link_name"
 
-# Ativa o nullglob para não dar erro se a pasta estiver vazia
-shopt -s nullglob
+if [ ! -f "$link_path" ]; then
+	echo "Criando o executável direto em $link_path..."
 
-for file in $FUNCTIONS_PATH; do
-	if [ -f "$file" ]; then
-		source "$file"
-		#echo "Carregado: $file"
-		#sleep 3
-	fi
-done
-
-shopt -u nullglob
-
-dependencies() {
-    local link_name="jrs"
-    local link_path="/usr/bin/$link_name"
-
-    if [ ! -f "$link_path" ]; then
-        echo "Criando o executável direto em $link_path..."
-
-        # Cria o arquivo direto na pasta /usr/bin usando sudo e tee
-        sudo tee "$link_path" > /dev/null <<EOF
+	# Cria o arquivo direto na pasta /usr/bin usando sudo e tee
+	sudo tee "$link_path" >/dev/null <<EOF
 #!/bin/bash
 cd "$HOME/.dotfiles/jrs/.config/jrs"
-bash "jrs-script.sh"
+exec bash "jrs-script.sh"
 EOF
 
-        # Torna o arquivo em /usr/bin executável
-        sudo chmod +x "$link_path"
-        echo "Atalho '$link_name' instalado com sucesso!"
-    else
-        echo "Atalho '$link_name' já existe."
-    fi
-}
-
-dependencies
+	# Torna o arquivo em /usr/bin executável
+	sudo chmod +x "$link_path"
+	echo "Atalho '$link_name' instalado com sucesso!"
+else
+	echo "Atalho '$link_name' já existe."
+fi
 
 # Lista de opções (texto e função correspondente)
 opcoes=(
-	"Pos Install::myBasePosInstall"
-	"Apps Install::installApps"
-	"Montar Disco::myBaseMountDisk"
-	"Stow Dotfiles::stowSetup"
-	"Configuração Git::gitconfig"
-	"Servidor Rede Virtual::installRedeVirtual"
-	"Servidor User::serversLinuxUser"
-	"Servidor Minecraft::installMinecraftServer"
-	"Servidor FiveM::installFivem"
-	"Servidor Unturned::installUnturnedServer"
-	"Servidor Project Zomboid::installProjectZomboidServer"
-	"Steamcmd Servers::steamcmd_servers"
-	"Servidor SA-MP::sampServer"
-	"Servidor Terraria::terrariaServer"
-	"Node LTS::nodejslts"
-	"Java Install/Version::installJava"
-	"Gamepads Virtuais::virtualGamepads"
-	"Atalho Desktop::criaAtalhoDesktop"
-	"Atalho Desktop Retroarch (Arch)::criaAtalhoDesktopRetroarchArch"
-	"Criar Arq Exec Dir::criaArqRunDiretorioInstall"
-	"Atalho Terminal::AtalhoTerminalBin"
-	"Setup AppImage::setupAppimage"
-	"Reparar Pacman::repairPM"
-	"User Locked::faillock_user"
-	"SteamOSMode::steamos-setup"
-	"Iwd WIFI::setupIwdWiFi"
+	"Pos Install::posinstall"
+	"Stow Dotfiles::setup_stow"
+	"Mount Disk::mount_disk"
+	"Git Config::setup_git"
+	"Decicated Servers::dedicated_servers"
 )
 
 linhas_terminal=$(tput lines)

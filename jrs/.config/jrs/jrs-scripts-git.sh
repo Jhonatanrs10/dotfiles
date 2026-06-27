@@ -1,13 +1,13 @@
 #!/bin/bash
 
-gitconfig() {
+setup_git() {
 	#https://docs.github.com/pt/get-started/getting-started-with-git/caching-your-github-credentials-in-git
 	#vars
 	echo "DIGITE SEU NOME:"
 	read name
 	echo "DIGITE SEU EMAIL:"
 	read email
-	packagesManager "git github-cli"
+	sudo pacman -S git github-cli --needed
 	gh auth login
 	#global config
 	git config --global user.name "$name"
@@ -18,22 +18,4 @@ gitconfig() {
 	#default branch
 	git config --global init.defaultBranch $branch
 	git branch -m $branch
-
-}
-
-gitAutoPush() {
-	myGitsFolder="$HOME/Documents/GitHub"
-	listaOptions "$myGitsFolder" "myGits"
-	cd $myGitsFolder/$myGits
-	git status
-	yesorno "PULL" "git pull"
-	echo "COMMIT:"
-	read textCommit
-	yesorno "ADD" "git add ."
-	git status
-	yesorno "COMMIT ($textCommit)" "git commit -m "$textCommit""
-	git status
-	yesorno "PUSH" "git push --verbose"
-	git status
-	sleep 5
 }

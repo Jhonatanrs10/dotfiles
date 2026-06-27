@@ -1,6 +1,11 @@
 #!/bin/bash
 
-pacmanSetup() {
+source $HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-video-driver.sh
+source $HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-others.sh
+
+DATANOW=$(date "+[%d-%m-%Y][%H-%M]")
+
+setup_pacman() {
 	echo "PACMAN
 Options: [1]Configure, [2]No"
 	read resp
@@ -15,7 +20,7 @@ Options: [1]Configure, [2]No"
 	esac
 }
 
-yaySetup() {
+setup_yay() {
 	echo "YAY
 Options: [1]Configure, [2]No"
 	read resp
@@ -31,13 +36,13 @@ Options: [1]Configure, [2]No"
 	esac
 }
 
-grubSetup() {
+setup_grub() {
 	echo "GRUB
 Options: [1]Configure, [2]No"
 	read resp
 	case $resp in
 	1)
-		packagesManager "$myBaseBootloader"
+		sudo pacman -S $myBaseBootloader --needed
 		sudo cp /etc/default/grub /etc/default/grub$DATANOW.bkp
 		sudo cp /boot/grub/grub.cfg /boot/grub/grub$DATANOW.cfg.bkp
 		sudo grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
@@ -48,19 +53,19 @@ Options: [1]Configure, [2]No"
 	esac
 }
 
-kernelSetup() {
+setup_kernel() {
 	echo "KERNEL
 [1]Linux [2]Linux-lts [3]Linux-zen"
 	read resp
 	case $resp in
-	1) packagesManager "$myBaseKernel" ;;
-	2) packagesManager "$myBaseKernelLts" ;;
-	3) packagesManager "$myBaseKernelZen" ;;
+	1) sudo pacman -S $myBaseKernel --needed ;;
+	2) sudo pacman -S $myBaseKernelLts --needed ;;
+	3) sudo pacman -S $myBaseKernelZen --needed ;;
 	*) ;;
 	esac
 }
 
-driverSetup() {
+setup_driver() {
 	echo "DRIVER
 [1]Configure [2]No"
 	read resp
@@ -70,45 +75,54 @@ driverSetup() {
 	esac
 }
 
-audioSetup() {
+setup_audio() {
 	echo "AUDIO
 [1]Pipeware [2]PulseAudio"
 	read resp
 	case $resp in
-	1) packagesManager "$myBaseAudioPipeware" ;;
-	2) packagesManager "$myBaseAudioPulse" ;;
+	1) sudo pacman -S $myBaseAudioPipeware --needed ;;
+	2) sudo pacman -S $myBaseAudioPulse --needed ;;
 	*) ;;
 	esac
 }
 
-baseSetup() {
+setup_base() {
 	echo "BASE
 [1]Configure [2]No"
 	read resp
 	case $resp in
-	1) packagesManager "$myBaseBootloader $myBaseFileSystem $myBaseNetwork $myBaseFirewall $myBaseBluetooth $myBaseCodecs $myBaseIcons $myBaseThemes $myBaseFonts $myBaseRar $myBaseNotify $myBaseDaemons $myBaseFlatpak $myBaseShell $myBaseUtilitys $myBaseXorg $myBaseWayland" ;;
+	1) sudo pacman -S $myBaseBootloader $myBaseFileSystem $myBaseNetwork $myBaseFirewall $myBaseBluetooth $myBaseCodecs $myBaseIcons $myBaseThemes $myBaseFonts $myBaseRar $myBaseNotify $myBaseDaemons $myBaseFlatpak $myBaseShell $myBaseUtilitys $myBaseXorg $myBaseWayland --needed ;;
 	*) ;;
 	esac
 }
 
-appsSetup() {
+setup_apps() {
 	echo "APPS
 [1]Configure [2]No"
 	read resp
 	case $resp in
-	1) packagesManager "$myBaseBrowser $myBaseAudioApp $myBaseVideoApp $myBaseGraphicDesignApp $myBaseSecurityApp $myBaseDiskManagerApp $myBaseOfficeApp $myBaseVideoEditorApp $myBaseCodingApp $myBaseTorrentApp $myBaseConnectApp" ;;
+	1) sudo pacman -S $myBaseBrowser $myBaseAudioApp $myBaseVideoApp $myBaseGraphicDesignApp $myBaseSecurityApp $myBaseDiskManagerApp $myBaseOfficeApp $myBaseVideoEditorApp $myBaseCodingApp $myBaseTorrentApp $myBaseConnectApp --needed ;;
 	*) ;;
 	esac
 }
 
-startSetup() {
-	enableSystemctl "bluetooth"
-	enableSystemctl "NetworkManager"
-	enableSystemctl "power-profiles-daemon"
-	enableSystemctl "sshd"
+setup_start() {
+	echo "START
+[1]Configure [2]No"
+	read resp
+	case $resp in
+	1)
+		sudo systemctl enable "bluetooth" --now
+		sudo systemctl enable "NetworkManager" --now
+		sudo systemctl enable "power-profiles-daemon" --now
+		sudo systemctl enable "sshd" --now
+		;;
+	*) ;;
+	esac
+
 }
 
-sambaSetup() {
+setup_samba() {
 	echo "SAMBA
 [1]Configure [2]No"
 	read -r resp
@@ -173,8 +187,8 @@ sambaSetup() {
     create mode = 0777" | sudo tee /etc/samba/smb.conf >/dev/null
 
 		ln -s /home/samba "$HOME/Samba/Guest"
-		enableSystemctl "smb"
-		enableSystemctl "nmb"
+		sudo systemctl enable "smb" --now
+		sudo systemctl enable "nmb" --now
 		#sudo systemctl restart smbd nmbd
 		#sudo useradd -m samba
 		#sudo passwd samba
@@ -183,7 +197,7 @@ sambaSetup() {
 	esac
 }
 
-configsSetup() {
+setup_configs() {
 	echo "CONFIGS
 [1]Configure [2]No"
 	read resp
@@ -192,53 +206,54 @@ configsSetup() {
 		flatpak override --user --filesystem=~/.icons:ro --filesystem=~/.local/share/icons:ro
 		sudo rm -f /usr/share/applications/rofi*
 		sudo rm -f /usr/share/applications/wiremix*
-		myBaseI3Backlight
-		myBaseI3Touchpad
-		lidSwitchIgnore
-		criaAtalho "Wiremix Audio" "Audio Tui" "wiremix --tab output" "$HOME" "true" "Wiremix" "pavucontrol"
-		criaAtalho "Syncthing" "Sync Folders" "xdg-open http://localhost:8384/" "$HOME" "false" "Syncthing" "syncthing"
-		criaAtalho "SteamOS (Exec)" "Steam with gamescope like SteamOS" "bash $HOME/.config/jrs/jrs-exec-steam-gamescope.sh" "$HOME" "false" "ExecSteamGamescope" "steam"
-		criaAtalho "Live Setup (Exec)" "Apps for live stream" "bash $HOME/.config/jrs/jrs-exec-live-setup.sh" "$HOME" "false" "ExecLiveSetup" "obs"
-		xDiscordforWayland
-		default-xdg-mime
-		setup_file_bashrc
-		setup_file_bash_profile
-		setup_file_profile
+		setup_i3_backlight
+		setup_i3_touchpad
+		setup_lid_switch_ignore
+		create_shortcut_desktop "Wiremix Audio" "Audio Tui" "wiremix --tab output" "$HOME" "true" "Wiremix" "pavucontrol"
+		create_shortcut_desktop "Syncthing" "Sync Folders" "xdg-open http://localhost:8384/" "$HOME" "false" "Syncthing" "syncthing"
+		create_shortcut_desktop "SteamOS (Exec)" "Steam with gamescope like SteamOS" "bash $HOME/.config/jrs/jrs-exec-steam-gamescope.sh" "$HOME" "false" "ExecSteamGamescope" "steam"
+		create_shortcut_desktop "Live Setup (Exec)" "Apps for live stream" "bash $HOME/.config/jrs/jrs-exec-live-setup.sh" "$HOME" "false" "ExecLiveSetup" "obs"
+		create_shortcut_desktop "DiscordX (Flatpak)" "Discord em Xwayland" "env ELECTRON_OZONE_PLATFORM_HINT= com.discordapp.Discord --no-sandbox" "$HOME" "false" "discordFlatpak" "discord"
+		create_shortcut_desktop "DiscordX (Pacman)" "Discord em Xwayland" "env ELECTRON_OZONE_PLATFORM_HINT= discord --no-sandbox" "$HOME" "false" "discordPacman" "discord"
+		setup_xdg_mime
+		create_file_bashrc
+		create_file_bash_profile
+		create_file_profile
 		;;
 	*) ;;
 	esac
 }
 
-desktopSetup() {
+setup_desktop() {
 	echo "DESKTOP
 [1]Hyprland [2]I3wm [3]Gnome [4]KDE [5]Xfce"
 	read resp
 	case $resp in
 	1)
-		packagesManager "$myBaseHyprland $wmApplicationLauncher $wmAudioControl $wmBacklightControl $wmBluetoothControl $wmNetworkManager $wmKeyring $wmDiskStatus $wmMusicPlayer $wmPrinters $wmCalculator $wmFontManager $wmImageViewer $wmAppearance $wmPolkit $wmBaseFileManager $wmBaseTerminal $wmBasePdfApp $wmBaseScreenshotApp"
+		sudo pacman -S $myBaseHyprland $wmApplicationLauncher $wmAudioControl $wmBacklightControl $wmBluetoothControl $wmNetworkManager $wmKeyring $wmDiskStatus $wmMusicPlayer $wmPrinters $wmCalculator $wmFontManager $wmImageViewer $wmAppearance $wmPolkit $wmBaseFileManager $wmBaseTerminal $wmBasePdfApp $wmBaseScreenshotApp --needed
 		#hyprland
 		;;
 	2)
-		packagesManager "$myBaseI3wm $wmApplicationLauncher $wmAudioControl $wmBacklightControl $wmBluetoothControl $wmNetworkManager $wmKeyring $wmDiskStatus $wmMusicPlayer $wmPrinters $wmCalculator $wmFontManager $wmImageViewer $wmAppearance $wmPolkit $wmBaseFileManager $wmBaseTerminal $wmBasePdfApp $wmBaseScreenshotApp"
+		sudo pacman -S $myBaseI3wm $wmApplicationLauncher $wmAudioControl $wmBacklightControl $wmBluetoothControl $wmNetworkManager $wmKeyring $wmDiskStatus $wmMusicPlayer $wmPrinters $wmCalculator $wmFontManager $wmImageViewer $wmAppearance $wmPolkit $wmBaseFileManager $wmBaseTerminal $wmBasePdfApp $wmBaseScreenshotApp --needed
 		#startx /usr/bin/i3
 		;;
 	3)
-		packagesManager "$myBaseGnome"
-		enableSystemctl "gdm"
+		sudo pacman -S $myBaseGnome --needed
+		sudo systemctl enable "gdm" --now
 		;;
 	4)
-		packagesManager "$myBaseKde"
-		enableSystemctl "sddm"
+		sudo pacman -S $myBaseKde --needed
+		sudo systemctl enable "sddm" --now
 		;;
 	5)
-		packagesManager "$myBaseXfce4"
-		enableSystemctl "lightdm"
+		sudo pacman -S $myBaseXfce4 --needed
+		sudo systemctl enable "lightdm" --now
 		;;
 	*) ;;
 	esac
 }
 
-stowSetup() {
+setup_stow() {
 	echo "DOTFILES
 [1]Configure [2]No"
 	read resp
@@ -286,242 +301,18 @@ stowSetup() {
 	esac
 }
 
-setup_file_bashrc() {
-	local BASHRC="$HOME/.bashrc"
-
-	# Se o arquivo existe, cria um backup com timestamp
-	if [[ -f "$BASHRC" ]]; then
-		cp "$BASHRC" "${BASHRC}.bak.$(date +%Y%m%d_%H%M%S)"
-		echo "Backup de $BASHRC criado."
-	fi
-	echo "#
-# ~/.bashrc
-#
-
-# If not running interactively, don't do anything
-[[ "'$-'" != *i* ]] && return
-
-[[ -f ~/.config/jrs/jrs-bash-alias.sh ]] && . ~/.config/jrs/jrs-bash-alias.sh" >$HOME/.bashrc
-}
-
-setup_file_bash_profile() {
-	local BASHPROFILE="$HOME/.bash_profile"
-
-	# Se o arquivo existe, cria um backup com timestamp
-	if [[ -f "$BASHPROFILE" ]]; then
-		cp "$BASHPROFILE" "${BASHPROFILE}.bak.$(date +%Y%m%d_%H%M%S)"
-		echo "Backup de $BASHPROFILE criado."
-	fi
-	echo '#
-# ~/.bash_profile
-#
-
-[[ -f ~/.bashrc ]] && . ~/.bashrc
-[[ -f ~/.config/jrs/jrs-bash-exports.sh ]] && . ~/.config/jrs/jrs-bash-exports.sh' >$BASHPROFILE
-}
-
-setup_file_profile() {
-	local DOTPROFILE="$HOME/.profile"
-
-	# Se o arquivo existe, cria um backup com timestamp
-	if [[ -f "$DOTPROFILE" ]]; then
-		cp "$DOTPROFILE" "${DOTPROFILE}.bak.$(date +%Y%m%d_%H%M%S)"
-		echo "Backup de $DOTPROFILE criado."
-	fi
-	echo 'setxkbmap -model abnt2 -layout br
-echo "Xcursor.theme: Adwaita
-Xcursor.size: 24" | xrdb -merge' >$DOTPROFILE
-}
-
-############
-###OUTROS###
-############
-
-lightdmConfig() {
-	echo "[greeter]
-theme-name = Breeze-Dark
-icon-theme-name = Papirus-Dark
-cursor-theme-name = Adwaita
-indicators = ~session;~spacer;~clock;~spacer;~power
-background = /usr/share/backgrounds/main.png
-font-name = Caskaydia Mono Nerd Font 11" | sudo tee -a /etc/lightdm/lightdm-gtk-greeter.conf
-}
-
-myBaseI3Touchpad() {
-	sudo mkdir -p /etc/X11/xorg.conf.d && sudo tee /etc/X11/xorg.conf.d/90-touchpad.conf <<'EOF' 1>/dev/null
-Section "InputClass"
-Identifier "touchpad"
-MatchIsTouchpad "on"
-Driver "libinput"
-Option "Tapping" "on"
-EndSection
-EOF
-}
-
-myBaseI3Backlight() {
-	#sudo chmod +s /usr/bin/light
-	echo 'ACTION=="add", SUBSYSTEM=="backlight", RUN+="/bin/chgrp wheel $sys$devpath/brightness", RUN+="/bin/chmod g+w $sys$devpath/brightness"' | sudo tee /etc/udev/rules.d/backlight.rules
-	#criarArq 'light' "$HOME/.config/i3/brightness"
-}
-
-lidSwitchIgnore() {
-	sudo sed -i 's/^#HandleLidSwitch=suspend/HandleLidSwitch=ignore/' /etc/systemd/logind.conf
-	sudo sed -i 's/^HandleLidSwitch=suspend/HandleLidSwitch=ignore/' /etc/systemd/logind.conf
-}
-
-appPosBluetoothFix() {
-	echo "[1]Fix Bluetooth & Network Interference [2]Remove Fix"
-	read esco
-	if [ "$esco" = "1" ]; then
-		sudo tee /etc/modprobe.d/iwlwifi-opt.conf <<<"options iwlwifi bt_coex_active=N"
-	elif [ "$esco" = "2" ]; then
-		sudo rm /etc/modprobe.d/iwlwifi-opt.conf
-	fi
-}
-
-appPosTecladoConfig() {
-	echo "[ARCH] Keyboard BR"
-	setxkbmap -model abnt2 -layout br
-	#echo "setxkbmap -model abnt2 -layout br" >> ~/.profile
-	sudo tee /etc/X11/xorg.conf.d/10-evdev.conf <<<'Section "InputClass"
-Identifier "evdev keyboard catchall"
-MatchIsKeyboard "on"
-MatchDevicePath "/dev/input/event*"
-Driver "evdev"
-Option "XkbLayout" "br"
-Option "XkbVariant" "abnt2"
-EndSection'
-}
-
-appPosTimeNTP() {
-	sudo timedatectl set-ntp true
-	sudo hwclock --systohc
-}
-
-xfce4Config() {
-	xfce4-panel --quit
-	pkill xfconfd
-	rm -rf ~/.config/xfce4/panel
-	rm -rf ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml
-	xfce4-config
-	xfce4-panel &
-}
-
-gsettingsInactiveOn() {
-	xset s on +dpms
-	gsettings set org.gnome.desktop.session idle-delay 300
-	gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'suspend'
-	gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 600
-	gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-type 'suspend'
-	gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-timeout 300
-}
-
-gsettingsInactiveOff() {
-	xset s off -dpms
-	gsettings set org.gnome.desktop.session idle-delay 0
-	gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'nothing'
-	gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 0
-	gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-type 'nothing'
-	gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-timeout 0
-}
-
-default-xdg-mime() {
-
-	#Variavel para browser setada em jrs-bash-exports.sh
-	#xdg-settings set default-web-browser zen-browser.desktop
-
-	xdg-mime default thunar.desktop inode/directory
-
-	xdg-mime default feh.desktop image/jpeg image/png image/gif image/bmp image/webp
-
-	xdg-mime default xreader.desktop application/pdf
-
-	xdg-mime default alacritty.desktop x-scheme-handler/terminal
-
-	xdg-mime default galculator.desktop x-scheme-handler/calc
-
-	xdg-mime default ark.desktop application/zip application/x-tar application/x-7z-compressed application/x-rar
-
-	xdg-mime default cmus.desktop audio/mpeg audio/ogg audio/flac audio/x-wav
-
-	xdg-mime default font-manager.desktop font/ttf font/otf application/x-font-ttf application/x-font-otf
-}
-
-defaultInodeDirectory() {
-	echo "Default Applications   
-[1]Nautilus for FileManager
-[2]PCManFM for FileManager
-[3]Thunar for FileManager"
-	read resp
-	case $resp in
-	1) xdg-mime default org.gnome.Nautilus.desktop inode/directory ;;
-	2) xdg-mime default pcmanfm.desktop inode/directory ;;
-	3) xdg-mime default thunar.desktop inode/directory ;;
-	*) ;;
-	esac
-}
-
-xDiscordforWayland() {
-	criaAtalho "DiscordX (Flatpak)" "Discord em Xwayland" "env ELECTRON_OZONE_PLATFORM_HINT= com.discordapp.Discord --no-sandbox" "$HOME" "false" "discordFlatpak" "discord"
-	criaAtalho "DiscordX (Pacman)" "Discord em Xwayland" "env ELECTRON_OZONE_PLATFORM_HINT= discord --no-sandbox" "$HOME" "false" "discordPacman" "discord"
-}
-
-appPosManualConfig() {
-	echo "---------------------
-Configuracoes Manuais
----------------------
-[PACMAN]
-Remover comentarios em: /etc/pacman.conf
-#Color
-#ParallelDownloads = 10
-ILoveCandy
-#[multilib]
-#Include = /etc/pacman.d/mirrorlist
----------------------
-[GNOME]
-Remover comentarios em: /etc/gdm3/custom.conf
-#WaylandEnable=false
-Apos editar, executar:
-sudo systemctl restart gdm3
----------------------
-[THEME]
-Caso de erro com thema no i3 é so apagar as pastas gtk-* em .config na HOME
----------------------
-[NVIDIA]
-https://github.com/korvahannu/arch-nvidia-drivers-installation-guide
-configurar no Xorg com
-sudo nvidia-xconfig
----------------------
-[GRUB]
-sudo nano /etc/default/grub
-remover # da opcao 
-#GRUB_DISABLE_OS_PROBER=false
-apos isso executar
-grub-mkconfig -o /boot/grub/grub.cfg
----------------------
-[Steam Linux & Windows]
-https://github.com/ValveSoftware/Proton/wiki/Using-a-NTFS-disk-with-Linux-and-Windows
----------------------
-[Syncthing]
-Para syncronizar todas as pastas devem conter o MESMO: NOME e ID
-"
-	read enterprasair
-}
-
-##########################
-
-myBasePosInstall() {
-	pacmanSetup
-	yaySetup
-	kernelSetup
-	audioSetup
-	baseSetup
-	driverSetup
-	appsSetup
-	startSetup
-	sambaSetup
-	configsSetup
-	grubSetup
-	desktopSetup
-	stowSetup
+posinstall() {
+	setup_pacman
+	setup_yay
+	setup_kernel
+	setup_audio
+	setup_base
+	setup_driver
+	setup_apps
+	setup_start
+	setup_samba
+	setup_configs
+	setup_grub
+	setup_desktop
+	setup_stow
 }

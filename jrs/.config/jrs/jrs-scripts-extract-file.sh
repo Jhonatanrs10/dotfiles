@@ -1,6 +1,6 @@
 #!/bin/bash
 
-extrairArq() {
+extract_file() {
 	echo "EXTRAINDO..."
 	for arq in $(ls $1); do
 		if [[ $arq =~ .*.tar.gz ]]; then
@@ -42,4 +42,4 @@ extrairArq() {
 	done
 	echo "CONCLUIDO!!!"
 }
-#extrairArq "$diretorioInstall"
+#extract_file "$diretorioInstall"
