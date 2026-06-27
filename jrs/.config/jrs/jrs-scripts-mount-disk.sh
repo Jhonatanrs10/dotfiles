@@ -1,6 +1,7 @@
 #!/bin/bash
 
 mount_disk() {
+	DATANOW=$(date "+[%d-%m-%Y][%H-%M]")
 	my_disk_dir="/media/"
 	# somente leitura pode ser o modo de energia do windows em dualboot (modo de reinicialização rapida)
 	echo "Mount Disk?

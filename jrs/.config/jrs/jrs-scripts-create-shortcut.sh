@@ -11,7 +11,7 @@ create_shortcut_bin() {
 	fi
 }
 
-create_shortcut_desktop()  {
+create_shortcut_desktop() {
 	mkdir -p $HOME/.local/share/applications/jrs
 	echo -e "[Desktop Entry]
 Version=1.0
@@ -48,7 +48,7 @@ create_shortcut_desktop_retroarch() {
 	remove_shortcut_desktop "Retroarch"
 	RetroArchCores="/usr/lib/libretro"
 	RetroArchDiretorioGames="$HOME/Documents/Roms"
-	echo "Colar Diretorio das Roms:" 
+	echo "Colar Diretorio das Roms:"
 	read RetroArchDiretorioGames
 	echo "ESCOLHA A BIOS/CORE PRA A ROM:"
 	options_list "$RetroArchCores" "RetroArchCore"
@@ -63,4 +63,16 @@ remove_shortcut_desktop() {
 		sudo rm $HOME/.local/share/applications/jrs/jrs-$1-*
 	fi
 	clear
+}
+
+create_shortcut_menu() {
+	echo "[Create Shortcut Menu]
+[1] Desktop
+[2] Retroarch"
+	read resp
+	case $resp in
+	1) create_shortcut_desktop_steps ;;
+	2) create_shortcut_desktop_retroarch ;;
+	*) ;;
+	esac
 }

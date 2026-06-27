@@ -35,8 +35,9 @@ opcoes=(
 	"Stow Dotfiles::$HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-posinstall.sh::setup_stow"
 	"Mount Disk::$HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-mount-disk.sh::mount_disk"
 	"Git Config::$HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-git.sh::setup_git"
-	"Decicated Servers::$HOME/.dotfiles/jrs/.config/jrs/jrs-servers.sh::dedicated_servers"
+	"Decicated Servers::$HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-servers.sh::dedicated_servers"
 	"Virtual Network::$HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-network-tunneling.sh::install_rede_virtual"
+	"Create Shortcut::$HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-create-shortcut.sh::create_shortcut_menu"
 )
 
 linhas_terminal=$(tput lines)
