@@ -42,4 +42,11 @@ extract_file() {
 	done
 	echo "CONCLUIDO!!!"
 }
-#extract_file "$diretorioInstall"
+
+download_file() {
+	if [ $1 = 'directory' ]; then
+		wget -c -P "$3" "$2"
+	elif [ $1 = 'directory_name' ]; then
+		wget -c "$2" -O "$3"
+	fi
+}

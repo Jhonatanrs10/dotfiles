@@ -1,10 +1,10 @@
 #!/bin/bash
 
-criaAtalhoBin() {
-	varCriaAtalhoBin="n"
+create_shortcut_bin() {
+	varCreateShortcutBin="n"
 	echo "Criar AtalhoBin? ($2) [s/n]"
-	read varCriaAtalhoBin
-	if [ "$varCriaAtalhoBin" = "s" ]; then
+	read varCreateShortcutBin
+	if [ "$varCreateShortcutBin" = "s" ]; then
 		chmod +x $1
 		chmod 777 $1
 		sudo ln -s $1 /usr/bin/jrs-$2
@@ -44,6 +44,7 @@ create_shortcut_desktop_steps() {
 }
 
 create_shortcut_desktop_retroarch() {
+	source $HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-others.sh
 	remove_shortcut_desktop "Retroarch"
 	RetroArchCores="/usr/lib/libretro"
 	RetroArchDiretorioGames="$HOME/Documents/Roms"

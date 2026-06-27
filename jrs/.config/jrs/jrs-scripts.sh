@@ -2,11 +2,6 @@
 
 JRS_DIR="$HOME/.dir_jrs"
 
-source $HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-posinstall.sh
-source $HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-mount-disk.sh
-source $HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-git.sh
-source $HOME/.dotfiles/jrs/.config/jrs/jrs-servers.sh
-
 # Cores ANSI
 RED="\033[31m"
 GREEN="\033[32m"
@@ -24,7 +19,7 @@ if [ ! -f "$link_path" ]; then
 	sudo tee "$link_path" >/dev/null <<EOF
 #!/bin/bash
 cd "$HOME/.dotfiles/jrs/.config/jrs"
-exec bash "jrs-script.sh"
+exec bash "jrs-scripts.sh"
 EOF
 
 	# Torna o arquivo em /usr/bin executável
@@ -36,11 +31,12 @@ fi
 
 # Lista de opções (texto e função correspondente)
 opcoes=(
-	"Pos Install::posinstall"
-	"Stow Dotfiles::setup_stow"
-	"Mount Disk::mount_disk"
-	"Git Config::setup_git"
-	"Decicated Servers::dedicated_servers"
+	"Pos Install::$HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-posinstall.sh::posinstall"
+	"Stow Dotfiles::$HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-posinstall.sh::setup_stow"
+	"Mount Disk::$HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-mount-disk.sh::mount_disk"
+	"Git Config::$HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-git.sh::setup_git"
+	"Decicated Servers::$HOME/.dotfiles/jrs/.config/jrs/jrs-servers.sh::dedicated_servers"
+	"Virtual Network::$HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-network-tunneling.sh::install_rede_virtual"
 )
 
 linhas_terminal=$(tput lines)
@@ -51,16 +47,16 @@ total_paginas=$(((total_opcoes + opcoes_por_pagina - 1) / opcoes_por_pagina))
 
 mostrar_menu() {
 	clear
-	echo -e "${CYAN}${RESET}"
 	echo -e "${GREEN}  SCRIPTS - Page $((pagina + 1))/${total_paginas}${RESET}"
-	echo -e "${CYAN}${RESET}"
+	echo ""
 
 	inicio=$((pagina * opcoes_por_pagina))
 	fim=$((inicio + opcoes_por_pagina))
 	if [ $fim -gt $total_opcoes ]; then fim=$total_opcoes; fi
 
 	for ((i = inicio; i < fim; i++)); do
-		opcao_texto="${opcoes[i]%%::*}"
+		# Pega apenas o texto antes do primeiro '::'
+		opcao_texto=$(echo "${opcoes[i]}" | cut -d':' -f1)
 		printf " ${GREEN}[%02d]${RESET} %s\n" $((i + 1)) "$opcao_texto"
 	done
 }
@@ -68,10 +64,21 @@ mostrar_menu() {
 executar_opcao() {
 	idx=$1
 	if [[ "$idx" =~ ^[0-9]+$ ]] && [ "$idx" -ge 1 ] && [ "$idx" -le "$total_opcoes" ]; then
-		funcao="${opcoes[idx - 1]##*::}"
+		# Extrai os dados usando cut
+		linha_completa="${opcoes[idx - 1]}"
+		script_path=$(echo "$linha_completa" | cut -d':' -f3)
+		funcao=$(echo "$linha_completa" | cut -d':' -f5) # cut conta os ':' vazios
+
 		echo -e "\nExecutando: ${CYAN}$funcao${RESET}\n"
-		#$dir_jrs/$funcao
+
+		# Faz o source do arquivo apenas se o caminho foi informado e o arquivo existir
+		if [ -n "$script_path" ] && [ -f "$script_path" ]; then
+			source "$script_path"
+		fi
+
+		# Executa a função
 		$funcao
+
 		echo -e "\n${YELLOW}Press Enter to return to the menu...${RESET}"
 		read
 	else

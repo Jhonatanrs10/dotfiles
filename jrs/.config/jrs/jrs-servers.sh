@@ -9,10 +9,10 @@ dedicated_servers() {
 "
 	read -r choice
 	case "$choice" in
-	1) exec bash $HOME/.dotfiles/jrs/.config/jrs/jrs-server-palworld.sh ;;
-	2) exec bash $HOME/.dotfiles/jrs/.config/jrs/jrs-server-project-zomboid.sh ;;
-	3) exec bash $HOME/.dotfiles/jrs/.config/jrs/jrs-server-valheim.sh ;;
-	4) exec bash $HOME/.dotfiles/jrs/.config/jrs/jrs-server-minecraft.sh ;;
+	1) exec bash $HOME/.dotfiles/jrs/.config/jrs/jrs-servers-palworld.sh ;;
+	2) exec bash $HOME/.dotfiles/jrs/.config/jrs/jrs-servers-project-zomboid.sh ;;
+	3) exec bash $HOME/.dotfiles/jrs/.config/jrs/jrs-servers-valheim.sh ;;
+	4) exec bash $HOME/.dotfiles/jrs/.config/jrs/jrs-servers-minecraft.sh ;;
 	*) echo "Saindo..." ;;
 	esac
 }
