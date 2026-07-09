@@ -90,7 +90,7 @@ setup_base() {
 [1]Configure [2]No"
 	read resp
 	case $resp in
-	1) sudo pacman -S $myBaseBootloader $myBaseFileSystem $myBaseNetwork $myBaseFirewall $myBaseBluetooth $myBaseCodecs $myBaseIcons $myBaseThemes $myBaseFonts $myBaseRar $myBaseNotify $myBaseDaemons $myBaseFlatpak $myBaseShell $myBaseUtilitys $myBaseXorg $myBaseWayland --needed ;;
+	1) sudo pacman -Syu $myBaseBootloader $myBaseFileSystem $myBaseNetwork $myBaseFirewall $myBaseBluetooth $myBaseCodecs $myBaseIcons $myBaseThemes $myBaseFonts $myBaseRar $myBaseNotify $myBaseDaemons $myBaseFlatpak $myBaseShell $myBaseUtilitys $myBaseXorg $myBaseWayland --needed ;;
 	*) ;;
 	esac
 }
@@ -242,15 +242,15 @@ setup_desktop() {
 		;;
 	3)
 		sudo pacman -S $myBaseGnome --needed
-		sudo systemctl enable "gdm" --now
+		sudo systemctl enable "gdm"
 		;;
 	4)
 		sudo pacman -S $myBaseKde --needed
-		sudo systemctl enable "sddm" --now
+		sudo systemctl enable "sddm"
 		;;
 	5)
 		sudo pacman -S $myBaseXfce4 --needed
-		sudo systemctl enable "lightdm" --now
+		sudo systemctl enable "lightdm"
 		;;
 	*) ;;
 	esac
