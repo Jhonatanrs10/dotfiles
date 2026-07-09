@@ -115,6 +115,7 @@ setup_start() {
 		sudo systemctl enable "NetworkManager" --now
 		sudo systemctl enable "power-profiles-daemon" --now
 		sudo systemctl enable "sshd" --now
+		systemctl enable "syncthing" --now --user
 		;;
 	*) ;;
 	esac

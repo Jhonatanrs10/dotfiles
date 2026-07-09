@@ -32,9 +32,14 @@ alias mpv1080p30='mpv --profile=1080p30'
 alias mpv1080p60="mpv --profile=1080p60"
 # Code
 alias codehere='code . && exit'
-alias codedotfiles='code ~/.dotfiles && exit'
+# Dotfiles
+alias dotfiles='code ~/.dotfiles && exit'
 # SSH
 alias sshlocalserver="ssh jhonatanrs@192.168.0.134"
-# Dotfiles
-alias mydotfiles="bash ~/.dotfiles/jrs/.config/jrs/jrs-exec-mydotfiles.sh"
+# Exec
+alias jrs-dotfiles="bash ~/.dotfiles/jrs/.config/jrs/jrs-exec-mydotfiles.sh"
+alias jrs-live-setup="bash ~/.dotfiles/jrs/.config/jrs/jrs-exec-live-setup.sh && exit"
+alias jrs-steam-gamescope="bash ~/.dotfiles/jrs/.config/jrs/jrs-exec-steam-gamescope.sh && exit"
+alias jrs-syncthing="bash ~/.dotfiles/jrs/.config/jrs/jrs-exec-syncthing.sh && exit"
+
 
