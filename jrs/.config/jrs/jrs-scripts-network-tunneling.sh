@@ -13,7 +13,7 @@ install_ngrok() {
 	#https://github.com/ChaoticWeg/discord.sh
 	arqNgrok="https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz"
 	arqDiscord="https://github.com/ChaoticWeg/discord.sh/archive/refs/heads/master.zip"
-	diretorioNgrok="$JRS_DIR/Ngrok"
+	diretorioNgrok="$JRS_DIR/ngrok"
 	mkdir -p $diretorioNgrok
 	download_file "directory_name" "$arqNgrok" "$diretorioNgrok/ngrok.tgz"
 	download_file "directory_name" "$arqDiscord" "$diretorioNgrok/bot.zip"
@@ -43,7 +43,7 @@ if [ -z "$ServerIp" ];then
 else
     bash '$PWD'/discord/discord.sh --webhook-url="$WEBHOOK" --title "IP DO SERVIDOR" --description "$ServerIp"
 fi' >$diretorioNgrok/discord.sh
-	create_shortcut_bin "$diretorioNgrok/start.sh" "Ngrok"
+	create_shortcut_bin "$diretorioNgrok/start.sh" "ngrok"
 }
 
 install_playit() {
