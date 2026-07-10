@@ -37,7 +37,7 @@ alias dotfiles='code ~/.dotfiles && exit'
 # SSH
 alias sshlocalserver="ssh jhonatanrs@192.168.0.134"
 # Exec
-alias jrs-dotfiles="bash ~/.dotfiles/jrs/.config/jrs/jrs-exec-mydotfiles.sh"
+alias jrs-git-dotfiles="bash ~/.dotfiles/jrs/.config/jrs/jrs-exec-git-dotfiles.sh"
 alias jrs-live-setup="bash ~/.dotfiles/jrs/.config/jrs/jrs-exec-live-setup.sh && exit"
 alias jrs-steam-gamescope="bash ~/.dotfiles/jrs/.config/jrs/jrs-exec-steam-gamescope.sh && exit"
 alias jrs-syncthing="bash ~/.dotfiles/jrs/.config/jrs/jrs-exec-syncthing.sh && exit"
