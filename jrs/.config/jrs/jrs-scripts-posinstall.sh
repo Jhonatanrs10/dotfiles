@@ -214,10 +214,6 @@ setup_configs() {
 		setup_i3_touchpad
 		setup_lid_switch_ignore
 		setup_xdg_mime
-		create_shortcut_desktop "Wiremix Audio" "Audio Tui" "wiremix --tab output" "$HOME" "true" "Wiremix" "pavucontrol"
-		create_shortcut_desktop "Syncthing" "Sync Folders" "xdg-open http://localhost:8384/" "$HOME" "false" "Syncthing" "syncthing"
-		create_shortcut_desktop "SteamOS (Exec)" "Steam with gamescope like SteamOS" "bash $HOME/.config/jrs/jrs-exec-steam-gamescope.sh" "$HOME" "false" "ExecSteamGamescope" "steam"
-		create_shortcut_desktop "Live Setup (Exec)" "Apps for live stream" "bash $HOME/.config/jrs/jrs-exec-live-setup.sh" "$HOME" "false" "ExecLiveSetup" "obs"
 		create_shortcut_desktop "DiscordX (Flatpak)" "Discord em Xwayland" "env ELECTRON_OZONE_PLATFORM_HINT= com.discordapp.Discord --no-sandbox" "$HOME" "false" "discordFlatpak" "discord"
 		create_shortcut_desktop "DiscordX (Pacman)" "Discord em Xwayland" "env ELECTRON_OZONE_PLATFORM_HINT= discord --no-sandbox" "$HOME" "false" "discordPacman" "discord"
 		create_file_bashrc

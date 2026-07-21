@@ -16,6 +16,6 @@ case "$chosen" in
 "  Power Profiles") bash $HOME/.config/jrs/jrs-rofi-power-profiles.sh ;;
 "  Debug") bash $HOME/.config/jrs/jrs-rofi-debug.sh ;;
 "󰐦  Quit") bash $HOME/.config/jrs/jrs-rofi-power.sh ;;
-"code") code ~/.dotfiles ;;
+"dot") code ~/.dotfiles ;;
 *) exit 1 ;;
 esac
