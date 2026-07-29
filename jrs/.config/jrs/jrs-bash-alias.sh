@@ -33,11 +33,17 @@ alias mpv1080p60="mpv --profile=1080p60"
 # Code
 alias codehere='code . && exit'
 # Dotfiles
-alias dotfiles='code ~/.dotfiles && exit'
+alias dotfiles='clear
+echo "[1]Code Dotfiles [2]Git Dotfiles"
+read DOT_VAR
+case "$DOT_VAR" in
+1)code ~/.dotfiles && exit;;
+2)bash ~/.dotfiles/jrs/.config/jrs/jrs-exec-git-dotfiles.sh;;
+*);;
+esac'
 # SSH
 alias sshlocalserver="ssh jhonatanrs@192.168.0.134"
 # Exec
-alias jrs-git-dotfiles="bash ~/.dotfiles/jrs/.config/jrs/jrs-exec-git-dotfiles.sh"
 alias jrs-live-setup="bash ~/.dotfiles/jrs/.config/jrs/jrs-exec-live-setup.sh && exit"
 alias jrs-steam-gamescope="bash ~/.dotfiles/jrs/.config/jrs/jrs-exec-steam-gamescope.sh && exit"
 alias jrs-syncthing="bash ~/.dotfiles/jrs/.config/jrs/jrs-exec-syncthing.sh && exit"
