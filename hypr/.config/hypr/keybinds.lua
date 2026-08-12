@@ -89,9 +89,9 @@ hl.bind(mainMod .. "+ H", hl.dsp.exec_cmd("xdg-open https://wiki.hypr.land/"))
 --hl.bind("PRINT", hl.dsp.exec_cmd('mkdir -p ~/Pictures/PrtSc | grim -g "$(slurp)" - | wl-copy && wl-paste > ~/Pictures/PrtSc/Cutshot-$(date +%F_%T).png'))
 --hl.bind(mainMod .. "+ PRINT", hl.dsp.exec_cmd("mkdir -p ~/Pictures/PrtSc | grim - | wl-copy && wl-paste > ~/Pictures/PrtSc/Screenshot-$(date +%F_%T).png"))
 
--- Global Key
-hl.bind("INSERT", hl.dsp.pass({window = "class:^(discord)$"}), { non_consuming = true})
-hl.bind("INSERT", hl.dsp.pass({window = "class:^(discord)$"}), { non_consuming = true, release = true })
+-- Push to Talk
+hl.bind("INSERT",hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0"), { non_consuming = true }) 
+hl.bind("INSERT",hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 1"), { non_consuming = true, release = true })
 
 --hl.bind("SHIFT + F10", hl.dsp.pass({window = "class:^(com\\.obsproject\\.Studio)$"}), { non_consuming = true})
 --hl.bind("SHIFT + F10", hl.dsp.pass({window = "class:^(com\\.obsproject\\.Studio)$"}), { non_consuming = true, release = true })

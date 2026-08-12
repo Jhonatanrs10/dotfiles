@@ -29,6 +29,7 @@ input-feedback-sounds=true
 EOF
 
 	#lxappearance
+	mkdir -p "$HOME/.config/xsettingsd"
 	cat <<EOF >"$HOME/.config/xsettingsd/xsettingsd.conf"
 Net/ThemeName "$THEME"
 Net/IconThemeName "$ICONS"
@@ -81,12 +82,16 @@ EOF
 	gsettings set org.gnome.desktop.interface color-scheme "$SCHEME"
 
 	export GTK_THEME=$THEME
-	pkill -HUP xsettingsd
+	if pgrep -x "xsettingsd" >/dev/null; then
+		killall -HUP xsettingsd
+	else
+		xsettingsd &
+	fi
 
 	# 2. Aplica via nwg-look (gera os arquivos .ini)
 	nwg-look -a
 
-	echo "Ambiente Dark aplicado com sucesso!"
+	echo "Ambiente Light aplicado com sucesso!"
 }
 
 the_look_dark() {
@@ -116,6 +121,7 @@ input-feedback-sounds=true
 EOF
 
 	#lxappearance
+	mkdir -p "$HOME/.config/xsettingsd"
 	cat <<EOF >"$HOME/.config/xsettingsd/xsettingsd.conf"
 Net/ThemeName "$THEME"
 Net/IconThemeName "$ICONS"
@@ -169,7 +175,11 @@ EOF
 	# Informa o esquema de cores escuro para apps GTK4/libadwaita
 
 	export GTK_THEME=$THEME
-	pkill -HUP xsettingsd
+	if pgrep -x "xsettingsd" >/dev/null; then
+		killall -HUP xsettingsd
+	else
+		xsettingsd &
+	fi
 
 	# 2. Aplica via nwg-look (gera os arquivos .ini)
 	nwg-look -a

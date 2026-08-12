@@ -75,3 +75,11 @@ hl.window_rule({
     match = { class = ".*" },
     idle_inhibit = "fullscreen",
 })
+
+hl.window_rule({
+    name  = "pdf-app",
+    match = { class = "Xreader" },
+    size = {"(monitor_w*0.9)", "(monitor_h*0.9)"},
+    float = true,
+    center = true,
+})

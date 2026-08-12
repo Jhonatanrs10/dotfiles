@@ -38,6 +38,7 @@ opcoes=(
 	"Decicated Servers::$HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-servers.sh::dedicated_servers"
 	"Virtual Network::$HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-network-tunneling.sh::install_rede_virtual"
 	"Create Shortcut::$HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-create-shortcut.sh::create_shortcut_menu"
+	"Apps::$HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-apps.sh::some_apps"
 )
 
 linhas_terminal=$(tput lines)
