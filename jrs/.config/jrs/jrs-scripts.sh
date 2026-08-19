@@ -39,6 +39,7 @@ opcoes=(
 	"Virtual Network::$HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-network-tunneling.sh::install_rede_virtual"
 	"Create Shortcut::$HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-create-shortcut.sh::create_shortcut_menu"
 	"Apps::$HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-apps.sh::some_apps"
+	"Rofi TUI::$HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-tui.sh::main_tui"
 )
 
 linhas_terminal=$(tput lines)
