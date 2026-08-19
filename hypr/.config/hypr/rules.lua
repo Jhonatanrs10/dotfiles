@@ -83,3 +83,10 @@ hl.window_rule({
     float = true,
     center = true,
 })
+hl.window_rule({
+    name  = "jrs-tui",
+    match = { title = "jrs-tui" },
+    size = {"(monitor_w*0.4)", "(monitor_h*0.4)"},
+    float = true,
+    center = true,
+})

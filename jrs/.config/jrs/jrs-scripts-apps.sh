@@ -9,7 +9,7 @@ some_apps() {
 [4] MangoHud
 [5] Gamescope
 [6] Retroarch
-[7] Virtual Machine
+[7] Virtual Machine 
 [8] OBS
 [9] OBS (flatpak)
 [10] Stream Overlay (flatpak)
@@ -31,7 +31,10 @@ some_apps() {
 		4) pacman_pkgs+=($myBaseMangoHud) ;;
 		5) pacman_pkgs+=($myBaseGamescope) ;;
 		6) pacman_pkgs+=($myBaseRetroarch) ;;
-		7) pacman_pkgs+=($myBaseVirt) ;;
+		7)
+			source $HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-install-virt-manager.sh
+			install_virt_manager
+			;;
 		8) pacman_pkgs+=($myBaseOBS) ;;
 		9) flatpak_pkgs+=($myBaseOBSflatpak) ;;
 		10) flatpak_pkgs+=($myBaseStreamOverlayflatpak) ;;
