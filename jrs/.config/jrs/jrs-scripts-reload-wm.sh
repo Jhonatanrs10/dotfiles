@@ -8,7 +8,7 @@ reload_Hyprland() {
 	bash ~/.config/hypr/hyprpaper.sh &
 	dunstctl reload &
 	pkill -USR2 btop &
-	dunstify -t 1500 --hints int:transient:1 "$XDG_CURRENT_DESKTOP" "Reloading" --icon=preferences-desktop-theme
+	#dunstify -t 1500 --hints int:transient:1 "$XDG_CURRENT_DESKTOP" "Reloading" --icon=preferences-desktop-theme
 }
 
 reload_i3() {
@@ -17,5 +17,5 @@ reload_i3() {
 	i3-msg reload &
 	dunstctl reload &
 	pkill -USR2 btop &
-	dunstify -t 1500 --hints int:transient:1 "$XDG_CURRENT_DESKTOP" "Reloading" --icon=preferences-desktop-theme
+	#dunstify -t 1500 --hints int:transient:1 "$XDG_CURRENT_DESKTOP" "Reloading" --icon=preferences-desktop-theme
 }
