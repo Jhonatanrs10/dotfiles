@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 package_manager() {
 	#clear
 	echo "============

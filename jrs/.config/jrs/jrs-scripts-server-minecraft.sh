@@ -1,11 +1,5 @@
 #!/bin/bash
 
-clear
-
-dir_for_server_file="$HOME/Servers/MineServer"
-mkdir -p $dir_for_server_file
-cd $dir_for_server_file
-
 run_server() {
 	java -Xmx4G -Xms4G -jar server.jar nogui
 }
@@ -36,7 +30,12 @@ backup_server() {
 	echo "coming"
 }
 
-echo "
+setup_server() {
+	clear
+	dir_for_server_file="$HOME/Servers/MineServer"
+	mkdir -p $dir_for_server_file
+	cd $dir_for_server_file
+	echo "
 PWD: $PWD
 
 OPÇÕES
@@ -44,10 +43,11 @@ OPÇÕES
 [2] INSTALAR/ATUALIZAR SERVER
 [3] BACKUP SAVE"
 
-read -r choice
-case "$choice" in
-1) run_server ;;
-2) update_server ;;
-3) backup_server ;;
-*) echo "Saindo..." ;;
-esac
+	read -r choice
+	case "$choice" in
+	1) run_server ;;
+	2) update_server ;;
+	3) backup_server ;;
+	*) echo "Saindo..." ;;
+	esac
+}

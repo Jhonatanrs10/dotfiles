@@ -1,11 +1,5 @@
 #!/bin/bash
 
-clear
-
-dir_for_server_file="$HOME/Servers/ValServer"
-mkdir -p $dir_for_server_file
-cd $dir_for_server_file
-
 run_server() {
 	export templdpath=$LD_LIBRARY_PATH
 	export LD_LIBRARY_PATH=./linux64:$LD_LIBRARY_PATH
@@ -36,7 +30,12 @@ install_steamcmd() {
 	yay -Syu steamcmd
 }
 
-echo "
+setup_server() {
+	clear
+	dir_for_server_file="$HOME/Servers/ValServer"
+	mkdir -p $dir_for_server_file
+	cd $dir_for_server_file
+	echo "
 PWD: $PWD
 
 OPÇÕES
@@ -45,18 +44,19 @@ OPÇÕES
 [3] BACKUP SAVE
 [4] DEPENDENCIAS COM YAY (steamcmd)"
 
-read -r choice
-case "$choice" in
-1) run_server ;;
-2) update_server ;;
-3) backup_server ;;
-4) install_steamcmd ;;
-*) echo "Saindo..." ;;
-esac
+	read -r choice
+	case "$choice" in
+	1) run_server ;;
+	2) update_server ;;
+	3) backup_server ;;
+	4) install_steamcmd ;;
+	*) echo "Saindo..." ;;
+	esac
 
-#Update the information for future verification.
-#Backup Date: 08/06/2026
-#Game Version: v0.6.0.75365
-#IP: localhost:8211
-#Configure the server directory in the file: "run.sh"
-#Obs: o server pode acabar gerando um novo save, basta mover os arquivos do diretorio do save antigo para o diretorio novo
+	#Update the information for future verification.
+	#Backup Date: 08/06/2026
+	#Game Version: v0.6.0.75365
+	#IP: localhost:8211
+	#Configure the server directory in the file: "run.sh"
+	#Obs: o server pode acabar gerando um novo save, basta mover os arquivos do diretorio do save antigo para o diretorio novo
+}

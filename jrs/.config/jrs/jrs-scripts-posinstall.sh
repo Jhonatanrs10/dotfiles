@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source $HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-packages.sh
+source $HOME/.dotfiles/jrs/.config/jrs/jrs-packages.sh
 DATANOW=$(date "+[%d-%m-%Y][%H-%M]")
 
 setup_pacman() {

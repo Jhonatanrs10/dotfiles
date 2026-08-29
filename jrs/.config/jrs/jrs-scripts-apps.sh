@@ -1,7 +1,8 @@
 #!/bin/bash
-source $HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-packages.sh
 
 some_apps() {
+	source $HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-packages.sh
+
 	echo "Apps to install (pacman/aur/flatpak)
 [1] Steam
 [2] Minecraft (yay)
@@ -14,7 +15,8 @@ some_apps() {
 [9] OBS (flatpak)
 [10] Stream Overlay (flatpak)
 [11] Discord (flatpak)
-[12] Discord"
+[12] Discord
+[13] Winboat (yay)"
 
 	read -r -p "Digite os números desejados (separados por espaço, ex: 1 2 9): " escolhas
 
@@ -31,15 +33,13 @@ some_apps() {
 		4) pacman_pkgs+=($myBaseMangoHud) ;;
 		5) pacman_pkgs+=($myBaseGamescope) ;;
 		6) pacman_pkgs+=($myBaseRetroarch) ;;
-		7)
-			source $HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-install-virt-manager.sh
-			install_virt_manager
-			;;
+		7) bash -c 'source "$HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-install-virt-manager.sh"; install_virt_manager' ;;
 		8) pacman_pkgs+=($myBaseOBS) ;;
 		9) flatpak_pkgs+=($myBaseOBSflatpak) ;;
 		10) flatpak_pkgs+=($myBaseStreamOverlayflatpak) ;;
 		11) flatpak_pkgs+=($myBaseDiscordAppflatpak) ;;
 		12) pacman_pkgs+=($myBaseDiscordApp) ;;
+		13) bash -c 'source "$HOME/.config/jrs/jrs-scripts-winboat.sh"; winboat' ;;
 		*) echo "Opção $resp é inválida, ignorando..." ;;
 		esac
 	done
