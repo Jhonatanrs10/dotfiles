@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 # Carrega os temas em dicionários
-source "$HOME/.config/jrs/jrs-scripts-themes.sh"
 
 the_look_light() {
     local THEME="adw-gtk3"

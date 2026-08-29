@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 tui_set_theme() {
-	source $HOME/.config/jrs/jrs-scripts-themes.sh
+	source $HOME/.config/jrs/jrs-themes.sh
 
 	# 1. Função TUI Nova
 	select_theme_with_tui() {

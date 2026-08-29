@@ -70,7 +70,8 @@ executar_opcao() {
 		# Extrai os dados usando cut
 		linha_completa="${opcoes[idx - 1]}"
 		script_path=$(echo "$linha_completa" | cut -d':' -f3)
-		funcao=$(echo "$linha_completa" | cut -d':' -f5) # cut conta os ':' vazios
+		funcao=$(echo "$linha_completa" | cut -d':' -f5)
+		acao_final=$(echo "$linha_completa" | cut -d':' -f7) # Captura a instrução de saída
 
 		echo -e "\nExecutando: ${CYAN}$funcao${RESET}\n"
 
@@ -81,6 +82,13 @@ executar_opcao() {
 
 		# Executa a função
 		$funcao
+
+		# Se for marcado para fechar após executar:
+		if [ "$acao_final" == "exit_after" ]; then
+			echo -e "\n${RED}Encerrando o terminal...${RESET}"
+			# sleep 0.5
+			kill -9 $PPID 2>/dev/null || exit 0
+		fi
 
 		echo -e "\n${YELLOW}Press Enter to return to the menu...${RESET}"
 		read
@@ -113,7 +121,7 @@ while true; do
 	q)
 		clear
 		echo -e "${RED}Exiting the menu. See you later!${RESET}"
-		exit 0
+		kill -9 $PPID 2>/dev/null || exit 0
 		;;
 	"")
 		continue

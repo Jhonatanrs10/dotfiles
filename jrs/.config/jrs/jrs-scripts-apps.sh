@@ -1,8 +1,8 @@
 #!/bin/bash
 
 some_apps() {
-	source $HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-packages.sh
-
+	source $HOME/.dotfiles/jrs/.config/jrs/jrs-packages.sh
+	clear
 	echo "Apps to install (pacman/aur/flatpak)
 [1] Steam
 [2] Minecraft (yay)
@@ -10,7 +10,7 @@ some_apps() {
 [4] MangoHud
 [5] Gamescope
 [6] Retroarch
-[7] Virtual Machine 
+[7] Virtual Machine
 [8] OBS
 [9] OBS (flatpak)
 [10] Stream Overlay (flatpak)

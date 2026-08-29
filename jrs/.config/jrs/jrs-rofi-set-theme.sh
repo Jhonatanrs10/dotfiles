@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Carrega os dicionários de temas
-source "$HOME/.config/jrs/jrs-scripts-themes.sh"
+source "$HOME/.config/jrs/jrs-themes.sh"
 
 select_theme_with_rofi() {
     local theme_name display_name
