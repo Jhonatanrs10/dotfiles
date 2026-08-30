@@ -1,7 +1,7 @@
 #!/bin/bash
 
 touch ~/.config/rofi/colors.rasi &&
-	options="  Dotfiles\n󰾔  Web Apps\n󱄋  Reload WM\n  Themes\n  Power Profiles\n  Debug\n󰐦  Quit"
+	options="  Dotfiles\n󱄋  Reload WM\n  Themes\n  Power Profiles\n  Debug\n󰐦  Quit"
 
 menu_cmd="rofi -dmenu -i -p Go"
 

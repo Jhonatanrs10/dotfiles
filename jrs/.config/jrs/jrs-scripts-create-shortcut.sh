@@ -56,6 +56,14 @@ create_shortcut_desktop_retroarch() {
 	create_shortcut_desktop "${RetroArchGameName%.*}" "Retroarch Game" "retroarch -f -L $RetroArchCores/$RetroArchCore $RetroArchDiretorioGames/$RetroArchGameName" "" "false" "Retroarch-${RetroArchGameName%.*}" "retroarch"
 }
 
+create_shortcut_desktop_chromium_web_app(){
+	echo "DIGITE O NOME DO ATALHO (tudo junto sem caracteres)"
+	read atalhoName
+	echo "DIGITE O LINK"
+	read atalhoComando
+	create_shortcut_desktop "$atalhoName" "Chromium Web App" "chromium --app=$atalhoComando" "" "false" "chromium-web-app-$atalhoName" "web-browser"
+}
+
 remove_shortcut_desktop() {
 	echo "DESEJA APAGAR OS ATALHOS $1 (s/n)"
 	read resp
@@ -68,11 +76,13 @@ remove_shortcut_desktop() {
 create_shortcut_menu() {
 	echo "[Create Shortcut Menu]
 [1] Desktop
-[2] Retroarch"
+[2] Retroarch
+[3] Chromium Web App"
 	read resp
 	case $resp in
 	1) create_shortcut_desktop_steps ;;
 	2) create_shortcut_desktop_retroarch ;;
+	3) create_shortcut_desktop_chromium_web_app ;;
 	*) ;;
 	esac
 }
