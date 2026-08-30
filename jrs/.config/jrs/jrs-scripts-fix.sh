@@ -104,7 +104,7 @@ setup_xdg_mime() {
 
 	xdg-mime default thunar.desktop inode/directory
 
-	xdg-mime default feh.desktop image/jpeg image/png image/gif image/bmp image/webp
+	xdg-mime default imv.desktop image/jpeg image/png image/gif image/bmp image/webp
 
 	xdg-mime default xreader.desktop application/pdf
 
@@ -114,7 +114,7 @@ setup_xdg_mime() {
 
 	xdg-mime default ark.desktop application/zip application/x-tar application/x-7z-compressed application/x-rar
 
-	xdg-mime default cmus.desktop audio/mpeg audio/ogg audio/flac audio/x-wav
+	xdg-mime default io.bassi.Amberol.desktop audio/mpeg audio/ogg audio/flac audio/x-wav
 
 	xdg-mime default font-manager.desktop font/ttf font/otf application/x-font-ttf application/x-font-otf
 }
