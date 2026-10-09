@@ -9,7 +9,9 @@ alias my-i3wm="startx ~/.config/i3/startx-i3"
 alias my-cosmic="cosmic-session"
 alias my-kde="dbus-run-session startplasma-wayland"
 # My Alias
-alias gitatt="git add . && git commit -m \"att\" && git push"
+gitatt() {
+    git add . && git commit -m "${1:-att}" && git push
+}
 alias ff="fastfetch"
 alias pacmanclearcache="sudo pacman -Scc"
 alias pacmanaurpackages="sudo pacman -Qm"

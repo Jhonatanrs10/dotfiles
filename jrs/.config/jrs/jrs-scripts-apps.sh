@@ -16,7 +16,8 @@ some_apps() {
 [10] Stream Overlay (flatpak)
 [11] Discord (flatpak)
 [12] Discord
-[13] Winboat (yay)"
+[13] Winboat (yay)
+[14] NodeJS"
 
 	read -r -p "Digite os números desejados (separados por espaço, ex: 1 2 9): " escolhas
 
@@ -40,6 +41,7 @@ some_apps() {
 		11) flatpak_pkgs+=($myBaseDiscordAppflatpak) ;;
 		12) pacman_pkgs+=($myBaseDiscordApp) ;;
 		13) bash -c 'source "$HOME/.config/jrs/jrs-scripts-winboat.sh"; winboat' ;;
+		14) bash -c 'source "$HOME/.config/jrs/jrs-scripts-install-nodejs.sh"; nodejslts' ;;
 		*) echo "Opção $resp é inválida, ignorando..." ;;
 		esac
 	done
