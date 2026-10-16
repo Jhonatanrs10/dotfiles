@@ -104,7 +104,7 @@ setup_xdg_mime() {
 
 	xdg-mime default thunar.desktop inode/directory
 
-	xdg-mime default imv.desktop image/jpeg image/png image/gif image/bmp image/webp
+	xdg-mime default imv-dir.desktop image/jpeg image/png image/gif image/bmp image/webp
 
 	xdg-mime default xreader.desktop application/pdf
 

@@ -27,6 +27,77 @@ StartupNotify=true
 Terminal=$5" >$HOME/.local/share/applications/jrs/jrs-$6.desktop
 }
 
+create_all_exec_shortcuts() {
+    local scripts_dir="$HOME/.dotfiles/jrs/.config/jrs"
+    
+    # Mapeia todos os scripts em um array
+    local scripts=("$scripts_dir"/jrs-exec-*.sh)
+    if [ ! -e "${scripts[0]}" ]; then
+        echo "Nenhum script encontrado em $scripts_dir"
+        return 1
+    fi
+
+    echo "=== Gerador de Atalhos Interativo ==="
+    echo "Scripts disponíveis:"
+    
+    local i=1
+    declare -A script_map
+    for script in "${scripts[@]}"; do
+        [ -e "$script" ] || continue
+        local filename=$(basename "$script")
+        script_map[$i]="$script"
+        echo "  [$i] $filename"
+        ((i++))
+    done
+
+    echo "  [a] Todos os scripts"
+    echo -n "Escolha o número do script (ou 'a' para todos): "
+    read -r escolha
+
+    local selected_scripts=()
+    if [[ "$escolha" =~ ^[0-9]+$ ]] && [ -n "${script_map[$escolha]}" ]; then
+        selected_scripts+=("${script_map[$escolha]}")
+    elif [ "$escolha" = "a" ] || [ "$escolha" = "A" ]; then
+        selected_scripts=("${scripts[@]}")
+    else
+        echo "Opção inválida!"
+        return 1
+    fi
+
+    # Processa os scripts selecionados
+    for script in "${selected_scripts[@]}"; do
+        [ -e "$script" ] || continue
+        local filename=$(basename "$script")
+        local name_raw="${filename#jrs-exec-}"
+        local short_name="${name_raw%.sh}"
+        local default_app_name="$(tr '[:lower:]' '[:upper:]' <<< ${short_name:0:1})${short_name:1}" 
+
+        echo ""
+        echo "--- Configurando atalho para: $filename ---"
+        
+        # Escolha manual do Nome
+        echo -n "Nome do aplicativo [$default_app_name]: "
+        read -r custom_app_name
+        local app_name="${custom_app_name:-$default_app_name}"
+
+        # Escolha manual do Ícone
+        echo -n "Nome ou caminho do ícone (ex: utilities-terminal ou /path/to/icon.png) [$short_name]: "
+        read -r custom_icon
+        local icon_name="${custom_icon:-$short_name}"
+
+        create_shortcut_desktop \
+            "$app_name" \
+            "Atalho gerado para $app_name" \
+            "$script" \
+            "" \
+            "false" \
+            "exec-$short_name" \
+            "$icon_name"
+            
+        echo "Sucesso! Atalho criado para: $app_name"
+    done
+}
+
 create_shortcut_desktop_steps() {
 	echo "DIGITE O NOME DO ATALHO (tudo junto sem caracteres)"
 	read atalhoName
@@ -77,12 +148,14 @@ create_shortcut_menu() {
 	echo "[Create Shortcut Menu]
 [1] Desktop
 [2] Retroarch
-[3] Chromium Web App"
+[3] Chromium Web App
+[4] Desktop for (jrs-exec-*) Files"
 	read resp
 	case $resp in
 	1) create_shortcut_desktop_steps ;;
 	2) create_shortcut_desktop_retroarch ;;
 	3) create_shortcut_desktop_chromium_web_app ;;
+	4) create_all_exec_shortcuts ;;
 	*) ;;
 	esac
 }

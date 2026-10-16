@@ -214,8 +214,6 @@ setup_configs() {
 		setup_i3_touchpad
 		setup_lid_switch_ignore
 		setup_xdg_mime
-		create_shortcut_desktop "DiscordX (Flatpak)" "Discord em Xwayland" "env ELECTRON_OZONE_PLATFORM_HINT= com.discordapp.Discord --no-sandbox" "$HOME" "false" "discordFlatpak" "discord"
-		create_shortcut_desktop "DiscordX (Pacman)" "Discord em Xwayland" "env ELECTRON_OZONE_PLATFORM_HINT= discord --no-sandbox" "$HOME" "false" "discordPacman" "discord"
 		create_file_bashrc
 		create_file_bash_profile
 		create_file_profile
