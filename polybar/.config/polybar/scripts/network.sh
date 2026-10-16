@@ -16,10 +16,10 @@ if [ "$WIFI_STATUS" = "enabled" ]; then
     SSID=$(nmcli -t -f active,ssid dev wifi | grep '^yes' | cut -d: -f2)
     
     if [ -n "$SSID" ]; then
-        echo ""
+        echo "    "
     else
-        echo "󰤮"
+        echo "  󰤮  "
     fi
 else
-    echo "󰤭"
+    echo "  󰤭  "
 fi
