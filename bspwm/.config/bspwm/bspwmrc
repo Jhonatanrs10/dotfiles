@@ -27,6 +27,7 @@ bspc config focus_follows_pointer true
 
 #AutoStart
 xsetroot -cursor_name left_ptr &
+/usr/bin/dbus-update-activation-environment --all
 /usr/bin/dunst &
 /usr/bin/polkit-gnome/polkit-gnome-authentucation-agent-1 &
 /usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg &

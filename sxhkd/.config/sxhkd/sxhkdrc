@@ -6,6 +6,10 @@
 super + shift + r
 	bspc wm -r; pkill -USR1 -x sxhkd
 
+#Power Profiles
+super + p
+	source "$HOME/.config/jrs/jrs-scripts-power-profiles.sh" && profile-roll
+
 # terminal emulator
 super + Return
 	alacritty
@@ -27,6 +31,10 @@ super + {_,shift + }q
 
 alt + F4
 	bspc node -c
+
+# xcolor
+super + z
+	xcolor -s
 
 # ==========================================
 # GERENCIAMENTO DE JANELAS E FOCO
@@ -94,14 +102,9 @@ super + alt + {Left,Down,Up,Right}
 super + t
 	notify-send -u low -t 3000 -h string:x-dunst-stack-tag:info "󰃭 $(date '+%A, %d de %B')" "󰥔 $(date '+%H:%M:%S')"
 
-# Status do Sistema (RAM, Bateria, Rede e Bluetooth com ícones Nerd Font)
-super + i
-	notify-send -u low -t 5000 -h string:x-dunst-stack-tag:info "󰌢 Status do Sistema" "$(awk '/MemTotal/ {t=$2} /MemAvailable/ {a=$2} END {printf \"󰍛 RAM: %.1fGB / %.1fGB (%.0f%%)\\n\", (t-a)/1024/1024, t/1024/1024, (t-a)*100/t}' /proc/meminfo)󰁹 Bateria: $(cat /sys/class/power_supply/BAT*/capacity 2>/dev/null || echo 'N/A')%\n󰤨 Rede: $(nmcli -t -f active,ssid dev wifi 2>/dev/null | grep '^sim' | cut -d: -f2 || echo 'Desconectado')\n󰂯 Bluetooth: $(bluetoothctl show 2>/dev/null | grep -q 'Powered: yes' && echo 'Ativo' || echo 'Inativo')"
-
 # Previsão do Tempo rápida (Ícone de clima Nerd Font)
-super + shift + w
+super + ctrl + w
 	notify-send -u low -t 5000 -h string:x-dunst-stack-tag:info "󰖐 Clima" "$(curl -s 'wttr.in/?format=1' || echo 'Sem conexão')"
-
 
 # ==========================================
 # ÁUDIO E BRILHO (COM ÍCONES NERD FONTS)
@@ -137,17 +140,9 @@ XF86AudioMicMute
 
 super + shift + e
 	bspc quit
-super + ctrl + 7
-	systemctl suspend
+
 super + l 
 	i3lock -c 000000 && sleep 1
-super + ctrl + 8
-	systemctl hibernate
-super + ctrl + 9 
-	systemctl reboot
-super + Ctrl + 0 
-	systemctl poweroff -i
-
 
 # ==========================================
 # CAPTURA DE TELA (PRINT SCREEN)
@@ -155,5 +150,6 @@ super + Ctrl + 0
 
 super + Print
 	mkdir -p ~/Pictures/PrtSc && scrot ~/Pictures/PrtSc/Screenshot_%Y-%m-%d_%H-%M-%S.png
+
 Print
 	mkdir -p ~/Pictures/PrtSc && scrot -f -s ~/Pictures/PrtSc/Cutshot_%Y-%m-%d_%H-%M-%S.png

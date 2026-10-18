@@ -224,7 +224,7 @@ setup_configs() {
 
 setup_desktop() {
 	echo "DESKTOP
-[1]Hyprland [2]I3wm [3]Gnome [4]KDE [5]Xfce"
+[1]Hyprland [2]I3wm [3]Bspwm [4]Gnome [5]KDE [6]Xfce"
 	read resp
 	case $resp in
 	1)
@@ -236,14 +236,18 @@ setup_desktop() {
 		#startx /usr/bin/i3
 		;;
 	3)
+		sudo pacman -S $myBaseBspwm $wmAudioControl $wmBacklightControl $wmBluetoothControl $wmNetworkManager $wmKeyring $wmDiskStatus $wmMusicPlayer $wmPrinters $wmCalculator $wmFontManager $wmImageViewer $wmAppearance $wmPolkit $wmBaseFileManager $wmBaseTerminal $wmBasePdfApp --needed
+		#startx /usr/bin/bspwm
+		;;
+	4)
 		sudo pacman -S $myBaseGnome --needed
 		sudo systemctl enable "gdm"
 		;;
-	4)
+	5)
 		sudo pacman -S $myBaseKde --needed
 		sudo systemctl enable "sddm"
 		;;
-	5)
+	6)
 		sudo pacman -S $myBaseXfce4 --needed
 		sudo systemctl enable "lightdm"
 		;;
