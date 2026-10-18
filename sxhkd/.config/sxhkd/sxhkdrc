@@ -6,10 +6,6 @@
 super + shift + r
 	bspc wm -r; pkill -USR1 -x sxhkd
 
-#Power Profiles
-super + p
-	source "$HOME/.config/jrs/jrs-scripts-power-profiles.sh" && profile-roll
-
 # terminal emulator
 super + Return
 	alacritty
@@ -35,6 +31,16 @@ alt + F4
 # xcolor
 super + z
 	xcolor -s
+
+# Dispara o MPV com o link da área de transferência e mostra uma prévia do link na notificação
+super + v
+    ~/.config/jrs/jrs-exec-mpv.sh
+
+super + ctrl + d
+	~/.config/jrs/jrs-exec-discord.sh
+
+super + g
+	chromium --app=https://gemini.google.com/app
 
 # ==========================================
 # GERENCIAMENTO DE JANELAS E FOCO
@@ -143,6 +149,9 @@ super + shift + e
 
 super + l 
 	i3lock -c 000000 && sleep 1
+
+super + p
+	source "$HOME/.config/jrs/jrs-scripts-power-profiles.sh" && profile-roll
 
 # ==========================================
 # CAPTURA DE TELA (PRINT SCREEN)
