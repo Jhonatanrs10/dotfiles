@@ -9,6 +9,7 @@ hypr/.config/hypr/hyprpaper.sh
 hypr/.config/hypr/monitors.conf
 hypr/.config/hypr/workspaces.conf
 i3/.config/i3/colors
+bspwm/.config/bspwm/colors
 nvim/.config/nvim/bkp/colors/colors.lua
 nvim/.config/nvim/lua/config/colors.lua
 polybar/.config/polybar/colors.ini

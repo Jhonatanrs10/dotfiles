@@ -5,7 +5,8 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 # DE
 alias my-hyprland="start-hyprland"
-alias my-i3wm="startx ~/.config/i3/startx-i3"
+alias my-i3wm="startx ~/.config/i3/startx"
+alias my-bspwm="startx ~/.config/bspwm/startx"
 alias my-cosmic="cosmic-session"
 alias my-kde="dbus-run-session startplasma-wayland"
 # My Alias

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-reload_Hyprland() {
+reload_hyprland() {
 	hyprctl reload &
 	killall waybar
 	sleep 1
@@ -15,6 +15,14 @@ reload_i3() {
 	killall polybar &
 	i3-msg restart &
 	i3-msg reload &
+	dunstctl reload &
+	pkill -USR2 btop &
+	#dunstify -t 1500 --hints int:transient:1 "$XDG_CURRENT_DESKTOP" "Reloading" --icon=preferences-desktop-theme
+}
+
+reload_bspwm() {
+	bspc wm -r &
+	pkill -USR1 -x sxhkd &
 	dunstctl reload &
 	pkill -USR2 btop &
 	#dunstify -t 1500 --hints int:transient:1 "$XDG_CURRENT_DESKTOP" "Reloading" --icon=preferences-desktop-theme

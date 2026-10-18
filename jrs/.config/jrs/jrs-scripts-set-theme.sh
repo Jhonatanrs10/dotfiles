@@ -259,6 +259,32 @@ apply_theme() {
     color6 = "#'$JRS_BLACK_COLOR'"
     color7 = "#'$JRS_BLACK_COLOR'"' >~/.config/hypr/colors.lua
 
+	echo 'exec_always --no-startup-id feh --bg-fill ~/.config/wallpapers/'$JRS_WALLPAPER'
+    set $color1 #'$JRS_MAIN_COLOR'
+    set $color2 #'$JRS_BAR_COLOR'
+    set $color3 #'$JRS_TEXT_COLOR'
+    set $color4 #'$JRS_UNFOCUSED_COLOR'
+    set $color5 #'$JRS_BLACK_COLOR'
+    set $color6 #'$JRS_BLACK_COLOR'
+    set $color7 #'$JRS_BLACK_COLOR'
+
+    client.focused          $color1 $color1 $color3 $color1 $color1
+    client.focused_inactive $color1 $color4 $color2 $color4 $color4
+    client.unfocused        $color4 $color4 $color2 $color4 $color4
+    client.urgent           $color7 $color5 $color3 $color5 $color5
+    client.placeholder      $color6 $color6 $color3 $color6 $color6
+    client.background       $color3
+    ' >~/.config/i3/colors
+
+	echo 'feh --bg-fill ~/.config/wallpapers/'$JRS_WALLPAPER'
+    color1="#'$JRS_MAIN_COLOR'"
+    color2="#'$JRS_BAR_COLOR'"
+    color3="#'$JRS_TEXT_COLOR'"
+    color4="#'$JRS_UNFOCUSED_COLOR'"
+    color5="#'$JRS_BLACK_COLOR'"
+    color6="#'$JRS_BLACK_COLOR'"
+    color7="#'$JRS_BLACK_COLOR'"' >~/.config/bspwm/colors
+
     echo "@define-color base00 #$JRS_MAIN_COLOR;
     @define-color base01 #$JRS_BAR_COLOR;
     @define-color base02 #$JRS_TEXT_COLOR;
@@ -292,23 +318,6 @@ apply_theme() {
         base06: #$JRS_WHITE_COLOR;
         base07: #$JRS_BLACK_COLOR;
     }" >~/.config/rofi/colors.rasi
-
-    echo 'exec_always --no-startup-id feh --bg-fill ~/.config/wallpapers/'$JRS_WALLPAPER'
-    set $color1 #'$JRS_MAIN_COLOR'
-    set $color2 #'$JRS_BAR_COLOR'
-    set $color3 #'$JRS_TEXT_COLOR'
-    set $color4 #'$JRS_UNFOCUSED_COLOR'
-    set $color5 #'$JRS_BLACK_COLOR'
-    set $color6 #'$JRS_BLACK_COLOR'
-    set $color7 #'$JRS_BLACK_COLOR'
-
-    client.focused          $color1 $color1 $color3 $color1 $color1
-    client.focused_inactive $color1 $color4 $color2 $color4 $color4
-    client.unfocused        $color4 $color4 $color2 $color4 $color4
-    client.urgent           $color7 $color5 $color3 $color5 $color5
-    client.placeholder      $color6 $color6 $color3 $color6 $color6
-    client.background       $color3
-    ' >~/.config/i3/colors
 
     echo '-- Função auxiliar para definir destaques
     local hi = function(group, opts)

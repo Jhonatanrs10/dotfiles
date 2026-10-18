@@ -1,0 +1,159 @@
+# ==========================================
+# GERAL & SISTEMA
+# ==========================================
+
+# reset sxhkd e bspwm
+super + shift + r
+	bspc wm -r; pkill -USR1 -x sxhkd
+
+# terminal emulator
+super + Return
+	alacritty
+
+# program launcher (Branco e Preto)
+super + d
+	source "$HOME/.config/bspwm/colors" && dmenu_run -nb "$color1" -nf "$color2" -sb "$color2" -sf "$color1"
+
+# gerenciador de arquivos e navegador
+super + x
+	thunar
+
+super + c
+	chromium
+
+# close and kill
+super + {_,shift + }q
+	bspc node -c
+
+alt + F4
+	bspc node -c
+
+# ==========================================
+# GERENCIAMENTO DE JANELAS E FOCO
+# ==========================================
+
+# alternar entre layout tiled e monocle
+super + w
+	bspc desktop -l next
+
+# definir estado da janela
+super + {e,shift + space,button2,f}
+	bspc node -t {\~tiled,\~floating,\~floating,\~fullscreen}
+
+# focar nó na direção dada
+super + {_,shift + }{Left,Down,Up,Right}
+	bspc node -{f,s} {west,south,north,east}
+
+# focar nó por salto de caminho
+super + {p,b,comma,period}
+	bspc node -f @{parent,brother,first,second}
+
+# focar próxima/anterior janela no desktop atual
+alt + Tab
+	bspc node -f {next}.local.!hidden.window
+
+# focar próximo/anterior desktop no monitor atual
+super + bracket{left,right}
+	bspc desktop -f {prev,next}.local
+
+# focar último nó/desktop
+super + Tab
+	bspc {node,desktop} -f last
+
+# focar nó mais antigo ou mais novo no histórico
+super + {o,i}
+	bspc wm -h off; \
+	bspc node {older,newer} -f; \
+	bspc wm -h on
+
+# focar ou enviar para o desktop dado
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+# pré-selecionar a proporção
+super + ctrl + {1-9}
+	bspc node -o 0.{1-9}
+
+# cancelar pré-seleção
+super + ctrl + space
+	bspc node -p cancel
+
+# expandir janela movendo um lado para fora
+super + alt + {Left,Down,Up,Right}
+	bspc node -z {left -20 0 || bspc node -z right -20 0, \
+        bottom 0 20 || bspc node -z top 0 20,\
+        top 0 -20 || bspc node -z bottom 0 -20,\
+        right 20 0 || bspc node -z left 20 0}
+
+
+# ==========================================
+# WIDGETS DE NOTIFICAÇÃO (DUNST COM NERD FONTS)
+# ==========================================
+
+# Hora e Data completa (Ícone de relógio/calendário Nerd Font)
+super + t
+	notify-send -u low -t 3000 -h string:x-dunst-stack-tag:info "󰃭 $(date '+%A, %d de %B')" "󰥔 $(date '+%H:%M:%S')"
+
+# Status do Sistema (RAM, Bateria, Rede e Bluetooth com ícones Nerd Font)
+super + i
+	notify-send -u low -t 5000 -h string:x-dunst-stack-tag:info "󰌢 Status do Sistema" "$(awk '/MemTotal/ {t=$2} /MemAvailable/ {a=$2} END {printf \"󰍛 RAM: %.1fGB / %.1fGB (%.0f%%)\\n\", (t-a)/1024/1024, t/1024/1024, (t-a)*100/t}' /proc/meminfo)󰁹 Bateria: $(cat /sys/class/power_supply/BAT*/capacity 2>/dev/null || echo 'N/A')%\n󰤨 Rede: $(nmcli -t -f active,ssid dev wifi 2>/dev/null | grep '^sim' | cut -d: -f2 || echo 'Desconectado')\n󰂯 Bluetooth: $(bluetoothctl show 2>/dev/null | grep -q 'Powered: yes' && echo 'Ativo' || echo 'Inativo')"
+
+# Previsão do Tempo rápida (Ícone de clima Nerd Font)
+super + shift + w
+	notify-send -u low -t 5000 -h string:x-dunst-stack-tag:info "󰖐 Clima" "$(curl -s 'wttr.in/?format=1' || echo 'Sem conexão')"
+
+
+# ==========================================
+# ÁUDIO E BRILHO (COM ÍCONES NERD FONTS)
+# ==========================================
+
+# Aumentar Volume
+super + ctrl + Up 
+	pactl set-sink-volume @DEFAULT_SINK@ +5% && notify-send -h string:x-dunst-stack-tag:volume -h int:value:"$(pamixer --get-volume 2>/dev/null || pactl get-sink-volume @DEFAULT_SINK@ | grep -oP '\d+%' | head -n 1 | tr -d '%')" "󰕾 Volume"
+
+XF86AudioRaiseVolume
+	pactl set-sink-volume @DEFAULT_SINK@ +5% && notify-send -h string:x-dunst-stack-tag:volume -h int:value:"$(pamixer --get-volume 2>/dev/null || pactl get-sink-volume @DEFAULT_SINK@ | grep -oP '\d+%' | head -n 1 | tr -d '%')" "󰕾 Volume"
+
+# Diminuir Volume
+super + ctrl + Down
+	pactl set-sink-volume @DEFAULT_SINK@ -5% && notify-send -h string:x-dunst-stack-tag:volume -h int:value:"$(pamixer --get-volume 2>/dev/null || pactl get-sink-volume @DEFAULT_SINK@ | grep -oP '\d+%' | head -n 1 | tr -d '%')" "󰖀 Volume"
+
+XF86AudioLowerVolume
+	pactl set-sink-volume @DEFAULT_SINK@ -5% && notify-send -h string:x-dunst-stack-tag:volume -h int:value:"$(pamixer --get-volume 2>/dev/null || pactl get-sink-volume @DEFAULT_SINK@ | grep -oP '\d+%' | head -n 1 | tr -d '%')" "󰖀 Volume"
+
+# Mutar / Desmutar Áudio
+super + ctrl + m
+	pactl set-sink-mute @DEFAULT_SINK@ toggle && notify-send -h string:x-dunst-stack-tag:volume "󰝟 Áudio" "$(pactl get-sink-mute @DEFAULT_SINK@ | grep -q 'yes' && echo 'Mutado' || echo 'Ativo')"
+
+XF86AudioMute
+	pactl set-sink-mute @DEFAULT_SINK@ toggle && notify-send -h string:x-dunst-stack-tag:volume "󰝟 Áudio" "$(pactl get-sink-mute @DEFAULT_SINK@ | grep -q 'yes' && echo 'Mutado' || echo 'Ativo')"
+
+# Mutar / Desmutar Microfone
+XF86AudioMicMute
+	pactl set-source-mute @DEFAULT_SOURCE@ toggle && notify-send -h string:x-dunst-stack-tag:volume "󰍭 Microfone" "$(pactl get-source-mute @DEFAULT_SOURCE@ | grep -q 'yes' && echo 'Mutado' || echo 'Ativo')"
+# ==========================================
+# ENERGIA E SESSÃO
+# ==========================================
+
+super + shift + e
+	bspc quit
+super + ctrl + 7
+	systemctl suspend
+super + l 
+	i3lock -c 000000 && sleep 1
+super + ctrl + 8
+	systemctl hibernate
+super + ctrl + 9 
+	systemctl reboot
+super + Ctrl + 0 
+	systemctl poweroff -i
+
+
+# ==========================================
+# CAPTURA DE TELA (PRINT SCREEN)
+# ==========================================
+
+super + Print
+	mkdir -p ~/Pictures/PrtSc && scrot ~/Pictures/PrtSc/Screenshot_%Y-%m-%d_%H-%M-%S.png
+Print
+	mkdir -p ~/Pictures/PrtSc && scrot -f -s ~/Pictures/PrtSc/Cutshot_%Y-%m-%d_%H-%M-%S.png
