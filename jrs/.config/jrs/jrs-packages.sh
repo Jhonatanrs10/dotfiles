@@ -50,7 +50,7 @@ wmBacklightControl="brightnessctl"
 wmBluetoothControl="bluetui"
 wmNetworkManager="networkmanager"
 wmKeyring="gnome-keyring seahorse"
-wmDiskStatus="baobab"
+wmDiskStatus="baobab ncdu"
 wmMusicPlayer="cmus"
 wmPrinters="system-config-printer"
 wmCalculator="galculator"
@@ -82,9 +82,9 @@ myBaseMinecraft="minecraft-launcher curseforge"
 myBaseHeroic="heroic-games-launcher-bin"
 myBaseMangoHud="mangohud lib32-mangohud"
 myBaseGamescope="gamescope lib32-gamemode gamemode"
-myBaseRetroarch="retroarch retroarch-assets-xmb retroarch-assets-ozone libretro-snes9x libretro-mgba libretro-beetle-psx libretro-parallel-n64"
+myBaseRetroarch="mgba-qt retroarch retroarch-assets-xmb retroarch-assets-ozone libretro-snes9x libretro-mgba libretro-beetle-psx libretro-parallel-n64"
 #Virtualization
-myBaseVirt="qemu libvirt ebtables dnsmasq iproute2 openbsd-netcat virt-manager" #bridge-utils
+myBaseVirt="qemu-desktop libvirt ebtables dnsmasq iproute2 openbsd-netcat virt-manager" #bridge-utils
 #Recording
 myBaseOBS="obs-studio obs-studio-plugin-browser pavucontrol"
 myBaseOBSflatpak="com.obsproject.Studio com.obsproject.Studio.Plugin.MoveTransition com.obsproject.Studio.Plugin.WaylandHotkeys"
