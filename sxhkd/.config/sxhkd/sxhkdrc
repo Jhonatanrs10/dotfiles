@@ -36,11 +36,21 @@ super + z
 super + v
     ~/.config/jrs/jrs-exec-mpv.sh
 
+# dotfiles
+super + period
+	code ~/.dotfiles
+
 super + ctrl + d
 	~/.config/jrs/jrs-exec-discord.sh
 
 super + g
 	chromium --app=https://gemini.google.com/app
+
+super + y
+	chromium --app=https://youtube.com/
+
+super + t
+	chromium --app=https://twitch.tv/
 
 # ==========================================
 # GERENCIAMENTO DE JANELAS E FOCO
@@ -105,7 +115,7 @@ super + alt + {Left,Down,Up,Right}
 # ==========================================
 
 # Hora e Data completa (Ícone de relógio/calendário Nerd Font)
-super + t
+super + ctrl + t
 	notify-send -u low -t 3000 -h string:x-dunst-stack-tag:info "󰃭 $(date '+%A, %d de %B')" "󰥔 $(date '+%H:%M:%S')"
 
 # Previsão do Tempo rápida (Ícone de clima Nerd Font)

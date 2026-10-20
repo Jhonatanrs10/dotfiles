@@ -82,7 +82,7 @@ myBaseMinecraft="minecraft-launcher curseforge"
 myBaseHeroic="heroic-games-launcher-bin"
 myBaseMangoHud="mangohud lib32-mangohud"
 myBaseGamescope="gamescope lib32-gamemode gamemode"
-myBaseRetroarch="mgba-qt retroarch retroarch-assets-xmb retroarch-assets-ozone libretro-snes9x libretro-mgba libretro-beetle-psx libretro-parallel-n64"
+myBaseRetroarch="mgba-qt retroarch retroarch-assets-xmb retroarch-assets-ozone libretro-snes9x libretro-mgba libretro-beetle-psx libretro-parallel-n64 libretro-mupen64plus-next"
 #Virtualization
 myBaseVirt="qemu-desktop libvirt ebtables dnsmasq iproute2 openbsd-netcat virt-manager" #bridge-utils
 #Recording
