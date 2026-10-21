@@ -122,6 +122,14 @@ super + ctrl + t
 super + ctrl + w
 	notify-send -u low -t 5000 -h string:x-dunst-stack-tag:info "󰖐 Clima" "$(curl -s 'wttr.in/?format=1' || echo 'Sem conexão')"
 
+# Status Energia
+super + ctrl + b
+    notify-send -u low -t 3000 -h string:x-dunst-stack-tag:info "󰚥 Status de Energia" "󰁹 $(cat /sys/class/power_supply/BAT*/capacity 2>/dev/null || echo 'N/A')% ($(cat /sys/class/power_supply/BAT*/status 2>/dev/null || echo 'N/A'))\n󰓅 Perfil: $(powerprofilesctl get 2>/dev/null || echo 'N/A')"
+
+# Power Profile
+super + ctrl + p
+	source ~/.config/jrs/jrs-scripts-power-profiles.sh && profile-roll
+
 # ==========================================
 # ÁUDIO E BRILHO (COM ÍCONES NERD FONTS)
 # ==========================================
@@ -151,7 +159,7 @@ XF86AudioMute
 XF86AudioMicMute
 	pactl set-source-mute @DEFAULT_SOURCE@ toggle && notify-send -h string:x-dunst-stack-tag:volume "󰍭 Microfone" "$(pactl get-source-mute @DEFAULT_SOURCE@ | grep -q 'yes' && echo 'Mutado' || echo 'Ativo')"
 # ==========================================
-# ENERGIA E SESSÃO
+# SESSÃO
 # ==========================================
 
 super + shift + e
@@ -159,9 +167,6 @@ super + shift + e
 
 super + l 
 	i3lock -c 000000 && sleep 1
-
-super + p
-	source "$HOME/.config/jrs/jrs-scripts-power-profiles.sh" && profile-roll
 
 # ==========================================
 # CAPTURA DE TELA (PRINT SCREEN)
