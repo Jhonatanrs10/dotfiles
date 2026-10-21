@@ -377,18 +377,19 @@ apply_theme() {
     opacity = $JRS_WAYBAR_OPACITY" >$HOME/.config/alacritty/colors.toml
 
     echo '#!/bin/bash
-    [global]
-        frame_color = "#'$JRS_MAIN_COLOR'"
-    [urgency_low]
-        background = "#'$JRS_BAR_COLOR$JRS_POLYBAR_OPACITY'"
-        foreground = "#'$JRS_TEXT_COLOR'"
-    [urgency_normal]
-        background = "#'$JRS_BAR_COLOR$JRS_POLYBAR_OPACITY'"
-        foreground = "#'$JRS_TEXT_COLOR'"
-    [urgency_critical]
-        background = "#'$JRS_BAR_COLOR$JRS_POLYBAR_OPACITY'"
-        foreground = "#'$JRS_TEXT_COLOR'"
-        frame_color = "#'$JRS_BAD_COLOR'"' >$HOME/.config/dunst/dunstrc.d/colors.conf
+[global]
+	frame_color = "#'$JRS_MAIN_COLOR'"
+	highlight = "#'$JRS_MAIN_COLOR'"
+[urgency_low]
+    background = "#'$JRS_BAR_COLOR$JRS_POLYBAR_OPACITY'"
+    foreground = "#'$JRS_TEXT_COLOR'"
+[urgency_normal]
+    background = "#'$JRS_BAR_COLOR$JRS_POLYBAR_OPACITY'"
+    foreground = "#'$JRS_TEXT_COLOR'"
+[urgency_critical]
+    background = "#'$JRS_BAR_COLOR$JRS_POLYBAR_OPACITY'"
+    foreground = "#'$JRS_TEXT_COLOR'"
+    frame_color = "#'$JRS_BAD_COLOR'"' >$HOME/.config/dunst/dunstrc.d/colors.conf
 
     echo '# Theme: colors
     # By: Jhonatanrs

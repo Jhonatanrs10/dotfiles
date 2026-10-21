@@ -204,10 +204,10 @@ create_shortcut_desktop_retroarch2() {
 	DESKTOP_NAME="retroarch-$GAME_SLUG"
 	DESKTOP_FILE_PATH="$DESKTOP_DIR/$DESKTOP_NAME.desktop"
 
-	# Comando exato do RetroArch que será executado
+	# Comando exato do RetroArch que será executado (usando variáveis expandidas corretamente)
 	RETROARCH_EXEC="retroarch -f -L \"$SELECTED_CORE_PATH\" \"$SELECTED_ROM_PATH\""
 
-	# 5. Criando apenas o arquivo .desktop
+	# 5. Criando o arquivo .desktop
 	cat <<EOF >"$DESKTOP_FILE_PATH"
 [Desktop Entry]
 Version=1.0
@@ -222,13 +222,11 @@ EOF
 
 	chmod +x "$DESKTOP_FILE_PATH"
 
-	# 6. Cria um link simbólico direto no bin apenas chamando o comando do retroarch em uma linha (sem criar arquivo .sh físico)
-	# Isso permite que você digite o nome no terminal sem precisar de um script .sh separado.
+	# 6. Criando o executável no bin garantindo que ele repasse o comando exato com aspas
 	LN_PATH="$BIN_DIR/$DESKTOP_NAME"
 	rm -f "$LN_PATH"
-	ln -s "$(which retroarch)" "$LN_PATH" # Alternativa: se quiser rodar direto, criamos um pequeno symlink apontando para o comando ou usamos o exec direto.
-    # O jeito mais limpo sem gerar arquivo .sh é criar um symlink executável via wrapper de uma linha:
-    cat <<EOF >"$LN_PATH"
+	
+	cat <<EOF >"$LN_PATH"
 #!/usr/bin/env bash
 $RETROARCH_EXEC
 EOF
