@@ -73,7 +73,7 @@ super + {p,b,comma,period}
 	bspc node -f @{parent,brother,first,second}
 
 # focar próxima/anterior janela no desktop atual
-alt + Tab
+super + Tab
 	bspc node -f {next}.local.!hidden.window
 
 # focar próximo/anterior desktop no monitor atual
@@ -81,7 +81,7 @@ super + bracket{left,right}
 	bspc desktop -f {prev,next}.local
 
 # focar último nó/desktop
-super + Tab
+alt + Tab
 	bspc {node,desktop} -f last
 
 # focar nó mais antigo ou mais novo no histórico

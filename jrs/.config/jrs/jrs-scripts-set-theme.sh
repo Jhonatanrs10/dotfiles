@@ -259,7 +259,7 @@ apply_theme() {
     color6 = "#'$JRS_BLACK_COLOR'"
     color7 = "#'$JRS_BLACK_COLOR'"' >~/.config/hypr/colors.lua
 
-	echo 'exec_always --no-startup-id feh --bg-fill ~/.config/wallpapers/'$JRS_WALLPAPER'
+	echo 'exec_always --no-startup-id feh --bg-max ~/.config/wallpapers/'$JRS_WALLPAPER'
     set $color1 #'$JRS_MAIN_COLOR'
     set $color2 #'$JRS_BAR_COLOR'
     set $color3 #'$JRS_TEXT_COLOR'
@@ -276,7 +276,7 @@ apply_theme() {
     client.background       $color3
     ' >~/.config/i3/colors
 
-	echo 'feh --bg-fill ~/.config/wallpapers/'$JRS_WALLPAPER'
+	echo 'feh --bg-max ~/.config/wallpapers/'$JRS_WALLPAPER'
     color1="#'$JRS_MAIN_COLOR'"
     color2="#'$JRS_BAR_COLOR'"
     color3="#'$JRS_TEXT_COLOR'"
