@@ -167,13 +167,13 @@ super + ctrl + Right
 	brightnessctl set 5%- && notify-send -h string:x-dunst-stack-tag:indicador -h int:value:"$(( 105 - ($(brightnessctl get) * 105 / $(brightnessctl max)) ))" "󰃠 Brilho"
 
 super + ctrl + Left
-	brightnessctl set 5%+ && notify-send -h string:x-dunst-stack-tag:indicador -h int:value:"$(( 100 - ($(brightnessctl get) * 100 / $(brightnessctl max)) ))" "󰃞 Brilho"	
+	brightnessctl set 5%+ && notify-send -h string:x-dunst-stack-tag:indicador -h int:value:"$(( 105 - ($(brightnessctl get) * 105 / $(brightnessctl max)) ))" "󰃞 Brilho"	
 
 XF86MonBrightnessUp
 	brightnessctl set 5%- && notify-send -h string:x-dunst-stack-tag:indicador -h int:value:"$(( 105 - ($(brightnessctl get) * 105 / $(brightnessctl max)) ))" "󰃠 Brilho"
 
 XF86MonBrightnessDown
-	brightnessctl set 5%+ && notify-send -h string:x-dunst-stack-tag:indicador -h int:value:"$(( 100 - ($(brightnessctl get) * 100 / $(brightnessctl max)) ))" "󰃞 Brilho"	
+	brightnessctl set 5%+ && notify-send -h string:x-dunst-stack-tag:indicador -h int:value:"$(( 105 - ($(brightnessctl get) * 105 / $(brightnessctl max)) ))" "󰃞 Brilho"	
 	
 # ==========================================
 # SESSÃO
