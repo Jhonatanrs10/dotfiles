@@ -130,34 +130,51 @@ super + ctrl + b
 super + ctrl + p
 	source ~/.config/jrs/jrs-scripts-power-profiles.sh && profile-roll
 
+# Status de Conexão (Wi-Fi/Ethernet + IP)
+super + ctrl + i
+	source ~/.config/jrs/jrs-exec-internet-status.sh
+
 # ==========================================
 # ÁUDIO E BRILHO (COM ÍCONES NERD FONTS)
 # ==========================================
 
 # Aumentar Volume
 super + ctrl + Up 
-	pactl set-sink-volume @DEFAULT_SINK@ +5% && notify-send -h string:x-dunst-stack-tag:volume -h int:value:"$(pamixer --get-volume 2>/dev/null || pactl get-sink-volume @DEFAULT_SINK@ | grep -oP '\d+%' | head -n 1 | tr -d '%')" "󰕾 Volume"
+	pactl set-sink-volume @DEFAULT_SINK@ +5% && notify-send -h string:x-dunst-stack-tag:indicador -h int:value:"$(pamixer --get-volume 2>/dev/null || pactl get-sink-volume @DEFAULT_SINK@ | grep -oP '\d+%' | head -n 1 | tr -d '%')" "󰕾 Volume"
 
 XF86AudioRaiseVolume
-	pactl set-sink-volume @DEFAULT_SINK@ +5% && notify-send -h string:x-dunst-stack-tag:volume -h int:value:"$(pamixer --get-volume 2>/dev/null || pactl get-sink-volume @DEFAULT_SINK@ | grep -oP '\d+%' | head -n 1 | tr -d '%')" "󰕾 Volume"
+	pactl set-sink-volume @DEFAULT_SINK@ +5% && notify-send -h string:x-dunst-stack-tag:indicador -h int:value:"$(pamixer --get-volume 2>/dev/null || pactl get-sink-volume @DEFAULT_SINK@ | grep -oP '\d+%' | head -n 1 | tr -d '%')" "󰕾 Volume"
 
 # Diminuir Volume
 super + ctrl + Down
-	pactl set-sink-volume @DEFAULT_SINK@ -5% && notify-send -h string:x-dunst-stack-tag:volume -h int:value:"$(pamixer --get-volume 2>/dev/null || pactl get-sink-volume @DEFAULT_SINK@ | grep -oP '\d+%' | head -n 1 | tr -d '%')" "󰖀 Volume"
+	pactl set-sink-volume @DEFAULT_SINK@ -5% && notify-send -h string:x-dunst-stack-tag:indicador -h int:value:"$(pamixer --get-volume 2>/dev/null || pactl get-sink-volume @DEFAULT_SINK@ | grep -oP '\d+%' | head -n 1 | tr -d '%')" "󰖀 Volume"
 
 XF86AudioLowerVolume
-	pactl set-sink-volume @DEFAULT_SINK@ -5% && notify-send -h string:x-dunst-stack-tag:volume -h int:value:"$(pamixer --get-volume 2>/dev/null || pactl get-sink-volume @DEFAULT_SINK@ | grep -oP '\d+%' | head -n 1 | tr -d '%')" "󰖀 Volume"
+	pactl set-sink-volume @DEFAULT_SINK@ -5% && notify-send -h string:x-dunst-stack-tag:indicador -h int:value:"$(pamixer --get-volume 2>/dev/null || pactl get-sink-volume @DEFAULT_SINK@ | grep -oP '\d+%' | head -n 1 | tr -d '%')" "󰖀 Volume"
 
 # Mutar / Desmutar Áudio
 super + ctrl + m
-	pactl set-sink-mute @DEFAULT_SINK@ toggle && notify-send -h string:x-dunst-stack-tag:volume "󰝟 Áudio" "$(pactl get-sink-mute @DEFAULT_SINK@ | grep -q 'yes' && echo 'Mutado' || echo 'Ativo')"
+	pactl set-sink-mute @DEFAULT_SINK@ toggle && notify-send -h string:x-dunst-stack-tag:indicador "󰝟 Áudio" "$(pactl get-sink-mute @DEFAULT_SINK@ | grep -q 'yes' && echo 'Mutado' || echo 'Ativo')"
 
 XF86AudioMute
-	pactl set-sink-mute @DEFAULT_SINK@ toggle && notify-send -h string:x-dunst-stack-tag:volume "󰝟 Áudio" "$(pactl get-sink-mute @DEFAULT_SINK@ | grep -q 'yes' && echo 'Mutado' || echo 'Ativo')"
+	pactl set-sink-mute @DEFAULT_SINK@ toggle && notify-send -h string:x-dunst-stack-tag:indicador "󰝟 Áudio" "$(pactl get-sink-mute @DEFAULT_SINK@ | grep -q 'yes' && echo 'Mutado' || echo 'Ativo')"
 
 # Mutar / Desmutar Microfone
 XF86AudioMicMute
-	pactl set-source-mute @DEFAULT_SOURCE@ toggle && notify-send -h string:x-dunst-stack-tag:volume "󰍭 Microfone" "$(pactl get-source-mute @DEFAULT_SOURCE@ | grep -q 'yes' && echo 'Mutado' || echo 'Ativo')"
+	pactl set-source-mute @DEFAULT_SOURCE@ toggle && notify-send -h string:x-dunst-stack-tag:indicador "󰍭 Microfone" "$(pactl get-source-mute @DEFAULT_SOURCE@ | grep -q 'yes' && echo 'Mutado' || echo 'Ativo')"
+
+super + ctrl + Right
+	brightnessctl set 5%- && notify-send -h string:x-dunst-stack-tag:indicador -h int:value:"$(( 105 - ($(brightnessctl get) * 105 / $(brightnessctl max)) ))" "󰃠 Brilho"
+
+super + ctrl + Left
+	brightnessctl set 5%+ && notify-send -h string:x-dunst-stack-tag:indicador -h int:value:"$(( 100 - ($(brightnessctl get) * 100 / $(brightnessctl max)) ))" "󰃞 Brilho"	
+
+XF86MonBrightnessUp
+	brightnessctl set 5%- && notify-send -h string:x-dunst-stack-tag:indicador -h int:value:"$(( 105 - ($(brightnessctl get) * 105 / $(brightnessctl max)) ))" "󰃠 Brilho"
+
+XF86MonBrightnessDown
+	brightnessctl set 5%+ && notify-send -h string:x-dunst-stack-tag:indicador -h int:value:"$(( 100 - ($(brightnessctl get) * 100 / $(brightnessctl max)) ))" "󰃞 Brilho"	
+	
 # ==========================================
 # SESSÃO
 # ==========================================
