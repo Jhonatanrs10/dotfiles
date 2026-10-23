@@ -10,7 +10,7 @@ else
 fi
 
 if [ -n "$LINK" ]; then
-    notify-send -i mpv "MPV" "Carregando:\n${LINK:0:45}..." && mpv "$LINK"
+    notify-send -i mpv "MPV" "Carregando:\n${LINK:0:45}..." && mpv --profile=low-1080p "$LINK"
 else
     notify-send -i mpv "MPV" "Null"
 fi
