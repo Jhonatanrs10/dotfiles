@@ -21,6 +21,15 @@ super + x
 super + c
 	chromium
 
+super + b
+    alacritty -e bluetui
+
+super + n
+	alacritty -e nmtui
+
+super + j 
+	alacritty -e jrs
+
 # close and kill
 super + {_,shift + }q
 	bspc node -c
@@ -123,15 +132,15 @@ super + ctrl + w
 	~/.config/dunst/scripts/weather.sh
 
 # Status Energia
-super + ctrl + b
-    ~/.config/dunst/scripts/power-status.sh
+super + ctrl + e
+	~/.config/dunst/scripts/power-status.sh
 
 # Power Profile
 super + ctrl + p
 	source ~/.config/jrs/jrs-scripts-power-profiles.sh && profile-roll
 
 # Status de Conexão (Wi-Fi/Ethernet + IP)
-super + ctrl + i
+super + ctrl + n
 	~/.config/dunst/scripts/connection.sh
 
 # ==========================================
@@ -161,20 +170,20 @@ XF86AudioMute
 
 # Mutar / Desmutar Microfone
 XF86AudioMicMute
-	pactl set-source-mute @DEFAULT_SOURCE@ toggle && notify-send -h string:x-dunst-stack-tag:indicador "󰍭 Microfone" "$(pactl get-source-mute @DEFAULT_SOURCE@ | grep -q 'yes' && echo 'Mutado' || echo 'Ativo')"
+	~/.config/dunst/scripts/mic-mute.sh
 
 super + ctrl + Right
-	brightnessctl set 5%- && notify-send -h string:x-dunst-stack-tag:indicador -h int:value:"$(( 105 - ($(brightnessctl get) * 105 / $(brightnessctl max)) ))" "󰃠 Brilho"
+	~/.config/dunst/scripts/brightness-up.sh
 
 super + ctrl + Left
-	brightnessctl set 5%+ && notify-send -h string:x-dunst-stack-tag:indicador -h int:value:"$(( 105 - ($(brightnessctl get) * 105 / $(brightnessctl max)) ))" "󰃞 Brilho"	
+	~/.config/dunst/scripts/brightness-down.sh
 
 XF86MonBrightnessUp
-	brightnessctl set 5%- && notify-send -h string:x-dunst-stack-tag:indicador -h int:value:"$(( 105 - ($(brightnessctl get) * 105 / $(brightnessctl max)) ))" "󰃠 Brilho"
+	~/.config/dunst/scripts/brightness-up.sh
 
 XF86MonBrightnessDown
-	brightnessctl set 5%+ && notify-send -h string:x-dunst-stack-tag:indicador -h int:value:"$(( 105 - ($(brightnessctl get) * 105 / $(brightnessctl max)) ))" "󰃞 Brilho"	
-	
+	~/.config/dunst/scripts/brightness-down.sh
+
 # ==========================================
 # SESSÃO
 # ==========================================
@@ -184,6 +193,12 @@ super + shift + e
 
 super + l 
 	i3lock -c 000000 && sleep 1
+
+super + ctrl + 9
+	reboot
+
+super + ctrl + 0
+	poweroff
 
 # ==========================================
 # CAPTURA DE TELA (PRINT SCREEN)

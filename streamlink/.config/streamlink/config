@@ -1,0 +1,5 @@
+# Define o MPV como player padrão
+player=mpv
+
+# Pula/filtra comerciais inseridos na transmissão
+twitch-disable-ads

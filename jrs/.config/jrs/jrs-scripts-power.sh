@@ -3,6 +3,8 @@
 exit-wm() {
 	if [ "$XDG_CURRENT_DESKTOP" = "i3" ]; then
 		i3-msg exit
+	elif [ "$XDG_CURRENT_DESKTOP" = "bspwm" ]; then
+		bspc quit
 	elif [ "$XDG_CURRENT_DESKTOP" = "Hyprland" ]; then
 		command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'
 	else
@@ -13,6 +15,8 @@ exit-wm() {
 shutdown-wm() {
 	if [ "$XDG_CURRENT_DESKTOP" = "i3" ]; then
 		systemctl poweroff
+	elif [ "$XDG_CURRENT_DESKTOP" = "bspwm" ]; then
+		systemctl poweroff
 	elif [ "$XDG_CURRENT_DESKTOP" = "Hyprland" ]; then
 		command -v hyprshutdown --post-cmd "systemctl poweroff" >/dev/null 2>&1 && hyprshutdown --post-cmd "systemctl poweroff" || hyprctl dispatch 'hl.dsp.exit()'
 	else
@@ -22,6 +26,8 @@ shutdown-wm() {
 
 restart-wm() {
 	if [ "$XDG_CURRENT_DESKTOP" = "i3" ]; then
+		systemctl reboot
+	elif [ "$XDG_CURRENT_DESKTOP" = "bspwm" ]; then
 		systemctl reboot
 	elif [ "$XDG_CURRENT_DESKTOP" = "Hyprland" ]; then
 		command -v hyprshutdown --post-cmd "systemctl reboot" >/dev/null 2>&1 && hyprshutdown --post-cmd "systemctl reboot" || hyprctl dispatch 'hl.dsp.exit()'
