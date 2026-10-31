@@ -15,7 +15,6 @@ hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("xdg-open https:"))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("killall -SIGUSR1 waybar"))
 hl.bind(mainMod .. " + Z", hl.dsp.exec_cmd("hyprpicker -a -f hex"))
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
-hl.bind(mainMod .. " + CTRL + V", hl.dsp.exec_cmd("~/.config/jrs/jrs-exec-mpv.sh"))
 
 -- Window binds
 hl.bind(mainMod .. " + SHIFT + SPACE", hl.dsp.window.float({ action = "toggle" }))

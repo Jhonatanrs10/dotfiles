@@ -25,14 +25,12 @@ alias magick1080p="magick $1 -resize 1920x1080 $2"
 # Mango Hud
 alias mhvk="mangohud glxgears"
 alias mhgl="mangohud vkcube"
+# Mpv
+alias mpvgui="mpv --player-operation-mode=pseudo-gui -- %U"
 # Yt-dlp
 alias yt-dlp-mp4-720p='yt-dlp -f "bestvideo[height<=720][ext=mp4]+bestaudio[ext=m4a]/mp4" --merge-output-format mp4'
 alias yt-dlp-mp4='yt-dlp -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4" --merge-output-format mp4'
 alias yt-dlp-mp3='yt-dlp -x --audio-format mp3 --audio-quality 0'
-# Mpv
-mpv_twitch(){
-	mpv "https://www.twitch.tv/$1" & exit
-}
 # Code
 alias codehere='code . && exit'
 # SSH

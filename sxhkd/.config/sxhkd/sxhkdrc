@@ -30,20 +30,13 @@ super + n
 super + j 
 	alacritty -e jrs
 
-# close and kill
-super + {_,shift + }q
-	bspc node -c
-
-alt + F4
-	bspc node -c
-
 # xcolor
 super + z
 	xcolor -s
 
 # Dispara o MPV com o link da área de transferência e mostra uma prévia do link na notificação
 super + v
-    ~/.config/jrs/jrs-exec-mpv.sh
+    source ~/.config/jrs/jrs-scripts-mpv.sh && mpv_paste
 
 # dotfiles
 super + period
@@ -65,51 +58,41 @@ super + t
 # GERENCIAMENTO DE JANELAS E FOCO
 # ==========================================
 
+# close and kill
+{super + q,alt + F4}
+	bspc node -c
+
 # alternar entre layout tiled e monocle
 super + w
 	bspc desktop -l next
 
-# definir estado da janela
-super + {e,shift + space,button2,f}
-	bspc node -t {\~tiled,\~floating,\~floating,\~fullscreen}
+# Alternar especificamente entre Tiled e Floating
+super + {shift + space,button2}
+	bspc node -t ~floating
+
+# Alternar especificamente entre Tiled e Fullscreen
+super + f
+	bspc node -t ~fullscreen
+
+# Alternar especificamente para Tiled
+super + e
+	bspc node -t tiled
 
 # focar nó na direção dada
 super + {_,shift + }{Left,Down,Up,Right}
 	bspc node -{f,s} {west,south,north,east}
 
-# focar nó por salto de caminho
-super + {p,b,comma,period}
-	bspc node -f @{parent,brother,first,second}
-
 # focar próxima/anterior janela no desktop atual
 super + Tab
 	bspc node -f {next}.local.!hidden.window
-
-# focar próximo/anterior desktop no monitor atual
-super + bracket{left,right}
-	bspc desktop -f {prev,next}.local
 
 # focar último nó/desktop
 alt + Tab
 	bspc {node,desktop} -f last
 
-# focar nó mais antigo ou mais novo no histórico
-super + {o,i}
-	bspc wm -h off; \
-	bspc node {older,newer} -f; \
-	bspc wm -h on
-
 # focar ou enviar para o desktop dado
 super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
-
-# pré-selecionar a proporção
-super + ctrl + {1-9}
-	bspc node -o 0.{1-9}
-
-# cancelar pré-seleção
-super + ctrl + space
-	bspc node -p cancel
 
 # expandir janela movendo um lado para fora
 super + alt + {Left,Down,Up,Right}
@@ -117,7 +100,6 @@ super + alt + {Left,Down,Up,Right}
         bottom 0 20 || bspc node -z top 0 20,\
         top 0 -20 || bspc node -z bottom 0 -20,\
         right 20 0 || bspc node -z left 20 0}
-
 
 # ==========================================
 # WIDGETS DE NOTIFICAÇÃO (DUNST COM NERD FONTS)
