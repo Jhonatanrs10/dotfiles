@@ -37,6 +37,9 @@ super + j
 super + m
 	alacritty -e cmus
 
+super + a
+	alacritty -e wiremix --tab output
+
 # xcolor
 super + z
 	xcolor -s
