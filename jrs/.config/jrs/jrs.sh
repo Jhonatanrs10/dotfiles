@@ -19,7 +19,7 @@ if [ ! -f "$link_path" ]; then
 	sudo tee "$link_path" >/dev/null <<EOF
 #!/bin/bash
 cd "$HOME/.dotfiles/jrs/.config/jrs"
-exec bash "jrs-scripts.sh"
+exec bash "jrs.sh"
 EOF
 
 	# Torna o arquivo em /usr/bin executável
@@ -29,19 +29,30 @@ else
 	echo "Atalho '$link_name' já existe."
 fi
 
-# Lista de opções (texto e função correspondente)
-opcoes=(
-	"Pos Install::$HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-posinstall.sh::posinstall"
-	"Stow Dotfiles::$HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-posinstall.sh::setup_stow"
-	"Mount Disk::$HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-mount-disk.sh::mount_disk"
-	"Git Config::$HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-git.sh::setup_git"
-	"Decicated Servers::$HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-servers.sh::dedicated_servers"
-	"Virtual Network::$HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-network-tunneling.sh::install_rede_virtual"
-	"Create Shortcut::$HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-create-shortcut.sh::create_shortcut_menu"
-	"Apps::$HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-apps.sh::some_apps"
-	"Rofi TUI::$HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-tui.sh::main_tui"
-	"Twitch MPV::$HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-mpv.sh::mpv_twitchv2"
+# Lista original de opções
+main_jrs_path="$HOME/.dotfiles/jrs/.config/jrs"
+
+opcoes_brutas=(
+	"[Setup] Pos Install::$main_jrs_path/jrs-posinstall.sh::posinstall"
+	"[Setup] Stow Dotfiles::$main_jrs_path/jrs-posinstall.sh::setup_stow"
+	"[Setup] Mount Disk::$main_jrs_path/jrs-mount-disk.sh::mount_disk"
+	"[Setup] Git Config::$main_jrs_path/jrs-git.sh::setup_git"
+	"[MP] Decicated Servers::$main_jrs_path/jrs-server.sh::dedicated_servers"
+	"[MP] Virtual Network::$main_jrs_path/jrs-network-tunneling.sh::install_rede_virtual"
+	"[Short] Create Shortcut::$main_jrs_path/jrs-create-shortcut.sh::create_shortcut_menu"
+	"[Setup] Apps::$main_jrs_path/jrs-apps.sh::some_apps"
+	"[Short] Retroarch::$main_jrs_path/jrs-retroarch.sh::retroarch_roms"
+	"[Short] Twitch MPV::$main_jrs_path/jrs-mpv.sh::mpv_twitchv2"
+	"[Dotfiles] Git::$main_jrs_path/jrs-git-dotfiles.sh::exec_git_dotfiles"
+	"[Dotfiles] Code::$main_jrs_path/jrs-git-dotfiles.sh::exec_code_dotfiles"
+	"[WM] Reload::$main_jrs_path/jrs-reload-wm.sh::reload_wm"
+	"[WM] Set Theme::$main_jrs_path/jrs-set-theme.sh::tui_set_theme"
+	"[Power] Profiles::$main_jrs_path/jrs-power-profiles.sh::profile-tui"
+	"[Power] Options::$main_jrs_path/jrs-power.sh::tui_power"
 )
+
+# Ordena o array alfabeticamente pelo primeiro parâmetro (ignorando maiúsculas/minúsculas)
+IFS=$'\n' read -d '' -r -a opcoes < <(printf '%s\n' "${opcoes_brutas[@]}" | sort -f && printf '\0')
 
 linhas_terminal=$(tput lines)
 opcoes_por_pagina=$((linhas_terminal - 7))
@@ -51,7 +62,7 @@ total_paginas=$(((total_opcoes + opcoes_por_pagina - 1) / opcoes_por_pagina))
 
 mostrar_menu() {
 	clear
-	echo -e "${GREEN}  SCRIPTS - Page $((pagina + 1))/${total_paginas}${RESET}"
+	echo -e "${GREEN}  JRS - Page $((pagina + 1))/${total_paginas}${RESET}"
 	echo ""
 
 	inicio=$((pagina * opcoes_por_pagina))
@@ -87,14 +98,13 @@ executar_opcao() {
 		# Se for marcado para fechar após executar:
 		if [ "$acao_final" == "exit_after" ]; then
 			echo -e "\n${RED}Encerrando o terminal...${RESET}"
-			# sleep 0.5
 			kill -9 $PPID 2>/dev/null || exit 0
 		fi
 
-		echo -e "\n${YELLOW}Press Enter to return to the menu...${RESET}"
-		read
+		echo -e "\n${YELLOW}Returning to the menu...${RESET}"
+		sleep 1
 	else
-		echo -e "${RED}Invalid option!${RESET}"
+		echo -e "\n${RED}Invalid option!${RESET}"
 		sleep 1
 	fi
 }

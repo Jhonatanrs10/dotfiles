@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source $HOME/.config/jrs/jrs-scripts-power.sh
+source $HOME/.config/jrs/jrs-power.sh
 
 options="⏻ Shutdown\n Restart\n⏾ Suspend\n󰒲 Hibernate\n󰗽 Logout\n󰅚 Exit WM"
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source $HOME/.config/jrs/jrs-scripts-power-profiles.sh
+source $HOME/.config/jrs/jrs-power-profiles.sh
 
 if [ "$XDG_CURRENT_DESKTOP" = "i3" ]; then
   if pgrep picom >/dev/null; then

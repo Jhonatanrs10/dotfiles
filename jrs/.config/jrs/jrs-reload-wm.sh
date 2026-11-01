@@ -27,3 +27,12 @@ reload_bspwm() {
 	pkill -USR2 btop &
 	#dunstify -t 1500 --hints int:transient:1 "$XDG_CURRENT_DESKTOP" "Reloading" --icon=preferences-desktop-theme
 }
+
+reload_wm() {
+	case "$XDG_CURRENT_DESKTOP" in
+	"i3") reload_i3 ;;
+	"bspwm") reload_bspwm ;;
+	"Hyprland") reload_hyprland ;;
+	*) ;;
+	esac
+}

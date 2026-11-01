@@ -82,7 +82,7 @@ hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"), { locked = tr
 hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
 
 -- Others
-hl.bind(mainMod .. "+ SHIFT + R", hl.dsp.exec_cmd("~/.config/jrs/jrs-exec-reload-wm.sh"))
+hl.bind(mainMod .. "+ SHIFT + R", hl.dsp.exec_cmd("source ~/.config/jrs/jrs-reload-wm.sh & reload_wm"))
 hl.bind(mainMod .. "+ R", hl.dsp.exec_cmd("~/.config/jrs/jrs-rofi.sh"))
 hl.bind(mainMod .. "+ H", hl.dsp.exec_cmd("xdg-open https://wiki.hypr.land/"))
 

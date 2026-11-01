@@ -64,7 +64,7 @@ setup_kernel() {
 }
 
 setup_driver() {
-	source $HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-video-driver.sh
+	source $HOME/.dotfiles/jrs/.config/jrs/jrs-video-driver.sh
 	echo "DRIVER
 [1]Configure [2]No"
 	read resp
@@ -198,9 +198,9 @@ setup_samba() {
 }
 
 setup_configs() {
-	source $HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-fix.sh
-	source $HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-create-file.sh
-	source $HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-create-shortcut.sh
+	source $HOME/.dotfiles/jrs/.config/jrs/jrs-fix.sh
+	source $HOME/.dotfiles/jrs/.config/jrs/jrs-create-file.sh
+	source $HOME/.dotfiles/jrs/.config/jrs/jrs-create-shortcut.sh
 
 	echo "CONFIGS
 [1]Configure [2]No"
@@ -236,7 +236,7 @@ setup_desktop() {
 		#startx /usr/bin/i3
 		;;
 	3)
-		sudo pacman -S $myBaseBspwm $wmAudioControl $wmBacklightControl $wmBluetoothControl $wmNetworkManager $wmKeyring $wmDiskStatus $wmMusicPlayer $wmPrinters $wmCalculator $wmFontManager $wmImageViewer $wmAppearance $wmPolkit $wmBaseFileManager $wmBaseTerminal $wmBasePdfApp --needed
+		sudo pacman -S $myBaseBspwm $wmApplicationLauncher $wmAudioControl $wmBacklightControl $wmBluetoothControl $wmNetworkManager $wmKeyring $wmDiskStatus $wmMusicPlayer $wmPrinters $wmCalculator $wmFontManager $wmImageViewer $wmAppearance $wmPolkit $wmBaseFileManager $wmBaseTerminal $wmBasePdfApp $wmBaseScreenshotApp --needed
 		#startx /usr/bin/bspwm
 		;;
 	4)
@@ -295,7 +295,8 @@ setup_stow() {
 		cd $DOTFILES_DIR
 		stow */
 		rm $HOME/.config/hypr/colors.conf
-		bash $HOME/.config/jrs/jrs-rofi-set-theme.sh
+		source $HOME/.config/jrs/jrs-set-theme.sh
+		tui_set_theme
 		echo "--- Processo concluído! ---"
 		exit 0
 		;;

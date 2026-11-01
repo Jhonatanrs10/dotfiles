@@ -11,8 +11,12 @@ super + Return
 	alacritty
 
 # program launcher (Branco e Preto)
-super + d
+super + shift + d
 	source "$HOME/.config/bspwm/colors" && dmenu_run -nb "$color1" -nf "$color2" -sb "$color2" -sf "$color1"
+
+# Rofi
+super + d
+	rofi -show drun
 
 # gerenciador de arquivos e navegador
 super + x
@@ -30,13 +34,16 @@ super + n
 super + j 
 	alacritty -e jrs
 
+super + m
+	alacritty -e cmus
+
 # xcolor
 super + z
 	xcolor -s
 
 # Dispara o MPV com o link da área de transferência e mostra uma prévia do link na notificação
 super + v
-    source ~/.config/jrs/jrs-scripts-mpv.sh && mpv_paste
+    source ~/.config/jrs/jrs-mpv.sh && mpv_paste
 
 # dotfiles
 super + period
@@ -53,6 +60,9 @@ super + y
 
 super + t
 	chromium --app=https://twitch.tv/
+
+super + s
+	chromium --app=http://localhost:8384/
 
 # ==========================================
 # GERENCIAMENTO DE JANELAS E FOCO
@@ -119,7 +129,7 @@ super + ctrl + e
 
 # Power Profile
 super + ctrl + p
-	source ~/.config/jrs/jrs-scripts-power-profiles.sh && profile-roll
+	source ~/.config/jrs/jrs-power-profiles.sh && profile-roll
 
 # Status de Conexão (Wi-Fi/Ethernet + IP)
 super + ctrl + n

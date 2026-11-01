@@ -1,5 +1,5 @@
 #!/bin/bash
-source $HOME/.config/jrs/jrs-scripts-git-dotfiles.sh
+source $HOME/.config/jrs/jrs-git-dotfiles.sh
 
 options="󰈮  Code\n󰊢  Git"
 
@@ -11,6 +11,6 @@ chosen=$(echo -e "$options" | $menu_cmd)
 # Execute chosen action
 case "$chosen" in
 "󰈮  Code") exec_code_dotfiles ;;
-"󰊢  Git") alacritty -e bash -c 'source "$HOME/.config/jrs/jrs-scripts-git-dotfiles.sh"; exec_git_dotfiles';;
+"󰊢  Git") alacritty -e bash -c 'source "$HOME/.config/jrs/jrs-git-dotfiles.sh"; exec_git_dotfiles';;
 *) exit 1 ;;
 esac

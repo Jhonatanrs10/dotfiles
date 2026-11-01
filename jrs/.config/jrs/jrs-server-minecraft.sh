@@ -2,6 +2,7 @@
 
 run_server() {
 	java -Xmx4G -Xms4G -jar server.jar nogui
+	sleep 10
 }
 
 update_server() {

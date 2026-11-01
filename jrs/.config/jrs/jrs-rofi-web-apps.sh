@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source $HOME/.config/jrs/jrs-scripts-chromium-web-apps.sh
+source $HOME/.config/jrs/jrs-chromium-web-apps.sh
 
 options=" Youtube\n Crunchyroll"
 

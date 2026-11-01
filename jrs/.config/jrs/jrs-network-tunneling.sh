@@ -8,8 +8,8 @@ install_zerotier() {
 }
 
 install_ngrok() {
-	source $HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-create-shortcut.sh
-	source $HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-file.sh
+	source $HOME/.dotfiles/jrs/.config/jrs/jrs-create-shortcut.sh
+	source $HOME/.dotfiles/jrs/.config/jrs/jrs-file.sh
 	#https://github.com/ChaoticWeg/discord.sh
 	arqNgrok="https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz"
 	arqDiscord="https://github.com/ChaoticWeg/discord.sh/archive/refs/heads/master.zip"

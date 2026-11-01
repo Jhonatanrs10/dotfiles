@@ -34,14 +34,14 @@ some_apps() {
 		4) pacman_pkgs+=($myBaseMangoHud) ;;
 		5) pacman_pkgs+=($myBaseGamescope) ;;
 		6) pacman_pkgs+=($myBaseRetroarch) ;;
-		7) bash -c 'source "$HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-install-virt-manager.sh"; install_virt_manager' ;;
+		7) bash -c 'source "$HOME/.dotfiles/jrs/.config/jrs/jrs-install-virt-manager.sh"; install_virt_manager' ;;
 		8) pacman_pkgs+=($myBaseOBS) ;;
 		9) flatpak_pkgs+=($myBaseOBSflatpak) ;;
 		10) flatpak_pkgs+=($myBaseStreamOverlayflatpak) ;;
 		11) flatpak_pkgs+=($myBaseDiscordAppflatpak) ;;
 		12) pacman_pkgs+=($myBaseDiscordApp) ;;
-		13) bash -c 'source "$HOME/.config/jrs/jrs-scripts-winboat.sh"; winboat' ;;
-		14) bash -c 'source "$HOME/.config/jrs/jrs-scripts-install-nodejs.sh"; nodejslts' ;;
+		13) bash -c 'source "$HOME/.config/jrs/jrs-winboat.sh"; winboat' ;;
+		14) bash -c 'source "$HOME/.config/jrs/jrs-install-nodejs.sh"; nodejslts' ;;
 		*) echo "Opção $resp é inválida, ignorando..." ;;
 		esac
 	done

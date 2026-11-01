@@ -27,77 +27,6 @@ StartupNotify=true
 Terminal=$5" >$HOME/.local/share/applications/jrs/jrs-$6.desktop
 }
 
-create_all_exec_shortcuts() {
-	local scripts_dir="$HOME/.dotfiles/jrs/.config/jrs"
-
-	# Mapeia todos os scripts em um array
-	local scripts=("$scripts_dir"/jrs-exec-*.sh)
-	if [ ! -e "${scripts[0]}" ]; then
-		echo "Nenhum script encontrado em $scripts_dir"
-		return 1
-	fi
-
-	echo "=== Gerador de Atalhos Interativo ==="
-	echo "Scripts disponíveis:"
-
-	local i=1
-	declare -A script_map
-	for script in "${scripts[@]}"; do
-		[ -e "$script" ] || continue
-		local filename=$(basename "$script")
-		script_map[$i]="$script"
-		echo "  [$i] $filename"
-		((i++))
-	done
-
-	echo "  [a] Todos os scripts"
-	echo -n "Escolha o número do script (ou 'a' para todos): "
-	read -r escolha
-
-	local selected_scripts=()
-	if [[ "$escolha" =~ ^[0-9]+$ ]] && [ -n "${script_map[$escolha]}" ]; then
-		selected_scripts+=("${script_map[$escolha]}")
-	elif [ "$escolha" = "a" ] || [ "$escolha" = "A" ]; then
-		selected_scripts=("${scripts[@]}")
-	else
-		echo "Opção inválida!"
-		return 1
-	fi
-
-	# Processa os scripts selecionados
-	for script in "${selected_scripts[@]}"; do
-		[ -e "$script" ] || continue
-		local filename=$(basename "$script")
-		local name_raw="${filename#jrs-exec-}"
-		local short_name="${name_raw%.sh}"
-		local default_app_name="$(tr '[:lower:]' '[:upper:]' <<<${short_name:0:1})${short_name:1}"
-
-		echo ""
-		echo "--- Configurando atalho para: $filename ---"
-
-		# Escolha manual do Nome
-		echo -n "Nome do aplicativo [$default_app_name]: "
-		read -r custom_app_name
-		local app_name="${custom_app_name:-$default_app_name}"
-
-		# Escolha manual do Ícone
-		echo -n "Nome ou caminho do ícone (ex: utilities-terminal ou /path/to/icon.png) [$short_name]: "
-		read -r custom_icon
-		local icon_name="${custom_icon:-$short_name}"
-
-		create_shortcut_desktop \
-			"$app_name" \
-			"Atalho gerado para $app_name" \
-			"$script" \
-			"" \
-			"false" \
-			"exec-$short_name" \
-			"$icon_name"
-
-		echo "Sucesso! Atalho criado para: $app_name"
-	done
-}
-
 create_shortcut_desktop_steps() {
 	echo "DIGITE O NOME DO ATALHO (tudo junto sem caracteres)"
 	read atalhoName
@@ -115,7 +44,7 @@ create_shortcut_desktop_steps() {
 }
 
 create_shortcut_desktop_retroarch() {
-	source $HOME/.dotfiles/jrs/.config/jrs/jrs-scripts-others.sh
+	source $HOME/.dotfiles/jrs/.config/jrs/jrs-others.sh
 	remove_shortcut_desktop "Retroarch"
 	RetroArchCores="/usr/lib/libretro"
 	RetroArchDiretorioGames="$HOME/Documents/Roms"
@@ -201,7 +130,7 @@ create_shortcut_desktop_retroarch2() {
 	GAME_NAME="${FILENAME%.*}"
 
 	GAME_SLUG=$(echo "$GAME_NAME" | tr '[:upper:]' '[:lower:]' | sed -e 's/[^a-z0-9]/-/g' -e 's/--*/-/g' -e 's/^-//;s/-$//')
-	DESKTOP_NAME="retroarch-$GAME_SLUG"
+	DESKTOP_NAME="jrs-retroarch-$GAME_SLUG"
 	DESKTOP_FILE_PATH="$DESKTOP_DIR/$DESKTOP_NAME.desktop"
 
 	# Comando exato do RetroArch que será executado (usando variáveis expandidas corretamente)
@@ -222,21 +151,10 @@ EOF
 
 	chmod +x "$DESKTOP_FILE_PATH"
 
-	# 6. Criando o executável no bin garantindo que ele repasse o comando exato com aspas
-	LN_PATH="$BIN_DIR/$DESKTOP_NAME"
-	rm -f "$LN_PATH"
-	
-	cat <<EOF >"$LN_PATH"
-#!/usr/bin/env bash
-$RETROARCH_EXEC
-EOF
-    chmod +x "$LN_PATH"
-
 	# Notifica e finaliza
 	echo -e "\n--------------------------------------------------"
 	echo " Sucesso!"
 	echo " Atalho .desktop gerado em: $DESKTOP_FILE_PATH"
-	echo " Comando direto no terminal habilitado: $DESKTOP_NAME"
 	echo "--------------------------------------------------"
 }
 
@@ -245,16 +163,92 @@ create_shortcut_desktop_chromium_web_app() {
 	read atalhoName
 	echo "DIGITE O LINK"
 	read atalhoComando
+	if [[ -z "$atalhoName" || -z "$atalhoComando" ]]; then
+		exit 1
+	fi
 	create_shortcut_desktop "$atalhoName" "Chromium Web App" "chromium --app=$atalhoComando" "" "false" "chromium-web-app-$atalhoName" "web-browser"
 }
 
 remove_shortcut_desktop() {
-	echo "DESEJA APAGAR OS ATALHOS $1 (s/n)"
-	read resp
-	if [ "$resp" = "s" ]; then
-		sudo rm $HOME/.local/share/applications/jrs/jrs-$1-*
-	fi
-	clear
+    # Lista todos os atalhos em um array
+    local atalhos=($HOME/.local/share/applications/jrs/jrs-*)
+
+    # Verifica se encontrou algum arquivo
+    if [ ! -e "${atalhos[0]}" ]; then
+        echo "Nenhum atalho encontrado."
+        sleep 2
+        clear
+        return
+    fi
+
+    while true; do
+        clear
+        echo "========================================"
+        echo "     SELECIONE O ATALHO PARA APAGAR     "
+        echo "========================================"
+        echo "0) Apagar TODOS os atalhos"
+        
+        # Exibe a lista numerada
+        local i=1
+        for atalho in "${atalhos[@]}"; do
+            if [ -f "$atalho" ]; then
+                echo "$i) $(basename "$atalho")"
+            fi
+            ((i++))
+        done
+        
+        echo "s) Sair / Voltar"
+        echo "----------------------------------------"
+        read -p "Digite o número da opção desejada: " resp
+
+        # Opção para sair
+        if [ "$resp" = "s" ] || [ "$resp" = "S" ]; then
+            clear
+            break
+        fi
+
+        # Opção 0: Apagar todos
+        if [ "$resp" = "0" ]; then
+            read -p "Tem certeza que deseja apagar TODOS os atalhos? (s/n): " confirm
+            if [ "$confirm" = "s" ] || [ "$confirm" = "S" ]; then
+                sudo rm -f "$HOME/.local/share/applications/jrs/jrs-"*
+                echo "-> Todos os atalhos foram removidos!"
+                sleep 2
+            fi
+            clear
+            break
+        fi
+
+        # Validar se digitou um número válido da lista
+        if [[ "$resp" =~ ^[0-9]+$ ]] && [ "$resp" -ge 1 ] && [ "$resp" -lt "$i" ]; then
+            local indice=$((resp - 1))
+            local arquivo_escolhido="${atalhos[$indice]}"
+            
+            echo ""
+            echo "Atalho selecionado: $(basename "$arquivo_escolhido")"
+            read -p "Deseja realmente apagar este atalho? (s/n): " confirm
+            if [ "$confirm" = "s" ] || [ "$confirm" = "S" ]; then
+                sudo rm -f "$arquivo_escolhido"
+                echo "-> Atalho removido com sucesso!"
+                sleep 1.5
+            else
+                echo "-> Operação cancelada."
+                sleep 1
+            fi
+            
+            # Atualiza a lista após apagar um item
+            atalhos=($HOME/.local/share/applications/jrs/jrs-*)
+            if [ ! -e "${atalhos[0]}" ]; then
+                echo "Não há mais atalhos."
+                sleep 2
+                clear
+                break
+            fi
+        else
+            echo "Opção inválida!"
+            sleep 1
+        fi
+    done
 }
 
 create_shortcut_menu() {
@@ -262,13 +256,13 @@ create_shortcut_menu() {
 [1] Desktop
 [2] Retroarch
 [3] Chromium Web App
-[4] Desktop for (jrs-exec-*) Files"
+[4] Remover Shortcuts"
 	read resp
 	case $resp in
 	1) create_shortcut_desktop_steps ;;
 	2) create_shortcut_desktop_retroarch2 ;;
 	3) create_shortcut_desktop_chromium_web_app ;;
-	4) create_all_exec_shortcuts ;;
+	4) remove_shortcut_desktop ;;
 	*) ;;
 	esac
 }

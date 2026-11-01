@@ -53,7 +53,7 @@ else
 fi
 
 # Carrega o arquivo da engine com a função apply_theme
-source "$HOME/.config/jrs/jrs-scripts-set-theme.sh"
+source "$HOME/.config/jrs/jrs-set-theme.sh"
 
 # Aplica as configurações do tema selecionado
 apply_theme

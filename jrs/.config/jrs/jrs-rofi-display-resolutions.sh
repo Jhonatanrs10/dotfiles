@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source $HOME/.config/jrs/jrs-scripts-display-resolutions.sh
+source $HOME/.config/jrs/jrs-display-resolutions.sh
 
 if [ "$XDG_CURRENT_DESKTOP" = "i3" ]; then
 	options="eDP-1 Default ResX\neDP-1 Low ResX"
