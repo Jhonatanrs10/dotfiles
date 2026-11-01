@@ -36,7 +36,7 @@ retroarch_roms() {
 
 	if ! [[ "$escolha_pasta" =~ ^[0-9]+$ ]] || [ "$escolha_pasta" -lt 1 ] || [ "$escolha_pasta" -gt "${#subpastas[@]}" ]; then
 		echo "Opção inválida."
-		return 1
+		exit 1
 	fi
 
 	PLATAFORMA="${subpastas[$((escolha_pasta - 1))]}"
@@ -74,8 +74,8 @@ retroarch_roms() {
 	echo "Core selecionado: $(basename "$CORE_LIB")"
 	echo
 
-	# Procura arquivos principais (.cue, .chd, .m3u, etc.) tanto na raiz quanto dentro de pastas de cada jogo
-	mapfile -t roms < <(find "$DIRETORIO_ROMS" -type f \( -name "*.zip" -o -name "*.sfc" -o -name "*.smc" -o -name "*.z64" -o -name "*.n64" -o -name "*.cue" -o -name "*.chd" -o -name "*.m3u" -o -name "*.gba" -o -name "*.bin" \) | sort)
+	# Procura arquivos principais incluindo variações comuns de SNES (.smc, .sfc, .zip) e PSX (.cue, .chd, .img, .m3u)
+	mapfile -t roms < <(find "$DIRETORIO_ROMS" -type f \( -name "*.zip" -o -name "*.sfc" -o -name "*.smc" -o -name "*.z64" -o -name "*.n64" -o -name "*.cue" -o -name "*.chd" -o -name "*.m3u" -o -name "*.gba" -o -name "*.bin" -o -name "*.img" -o -name "*.iso" \) | sort)
 
 	if [ ${#roms[@]} -eq 0 ]; then
 		echo "Nenhuma ROM encontrada em '$DIRETORIO_ROMS'."
@@ -83,8 +83,6 @@ retroarch_roms() {
 	fi
 
 	for i in "${!roms[@]}"; do
-		# Se o arquivo estiver dentro de uma subpasta (ex: PSX/Crash/Crash.cue), 
-		# mostra o nome da pasta do jogo ou do arquivo para facilitar a leitura.
 		caminho_relativo="${roms[$i]#$DIRETORIO_ROMS/}"
 		echo "  [$((i + 1))] $caminho_relativo"
 	done
@@ -92,16 +90,18 @@ retroarch_roms() {
 	echo
 	read -p "Escolha o número da ROM que deseja jogar: " escolha_rom
 
-	if ! [[ "$escolha_rom" =~ ^[0-9]+$ ]] || [ "$escolha_rom" -lt 1 ] || [ "$escolha_rom" -gt "${#roms[@]}" ]; then
+	if ! [[ "$escolha_rom" =~ ^[0-9]+$ ]] || [ "$escolsa_rom" -lt 1 ] || [ "$escolha_rom" -gt "${#roms[@]}" ]; then
 		echo "Opção inválida."
-		return 1
+		exit 1
 	fi
 
 	ROM_SELECIONADA="${roms[$((escolha_rom - 1))]}"
 
-	# 5. Execução do RetroArch
+	# 5. Execução independente do RetroArch e encerramento do script/terminal
 	echo
-	echo "Executando: retroarch -f -L $CORE_LIB \"$ROM_SELECIONADA\""
-	retroarch -f -L "$CORE_LIB" "$ROM_SELECIONADA" > /dev/null 2>&1
-	exit 1
+	echo "Executando RetroArch..."
+	nohup retroarch -f -L "$CORE_LIB" "$ROM_SELECIONADA" >/dev/null 2>&1 &
+	disown
+	sleep 2
+	exit 0
 }

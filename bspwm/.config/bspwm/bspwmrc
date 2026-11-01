@@ -27,6 +27,8 @@ bspc config focus_follows_pointer true
 bspc config ignore_ewmh_fullscreen none
 
 bspc rule -a Xreader state=fullscreen
+bspc rule -a RetroArch state=fullscreen
+bspc rule -a mpv state=fullscreen
 
 #AutoStart
 xsetroot -cursor_name left_ptr &
