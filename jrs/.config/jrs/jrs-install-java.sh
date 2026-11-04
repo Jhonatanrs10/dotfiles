@@ -1,6 +1,6 @@
 #!/bin/bash
 
-javaVersion() {
+java_version() {
 	echo "DEBIAN BASE
 sudo update-alternatives --config java
 
@@ -10,7 +10,8 @@ archlinux-java --help
 	read finalizado
 }
 
-installJava() {
+java_install() {
+	clear
 	echo "=== Instalação de JRE no Arch Linux ==="
 	echo "Escolha a versão do JRE que deseja instalar:"
 	echo "1) jre-openjdk (última versão)"
@@ -41,7 +42,7 @@ installJava() {
 			break
 			;;
 		5)
-			javaVersion
+			java_version
 			exit 0
 			;;
 		6)

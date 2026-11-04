@@ -5,7 +5,7 @@
 #export XCURSOR_THEME=Adwaita
 
 # My Default Apps
-#export TERMINAL="alacritty"
+export TERMINAL="alacritty"
 #export FILEMANAGER="thunar"
 #export BROWSER="xdg-open https:"
 #export AUDIOPLAYER="amberol"
