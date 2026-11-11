@@ -5,6 +5,7 @@
 # reset sxhkd e bspwm
 super + shift + r
 	bspc wm -r; pkill -USR1 -x sxhkd
+	source ~/.config/jrs/jrs-reload-wm.sh && reload_wm
 
 # terminal emulator
 super + Return
@@ -190,10 +191,10 @@ super + l
 	i3lock -c 000000 && sleep 1
 
 super + ctrl + 9
-	reboot
+	systemctl reboot
 
 super + ctrl + 0
-	poweroff
+	systemctl poweroff
 
 # ==========================================
 # CAPTURA DE TELA (PRINT SCREEN)

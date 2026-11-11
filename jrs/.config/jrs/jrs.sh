@@ -43,7 +43,6 @@ opcoes_brutas=(
 	"[Setup] Apps::$main_jrs_path/jrs-apps.sh::some_apps"
 	"[Short] Retroarch::$main_jrs_path/jrs-retroarch.sh::retroarch_roms"
 	"[Short] Twitch MPV::$main_jrs_path/jrs-mpv.sh::mpv_twitch"
-	"[Short] Twitch Chat::$main_jrs_path/jrs-mpv.sh::mpv_twitch_chat"
 	"[Dotfiles] Git::$main_jrs_path/jrs-git-dotfiles.sh::exec_git_dotfiles"
 	"[Dotfiles] Code::$main_jrs_path/jrs-git-dotfiles.sh::exec_code_dotfiles"
 	"[WM] Reload::$main_jrs_path/jrs-reload-wm.sh::reload_wm"
@@ -51,6 +50,7 @@ opcoes_brutas=(
 	"[Power] Profiles::$main_jrs_path/jrs-power-profiles.sh::profile-tui"
 	"[Power] Options::$main_jrs_path/jrs-power.sh::tui_power"
 	"[Short] Twitch Web App::$main_jrs_path/jrs-chromium-web-apps.sh::launch_chromium_web_app_twitch"
+	"[Short] Twitch Chat Web App::$main_jrs_path/jrs-chromium-web-apps.sh::launch_chromium_web_app_twitch_chat"
 )
 
 # Ordena o array alfabeticamente pelo primeiro parâmetro (ignorando maiúsculas/minúsculas)
