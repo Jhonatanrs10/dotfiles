@@ -33,5 +33,3 @@ alias yt-dlp-mp4='yt-dlp -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4" --merge-
 alias yt-dlp-mp3='yt-dlp -x --audio-format mp3 --audio-quality 0'
 # Code
 alias codehere='code . && exit'
-# SSH
-alias sshlocalserver="ssh jhonatanrs@192.168.0.134"
